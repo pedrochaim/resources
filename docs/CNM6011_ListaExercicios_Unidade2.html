@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Lista de Exercícios Unidade 2 – resources</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">resources</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">Axbout</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./CNM6011_ListaExercicios_Unidade2.html" aria-current="page"> 
+<span class="menu-text">Lista de Exercícios Unidade 2</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#probabilidades" id="toc-probabilidades" class="nav-link active" data-scroll-target="#probabilidades">Probabilidades</a>
+  <ul class="collapse">
+  <li><a href="#x.-probabilidades-em-sorteio" id="toc-x.-probabilidades-em-sorteio" class="nav-link" data-scroll-target="#x.-probabilidades-em-sorteio">X. Probabilidades em sorteio</a></li>
+  <li><a href="#x.-probabilidade-de-eventos-independentes" id="toc-x.-probabilidade-de-eventos-independentes" class="nav-link" data-scroll-target="#x.-probabilidade-de-eventos-independentes">X. Probabilidade de eventos independentes</a></li>
+  <li><a href="#x.-propriedades-de-uma-função-de-probabilidade" id="toc-x.-propriedades-de-uma-função-de-probabilidade" class="nav-link" data-scroll-target="#x.-propriedades-de-uma-função-de-probabilidade">X. Propriedades de uma função de probabilidade</a></li>
+  <li><a href="#x.-cálculo-de-probabilidade-condicional-1" id="toc-x.-cálculo-de-probabilidade-condicional-1" class="nav-link" data-scroll-target="#x.-cálculo-de-probabilidade-condicional-1">X. Cálculo de probabilidade condicional 1</a></li>
+  <li><a href="#x.-cálculo-de-probabilidade-condicional-2" id="toc-x.-cálculo-de-probabilidade-condicional-2" class="nav-link" data-scroll-target="#x.-cálculo-de-probabilidade-condicional-2">X. Cálculo de probabilidade condicional 2</a></li>
+  <li><a href="#x.-tabela-de-frequência-conjunta" id="toc-x.-tabela-de-frequência-conjunta" class="nav-link" data-scroll-target="#x.-tabela-de-frequência-conjunta">X. Tabela de frequência conjunta</a></li>
+  </ul></li>
+  <li><a href="#variáveis-aleatórias" id="toc-variáveis-aleatórias" class="nav-link" data-scroll-target="#variáveis-aleatórias">Variáveis Aleatórias</a>
+  <ul class="collapse">
+  <li><a href="#x.-função-de-uma-variável-aleatória-discreta" id="toc-x.-função-de-uma-variável-aleatória-discreta" class="nav-link" data-scroll-target="#x.-função-de-uma-variável-aleatória-discreta">X. Função de uma variável aleatória discreta</a></li>
+  <li><a href="#x.-propriedades-da-esperança" id="toc-x.-propriedades-da-esperança" class="nav-link" data-scroll-target="#x.-propriedades-da-esperança">X. Propriedades da esperança</a></li>
+  <li><a href="#x.-propriedades-da-variância" id="toc-x.-propriedades-da-variância" class="nav-link" data-scroll-target="#x.-propriedades-da-variância">X. Propriedades da variância</a></li>
+  <li><a href="#x.-propriedades-da-covariância" id="toc-x.-propriedades-da-covariância" class="nav-link" data-scroll-target="#x.-propriedades-da-covariância">X. Propriedades da covariância</a></li>
+  <li><a href="#x.-propriedades-da-correlação" id="toc-x.-propriedades-da-correlação" class="nav-link" data-scroll-target="#x.-propriedades-da-correlação">X. Propriedades da correlação</a></li>
+  </ul></li>
+  <li><a href="#distribuições-de-probabilidade" id="toc-distribuições-de-probabilidade" class="nav-link" data-scroll-target="#distribuições-de-probabilidade">Distribuições de Probabilidade</a>
+  <ul class="collapse">
+  <li><a href="#probabilidades-na-distribuição-normal" id="toc-probabilidades-na-distribuição-normal" class="nav-link" data-scroll-target="#probabilidades-na-distribuição-normal">1. Probabilidades na distribuição Normal</a></li>
+  <li><a href="#distribuição-do-quadrado-de-uma-normal-padrão" id="toc-distribuição-do-quadrado-de-uma-normal-padrão" class="nav-link" data-scroll-target="#distribuição-do-quadrado-de-uma-normal-padrão">2. Distribuição do quadrado de uma Normal Padrão</a></li>
+  <li><a href="#distribuição-bernoulli" id="toc-distribuição-bernoulli" class="nav-link" data-scroll-target="#distribuição-bernoulli">3. Distribuição Bernoulli</a></li>
+  <li><a href="#distribuição-uniforme" id="toc-distribuição-uniforme" class="nav-link" data-scroll-target="#distribuição-uniforme">4. Distribuição Uniforme</a></li>
+  <li><a href="#distribuição-exponencial" id="toc-distribuição-exponencial" class="nav-link" data-scroll-target="#distribuição-exponencial">5. Distribuição Exponencial</a></li>
+  <li><a href="#distribuição-qui-quadrado" id="toc-distribuição-qui-quadrado" class="nav-link" data-scroll-target="#distribuição-qui-quadrado">6. Distribuição Qui-quadrado</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lista de Exercícios Unidade 2</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="probabilidades" class="level2">
+<h2 class="anchored" data-anchor-id="probabilidades">Probabilidades</h2>
+<section id="x.-probabilidades-em-sorteio" class="level3">
+<h3 class="anchored" data-anchor-id="x.-probabilidades-em-sorteio">X. Probabilidades em sorteio</h3>
+<p>Um grupo de 12 homens e 8 mulheres concorre a três prêmios através de um sorteio, sem reposição de seus nomes. Qual a probabilidade de:</p>
+<ol type="a">
+<li><p>nenhum homem ser sorteado?</p></li>
+<li><p>um prêmio ser ganho por homem?</p></li>
+<li><p>dois homens serem premiados?</p></li>
+</ol>
+</section>
+<section id="x.-probabilidade-de-eventos-independentes" class="level3">
+<h3 class="anchored" data-anchor-id="x.-probabilidade-de-eventos-independentes">X. Probabilidade de eventos independentes</h3>
+<p>A probabilidade de que <span class="math inline">\(A\)</span> resolva um problema é de <span class="math inline">\(2/3\)</span>, e a probabilidade de que <span class="math inline">\(B\)</span> o resolva é de <span class="math inline">\(3/4\)</span>. Se ambos tentarem independentemente, qual a probabilidade de o problema ser resolvido?</p>
+</section>
+<section id="x.-propriedades-de-uma-função-de-probabilidade" class="level3">
+<h3 class="anchored" data-anchor-id="x.-propriedades-de-uma-função-de-probabilidade">X. Propriedades de uma função de probabilidade</h3>
+<p>Se <span class="math inline">\(\Pr:\mathcal{F}\longrightarrow \mathbb R\)</span> é uma função de probabilidade e <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são quaisquer dois eventos em <span class="math inline">\(\mathcal{F}\)</span>, então</p>
+<ol type="a">
+<li><p><span class="math inline">\(\Pr(A\cap B^c) = \Pr(B)-\Pr(A\cap B)\)</span>,</p></li>
+<li><p><span class="math inline">\(\Pr(A\cup B)=\Pr(A)+\Pr(B)-\Pr(A\cap B)\)</span>,</p></li>
+<li><p>se <span class="math inline">\(A\subset B\)</span> então <span class="math inline">\(\Pr(A)\leq\Pr(B)\)</span>.</p></li>
+</ol>
+<p>Com base nos axiomas de Komolgorov, demonstre as afirmações acima.</p>
+</section>
+<section id="x.-cálculo-de-probabilidade-condicional-1" class="level3">
+<h3 class="anchored" data-anchor-id="x.-cálculo-de-probabilidade-condicional-1">X. Cálculo de probabilidade condicional 1</h3>
+<p>Suppose that <span class="math inline">\(5\%\)</span> of man and <span class="math inline">\(0.25\%\)</span> of woman are color-blind. A person is chosen at random and is color-blind. What is the probability that the person chosen is male? (Assume males and females to be in equal numbers.)</p>
+</section>
+<section id="x.-cálculo-de-probabilidade-condicional-2" class="level3">
+<h3 class="anchored" data-anchor-id="x.-cálculo-de-probabilidade-condicional-2">X. Cálculo de probabilidade condicional 2</h3>
+<p>Considere o problema de um teste clínico para a presença de uma certa doença respiratória.</p>
+<ul>
+<li>Se o indivíduo não estiver doente, o teste tem uma probabilidade de 0.05 de apontar um falso positivo.</li>
+<li>Se o indivíduo estiver de fato doente, o teste tem uma probabilidade de 0.01 de apontar um falso negativo.</li>
+<li>Acreditamos que, na população, 25% dos indivíduos estão infectados.</li>
+</ul>
+<p>Se um indivíduo fizer o teste e o resultado for negativo. Qual a probabilidade desse indivíduo estar infectado?</p>
+</section>
+<section id="x.-tabela-de-frequência-conjunta" class="level3">
+<h3 class="anchored" data-anchor-id="x.-tabela-de-frequência-conjunta">X. Tabela de frequência conjunta</h3>
+<p>A tabela abaixo descreve a contagem de frequência conjunta entre setor de alocação e faixa salarial dos 175 funcionários de uma empresa.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th>A</th>
+<th>B</th>
+<th>C</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Logística</td>
+<td>22</td>
+<td>15</td>
+<td>7</td>
+<td>44</td>
+</tr>
+<tr class="even">
+<td>Vendas</td>
+<td>55</td>
+<td>10</td>
+<td>12</td>
+<td>77</td>
+</tr>
+<tr class="odd">
+<td>Recursos Humanos</td>
+<td>23</td>
+<td>25</td>
+<td>6</td>
+<td>54</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>100</td>
+<td>50</td>
+<td>25</td>
+<td>175</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><p>Construa a tabela de frequência relativa conjunta, representando a distribuição massa de probabilidade conjunta das variáveis aleatórias “setor de alocação” e “faixa salarial”.</p></li>
+<li><p>Se sortearmos aleatoriamente um funcionário na faixa salarial <span class="math inline">\(C\)</span>, qual a probabilidade de que esse funcionário esteja alocado no setor de Vendas?</p></li>
+<li><p>Um funcionário na faixa salarial <span class="math inline">\(B\)</span> foi sorteado aleatoriamente. Qual a probabilidade de que esse funcionário esteja alocado no setor de Recursos Humanos?</p></li>
+</ol>
+<p>Para responder aos itens abaixo, considere que</p>
+<ul>
+<li>funcionários na faixa salarial <span class="math inline">\(A\)</span> recebem 2 salários mínimos,</li>
+<li>funcionários na faixa salarial <span class="math inline">\(B\)</span> recebem 4 salários mínimos, e que</li>
+<li>funcionários na faixa salarial <span class="math inline">\(C\)</span> recebem 6 salários mínimos.</li>
+</ul>
+<ol start="4" type="a">
+<li><p>Qual o valor esperado do salário de um funcionário da empresa?</p></li>
+<li><p>Qual é a variância dos salários dos funcionários da empresa?</p></li>
+<li><p>Qual o salário esperado de um funcionário alocado no setor de Vendas?</p></li>
+</ol>
+</section>
+</section>
+<section id="variáveis-aleatórias" class="level2">
+<h2 class="anchored" data-anchor-id="variáveis-aleatórias">Variáveis Aleatórias</h2>
+<section id="x.-função-de-uma-variável-aleatória-discreta" class="level3">
+<h3 class="anchored" data-anchor-id="x.-função-de-uma-variável-aleatória-discreta">X. Função de uma variável aleatória discreta</h3>
+<p>O tempo <span class="math inline">\(T\)</span>, em minutos, necessário para um operário processar certa peça é uma variável aleatória com a seguinte função massa de probabilidade</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\(t\)</span></th>
+<th><span class="math inline">\(2\)</span></th>
+<th><span class="math inline">\(3\)</span></th>
+<th><span class="math inline">\(4\)</span></th>
+<th><span class="math inline">\(5\)</span></th>
+<th><span class="math inline">\(6\)</span></th>
+<th><span class="math inline">\(7\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\Pr(T=t)\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+<td><span class="math inline">\(0.3\)</span></td>
+<td><span class="math inline">\(0.2\)</span></td>
+<td><span class="math inline">\(0.2\)</span></td>
+<td><span class="math inline">\(0.1\)</span></td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li><p>Quais os possíveis valores adotados pela variável aleatória <span class="math inline">\(T\)</span>?</p></li>
+<li><p>Qual o tempo médio de processamento das peças?</p></li>
+<li><p>Qual é a variância do tempo de processamento das peças?</p></li>
+<li><p>Quanto o operário deve receber, em média, por peça?</p></li>
+</ol>
+<p>Considere que, para cada peça processada, o operário ganha um fixo de <span class="math inline">\(\$2.00\)</span>, mas, se ele processa a peça em menos de seis minutos, ganha <span class="math inline">\(\$0.50\)</span> por cada minuto poupado. Por exemplo, se ele processa a peça em quatro minutos, recebe a quantia adicional de <span class="math inline">\(\$1.00\)</span>.</p>
+<ol start="5" type="a">
+<li><p>Se <span class="math inline">\(t\)</span> é o número de minutos gastos do processamento de uma peça individual, defina uma função <span class="math inline">\(g(t)\)</span> que descreve a remuneração do operário recebida pelo processamento dessa peça específica.</p></li>
+<li><p>Quanto o operário deve receber, em média, por peça?</p></li>
+<li><p>Qual é a variância da remuneração do operário?</p></li>
+</ol>
+</section>
+<section id="x.-propriedades-da-esperança" class="level3">
+<h3 class="anchored" data-anchor-id="x.-propriedades-da-esperança">X. Propriedades da esperança</h3>
+<p>Seja <span class="math inline">\(X\)</span> uma variável aleatória discreta com função massa de probabilidade <span class="math inline">\(\Pr(X=x)\)</span>. Então a esperança (ou valor-esperado) de <span class="math inline">\(X\)</span> é dada por <span class="math display">\[\begin{align*}
+  E(X) = \sum_{x\in X[\Omega]} x\Pr(X=x).
+\end{align*}\]</span> Se <span class="math inline">\(X\)</span> for uma variável aleatória contínua com função densidade de probabilidade <span class="math inline">\(f(x)\)</span> sua esperança é <span class="math display">\[\begin{align*}
+  E(X) = \int_{-\infty}^\infty xf(x)dx.
+\end{align*}\]</span> Se <span class="math inline">\(a,b\in\mathbb R\)</span>, mostre que</p>
+<ol type="a">
+<li><p><span class="math inline">\(E(aX) = aE(X)\)</span></p></li>
+<li><p><span class="math inline">\(E(a+X) =a+E(X)\)</span></p></li>
+<li><p><span class="math inline">\(E(a+bX) = a+bE(X)\)</span></p></li>
+</ol>
+</section>
+<section id="x.-propriedades-da-variância" class="level3">
+<h3 class="anchored" data-anchor-id="x.-propriedades-da-variância">X. Propriedades da variância</h3>
+<p>A variância de uma variável aleatória <span class="math inline">\(X\)</span> é dada por <span class="math display">\[\begin{align*}
+  Var(X)=E((X-E(X))^2).
+\end{align*}\]</span> Mostre que</p>
+<ol type="a">
+<li><p><span class="math inline">\(Var(X) = E(X^2)-E(X)^2\)</span>.</p></li>
+<li><p><span class="math inline">\(Var(X+a)=Var(X)\)</span>.</p></li>
+<li><p><span class="math inline">\(Var(aX)=a^2Var(X)\)</span>.</p></li>
+</ol>
+</section>
+<section id="x.-propriedades-da-covariância" class="level3">
+<h3 class="anchored" data-anchor-id="x.-propriedades-da-covariância">X. Propriedades da covariância</h3>
+<p>Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias definidas em um mesmo espaço amostral <span class="math inline">\(\Omega\)</span>. A covariância entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é definida como <span class="math display">\[\begin{align*}
+  Cov(X,Y)=E[(X-E(X)(Y-E(Y)))].
+\end{align*}\]</span> Sendo <span class="math inline">\(a,b\in\mathbb R\)</span>, demonstre as propriedades abaixo.</p>
+<ol type="a">
+<li><p><span class="math inline">\(Cov(X,Y)=Cov(Y,X)\)</span>.</p></li>
+<li><p><span class="math inline">\(Cov(X+a,Y+b)=Cov(X,Y)\)</span>.</p></li>
+<li><p><span class="math inline">\(Cov(aX,Y)=Cov(X,aY)=aCov(X,Y)\)</span>.</p></li>
+<li><p><span class="math inline">\(Cov(aX,bY)=abCov(X,Y)\)</span>.</p></li>
+<li><p><span class="math inline">\(Cov(X,Y)=E(XY)-E(X)E(Y)\)</span>.</p></li>
+</ol>
+</section>
+<section id="x.-propriedades-da-correlação" class="level3">
+<h3 class="anchored" data-anchor-id="x.-propriedades-da-correlação">X. Propriedades da correlação</h3>
+<p>Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias definidas em um mesmo espaço amostral <span class="math inline">\(\Omega\)</span>. O coeficiente de correlação (de Pearson) entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é definido como <span class="math display">\[\begin{align*}
+  Cor(X,Y)=\frac{Cov(X,Y)}{SD(X)SD(Y)}.
+\end{align*}\]</span> Sendo <span class="math inline">\(a,b\in\mathbb R\)</span>, demonstre as propriedades abaixo.</p>
+<ol type="a">
+<li><p><span class="math inline">\(Cor(aX,bY)=Cor(X,Y)\)</span> se <span class="math inline">\(ab&gt;0\)</span>.</p></li>
+<li><p><span class="math inline">\(Cor(aX,bY)=-Cor(X,Y)\)</span> se <span class="math inline">\(ab&lt;0\)</span>.</p></li>
+<li><p><span class="math inline">\(Cor(aX,bY)=\frac{ab}{|a||b|}Cor(X,Y)\)</span> no caso geral para <span class="math inline">\(a,b\neq 0\)</span>.</p></li>
+</ol>
+</section>
+</section>
+<section id="distribuições-de-probabilidade" class="level2">
+<h2 class="anchored" data-anchor-id="distribuições-de-probabilidade">Distribuições de Probabilidade</h2>
+<section id="probabilidades-na-distribuição-normal" class="level3">
+<h3 class="anchored" data-anchor-id="probabilidades-na-distribuição-normal">1. Probabilidades na distribuição Normal</h3>
+<p>Suponha que <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são variáveis aleatórias independentes, ambas com distribuição Normal. <span class="math inline">\(X\)</span> tem média <span class="math inline">\(2\)</span> e variância <span class="math inline">\(5^2\)</span>, enquanto <span class="math inline">\(Y\)</span> tem média <span class="math inline">\(3\)</span> e variância <span class="math inline">\(2^2\)</span>. Compute as probabilidades abaixo usando a tabela da distribuição normal padrão.</p>
+<ol type="a">
+<li><span class="math inline">\(\Pr(X\leq 4)\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(X\)</span> tem distribuição <span class="math inline">\(N(2,5^2)\)</span>, mas só podemos consultar a tabela da Normal Padrão <span class="math inline">\(N(0,1)\)</span>. Precisamos padronizar a v.a. <span class="math inline">\(X\)</span>. <span class="math display">\[\begin{align*}
+        Z_X = \frac{X-\mu_X}{\sigma_X} \sim N(0,1).
+    \end{align*}\]</span> No caso, <span class="math inline">\(Z_X = (X-2)/5\)</span>.</p>
+<p>Começamos escrevendo o que queremos <span class="math display">\[\begin{align*}
+        &amp; \Pr(X\leq 4) = \rho.
+    \end{align*}\]</span> Então operamos a desigualdade para ``fazer <span class="math inline">\(Z_X\)</span> aparecer’’. <span class="math display">\[\begin{align*}
+        &amp; \Pr\left(\frac{X-2}{5}\leq \frac{4-2}{5}\right) = \rho \tag{$\star 1/2$} \\
+        &amp; \Pr(Z_X\leq 2/5) = \Phi(2/5) = 0.65542 = \Pr(X\leq 4) \tag{$\star 2/2$}
+    \end{align*}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6554217</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">4</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6554217</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="CNM6011_ListaExercicios_Unidade2_files/figure-html/Q1_plot1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>null device 
+          1 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(\Pr(X\geq 4)\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\begin{align*}
+  \Pr(X\geq 4) = 1-\Pr(X\leq 4) = 1 - 0.65542 = 0.34458 \tag{$\star 1/1$}
+\end{align*}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="dv">4</span>, <span class="at">mean=</span><span class="dv">2</span>, <span class="at">sd=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3445783</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li><span class="math inline">\(\Pr(-1\leq X \leq 4)\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[\begin{align*}
+            \Pr(-1\leq X\leq 4) &amp;= \Pr(X\leq 4) - \Pr(X\leq -1) \tag{$\star 1/2$}
+        \end{align*}\]</span> Já calculamos <span class="math inline">\(\Pr(X\leq 4)\)</span> no item (a). Falta <span class="math inline">\(\Pr(X\leq -1)\)</span>. Normalizando vemos que é equivalente a calcular <span class="math display">\[\begin{align*}
+            \Pr\left(Z_X\leq \frac{-1-2}{5}\right) &amp;= \Pr(Z_X\leq -0.6)
+        \end{align*}\]</span> Como a distribuição normal é simétrica e <span class="math inline">\(Z_X\)</span> tem média zero, <span class="math display">\[\begin{align*}
+            \Pr(Z_X\leq -0.6) &amp;= \Pr(Z_X\geq 0.6) \\
+            &amp;=1-\Pr(Z_X\leq 0.6) = 1 - 0.72575 = 0.27425
+        \end{align*}\]</span> Então <span class="math display">\[\begin{align*}
+            \Pr(-1\leq X\leq 4) &amp;= 0.65542 - 0.27426 = 0.38116 \tag{$\star 2/2$}
+        \end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<ol start="4" type="a">
+<li><p><span class="math inline">\(\Pr(Y\geq 0)\)</span>.</p></li>
+<li><p><span class="math inline">\(\Pr(-1\leq Y\leq 4)\)</span>.</p></li>
+<li><p><span class="math inline">\(\Pr(Y\leq 3|X\geq4)\)</span>.</p></li>
+<li><p><span class="math inline">\(\Pr\left((Y\leq 3)\cap (X\geq4)\right)\)</span>.</p></li>
+<li><p><span class="math inline">\(\Pr\left((Y\leq 3)\cup (X\geq4)\right)\)</span></p></li>
+</ol>
+</section>
+<section id="distribuição-do-quadrado-de-uma-normal-padrão" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-do-quadrado-de-uma-normal-padrão">2. Distribuição do quadrado de uma Normal Padrão</h3>
+<p>Um número <span class="math inline">\(x\)</span> é sorteado aleatoriamente de acordo com uma distribuição normal, com média 0 e variância 2. Então desenhamos um quadrado com lado igual a <span class="math inline">\(|x|\)</span>.</p>
+<ol type="a">
+<li>Qual a probabilidade de desenharmos um quadrado com área 2 ou inferior?</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+A área do quadrado é inferior a 2 se <span class="math inline">\(|x|\leq\sqrt{2}\)</span>, ou seja, se <span class="math inline">\(-\sqrt{2}\leq x \leq\sqrt{2}\)</span>. Queremos <span class="math display">\[\begin{align*}
+            \Pr(X^2\leq 2) = \Pr(-\sqrt{2}\leq X \leq\sqrt{2}) = \Pr(X\leq\sqrt{2})-\Pr(X\leq-\sqrt{2}) \tag{$\star 2/4$}
+        \end{align*}\]</span> Porque a distribuição normal é simétrica, <span class="math inline">\(\Pr(X\geq\mu+\alpha)=\Pr(X\leq\mu-\alpha)\)</span>. <span class="math inline">\(\mu=0\)</span> no nosso caso. <span class="math display">\[\begin{align*}
+            \Pr(X^2\leq 2) = 2\Pr\left(X\leq\sqrt{2}\right)-1 \tag{$\star3/4$}
+        \end{align*}\]</span>
+<p>Defina <span class="math inline">\(Z=X/\sigma_x=X/\sqrt{2}\)</span>, tal que <span class="math inline">\(X = Z\sqrt{2}\)</span>. <span class="math display">\[\begin{align*}
+            \Pr(X^2\leq 2) &amp;= 2\Pr\left( Z\sqrt{2}\leq\sqrt{2} \right)-1\\
+            &amp;= 2\Pr(Z\leq 1) - 1\\
+            &amp;= 2(0.84134)-1 = 0.68268 \tag{$\star4/4$}
+        \end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>Qual o valor esperado da área do quadrado?</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Queremos <span class="math inline">\(E(X^2)\)</span>. Lembre que <span class="math display">\[\begin{align*}
+            Var(X) &amp;= E(X^2) - E(X)^2\\
+            E(X^2) &amp;= Var(X)+E(X)^2\\
+            E(X^2) &amp;= \sigma^2 + \mu^2
+        \end{align*}\]</span> Mas sabemos que <span class="math inline">\(\mu_X=0\)</span>, então <span class="math inline">\(E(X^2)=\sigma^2_X=2\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="distribuição-bernoulli" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-bernoulli">3. Distribuição Bernoulli</h3>
+</section>
+<section id="distribuição-uniforme" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-uniforme">4. Distribuição Uniforme</h3>
+<p>Uma variávael aleatório <span class="math inline">\(X\)</span> tem distribuição Uniforme com parâmetros <span class="math inline">\(a\)</span> e <span class="math inline">\(b\)</span> se sua função densidade de probabilidade tiver a forma <span class="math display">\[\begin{align*}
+  f(x;a,b) = \begin{cases} \frac{1}{b-a}, \quad \text{se } a\leq x\leq b \\
+  0, \quad \text{caso contrário.}
+  \end{cases}
+\end{align*}\]</span></p>
+<p>Se <span class="math inline">\(X\)</span> tiver distribuição uniforme com parâmetros <span class="math inline">\(\alpha\)</span> e <span class="math inline">\(\beta\)</span>, mostre que</p>
+<ol type="a">
+<li><p><span class="math inline">\(E(X)=\frac{\alpha+\beta}{2}\)</span>.</p></li>
+<li><p><span class="math inline">\(Var(X) = \frac{1}{3}\frac{\beta^3-\alpha^3}{\beta-\alpha} - \frac{1}{4}(\alpha+\beta)^2 = \frac{(\beta-\alpha)^2}{12}\)</span>.</p></li>
+<li><p><span class="math display">\[\begin{align*}
+    F(x) = \begin{cases}
+   0, &amp;x&lt;\alpha, \\
+   \frac{x-\alpha}{\beta-\alpha}, &amp;\alpha\leq x \leq \beta,\\
+   1, &amp;x&gt;\beta.
+    \end{cases}
+\end{align*}\]</span></p></li>
+</ol>
+</section>
+<section id="distribuição-exponencial" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-exponencial">5. Distribuição Exponencial</h3>
+<p>Dizemos que uma v.a. <span class="math inline">\(T\)</span> tem distribuição exponencial com parâmetro <span class="math inline">\(\beta\)</span> se sua f.d.p tiver a forma <span class="math display">\[\begin{align*}
+        f(t,\beta) \begin{cases}
+            \frac{1}{\beta}\exp\left(-\frac{1}{\beta}t \right), \text{ se } t&gt;0,\\
+            0, \text{ caso contrário.}
+        \end{cases}
+    \end{align*}\]</span></p>
+<p>Se <span class="math inline">\(T\)</span> tiver distribuição exponencial com parâmetro <span class="math inline">\(\beta\)</span>, mostre que:</p>
+<ol type="a">
+<li><p><span class="math inline">\(F(t;\beta)=1-e^{-x/\beta}\)</span></p></li>
+<li><p><span class="math inline">\(E(T)=\beta\)</span></p></li>
+<li><p><span class="math inline">\(Var(T)=\beta^2\)</span></p></li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="CNM6011_ListaExercicios_Unidade2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>null device 
+          1 </code></pre>
+</div>
+</div>
+</section>
+<section id="distribuição-qui-quadrado" class="level3">
+<h3 class="anchored" data-anchor-id="distribuição-qui-quadrado">6. Distribuição Qui-quadrado</h3>
+<p>Uma distribuição qui-quadrado com parâmetro <span class="math inline">\(m\)</span> (seus graus de liberdade) é definida como a soma de <span class="math inline">\(m\)</span> variáveis aleatórias normais padrão elevadas ao quadrado. Ou seja, se <span class="math inline">\(z_j\sim N(0,1)\)</span>, dizemos que <span class="math inline">\(C\sim \chi^2(m)\)</span> se <span class="math display">\[\begin{align*}
+    C = z_1^2 + z_2^2 + \dots + z_m^2 = \sum^m_{j=1}z_j^2 \sim \chi^2(m)
+\end{align*}\]</span></p>
+<ol type="a">
+<li><p>Mostre que <span class="math inline">\(E(C)=m\)</span>.</p></li>
+<li><p>Sabendo que se <span class="math inline">\(z\sim N(0,1)\)</span>, <span class="math inline">\(E(z^4)=3\)</span>, mostre que <span class="math inline">\(Var(C)=2m\)</span>.</p></li>
+<li><p>Qual forma uma v.a. qui-quadrado deve adotar conforme <span class="math inline">\(m\)</span> cresce? (Dica: use o Teorema do Limite Central.)</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
