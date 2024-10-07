@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Aula Inferência Estatística – resources</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">resources</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./estat_lista_unidade2.html"> 
+<span class="menu-text">Lista de Exercícios Unidade 2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./estat_aula_inferencia.html" aria-current="page"> 
+<span class="menu-text">Aula Inferência Estatística</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./estat_aula_regressao.html"> 
+<span class="menu-text">Aula Regressão Linear</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#população-e-amostra" id="toc-população-e-amostra" class="nav-link active" data-scroll-target="#população-e-amostra">População e Amostra</a></li>
+  <li><a href="#distribuição-da-média-amostral" id="toc-distribuição-da-média-amostral" class="nav-link" data-scroll-target="#distribuição-da-média-amostral">Distribuição da Média Amostral</a>
+  <ul class="collapse">
+  <li><a href="#valor-esperado-ebar-x" id="toc-valor-esperado-ebar-x" class="nav-link" data-scroll-target="#valor-esperado-ebar-x">Valor esperado <span class="math inline">\(E(\bar X)\)</span></a></li>
+  <li><a href="#variância-varbar-x" id="toc-variância-varbar-x" class="nav-link" data-scroll-target="#variância-varbar-x">Variância <span class="math inline">\(Var(\bar X)\)</span></a></li>
+  <li><a href="#simulação" id="toc-simulação" class="nav-link" data-scroll-target="#simulação">Simulação</a></li>
+  </ul></li>
+  <li><a href="#teorema-do-limite-central" id="toc-teorema-do-limite-central" class="nav-link" data-scroll-target="#teorema-do-limite-central">Teorema do Limite Central</a></li>
+  <li><a href="#intervalos-de-confiança" id="toc-intervalos-de-confiança" class="nav-link" data-scroll-target="#intervalos-de-confiança">Intervalos de Confiança</a></li>
+  <li><a href="#propriedades-de-estimadores" id="toc-propriedades-de-estimadores" class="nav-link" data-scroll-target="#propriedades-de-estimadores">Propriedades de Estimadores</a>
+  <ul class="collapse">
+  <li><a href="#valor-esperado-e-viés" id="toc-valor-esperado-e-viés" class="nav-link" data-scroll-target="#valor-esperado-e-viés">Valor esperado e viés</a></li>
+  <li><a href="#variância-e-erro-quadrático-médio" id="toc-variância-e-erro-quadrático-médio" class="nav-link" data-scroll-target="#variância-e-erro-quadrático-médio">Variância e erro quadrático médio</a></li>
+  <li><a href="#consistência" id="toc-consistência" class="nav-link" data-scroll-target="#consistência">Consistência</a></li>
+  </ul></li>
+  <li><a href="#lei-dos-grandes-números" id="toc-lei-dos-grandes-números" class="nav-link" data-scroll-target="#lei-dos-grandes-números">Lei dos Grandes Números</a></li>
+  <li><a href="#exercícios-de-fixação" id="toc-exercícios-de-fixação" class="nav-link" data-scroll-target="#exercícios-de-fixação">Exercícios de fixação</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Aula Inferência Estatística</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="população-e-amostra" class="level2">
+<h2 class="anchored" data-anchor-id="população-e-amostra">População e Amostra</h2>
+<p>Até agora estávamos trabalhando um espaço de probabilidades <span class="math inline">\(\left(\Omega, \mathcal F, f(x;\theta)\right)\)</span> completamente definido que nos permite computar probabilidades sobre eventos definidos no universo de possíveis resultados <span class="math inline">\(\Omega\)</span>.</p>
+<p>Agora vamos nos concentrar no problema inverso. Vamos observar realizações de uma certa variável aleatória, uma amostra finita <span class="math display">\[\begin{align*}
+    x = \{x_1,x_2,\dots,x_n\}.
+\end{align*}\]</span> Essas realizações foram sorteadas de uma população <span class="math inline">\(X\)</span>, cuja distribuição de probabiliades é desconhecida.</p>
+<p>Com base nas informações da amostra, tentaremos recuperar informações (por exemplo valor de parâmetros) sobre o modelo (o espaço de probabilidades) que gerou esses dados.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Amostra aleatória">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Amostra aleatória
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As variáveis aleatórias <span class="math inline">\(X_1,\dots,X_n\)</span> são chamadas de amostra aleatória de tamanho <span class="math inline">\(n\)</span> de uma população <span class="math inline">\(f(x)\)</span> se</p>
+<ul>
+<li><span class="math inline">\(X_1,\dots,X_n\)</span> são variáveis aleatórias independentes e</li>
+<li>a função densidade (ou massa) de probabilidade de cada <span class="math inline">\(X_i\)</span> é a mesma <span class="math inline">\(f(x)\)</span>.</li>
+</ul>
+<p>Alternativamente, podemos dizer que <span class="math inline">\(X_1,\dots,X_n\)</span> são variáveis aleatórias independentes e identicamente distribuídas com fdp ou fmp <span class="math inline">\(f(x)\)</span>. Daí abreviamos como variáveis aleatórias iid.</p>
+</div>
+</div>
+<p>Uma estatística é qualquer função baseada nos valores da amostra (e da quantidade de observações nessa amostra).</p>
+<p>Suponha que observamos uma amostra aleatória <span class="math inline">\(x= \{x_1,\dots, x_n\}\)</span>. São exemplos de estatísticas</p>
+<ul>
+<li>a média aritmética <span class="math inline">\(\bar x\)</span>,</li>
+<li>a variância amostral <span class="math inline">\(s^2\)</span>,</li>
+<li>a moda amostral,</li>
+<li>a mediana (e todas as outras estatísticas de ordem),</li>
+<li>momentos em geral (ex.: assimetria, curtose)</li>
+<li>a distância interquartílica <span class="math inline">\(q_3-q_1\)</span> (usada na construção do box-plot),</li>
+<li>o valor <span class="math inline">\(1\)</span>.</li>
+</ul>
+</section>
+<section id="distribuição-da-média-amostral" class="level2">
+<h2 class="anchored" data-anchor-id="distribuição-da-média-amostral">Distribuição da Média Amostral</h2>
+<p>Tome a média amostral <span class="math inline">\(\bar x\)</span>. <span class="math display">\[\begin{align*}
+    \bar x = \frac{x_1 + x_2 + \dots + x_n}{n}
+\end{align*}\]</span> Ela é uma função das realizações da variável aleatória <span class="math inline">\(X\)</span>, portanto também é uma variável aleatória por si própria (com características potencialmente diferentes da população original <span class="math inline">\(X\)</span>).</p>
+<ul>
+<li>Se <span class="math inline">\(\bar x\)</span> é uma v.a. então ela deve ter uma distribuição de probabilidades que atribui pesos relativos a suas realizações.</li>
+<li>Para uma dada amostra de tamanho <span class="math inline">\(n\)</span>, <span class="math inline">\(x^{(1)}=\{x_j^{(1)}\}_{j=1}^n\)</span>, o valor de <span class="math inline">\(\bar x^{(1)}\)</span> é sempre o mesmo. Mas se os valores <span class="math inline">\(x_j^{(1)}\)</span> sorteados fosse diferentes, o valor calculado em <span class="math inline">\(\bar x^{(1)}\)</span> também seria alterado.</li>
+<li>Portanto a distribuição da estatística depende de possíveis valores <span class="math inline">\(\bar x\)</span> (não observados!) que poderiam ser computados com diferentes amostras <span class="math inline">\(x^{(1)}, x^{(2)}, \dots\)</span>.</li>
+<li>Por isso nos referimos à distribuição de amostragem da estatística.</li>
+</ul>
+<section id="valor-esperado-ebar-x" class="level3">
+<h3 class="anchored" data-anchor-id="valor-esperado-ebar-x">Valor esperado <span class="math inline">\(E(\bar X)\)</span></h3>
+<p>Seja <span class="math inline">\(x=\{X_1, X_2, \dots, X_n\}\)</span> uma amostra aleatória retirada de uma população <span class="math inline">\(X\)</span> com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span>. A média amostral é <span class="math display">\[\begin{align*}
+    \bar X = \frac{X_1 + X_2 + \dots + X_n}{n}.
+\end{align*}\]</span> Estamos interessados no valor esperado da média amostral <span class="math display">\[\begin{align*}
+  E(\bar X) = E\left(\frac{X_1 + X_2 + \dots + X_n}{n}\right)
+\end{align*}\]</span> Lembrando que <span class="math inline">\(E(Y+W)=E(Y)+E(W)\)</span> e que <span class="math inline">\(E(aY)=aE(Y)\)</span>, podemos escrever <span class="math display">\[\begin{align*}
+  E(\bar x) = \frac{1}{n}\left[E(X_1)+E(X_2)\dots E(X_n)\right].
+\end{align*}\]</span> Agora usamos o fato de <span class="math inline">\(x\)</span> ser uma amostra aleatória e todos os <span class="math inline">\(X_j\)</span> terem sido sorteados da mesma distribuição de probabilidades. Ou seja, <span class="math inline">\(E(X_1)=E(X_2)=\dots=E(X_n)=\mu\)</span>. <span class="math display">\[\begin{align*}
+  E(\bar X) &amp;= \frac{1}{n}\left[E(X_1)+E(X_2)\dots E(X_n)\right] \\
+  &amp;=\frac{1}{n}(\mu+\mu+\dots+\mu) = \frac{n\mu}{n} = \mu
+\end{align*}\]</span> Portanto o valor esperado da média amostral é a verdadeira média populacional.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Msim <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>xBars <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,Msim)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Msim){</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  xBars[j] <span class="ot">=</span> <span class="fu">mean</span>(<span class="fu">rexp</span>(n, <span class="at">rate=</span><span class="dv">1</span><span class="sc">/</span>beta))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>Msim, xBars)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>beta)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(xBars), <span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="variância-varbar-x" class="level3">
+<h3 class="anchored" data-anchor-id="variância-varbar-x">Variância <span class="math inline">\(Var(\bar X)\)</span></h3>
+<p>Agora estamos interessados na variância da média amostral <span class="math inline">\(Var(\bar X)\)</span>. Aqui iremos observar uma diferença crucial quando comparada à variância populacional <span class="math inline">\(Var(X)=\sigma^2\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+  Var(\bar X) &amp;= Var\left(\frac{X_1+X_2+\cdots X_n}{n}\right) \\
+  &amp;=\frac{1}{n^2}Var\left(X_1+X_2+\cdots X_n\right)
+\end{align*}\]</span> Para duas variáveis aleatórias quaisquer, <span class="math inline">\(Var(Y+W)=Var(Y)+Var(W)+2Cov(Y,W)\)</span>. Como <span class="math inline">\(\{X_1,X_2,\dots,X_n\}\)</span> é uma amostra aleatória, <span class="math inline">\(X_i\)</span> é independente de <span class="math inline">\(X_j\)</span> para <span class="math inline">\(i\neq j\)</span>, portanto <span class="math inline">\(Cov(X_i,X_j)=0\)</span>. <span class="math display">\[\begin{align*}
+  Var(\bar X) = \frac{1}{n^2}\left[Var(X_1)+Var(X_2)+\cdots+Var(X_n)\right]
+\end{align*}\]</span> Como a amostra é identicamente distribuida, <span class="math inline">\(Var(X_1)=Var(X_2)=\cdots=Var(X_n)=\sigma^2\)</span>. E temos <span class="math display">\[\begin{align*}
+  Var(\bar X) = \frac{1}{n^2}\left(\sigma^2+\sigma^2+\cdots+\sigma^2\right) = \frac{n\sigma^2}{n^2} = \frac{\sigma^2}{n}
+\end{align*}\]</span></p>
+<p>Portanto a variância da média amostral é a verdadeira variância populacional, dividida pelo tamanho da amostra. Quanto maior o tamanho amostral, menos variável vai ser a estimativa da média.</p>
+</section>
+<section id="simulação" class="level3">
+<h3 class="anchored" data-anchor-id="simulação">Simulação</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Vamos simular uma amostra aleatória de tamanho <span class="math inline">\(n=500\)</span>, retirada de uma distribuição Poisson com parâmetro <span class="math inline">\(\lambda=2\)</span> e, construir o histograma normalizado. Essa é uma aproximação da distribuição populacional da variável aleatória <span class="math inline">\(X\sim Pois.(\lambda)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="dv">2</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-2-2" class="code-annotation-target"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">500</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-2-3" class="code-annotation-target"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>Sim <span class="ot">=</span> <span class="fu">rpois</span>(n, lambda)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-2-4" class="code-annotation-target"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"Histograma de "</span>,n,<span class="st">" realizações de X~Pois.("</span>,lambda,<span class="st">")"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="annotated-cell-2-5"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(Sim, <span class="at">prob=</span>T, <span class="at">main=</span>main)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Escolhemos o valor do o verdadeiro parâmetro <span class="math inline">\(\lambda\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="2" data-code-annotation="2">Determinamos o tamanho amostral <span class="math inline">\(n\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="3" data-code-annotation="3">Sorteamos <span class="math inline">\(n\)</span> realizações de <span class="math inline">\(X\sim Pois(\lambda)\)</span> usando a função <code>rpois()</code>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-2" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="4,5" data-code-annotation="4">Construimos o histograma normalizado.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Agora vamos simular 500 amostras com tamanho <span class="math inline">\(n=5\)</span>, computar a média amostral para cada amostra, e construir o histograma dessas estimativas da média.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="dv">2</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-3-3" class="code-annotation-target"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>NSim <span class="ot">=</span> <span class="dv">500</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>xMedias <span class="ot">=</span> <span class="fu">vector</span>(<span class="at">length=</span>NSim)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-3-5" class="code-annotation-target"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>NSim){</span>
+<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  Sim <span class="ot">=</span> <span class="fu">rpois</span>(n, lambda)</span>
+<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>  xMedias[j] <span class="ot">=</span> <span class="fu">mean</span>(Sim)</span>
+<span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>main<span class="ot">=</span><span class="fu">paste</span>(<span class="st">"Histograma de "</span>,NSim,<span class="st">" amostras com tamanho n="</span>,n,<span class="st">" </span><span class="sc">\n</span><span class="st"> retiradas de uma população X~Pois.("</span>,lambda,<span class="st">")"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>plt1 <span class="ot">=</span> <span class="fu">hist</span>(xMedias, <span class="at">prob=</span>T,<span class="at">main=</span>main)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Verdadeiro valor do parâmetro <span class="math inline">\(\lambda\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="2" data-code-annotation="2">Número de observações <span class="math inline">\(n\)</span> em cada amostra individual.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="3" data-code-annotation="3">Quantidade <span class="math inline">\(NSim\)</span> de amostras com tamanho <span class="math inline">\(n\)</span> que serão simuladas.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="4" data-code-annotation="4">Teremos <span class="math inline">\(NSim\)</span> estimativas <span class="math inline">\(\bar x\)</span> para a média populacional. Inicializamos um vetor com <span class="math inline">\(NSim\)</span> entradas para guardar essas estimativas.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="5,6,7,8" data-code-annotation="5">Realizamos a simulação.</span>
+</dd>
+<dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="9,10" data-code-annotation="6">Construimos o histograma normalizado.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Repare que a forma do histograma das estimativas <span class="math inline">\(\bar x\)</span> é diferente da forma do histograma das realizações individuais <span class="math inline">\(x\)</span>. Notadamente o gráfico é menos assimétrico.</p>
+<p>Agora vamos repetir esse exercício para diferentes tamanhos amostrais <span class="math inline">\(n\)</span>. Quanto maior <span class="math inline">\(n\)</span>, mais a distribuição de <span class="math inline">\(\bar x\)</span> irá se aproximar de algo simétrico ao redor da verdadeira média <span class="math inline">\(E(X)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>nvec <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">50</span>,<span class="dv">100</span>,<span class="dv">200</span>,<span class="dv">500</span>,<span class="dv">1000</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="dv">3</span><span class="sc">*</span><span class="dv">3</span>)){</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-4-4" class="code-annotation-target"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>NSim){</span>
+<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a>    Sim <span class="ot">=</span> <span class="fu">rpois</span>(nvec[j], lambda)</span>
+<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>    xMedias[i] <span class="ot">=</span> <span class="fu">mean</span>(Sim)</span>
+<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5" onclick="event.preventDefault();">5</a><span id="annotated-cell-4-8" class="code-annotation-target"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(xMedias, <span class="at">prob=</span>T, <span class="at">xlab=</span><span class="st">''</span>,<span class="at">ylab=</span><span class="st">''</span>, <span class="at">main=</span><span class="fu">paste</span>(<span class="st">"n="</span>,nvec[j]))</span>
+<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="1" data-code-annotation="1">Especificamos um vetor com diferentes valores para <span class="math inline">\(n\)</span></span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="2">Os gráficos serão dispostos em um grid 3x3.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3,9" data-code-annotation="3">Para cada tamanho amostral <code>nvec[j]</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="4,5,6,7" data-code-annotation="4">Realizamos a simulação.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="8" data-code-annotation="5">Desenhamos o histograma.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Exercício">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercício
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Repita o exercício de simulação de estimativas da média acima para diferentes distribuições de probabilidade.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="teorema-do-limite-central" class="level2">
+<h2 class="anchored" data-anchor-id="teorema-do-limite-central">Teorema do Limite Central</h2>
+<blockquote class="blockquote">
+<p>I know of scarcely anything so apt to impress the imagination as the wonderful form of cosmic order expressed by the the law of frequency of error. The law would have been personified by the Greeks and deified, if they had known of it. It reigns with serenity and in complete self-effacement, amidst the wildest confusion. The huger the mob, and the greater the apparent anarchy, the more perfect is its sway. It is the supreme law of Unreason. Whenever a large sample of chaotic elements are taken in hand and marshaled in the order of their magnitude, an unsuspected and most beautiful form of regularity proves to have been latent all along. (Sir Francis Galton, 1889, Natural Inheritance.)</p>
+</blockquote>
+<p>Da discussão anterior nós percebemos que</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Teorema do Limite Central (TLC)">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Teorema do Limite Central (TLC)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Para amostras aleatórias simples [iid] <span class="math inline">\((X_1,\dots,X_n)\)</span> retiradas de uma população com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span> finita, a distribuição amostral da média <span class="math inline">\(\bar X\)</span> aproxima-se, para <span class="math inline">\(n\)</span> grande, de uma distribuição normal, com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2/n\)</span>. <span class="math display">\[\begin{align*}
+  \lim_{n\rightarrow\infty} \bar X_n \sim N(\mu, \sigma^2/n).
+\end{align*}\]</span></p>
+</div>
+</div>
+<ul>
+<li>O surpreendente é que começamos com suposições de independência e variância finita e acabamos com normalidade (estritamente, a convergência em distribuição para uma Normal).</li>
+<li>Não importando a distribuição da população, a distribuição das estimativas da média (em repetidas amostras) se aproxima de uma Normal conforme o tamanho amostral <span class="math inline">\(n\)</span> cresce.</li>
+<li>Esse resultado nos permite fazer inferência (intervalo de confiança, teste de hipótese) sobre a média de uma população cuja distribuição é desconhecida com base nos quantis de uma distribuição Normal.</li>
+</ul>
+<p>Sempre podemos padronizar uma variável aleatória para obter algo com média zero e variância 1. Dessa forma só precisamos consultar os quantis de uma distribuição Normal Padrão, <span class="math inline">\(N(0,1)\)</span>.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Corolário">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Corolário
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se <span class="math inline">\((X_1,\dots, X_n)\)</span> for uma amostra aleatória simples da população <span class="math inline">\(X\)</span> com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span> finita, e <span class="math inline">\(\bar X = (X_1+\cdots+X_n)/n\)</span>, então para valores grandes de <span class="math inline">\(n\)</span> <span class="math display">\[\begin{align*}
+        Z = \frac{\bar X-\mu}{\sigma/\sqrt{n}}\sim N(0,1).
+    \end{align*}\]</span></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Exemplo">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exemplo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Quando a variável aleatória em si tem distribuição Normal, o TLC vale exatamente para qualquer tamanho amostral <span class="math inline">\(n\)</span>. Isso vem do fato da soma de v.a.s Normais ter distribuição Normal.</p>
+<p>Retiramos uma amostra aleatória de tamanho <span class="math inline">\(n=20\)</span> de uma variável aleatória Normal <span class="math inline">\(X\sim N(2,3^2)\)</span>. Qual é a probabilidade de que <span class="math inline">\(\bar x&gt;1.5\)</span>?</p>
+<p>Nesse caso <span class="math inline">\(\bar X \sim N(\mu,\sigma^2/n)\)</span>, ou seja <span class="math display">\[
+  \bar X \sim N\left(2,\frac{3^2}{20}\right)
+\]</span> Queremos <span class="math inline">\(\Pr(\bar X&gt;1.5)\)</span>. Portanto <span class="math display">\[
+  \gamma = \Pr(\bar X&gt;1.5) = 1-\Pr(\bar X\leq1.5)
+\]</span> No R podemos calcular diretamente.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">1.5</span>,<span class="at">mean=</span><span class="dv">2</span>,<span class="at">sd=</span><span class="dv">3</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7719717</code></pre>
+</div>
+</div>
+<p>Para trabalhar com a Normal Padrão devemos operar a desigualdade para padronizar <span class="math inline">\(X\)</span>. <span class="math display">\[\begin{align*}
+  \gamma &amp;= 1-\Pr(\bar X \leq 1.5) \\
+  &amp;= 1-\Pr\left(\frac{\bar X-\mu}{\sigma/\sqrt{n}}\leq \frac{1.5-2}{3/\sqrt{20}}\right) \\
+  &amp; = 1-\Pr(Z\leq-0.745)
+\end{align*}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="fl">0.745</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7718641</code></pre>
+</div>
+</div>
+<p>Ainda não conseguiriamos consultar na tabela da distribuição Normal Padrão. Da simetria da Normal, podemos escrever<br>
+<span class="math display">\[\begin{align*}
+  \gamma &amp;= 1-\Pr(Z\leq-0.745)=1-\Pr(Z&gt;0.745) \\
+  &amp;=1-(1-\Pr(Z\leq 0.745)) = \Pr(Z\leq 0.745)
+\end{align*}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="fl">0.745</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7718641</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Msim <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>xMedias <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,Msim)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (jsim <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Msim){</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">=</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span>mu, <span class="at">sd=</span>sigma)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  xMedias[jsim] <span class="ot">=</span> <span class="fu">mean</span>(sim)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>xcrit <span class="ot">=</span> <span class="fl">1.5</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(xMedias<span class="sc">&gt;</span>xcrit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.82</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="intervalos-de-confiança" class="level2">
+<h2 class="anchored" data-anchor-id="intervalos-de-confiança">Intervalos de Confiança</h2>
+<p>Ao saber a distribuição de amostragem de um determinado estimador <span class="math inline">\(T\)</span> (como a média amostral <span class="math inline">\(\bar X\)</span>), podemos construir um intervalo de confiança para o parâmetro populacional desconhecido <span class="math inline">\(\theta\)</span>.</p>
+<p>O objetivo será obter <span class="math inline">\(a&lt;b\)</span> tais que <span class="math display">\[\begin{align*}
+  \Pr(a\leq \theta \leq b) = \gamma,
+\end{align*}\]</span> onde <span class="math inline">\(\gamma\)</span> é o nível de confiança do intervalo.</p>
+<p>Seja <span class="math inline">\(y = \{Y_1,Y_2,\dots,Y_n\}\)</span> uma amostra aleatória retirada da população <span class="math inline">\(Y\)</span> cuja verdadeira média é desconhecida.</p>
+<p>Sabemos da discussão sobre a distribuição da média amostral que <span class="math inline">\(E(\bar Y)=\mu\)</span>, e <span class="math inline">\(Var(\bar Y)=\sigma^2/n\)</span>. O TLC nos garante que, conforme <span class="math inline">\(n\)</span> cresce, <span class="math display">\[\begin{align*}
+  \bar Y \sim N(\mu, \sigma^2/n)
+\end{align*}\]</span></p>
+<p>Então a transformação <span class="math display">\[\begin{align*}
+  Z = \frac{\bar Y - \mu}{\sigma/\sqrt{n}}
+\end{align*}\]</span> tem média zero e variância 1. Ou seja, <span class="math display">\[\begin{align*}
+  Z \sim N(0,1).
+\end{align*}\]</span></p>
+<p>Escreva <span class="math display">\[\begin{align*}
+  \Pr(-c \leq Z \leq c) = \gamma
+\end{align*}\]</span></p>
+<p>Perceba que <span class="math inline">\(c=\Phi^{-1}\left(\frac{1+\gamma}{2}\right)\)</span> ou <code>qnorm((1-gamma)/2)</code>.</p>
+<p><span class="math display">\[\begin{align*}
+  \Pr\left(-\Phi^{-1}\left(\frac{1+\gamma}{2}\right) \leq \frac{\bar X-\mu}{\sigma/\sqrt{n}}\leq\Phi^{-1}\left(\frac{1+\gamma}{2}\right)\right) = \gamma
+\end{align*}\]</span></p>
+<p>Isolando o parâmetro <span class="math inline">\(\mu\)</span> entre as desigualdades, obtemos o intervalo de confiança para a média populacional.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Intervalo de confiança para a média populacional">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Intervalo de confiança para a média populacional
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se <span class="math inline">\(x=\{x_1,\dots,x_n\}\)</span> é uma amostra aleatória retirada de uma população <span class="math inline">\(X\)</span> com média <span class="math inline">\(\mu\)</span> desconhecida e variância <span class="math inline">\(\sigma^2\)</span> conhecida, então <span class="math display">\[\begin{align*}
+    \Pr\left(\bar x - \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right) \leq \mu \leq \bar x + \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right)\right) = \gamma
+  \end{align*}\]</span> <code>LimInf = xbar - (sigma/sqrt(n))*qnorm((1-gamma)/2)</code></p>
+<p><code>LimSup = xbar + (sigma/sqrt(n))*qnorm((1-gamma)/2)</code></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Exemplo intervalo de confiança">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exemplo intervalo de confiança
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Uma máquina enche pacotes de café com uma variância igual a 100 <span class="math inline">\(g^2\)</span>. Ela estava regulada para encher os pacotes com 500 g, em média. Agora, ela se desregulou, e queremos saber qual a nova média <span class="math inline">\(\mu\)</span>.</p>
+<p>Uma amostra de 25 pacotes apresentou uma média igual a 485 g. Vamos construir um intervalo de confiança, nível de confiança de <span class="math inline">\(\gamma=95\%\)</span> para <span class="math inline">\(\mu\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">=</span> <span class="fl">0.95</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">25</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">=</span> <span class="dv">485</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>sigma<span class="ot">=</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>IC <span class="ot">=</span> <span class="fu">c</span>(xbar<span class="sc">-</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       xbar<span class="sc">+</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>IC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 481.0801 488.9199</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Simulações de intervalos de confiança para a média populacional">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Simulações de intervalos de confiança para a média populacional
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">3</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">20</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>conf.level <span class="ot">=</span> <span class="fl">0.8</span></span>
+<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>MSim <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>xMedias <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,MSim)</span>
+<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (jsample <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>MSim){</span>
+<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">=</span> <span class="fu">rnorm</span>(n,<span class="at">mean=</span>mu,<span class="at">sd=</span>sigma)</span>
+<span id="annotated-cell-17-9"><a href="#annotated-cell-17-9" aria-hidden="true" tabindex="-1"></a>  xMedias[jsample] <span class="ot">=</span> <span class="fu">mean</span>(sim)</span>
+<span id="annotated-cell-17-10"><a href="#annotated-cell-17-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="annotated-cell-17-11"><a href="#annotated-cell-17-11" aria-hidden="true" tabindex="-1"></a>IC <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">2</span>,<span class="at">nrow=</span>MSim)</span>
+<span id="annotated-cell-17-12"><a href="#annotated-cell-17-12" aria-hidden="true" tabindex="-1"></a>IC[,<span class="dv">1</span>] <span class="ot">=</span> xMedias<span class="sc">-</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>conf.level)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="annotated-cell-17-13"><a href="#annotated-cell-17-13" aria-hidden="true" tabindex="-1"></a>IC[,<span class="dv">2</span>] <span class="ot">=</span> xMedias<span class="sc">+</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>conf.level)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="annotated-cell-17-14"><a href="#annotated-cell-17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="annotated-cell-17-15"><a href="#annotated-cell-17-15" aria-hidden="true" tabindex="-1"></a>non.viol <span class="ot">=</span> <span class="fu">sum</span>(dplyr<span class="sc">::</span><span class="fu">between</span>(<span class="fu">rep</span>(mu,MSim),IC[,<span class="dv">1</span>],IC[,<span class="dv">2</span>]))</span>
+<span id="annotated-cell-17-16"><a href="#annotated-cell-17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(plotrix)</span>
+<span id="annotated-cell-17-17"><a href="#annotated-cell-17-17" aria-hidden="true" tabindex="-1"></a>plotrix<span class="sc">::</span><span class="fu">plotCI</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(xMedias),xMedias,<span class="at">ui=</span>IC[,<span class="dv">2</span>], <span class="at">li=</span>IC[,<span class="dv">1</span>],</span>
+<span id="annotated-cell-17-18"><a href="#annotated-cell-17-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">main=</span><span class="fu">paste</span>(non.viol,<span class="st">"de"</span>,<span class="fu">length</span>(xMedias),<span class="st">"ICs contém a verdadeira média"</span>))</span>
+<span id="annotated-cell-17-19"><a href="#annotated-cell-17-19" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>mu)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="1,2" data-code-annotation="1">Verdadeiros parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>.</span>
+</dd>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="2">Tamanho amostral <span class="math inline">\(n\)</span> de cada simulação.</span>
+</dd>
+<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-17" data-code-lines="4" data-code-annotation="3">Quantidade <span class="math inline">\(MSim\)</span> de simulações. Inicializamos um vetor para guardar as estimativas.</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança para a média quando a verdadeira variância é desconhecida">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Intervalo de confiança para a média quando a verdadeira variância é desconhecida
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança para a variância de uma população Normal">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Intervalo de confiança para a variância de uma população Normal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</section>
+<section id="propriedades-de-estimadores" class="level2">
+<h2 class="anchored" data-anchor-id="propriedades-de-estimadores">Propriedades de Estimadores</h2>
+<section id="valor-esperado-e-viés" class="level3">
+<h3 class="anchored" data-anchor-id="valor-esperado-e-viés">Valor esperado e viés</h3>
+</section>
+<section id="variância-e-erro-quadrático-médio" class="level3">
+<h3 class="anchored" data-anchor-id="variância-e-erro-quadrático-médio">Variância e erro quadrático médio</h3>
+</section>
+<section id="consistência" class="level3">
+<h3 class="anchored" data-anchor-id="consistência">Consistência</h3>
+</section>
+</section>
+<section id="lei-dos-grandes-números" class="level2">
+<h2 class="anchored" data-anchor-id="lei-dos-grandes-números">Lei dos Grandes Números</h2>
+<p>A Lei Fraca dos Grandes Números (LFGN) garante que a estimativa da média amostral <span class="math inline">\(\bar x\)</span>, calculada a partir de amostras amostras aleatórias de tamanho <span class="math inline">\(n\)</span> da população original, vai se aproximar cada vez mais da verdadeira média populacional <span class="math inline">\(\mu\)</span> conforme <span class="math inline">\(n\)</span> cresce.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Lei Fraca dos Grandes Números">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lei Fraca dos Grandes Números
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Seja <span class="math inline">\(X_1,X_2,\dots\)</span> uma sequência de variáveis aleatórias iid com <span class="math inline">\(E(X_i)=\mu\)</span> e <span class="math inline">\(Var(X_i)=\sigma^2&lt;\infty\)</span>. Defina <span class="math inline">\(\bar X_n=(1/n)\sum^n_{i=1}X_i\)</span>. Então, para todo <span class="math inline">\(\epsilon&gt;0\)</span>, <span class="math display">\[\begin{align*}
+  \lim_{n\rightarrow\infty} \Pr(|\bar X_n - \mu| &lt; \epsilon) = 1.
+\end{align*}\]</span></p>
+</div>
+</div>
+<p>Uma variável aleatória <span class="math inline">\(C\)</span> com distribuição Chi-quadrado <span class="math inline">\(\chi^2(v)\)</span> e <span class="math inline">\(v\)</span> “graus de liberdade” é definida como a soma de <span class="math inline">\(v\)</span> Normais Padrão independentes. (Obs.: É relacionada com a distribuição da variância amostral.) <span class="math display">\[
+  C = z^2 + z^2 + \cdots + z^2 \sim \chi^2(v)
+\]</span> É direto ver que <span class="math inline">\(E(C)=v\)</span> e <span class="math inline">\(Var(C)=2v\)</span> (use <span class="math inline">\(E(Z^4)=3\)</span>).</p>
+<p>Vamos simular amostras aleatórias de uma v.a. Qui-quadrado com diferentes tamanhos e observar o comportamento das estimativas da média e variância.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nmax <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nmin <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ngrid <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span>nmin,<span class="at">to=</span>nmax,<span class="at">by=</span><span class="dv">50</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>Sim <span class="ot">=</span> <span class="fu">rchisq</span>(nmax,<span class="at">df=</span><span class="dv">3</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>cMeans <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="fu">length</span>(ngrid))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (nobs <span class="cf">in</span> ngrid){</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  cMeans[j] <span class="ot">=</span> <span class="fu">mean</span>(Sim[<span class="dv">1</span><span class="sc">:</span>nobs])</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">=</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ngrid, cMeans, <span class="at">t=</span><span class="st">'l'</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>A variância de uma variável aleatória é definida como <span class="math display">\[
+  Var(X)=E[(X-E(X))^2].
+\]</span> Repare que se definirmos <span class="math inline">\(Y=(X-E(X))^2\)</span> então <span class="math inline">\(Var(X)=E(Y)\)</span>. Portanto a LGN também se aplica às estimativas da variância.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cVars <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="fu">length</span>(ngrid))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (nobs <span class="cf">in</span> ngrid){</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  cVars[j] <span class="ot">=</span> <span class="fu">var</span>(Sim[<span class="dv">1</span><span class="sc">:</span>nobs])</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">=</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ngrid, cVars, <span class="at">t=</span><span class="st">'l'</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">2</span><span class="sc">*</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>De modo geral, a LGN vai garantir a consistência dos estimadores dos momentos <span class="math inline">\(E(X^k)\)</span> contanto que o momento em si seja bem definido. Isto é, <span class="math inline">\(E(X^k)&lt;\infty\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Exemplo: Violação da LGN">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exemplo: Violação da LGN
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Uma variável aleatória <span class="math inline">\(T\)</span> com distribuição t-Student e <span class="math inline">\(m\)</span> graus de liberdade tem função densidade de probabilidade <span class="math display">\[\begin{align}
+        f_T(t;m) = \frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{m\pi}\Gamma\left(\frac{m}{2}\right)}\left(1+\frac{t^2}{m}\right)^{-\left(\frac{m+1}{2}\right)}, \quad -\infty&lt;t&lt;\infty.
+    \end{align}\]</span> A t-Student é muito relacionada com a distribuição da média amostral quando a verdadeira variância populacional é desconhecida. Conforme os graus de liberdade <span class="math inline">\(m\)</span> crescem, a distribuição t-Student se aproxima cada vez mais de uma Normal Padrão.</p>
+<p>Usualmente, <span class="math inline">\(E(T)=0\)</span> e <span class="math inline">\(Var(T)=m/(m-2)\)</span>. Mas o k-ésimo momento <span class="math inline">\(E(T^k)\)</span> só é bem definido se <span class="math inline">\(k\leq m\)</span>.</p>
+<p>Neste exemplo estamos interessados no caso com <span class="math inline">\(m=1\)</span> grau de liberdade. <span class="math display">\[\begin{align}
+        f_T(t;1) = \frac{\Gamma\left(1\right)}{\sqrt{\pi}\Gamma\left(\frac{1}{2}\right)}\left(1+t^2\right)^{-1}, \quad -\infty&lt;t&lt;\infty.
+    \end{align}\]</span> Sabendo que <span class="math inline">\(\Gamma(1/2)=\sqrt{\pi}\)</span> e <span class="math inline">\(\Gamma(1)=1\)</span>, <span class="math display">\[\begin{align}
+        f_T(t;1) = \frac{1}{\pi(1+t^2)}, \quad -\infty&lt;t&lt;\infty.
+    \end{align}\]</span> Como <span class="math inline">\(\text{E}(T)\)</span> se <span class="math inline">\(T\sim t(1)\)</span> não é bem definido, o estimador da média amostral não converge para nenhum valor específico.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1729</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>NMax <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>Smpl1 <span class="ot">=</span> <span class="fu">rt</span>(NMax, <span class="at">df=</span><span class="dv">1</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>Smpl2 <span class="ot">=</span> <span class="fu">rt</span>(NMax, <span class="at">df=</span><span class="dv">1</span>)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>XBar1 <span class="ot">=</span> <span class="fu">cumsum</span>(Smpl1)<span class="sc">/</span><span class="dv">1</span><span class="sc">:</span>NMax</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>XBar2 <span class="ot">=</span> <span class="fu">cumsum</span>(Smpl2)<span class="sc">/</span><span class="dv">1</span><span class="sc">:</span>NMax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Mesmo se aumentarmos o tamanho da amostra para 100000, não nos aproximamos de nenhum valor particular. Note também que embora as estimativas se mantenham relativamente estáveis por grandes “períodos”, eventualmente uma realização tão extrema será sorteada e impactará desproporcionalmente a estimativa.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercícios-de-fixação" class="level2">
+<h2 class="anchored" data-anchor-id="exercícios-de-fixação">Exercícios de fixação</h2>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

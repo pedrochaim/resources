@@ -156,8 +156,16 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./CNM6011_ListaExercicios_Unidade2.html" aria-current="page"> 
+    <a class="nav-link active" href="./estat_lista_unidade2.html" aria-current="page"> 
 <span class="menu-text">Lista de Exercícios Unidade 2</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./estat_aula_inferencia.html"> 
+<span class="menu-text">Aula Inferência Estatística</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./estat_aula_regressao.html"> 
+<span class="menu-text">Aula Regressão Linear</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -186,6 +194,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#variáveis-aleatórias" id="toc-variáveis-aleatórias" class="nav-link" data-scroll-target="#variáveis-aleatórias">Variáveis Aleatórias</a>
   <ul class="collapse">
+  <li><a href="#x.-variável-discreta-bidimensional" id="toc-x.-variável-discreta-bidimensional" class="nav-link" data-scroll-target="#x.-variável-discreta-bidimensional">X. Variável discreta bidimensional</a></li>
   <li><a href="#função-de-uma-variável-aleatória-discreta" id="toc-função-de-uma-variável-aleatória-discreta" class="nav-link" data-scroll-target="#função-de-uma-variável-aleatória-discreta">1. Função de uma variável aleatória discreta</a></li>
   <li><a href="#propriedades-da-esperança" id="toc-propriedades-da-esperança" class="nav-link" data-scroll-target="#propriedades-da-esperança">2. Propriedades da esperança</a></li>
   <li><a href="#propriedades-da-variância" id="toc-propriedades-da-variância" class="nav-link" data-scroll-target="#propriedades-da-variância">3. Propriedades da variância</a></li>
@@ -232,9 +241,9 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="probabilidades-em-sorteio">1. Probabilidades em sorteio</h3>
 <p>Um grupo de 12 homens e 8 mulheres concorre a três prêmios através de um sorteio, sem reposição de seus nomes. Qual a probabilidade de:</p>
 <ol type="a">
-<li><p>nenhum homem ser sorteado?</p></li>
-<li><p>um prêmio ser ganho por homem?</p></li>
-<li><p>dois homens serem premiados?</p></li>
+<li>nenhum homem ser sorteado?</li>
+<li>um prêmio ser ganho por homem?</li>
+<li>dois homens serem premiados?</li>
 </ol>
 </section>
 <section id="probabilidade-de-eventos-independentes" class="level3">
@@ -243,13 +252,12 @@ window.Quarto = {
 </section>
 <section id="propriedades-de-uma-função-de-probabilidade" class="level3">
 <h3 class="anchored" data-anchor-id="propriedades-de-uma-função-de-probabilidade">3. Propriedades de uma função de probabilidade</h3>
-<p>Se <span class="math inline">\(\Pr:\mathcal{F}\longrightarrow \mathbb R\)</span> é uma função de probabilidade e <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são quaisquer dois eventos em <span class="math inline">\(\mathcal{F}\)</span>, então</p>
+<p>Se <span class="math inline">\(\Pr:\mathcal{F}\longrightarrow \mathbb R\)</span> é uma função de probabilidade e <span class="math inline">\(A\)</span> e <span class="math inline">\(B\)</span> são quaisquer dois eventos em <span class="math inline">\(\mathcal{F}\)</span>, mostre que</p>
 <ol type="a">
-<li><p><span class="math inline">\(\Pr(A\cap B^c) = \Pr(B)-\Pr(A\cap B)\)</span>,</p></li>
-<li><p><span class="math inline">\(\Pr(A\cup B)=\Pr(A)+\Pr(B)-\Pr(A\cap B)\)</span>,</p></li>
-<li><p>se <span class="math inline">\(A\subset B\)</span> então <span class="math inline">\(\Pr(A)\leq\Pr(B)\)</span>.</p></li>
+<li><span class="math inline">\(\Pr(A\cap B^c) = \Pr(B)-\Pr(A\cap B)\)</span>,</li>
+<li><span class="math inline">\(\Pr(A\cup B)=\Pr(A)+\Pr(B)-\Pr(A\cap B)\)</span>,</li>
+<li>se <span class="math inline">\(A\subset B\)</span> então <span class="math inline">\(\Pr(A)\leq\Pr(B)\)</span>.</li>
 </ol>
-<p>Com base nos axiomas de Komolgorov, demonstre as afirmações acima.</p>
 </section>
 <section id="cálculo-de-probabilidade-condicional-1" class="level3">
 <h3 class="anchored" data-anchor-id="cálculo-de-probabilidade-condicional-1">4. Cálculo de probabilidade condicional 1</h3>
@@ -259,9 +267,9 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="cálculo-de-probabilidade-condicional-2">5. Cálculo de probabilidade condicional 2</h3>
 <p>Considere o problema de um teste clínico para a presença de uma certa doença respiratória.</p>
 <ul>
-<li>Se o indivíduo não estiver doente, o teste tem uma probabilidade de 0.05 de apontar um falso positivo.</li>
-<li>Se o indivíduo estiver de fato doente, o teste tem uma probabilidade de 0.01 de apontar um falso negativo.</li>
-<li>Acreditamos que, na população, 25% dos indivíduos estão infectados.</li>
+<li>Se o indivíduo não estiver doente, o teste tem uma probabilidade de <span class="math inline">\(0.05\)</span> de apontar um falso positivo.</li>
+<li>Se o indivíduo estiver de fato doente, o teste tem uma probabilidade de <span class="math inline">\(0.01\)</span> de apontar um falso negativo.</li>
+<li>Acreditamos que, na população, <span class="math inline">\(25\%\)</span> dos indivíduos estão infectados.</li>
 </ul>
 <p>Se um indivíduo fizer o teste e o resultado for negativo. Qual a probabilidade desse indivíduo estar infectado?</p>
 </section>
@@ -310,9 +318,9 @@ window.Quarto = {
 </tbody>
 </table>
 <ol type="a">
-<li><p>Construa a tabela de frequência relativa conjunta, representando a distribuição massa de probabilidade conjunta das variáveis aleatórias “setor de alocação” e “faixa salarial”.</p></li>
-<li><p>Se sortearmos aleatoriamente um funcionário na faixa salarial <span class="math inline">\(C\)</span>, qual a probabilidade de que esse funcionário esteja alocado no setor de Vendas?</p></li>
-<li><p>Um funcionário na faixa salarial <span class="math inline">\(B\)</span> foi sorteado aleatoriamente. Qual a probabilidade de que esse funcionário esteja alocado no setor de Recursos Humanos?</p></li>
+<li>Construa a tabela de frequência relativa conjunta, representando a distribuição massa de probabilidade conjunta das variáveis aleatórias “setor de alocação” e “faixa salarial”.</li>
+<li>Se sortearmos aleatoriamente um funcionário na faixa salarial <span class="math inline">\(C\)</span>, qual a probabilidade de que esse funcionário esteja alocado no setor de Vendas?</li>
+<li>Um funcionário na faixa salarial <span class="math inline">\(B\)</span> foi sorteado aleatoriamente. Qual a probabilidade de que esse funcionário esteja alocado no setor de Recursos Humanos?</li>
 </ol>
 <p>Para responder aos itens abaixo, considere que</p>
 <ul>
@@ -321,14 +329,212 @@ window.Quarto = {
 <li>funcionários na faixa salarial <span class="math inline">\(C\)</span> recebem 6 salários mínimos.</li>
 </ul>
 <ol start="4" type="a">
-<li><p>Qual o valor esperado do salário de um funcionário da empresa?</p></li>
-<li><p>Qual é a variância dos salários dos funcionários da empresa?</p></li>
-<li><p>Qual o salário esperado de um funcionário alocado no setor de Vendas?</p></li>
+<li>Qual o valor esperado do salário de um funcionário da empresa?</li>
+<li>Qual é a variância dos salários dos funcionários da empresa?</li>
+<li>Qual o salário esperado de um funcionário alocado no setor de Vendas?</li>
 </ol>
 </section>
 </section>
 <section id="variáveis-aleatórias" class="level2">
 <h2 class="anchored" data-anchor-id="variáveis-aleatórias">Variáveis Aleatórias</h2>
+<section id="x.-variável-discreta-bidimensional" class="level3">
+<h3 class="anchored" data-anchor-id="x.-variável-discreta-bidimensional">X. Variável discreta bidimensional</h3>
+<p>A tabela a seguir fornece a distribuição de probabilidade conjunta entre a situação de emprego e a graduação universitária entre aqueles empregados ou procurando trabalho (desempregados) na população em idade ativa dos EUA para 2012.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 39%">
+<col style="width: 27%">
+<col style="width: 24%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Unemployed (<span class="math inline">\(Y=0\)</span>)</th>
+<th>Employed (<span class="math inline">\(Y=1\)</span>)</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Non–college grads (<span class="math inline">\(X = 0\)</span>)</td>
+<td>0.053</td>
+<td>0.586</td>
+<td>0.639</td>
+</tr>
+<tr class="even">
+<td>College grads <span class="math inline">\((X = 1)\)</span></td>
+<td>0.015</td>
+<td>0.346</td>
+<td>0.361</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>0.068</td>
+<td>0.932</td>
+<td>1.000</td>
+</tr>
+</tbody>
+</table>
+<ol type="a">
+<li>Compute <span class="math inline">\(E(Y)\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>O valor-esperado de uma variável aleatória discreta é definido como <span class="math display">\[\begin{align*}
+    E(Y) = \sum_{y\in Y[\Omega]} y\Pr(Y=y),
+\end{align*}\]</span></p>
+<p>onde <span class="math inline">\(Y[\Omega]\)</span> representa a imagem da variável aleatória <span class="math inline">\(Y\)</span>. No nosso caso, a variável aleatória <span class="math inline">\(Y\)</span> pode adotar os valores <span class="math inline">\(y=\{0,1\}\)</span>. Portanto <span class="math display">\[\begin{align*}
+  E(Y) &amp;= \sum_{y\in\{0,1\}} y\Pr(Y=y), \\
+  &amp;= 0\times 0.068 + 1 \times 0.932 = 0.932.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>A taxa de desemprego é a fração da força de trabalho que está desempregada. Mostre que a taxa de desemprego é dada por <span class="math inline">\(1-E(Y)\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A taxa de desemprego é a fração da população não empregada. Ou seja, é a probabilidade de sortearmos uma pessoa desempregada. <span class="math display">\[\begin{align*}
+  \Pr(Y=0) \longrightarrow \text{Taxa de Desemprego}.
+\end{align*}\]</span> Como <span class="math inline">\(Y=1\)</span> é o complemento do evento <span class="math inline">\(Y=0\)</span>, <span class="math inline">\(\Pr(Y=0)=1-\Pr(Y=1)\)</span>.</p>
+<p>No item (a), vimos que, no caso específico de uma v.a. bernoulli, <span class="math inline">\(E(Y)=\Pr(Y=1)\)</span>. Portanto <span class="math display">\[\begin{align*}
+  \Pr(Y=0)=1-\Pr(Y=1)=1-E(Y).
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li>Calculate <span class="math inline">\(E(Y|X=1)\)</span> and <span class="math inline">\(E(Y|X=0)\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A esperança condicional é a esperança calculada com respeito à probabilidade condicional. Isto é, <span class="math display">\[\begin{align*}
+  E(Y|X=x) = \sum_{y\in Y[\Omega]} y \Pr(Y=y|X=x).
+\end{align*}\]</span> Da definição de probabilidade condicional, <span class="math display">\[\begin{align*}
+  E(Y|X=x) = \sum_{y\in Y[\Omega]} y \frac{\Pr(Y=y,X=x)}{\Pr(X=x)} = \frac{1}{\Pr(X=x)}\sum_{y\in Y[\Omega]} y \Pr(Y=y,X=x).
+\end{align*}\]</span></p>
+<p>Queremos primeiro <span class="math inline">\(E(Y|X=1)\)</span> e depois <span class="math inline">\(E(Y|X=0)\)</span>. Para calcular <span class="math inline">\(E(Y|X=1)\)</span> as probabilidades relevantes são</p>
+<ul>
+<li><span class="math inline">\(\Pr(Y=0,X=1)=0.015\)</span>,</li>
+<li><span class="math inline">\(\Pr(Y=1,X=1)=0.346\)</span>,</li>
+<li><span class="math inline">\(\Pr(X=1) = 0.361\)</span>.</li>
+</ul>
+<p>Agora é direto computar <span class="math display">\[\begin{align*}
+  E(Y|X=1) = \sum_{y\in\{0,1\}} y\Pr(Y=y|X=1) = 0 \times \frac{0.015}{0.36} + 1\times \frac{0.346}{0.361} = 0.9584.
+\end{align*}\]</span> Analogamente, <span class="math display">\[\begin{align*}
+  E(Y|X=0) = \sum_{y\in\{0,1\}} y\Pr(Y=y|X=0) = 0\times\frac{0.053}{0.639} + 1\times\frac{0.586}{0.639} = 0.9171.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<ol start="4" type="a">
+<li>Calculate the unemployment rate for (i) college graduates and (ii) non–college graduates.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Queremos <span class="math inline">\(\Pr(Y=0|X=1)\)</span> e <span class="math inline">\(\Pr(Y=0|X=0)\)</span>. Da definição de probabilidade condicional, <span class="math display">\[\begin{align*}
+  \Pr(Y=0|X=0) &amp;= \frac{\Pr(Y=0,X=0)}{\Pr(X=0)} = \frac{0.053}{0.639} = 0.0829,\\
+  \Pr(Y=0|X=1) &amp;= \frac{\Pr(Y=0,X=1)}{\Pr(X=1)} = \frac{0.015}{0.361} = 0.0416.
+\end{align*}\]</span> Pelo mesmo argumento do item (b), esses valores são equivalentes a <span class="math inline">\(1-E(Y|X=0)\)</span> e <span class="math inline">\(1-E(Y|X=1)\)</span>, respectivamente.</p>
+</div>
+</div>
+</div>
+<ol start="5" type="a">
+<li>A randomly selected member of this population reports being unemployed. What is the probability that this worker is a college graduate? A non–college graduate?</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Aqui queremos <span class="math inline">\(\Pr(X=0|Y=0)\)</span> e <span class="math inline">\(\Pr(X=1|Y=0)\)</span>. Da mesma forma do item anterior, <span class="math display">\[\begin{align*}
+  \Pr(X=0|Y=0) &amp;= \frac{\Pr(X=0,Y=0)}{\Pr(Y=0)} = \frac{0.053}{0.068} =  0.7794,\\
+  \Pr(X=1|Y=0) &amp;=\frac{\Pr(X=1,Y=0)}{\Pr(Y=0)}=\frac{0.015}{0.068} = 0.2206.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<ol start="6" type="a">
+<li>Are educational achievement and employment status independent? Explain</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Resposta
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Duas variáveis aleatórias <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> são ditas independentes se, e somente se, <span class="math display">\[\begin{align*}
+  f(x,y) = f_X(x)f_Y(y),
+\end{align*}\]</span> para todo <span class="math inline">\(x\in X[\Omega]\)</span> e <span class="math inline">\(y\in Y[\Omega]\)</span>. Quando se tratando de variáveis aleatórias discretas, podemos escrever a relação como <span class="math display">\[\begin{align*}
+  \Pr(X=x, Y=y) = \Pr(X=x)\Pr(Y=y),
+\end{align*}\]</span> para todos os valores admissíveis de <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span>. No caso do exercício, tome</p>
+<ul>
+<li><span class="math inline">\(\Pr(X=0,Y=0)=0.053\)</span></li>
+<li><span class="math inline">\(\Pr(X=0)=0.639\)</span></li>
+<li><span class="math inline">\(\Pr(Y=0)=0.068\)</span></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+  \Pr(X=0)\times\Pr(Y=0)=0.639\times0.068=0.043452\neq\Pr(X=0,Y=0)
+\end{align*}\]</span> Portanto as variáveis aleatórias <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> não são independentes.</p>
+</div>
+</div>
+</div>
+</section>
 <section id="função-de-uma-variável-aleatória-discreta" class="level3">
 <h3 class="anchored" data-anchor-id="função-de-uma-variável-aleatória-discreta">1. Função de uma variável aleatória discreta</h3>
 <p>O tempo <span class="math inline">\(T\)</span>, em minutos, necessário para um operário processar certa peça é uma variável aleatória com a seguinte função massa de probabilidade</p>
@@ -409,7 +615,7 @@ window.Quarto = {
 <section id="propriedades-da-correlação" class="level3">
 <h3 class="anchored" data-anchor-id="propriedades-da-correlação">5. Propriedades da correlação</h3>
 <p>Sejam <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> variáveis aleatórias definidas em um mesmo espaço amostral <span class="math inline">\(\Omega\)</span>. O coeficiente de correlação (de Pearson) entre <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é definido como <span class="math display">\[\begin{align*}
-  Cor(X,Y)=\frac{Cov(X,Y)}{SD(X)SD(Y)}.
+  Cor(X,Y)=\frac{Cov(X,Y)}{Sd(X)Sd(Y)}.
 \end{align*}\]</span> Sendo <span class="math inline">\(a,b\in\mathbb R\)</span>, demonstre as propriedades abaixo.</p>
 <ol type="a">
 <li><p><span class="math inline">\(Cor(aX,bY)=Cor(X,Y)\)</span> se <span class="math inline">\(ab&gt;0\)</span>.</p></li>
@@ -427,7 +633,7 @@ window.Quarto = {
 <li><span class="math inline">\(\Pr(X\leq 4)\)</span>.</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -436,7 +642,7 @@ Resposta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math inline">\(X\)</span> tem distribuição <span class="math inline">\(N(2,5^2)\)</span>, mas só podemos consultar a tabela da Normal Padrão <span class="math inline">\(N(0,1)\)</span>. Precisamos padronizar a v.a. <span class="math inline">\(X\)</span>. <span class="math display">\[\begin{align*}
         Z_X = \frac{X-\mu_X}{\sigma_X} \sim N(0,1).
@@ -461,7 +667,7 @@ Resposta
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CNM6011_ListaExercicios_Unidade2_files/figure-html/Q1_plot1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_lista_unidade2_files/figure-html/Q1_plot1-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -477,7 +683,7 @@ Resposta
 <li><span class="math inline">\(\Pr(X\geq 4)\)</span>.</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -486,7 +692,7 @@ Resposta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[\begin{align*}
   \Pr(X\geq 4) = 1-\Pr(X\leq 4) = 1 - 0.65542 = 0.34458 \tag{$\star 1/1$}
@@ -504,7 +710,7 @@ Resposta
 <li><span class="math inline">\(\Pr(-1\leq X \leq 4)\)</span>.</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -513,7 +719,7 @@ Resposta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[\begin{align*}
             \Pr(-1\leq X\leq 4) &amp;= \Pr(X\leq 4) - \Pr(X\leq -1) \tag{$\star 1/2$}
@@ -543,7 +749,7 @@ Resposta
 <li>Qual a probabilidade de desenharmos um quadrado com área 2 ou inferior?</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -552,13 +758,13 @@ Resposta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-A área do quadrado é inferior a 2 se <span class="math inline">\(|x|\leq\sqrt{2}\)</span>, ou seja, se <span class="math inline">\(-\sqrt{2}\leq x \leq\sqrt{2}\)</span>. Queremos <span class="math display">\[\begin{align*}
+<p>A área do quadrado é inferior a 2 se <span class="math inline">\(|x|\leq\sqrt{2}\)</span>, ou seja, se <span class="math inline">\(-\sqrt{2}\leq x \leq\sqrt{2}\)</span>. Queremos <span class="math display">\[\begin{align*}
             \Pr(X^2\leq 2) = \Pr(-\sqrt{2}\leq X \leq\sqrt{2}) = \Pr(X\leq\sqrt{2})-\Pr(X\leq-\sqrt{2}) \tag{$\star 2/4$}
         \end{align*}\]</span> Porque a distribuição normal é simétrica, <span class="math inline">\(\Pr(X\geq\mu+\alpha)=\Pr(X\leq\mu-\alpha)\)</span>. <span class="math inline">\(\mu=0\)</span> no nosso caso. <span class="math display">\[\begin{align*}
             \Pr(X^2\leq 2) = 2\Pr\left(X\leq\sqrt{2}\right)-1 \tag{$\star3/4$}
-        \end{align*}\]</span>
+        \end{align*}\]</span></p>
 <p>Defina <span class="math inline">\(Z=X/\sigma_x=X/\sqrt{2}\)</span>, tal que <span class="math inline">\(X = Z\sqrt{2}\)</span>. <span class="math display">\[\begin{align*}
             \Pr(X^2\leq 2) &amp;= 2\Pr\left( Z\sqrt{2}\leq\sqrt{2} \right)-1\\
             &amp;= 2\Pr(Z\leq 1) - 1\\
@@ -571,7 +777,7 @@ A área do quadrado é inferior a 2 se <span class="math inline">\(|x|\leq\sqrt{
 <li>Qual o valor esperado da área do quadrado?</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Resposta">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -580,7 +786,7 @@ Resposta
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Queremos <span class="math inline">\(E(X^2)\)</span>. Lembre que <span class="math display">\[\begin{align*}
             Var(X) &amp;= E(X^2) - E(X)^2\\
@@ -642,7 +848,7 @@ Resposta
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="CNM6011_ListaExercicios_Unidade2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_lista_unidade2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>

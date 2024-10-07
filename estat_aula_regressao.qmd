@@ -1,0 +1,58 @@
+---
+title: "Aula Regressão Linear"
+format: html
+---
+
+```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE, collapse=TRUE}
+# install.packages("AER")
+library(AER)
+STR <- c(15, 17, 19, 20, 22, 23.5, 25)
+TestScore <- c(680, 640, 670, 660, 630, 660, 635) 
+plot(x=STR, y=TestScore, pch=20, col='blue', cex=2)
+```
+
+Nosso modelo de regressão é
+\begin{align*}
+        Y_i &= \beta_0 + \beta_1X_i + u_i, \quad u_i\sim \IID(0,\sigma^2_u)\\
+  TestScore &= \beta_0 + \beta_1\times STR + u, \quad u\sim IID(0,\sigma_u) 
+\end{align*}
+No R escrevemos como um objeto do tipo `formula`
+
+```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE}
+fmla = TestScore ~ 1 + STR
+class(fmla)
+```
+
+```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE}
+out = lm(fmla)
+out$coefficients
+summary(out)
+```
+
+```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE}
+library(AER)
+data(CASchools)
+class(CASchools)
+```
+```{r}
+CASchools$STR = CASchools$students/CASchools$teachers 
+CASchools$score = (CASchools$read + CASchools$math)/2
+```
+```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE}
+plot(score ~ STR, 
+     data = CASchools,
+     main = "Gráfico de dispersão STR x score", 
+     xlab = "STR (X)",
+     ylab = "Test Score (Y)",
+     pch=1,
+     cex=.75)
+plot(x = CASchools$STR, y = CASchools$score, 
+     t = 'p',
+     main = "Gráfico de dispersão STR x score",
+     xlab = "STR (X)",
+     ylab = "Test Score (Y)")
+fmla = score ~ 1 + STR 
+out = lm(score ~ 1 + STR, data = CASchools)
+out = lm(CASchools$score ~ 1 + CASchools$STR)
+summary(out)
+```

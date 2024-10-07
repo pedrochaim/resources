@@ -8,8 +8,9 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-      - CNM6011_ListaExercicios_Unidade2.qmd
+      - estat_lista_unidade2.qmd
+      - estat_aula_inferencia.qmd
+      - estat_aula_regressao.qmd
 
 format:
   html:
