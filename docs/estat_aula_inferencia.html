@@ -191,7 +191,12 @@ window.Quarto = {
   <li><a href="#simulação" id="toc-simulação" class="nav-link" data-scroll-target="#simulação">Simulação</a></li>
   </ul></li>
   <li><a href="#teorema-do-limite-central" id="toc-teorema-do-limite-central" class="nav-link" data-scroll-target="#teorema-do-limite-central">Teorema do Limite Central</a></li>
-  <li><a href="#intervalos-de-confiança" id="toc-intervalos-de-confiança" class="nav-link" data-scroll-target="#intervalos-de-confiança">Intervalos de Confiança</a></li>
+  <li><a href="#intervalos-de-confiança" id="toc-intervalos-de-confiança" class="nav-link" data-scroll-target="#intervalos-de-confiança">Intervalos de Confiança</a>
+  <ul class="collapse">
+  <li><a href="#intervalo-de-confiança-para-a-média-populacional" id="toc-intervalo-de-confiança-para-a-média-populacional" class="nav-link" data-scroll-target="#intervalo-de-confiança-para-a-média-populacional">Intervalo de confiança para a média populacional</a></li>
+  <li><a href="#intervalo-de-confiança-para-a-média-quando-a-verdadeira-variância-é-desconhecida" id="toc-intervalo-de-confiança-para-a-média-quando-a-verdadeira-variância-é-desconhecida" class="nav-link" data-scroll-target="#intervalo-de-confiança-para-a-média-quando-a-verdadeira-variância-é-desconhecida">Intervalo de confiança para a média quando a verdadeira variância é desconhecida</a></li>
+  <li><a href="#comentários-adicionais" id="toc-comentários-adicionais" class="nav-link" data-scroll-target="#comentários-adicionais">Comentários adicionais</a></li>
+  </ul></li>
   <li><a href="#propriedades-de-estimadores" id="toc-propriedades-de-estimadores" class="nav-link" data-scroll-target="#propriedades-de-estimadores">Propriedades de Estimadores</a>
   <ul class="collapse">
   <li><a href="#valor-esperado-e-viés" id="toc-valor-esperado-e-viés" class="nav-link" data-scroll-target="#valor-esperado-e-viés">Valor esperado e viés</a></li>
@@ -199,6 +204,11 @@ window.Quarto = {
   <li><a href="#consistência" id="toc-consistência" class="nav-link" data-scroll-target="#consistência">Consistência</a></li>
   </ul></li>
   <li><a href="#lei-dos-grandes-números" id="toc-lei-dos-grandes-números" class="nav-link" data-scroll-target="#lei-dos-grandes-números">Lei dos Grandes Números</a></li>
+  <li><a href="#métodos-para-obtenção-de-estimadores" id="toc-métodos-para-obtenção-de-estimadores" class="nav-link" data-scroll-target="#métodos-para-obtenção-de-estimadores">Métodos para obtenção de Estimadores</a>
+  <ul class="collapse">
+  <li><a href="#método-dos-momentos" id="toc-método-dos-momentos" class="nav-link" data-scroll-target="#método-dos-momentos">Método dos momentos</a></li>
+  <li><a href="#máxima-verossimilhança" id="toc-máxima-verossimilhança" class="nav-link" data-scroll-target="#máxima-verossimilhança">Máxima Verossimilhança</a></li>
+  </ul></li>
   <li><a href="#exercícios-de-fixação" id="toc-exercícios-de-fixação" class="nav-link" data-scroll-target="#exercícios-de-fixação">Exercícios de fixação</a></li>
   </ul>
 </nav>
@@ -286,20 +296,30 @@ Amostra aleatória
   &amp;=\frac{1}{n}(\mu+\mu+\dots+\mu) = \frac{n\mu}{n} = \mu
 \end{align*}\]</span> Portanto o valor esperado da média amostral é a verdadeira média populacional.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> <span class="dv">5</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Msim <span class="ot">=</span> <span class="dv">20</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Msim <span class="ot">=</span> <span class="dv">10</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>xBars <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,Msim)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Msim){</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  xBars[j] <span class="ot">=</span> <span class="fu">mean</span>(<span class="fu">rexp</span>(n, <span class="at">rate=</span><span class="dv">1</span><span class="sc">/</span>beta))</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>Msim, xBars)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>beta)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(xBars), <span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">paste</span>(Msim,<span class="st">"estimativas da média </span><span class="sc">\n</span><span class="st"> baseadas em amostras de tamanho"</span>,n)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="dv">1</span><span class="sc">:</span>Msim, xBars, <span class="at">main=</span>main)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>beta)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="fu">mean</span>(xBars), <span class="at">lty=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -320,11 +340,14 @@ Amostra aleatória
 </section>
 <section id="simulação" class="level3">
 <h3 class="anchored" data-anchor-id="simulação">Simulação</h3>
+<p>Tome uma variável aleatória <span class="math inline">\(X\)</span> com distribuição Poisson e parâmetro <span class="math inline">\(\lambda=2\)</span>. Sua função massa de probabilidade tem a forma <span class="math display">\[\begin{align*}
+  Pr(X=k) = \frac{e^{-2}2^k}{k!}, \quad k=0,1,\dots.
+\end{align*}\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -359,12 +382,12 @@ Amostra aleatória
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Agora vamos simular 500 amostras com tamanho <span class="math inline">\(n=5\)</span>, computar a média amostral para cada amostra, e construir o histograma dessas estimativas da média.</p>
+<p>Agora vamos simular 500 diferentes amostras com tamanho <span class="math inline">\(n=5\)</span>, computar a média amostral para cada amostra, e construir o histograma dessas estimativas da média.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>lambda <span class="ot">=</span> <span class="dv">2</span></span>
 <a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-3-2" class="code-annotation-target"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">5</span></span>
@@ -374,7 +397,7 @@ Amostra aleatória
 <span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  Sim <span class="ot">=</span> <span class="fu">rpois</span>(n, lambda)</span>
 <span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>  xMedias[j] <span class="ot">=</span> <span class="fu">mean</span>(Sim)</span>
 <span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>main<span class="ot">=</span><span class="fu">paste</span>(<span class="st">"Histograma de "</span>,NSim,<span class="st">" amostras com tamanho n="</span>,n,<span class="st">" </span><span class="sc">\n</span><span class="st"> retiradas de uma população X~Pois.("</span>,lambda,<span class="st">")"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>main<span class="ot">=</span><span class="fu">paste</span>(<span class="st">"Histograma de "</span>,NSim,<span class="st">" médias calculadas de amostras n="</span>,n,<span class="st">" </span><span class="sc">\n</span><span class="st"> retiradas de uma população X~Pois.("</span>,lambda,<span class="st">")"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
 <span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>plt1 <span class="ot">=</span> <span class="fu">hist</span>(xMedias, <span class="at">prob=</span>T,<span class="at">main=</span>main)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
@@ -407,7 +430,7 @@ Amostra aleatória
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -451,7 +474,7 @@ Amostra aleatória
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -460,7 +483,7 @@ Amostra aleatória
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -585,14 +608,14 @@ Exemplo
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>xcrit <span class="ot">=</span> <span class="fl">1.5</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(xMedias<span class="sc">&gt;</span>xcrit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.82</code></pre>
+<pre><code>[1] 0.79</code></pre>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -607,6 +630,8 @@ Exemplo
 <p>O objetivo será obter <span class="math inline">\(a&lt;b\)</span> tais que <span class="math display">\[\begin{align*}
   \Pr(a\leq \theta \leq b) = \gamma,
 \end{align*}\]</span> onde <span class="math inline">\(\gamma\)</span> é o nível de confiança do intervalo.</p>
+<section id="intervalo-de-confiança-para-a-média-populacional" class="level3">
+<h3 class="anchored" data-anchor-id="intervalo-de-confiança-para-a-média-populacional">Intervalo de confiança para a média populacional</h3>
 <p>Seja <span class="math inline">\(y = \{Y_1,Y_2,\dots,Y_n\}\)</span> uma amostra aleatória retirada da população <span class="math inline">\(Y\)</span> cuja verdadeira média é desconhecida.</p>
 <p>Sabemos da discussão sobre a distribuição da média amostral que <span class="math inline">\(E(\bar Y)=\mu\)</span>, e <span class="math inline">\(Var(\bar Y)=\sigma^2/n\)</span>. O TLC nos garante que, conforme <span class="math inline">\(n\)</span> cresce, <span class="math display">\[\begin{align*}
   \bar Y \sim N(\mu, \sigma^2/n)
@@ -636,8 +661,8 @@ Intervalo de confiança para a média populacional
 <div class="callout-body-container callout-body">
 <p>Se <span class="math inline">\(x=\{x_1,\dots,x_n\}\)</span> é uma amostra aleatória retirada de uma população <span class="math inline">\(X\)</span> com média <span class="math inline">\(\mu\)</span> desconhecida e variância <span class="math inline">\(\sigma^2\)</span> conhecida, então <span class="math display">\[\begin{align*}
     \Pr\left(\bar x - \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right) \leq \mu \leq \bar x + \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right)\right) = \gamma
-  \end{align*}\]</span> <code>LimInf = xbar - (sigma/sqrt(n))*qnorm((1-gamma)/2)</code></p>
-<p><code>LimSup = xbar + (sigma/sqrt(n))*qnorm((1-gamma)/2)</code></p>
+  \end{align*}\]</span> <code>LimInf = mean(x) - (sigma/sqrt(n))*qnorm((1+gamma)/2)</code></p>
+<p><code>LimSup = mean(x) + (sigma/sqrt(n))*qnorm((1+gamma)/2)</code></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Exemplo intervalo de confiança">
@@ -720,7 +745,7 @@ Simulações de intervalos de confiança para a média populacional
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -729,7 +754,7 @@ Simulações de intervalos de confiança para a média populacional
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -737,29 +762,55 @@ Simulações de intervalos de confiança para a média populacional
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança para a média quando a verdadeira variância é desconhecida">
+<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança para a proporção populacional">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Intervalo de confiança para a média quando a verdadeira variância é desconhecida
+Intervalo de confiança para a proporção populacional
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-
+<p>TODO: IC proporcao</p>
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança para a variância de uma população Normal">
+</section>
+<section id="intervalo-de-confiança-para-a-média-quando-a-verdadeira-variância-é-desconhecida" class="level3">
+<h3 class="anchored" data-anchor-id="intervalo-de-confiança-para-a-média-quando-a-verdadeira-variância-é-desconhecida">Intervalo de confiança para a média quando a verdadeira variância é desconhecida</h3>
+<p>Na maior parte das aplicações práticas, não sabemos previamente a verdadeira variância populacional <span class="math inline">\(\sigma^2\)</span>. A solução é usar uma estimativa amostral para a variância, como <span class="math display">\[\begin{align*}
+  S^2 = \sum^n_{j=1}\frac{(X_j-\bar X)^2}{n-1}.
+\end{align*}\]</span></p>
+<p>Nesse caso, a média amostral <span class="math inline">\(\bar X\)</span>, depois de padronizada, tem distribuição que se aproxima de uma t-Student com <span class="math inline">\(n-1\)</span> graus de liberdade conforme <span class="math inline">\(n\)</span> cresce, não uma Normal Padrão.</p>
+<p><span class="math display">\[\begin{align*}
+  T = \frac{\bar X - \mu}{S/\sqrt{n}} \sim t(n-1).
+\end{align*}\]</span></p>
+<p>Nesse caso os extremos do intervalo de confiança têm a forma <span class="math display">\[\begin{align*}
+  \bar X \pm \frac{S}{\sqrt{n}}t^{-1}_{n-1}\left(\frac{1+\gamma}{2}\right)
+\end{align*}\]</span></p>
+<p><code>LimInf = mean(x) - (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)</code></p>
+<p><code>LimSup = mean(x) + (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)</code></p>
+<p>A distribuição t-Student se aproxima de uma Normal Padrão conforme seus graus de liberdade aumentam.</p>
+<p>Portanto a diferença entre os ICs só é relevante quando o tamanho amostral <span class="math inline">\(n\)</span> é pequeno. Para algo como <span class="math inline">\(n&gt;100\)</span>, podemos utilizar a estimativa <span class="math inline">\(s^2\)</span> no lugar da verdadeira variância <span class="math inline">\(\sigma^2\)</span> e consultar os quantis <code>qnorm((1-gamma)/2)</code></p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança para a média quando a verdadeira variância é desconhecida">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Intervalo de confiança para a variância de uma população Normal
+Intervalo de confiança para a média quando a verdadeira variância é desconhecida
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -770,10 +821,130 @@ Intervalo de confiança para a variância de uma população Normal
 </div>
 </div>
 </section>
+<section id="comentários-adicionais" class="level3">
+<h3 class="anchored" data-anchor-id="comentários-adicionais">Comentários adicionais</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança subótimo">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Intervalo de confiança subótimo
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Os intervalos de confiança para a média cujos extremos são dados por <span class="math display">\[\begin{align*}
+  \bar X \pm \frac{S}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right)
+\end{align*}\]</span> são os menores intervalos (em termos da diferença entre limite superior e limite inferior) que contém a verdadeira média com probabilidade <span class="math inline">\(\gamma\)</span> (o nível de confiança do intervalo).</p>
+<p>É possível escolher um valor particular para <code>LimInf</code> ou <code>LimSup</code> e daí construir um intervalo não centrado na estimativa da média amostral, que vai conter a verdadeira média populacional com a mesma probabilidade <span class="math inline">\(\gamma\)</span> (mesmo nível de confiança). Mas esse intervalo não centrado seria “menos eficiente” no sentido que sua amplitude sempre será maior do que o intervalo centrado em <span class="math inline">\(\bar x\)</span>.</p>
+<p>TODO: exemplo intervalo não ótimo.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança para a variância de uma população Normal">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Intervalo de confiança para a variância de uma população Normal
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="propriedades-de-estimadores" class="level2">
 <h2 class="anchored" data-anchor-id="propriedades-de-estimadores">Propriedades de Estimadores</h2>
+<p>Um estimador <span class="math inline">\(T\)</span> do parâmetro <span class="math inline">\(\theta\)</span> é qualquer função das observações da amostra, ou seja, <span class="math inline">\(T=g(X_1,\dots,X_n)\)</span>.</p>
+<p>Uma estimativa <span class="math inline">\(\hat T\)</span> é o valor assumido pelo estimador em uma amostra particular.</p>
 <section id="valor-esperado-e-viés" class="level3">
 <h3 class="anchored" data-anchor-id="valor-esperado-e-viés">Valor esperado e viés</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Viés de um estimador">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Viés de um estimador
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Definimos o viés do estimador <span class="math inline">\(T\)</span> com relação ao parâmetro <span class="math inline">\(\theta\)</span> como <span class="math display">\[\begin{align*}
+  \text{Viés}(T,\theta) = E(T-\theta) = E(T)-\theta
+\end{align*}\]</span></p>
+<p>O estimador <span class="math inline">\(T\)</span> é dito não-enviesado com relação ao parâmetro <span class="math inline">\(\theta\)</span> se <span class="math inline">\(\text{Viés}(T,\theta)=0\)</span>, ou seja, se <span class="math display">\[\begin{align*}
+    E(T)=\theta,
+\end{align*}\]</span> para qualquer possível valor <span class="math inline">\(\theta\in\Theta\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Dois estimadores para a variância: $\hat\sigma^2$ e $S^2$">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dois estimadores para a variância: <span class="math inline">\(\hat\sigma^2\)</span> e <span class="math inline">\(S^2\)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Seja <span class="math inline">\(X\)</span> uma v.a. com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span>. Tome uma amostra aleatória com tamanho <span class="math inline">\(n\)</span>, <span class="math inline">\(x = (x_1,\dots,x_n)\)</span>. Um possível estimador para a variância populacional <span class="math inline">\(\sigma^2\)</span>, talvez o mais natural, é <span class="math display">\[\begin{align*}
+  \hat \sigma^2 = \frac{1}{n}\sum^n_{j=1}(x_j - \bar x)^2.
+\end{align*}\]</span></p>
+<p>Qual o valor esperado do estimador <span class="math inline">\(\hat \sigma^2\)</span>? Qual <span class="math inline">\(E(\hat \sigma^2)\)</span>?</p>
+<p>Primeiro, lembre que conseguimos escrever <span class="math display">\[\begin{align*}
+  \hat \sigma^2 = \frac{1}{n} \left[\sum^n_j x_j^2 - n\bar x^2\right] = \frac{\sum^n_j x^2_j}{n}-\bar x^2.
+\end{align*}\]</span><br>
+Agora tome <span class="math inline">\(E(\hat \sigma^2)\)</span>. <span class="math display">\[\begin{align*}
+  E(\hat \sigma^2) = \frac{\sum^n_iE(x^2_j)}{n}-E(\bar x^2).
+\end{align*}\]</span> Aqui usamos o fato da amostra ser iid para escrever <span class="math display">\[\begin{align*}
+  E(\hat \sigma^2) = E(X^2)-E(\bar X^2).
+\end{align*}\]</span> Lembre que <span class="math inline">\(Var(Y)=E(Y^2)-E(Y)^2\)</span>. <span class="math display">\[\begin{align*}
+  Var(\bar X) &amp;= E(\bar X^2) - E(\bar X)^2, \\
+  \sigma^2/n &amp;= E(\bar X^2) - \mu^2, \\
+  E(\bar X^2) &amp;= \mu^2 + \sigma^2/n.
+\end{align*}\]</span> Similarmente, <span class="math display">\[\begin{align*}
+    Var(X) &amp;= E(X^2)-E(X)^2, \\
+    \sigma^2&amp;= E(X^2)-\mu^2, \\
+    E(X^2) &amp;= \sigma^2+\mu^2.
+\end{align*}\]</span> Portanto, <span class="math display">\[\begin{align*}
+  E(\hat\sigma^2) = (\sigma^2+\mu^2) - \left(\frac{\sigma^2}{n}+\mu^2\right), \\
+  &amp;= \frac{n-1}{n}\sigma^2
+\end{align*}\]</span> E assim percebemos que o estimador <span class="math inline">\(\hat\sigma^2\)</span> é viesado porque <span class="math inline">\(E(\hat\sigma^2)\neq \sigma^2\)</span>. Em particular, <span class="math inline">\((n-1)/n&lt;1\)</span> e vemos que <span class="math inline">\(\hat\sigma^2\)</span> subestima sistematicamente a variância populacional. Especificamente, <span class="math display">\[\begin{align*}
+  \text{Viés}(\hat\sigma^2) = E(\hat\sigma^2)-\sigma^2 =  -\frac{\sigma^2}{n}.
+\end{align*}\]</span> O cálculo de <span class="math inline">\(E(\hat\sigma^2)\)</span> imediatamente nos sugere uma ``correção’’ no estimador. Lembre que <span class="math inline">\(aE(X)=E(aX)\)</span>, então <span class="math display">\[\begin{align*}
+  \frac{n}{n-1}E(\hat{\sigma}^2) = \frac{n}{n-1}\frac{n-1}{n}\sigma^2=\sigma^2
+\end{align*}\]</span> Mas <span class="math display">\[\begin{align*}
+  \frac{n}{n-1}\hat \sigma^2 = \frac{1}{n-1}\sum^n_{j=1}(x_j-\bar x)^2 \equiv s^2
+\end{align*}\]</span> Costumamos nos referir a essa versão não-enviesada do estimador da variância como <span class="math inline">\(s^2\)</span> ou <span class="math inline">\(S^2\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Simulação de estimativas para a variância: $\hat\sigma^2$ e $S^2$">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Simulação de estimativas para a variância: <span class="math inline">\(\hat\sigma^2\)</span> e <span class="math inline">\(S^2\)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>TODO</p>
+</div>
+</div>
+</div>
 </section>
 <section id="variância-e-erro-quadrático-médio" class="level3">
 <h3 class="anchored" data-anchor-id="variância-e-erro-quadrático-médio">Variância e erro quadrático médio</h3>
@@ -803,6 +974,15 @@ Lei Fraca dos Grandes Números
 <p>Uma variável aleatória <span class="math inline">\(C\)</span> com distribuição Chi-quadrado <span class="math inline">\(\chi^2(v)\)</span> e <span class="math inline">\(v\)</span> “graus de liberdade” é definida como a soma de <span class="math inline">\(v\)</span> Normais Padrão independentes. (Obs.: É relacionada com a distribuição da variância amostral.) <span class="math display">\[
   C = z^2 + z^2 + \cdots + z^2 \sim \chi^2(v)
 \]</span> É direto ver que <span class="math inline">\(E(C)=v\)</span> e <span class="math inline">\(Var(C)=2v\)</span> (use <span class="math inline">\(E(Z^4)=3\)</span>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>Vamos simular amostras aleatórias de uma v.a. Qui-quadrado com diferentes tamanhos e observar o comportamento das estimativas da média e variância.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nmax <span class="ot">=</span> <span class="dv">10000</span></span>
@@ -821,7 +1001,7 @@ Lei Fraca dos Grandes Números
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -841,28 +1021,28 @@ Lei Fraca dos Grandes Números
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>De modo geral, a LGN vai garantir a consistência dos estimadores dos momentos <span class="math inline">\(E(X^k)\)</span> contanto que o momento em si seja bem definido. Isto é, <span class="math inline">\(E(X^k)&lt;\infty\)</span>.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Exemplo: Violação da LGN">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-default callout-note callout-titled" title="Exemplo de violação da LGN">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Exemplo: Violação da LGN
+Exemplo de violação da LGN
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Uma variável aleatória <span class="math inline">\(T\)</span> com distribuição t-Student e <span class="math inline">\(m\)</span> graus de liberdade tem função densidade de probabilidade <span class="math display">\[\begin{align}
         f_T(t;m) = \frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{m\pi}\Gamma\left(\frac{m}{2}\right)}\left(1+\frac{t^2}{m}\right)^{-\left(\frac{m+1}{2}\right)}, \quad -\infty&lt;t&lt;\infty.
     \end{align}\]</span> A t-Student é muito relacionada com a distribuição da média amostral quando a verdadeira variância populacional é desconhecida. Conforme os graus de liberdade <span class="math inline">\(m\)</span> crescem, a distribuição t-Student se aproxima cada vez mais de uma Normal Padrão.</p>
-<p>Usualmente, <span class="math inline">\(E(T)=0\)</span> e <span class="math inline">\(Var(T)=m/(m-2)\)</span>. Mas o k-ésimo momento <span class="math inline">\(E(T^k)\)</span> só é bem definido se <span class="math inline">\(k\leq m\)</span>.</p>
+<p>Usualmente, <span class="math inline">\(E(T)=0\)</span> e <span class="math inline">\(Var(T)=m/(m-2)\)</span>. Mas o k-ésimo momento <span class="math inline">\(E(T^k)\)</span> só é bem definido se <span class="math inline">\(k&lt;m\)</span>.</p>
 <p>Neste exemplo estamos interessados no caso com <span class="math inline">\(m=1\)</span> grau de liberdade. <span class="math display">\[\begin{align}
         f_T(t;1) = \frac{\Gamma\left(1\right)}{\sqrt{\pi}\Gamma\left(\frac{1}{2}\right)}\left(1+t^2\right)^{-1}, \quad -\infty&lt;t&lt;\infty.
     \end{align}\]</span> Sabendo que <span class="math inline">\(\Gamma(1/2)=\sqrt{\pi}\)</span> e <span class="math inline">\(\Gamma(1)=1\)</span>, <span class="math display">\[\begin{align}
@@ -880,7 +1060,7 @@ Exemplo: Violação da LGN
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -890,7 +1070,7 @@ Exemplo: Violação da LGN
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -898,6 +1078,15 @@ Exemplo: Violação da LGN
 </div>
 </div>
 </div>
+</section>
+<section id="métodos-para-obtenção-de-estimadores" class="level2">
+<h2 class="anchored" data-anchor-id="métodos-para-obtenção-de-estimadores">Métodos para obtenção de Estimadores</h2>
+<section id="método-dos-momentos" class="level3">
+<h3 class="anchored" data-anchor-id="método-dos-momentos">Método dos momentos</h3>
+</section>
+<section id="máxima-verossimilhança" class="level3">
+<h3 class="anchored" data-anchor-id="máxima-verossimilhança">Máxima Verossimilhança</h3>
+</section>
 </section>
 <section id="exercícios-de-fixação" class="level2">
 <h2 class="anchored" data-anchor-id="exercícios-de-fixação">Exercícios de fixação</h2>

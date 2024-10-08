@@ -89,18 +89,33 @@ Portanto o valor esperado da média amostral é a verdadeira média populacional
 ```{r}
 #| echo: true
 
-beta = 5
-n = 10
-Msim = 20
+beta = 3
+n = 5
+Msim = 10
 xBars = rep(0,Msim)
 for (j in 1:Msim){
   xBars[j] = mean(rexp(n, rate=1/beta))
 }
-plot(1:Msim, xBars)
+main = paste(Msim,"estimativas da média \n baseadas em amostras de tamanho",n)
+plot(1:Msim, xBars, main=main)
 abline(h=beta)
 abline(h=mean(xBars), lty=2)
 ```
 
+```{r}
+#| echo: false
+beta = 3
+n = 5
+Msim = 100
+xBars = rep(0,Msim)
+for (j in 1:Msim){
+  xBars[j] = mean(rexp(n, rate=1/beta))
+}
+main = paste(Msim,"estimativas da média \n baseadas em amostras de tamanho",n)
+plot(1:Msim, xBars, main=main)
+abline(h=beta)
+abline(h=mean(xBars), lty=2)
+```
 
 ### Variância $Var(\bar X)$
 
@@ -122,6 +137,11 @@ Como a amostra é identicamente distribuida, $Var(X_1)=Var(X_2)=\cdots=Var(X_n)=
 Portanto a variância da média amostral é a verdadeira variância populacional, dividida pelo tamanho da amostra. Quanto maior o tamanho amostral, menos variável vai ser a estimativa da média.
 
 ### Simulação
+Tome uma variável aleatória $X$ com distribuição Poisson e parâmetro $\lambda=2$. Sua função massa de probabilidade tem a forma
+\begin{align*}
+  Pr(X=k) = \frac{e^{-2}2^k}{k!}, \quad k=0,1,\dots.
+\end{align*}
+
 ```{r}
 #| echo: false
 #| dev: png
@@ -156,7 +176,7 @@ hist(Sim, prob=T, main=main) #<4>
 3. Sorteamos $n$ realizações de $X\sim Pois(\lambda)$ usando a função `rpois()`.
 4. Construimos o histograma normalizado.
 
-Agora vamos simular 500 amostras com tamanho $n=5$, computar a média amostral para cada amostra, e construir o histograma dessas estimativas da média.
+Agora vamos simular 500 diferentes amostras com tamanho $n=5$, computar a média amostral para cada amostra, e construir o histograma dessas estimativas da média.
 
 ```{r}
 lambda = 2 #<1>
@@ -167,7 +187,7 @@ for (j in 1:NSim){ #<5>
   Sim = rpois(n, lambda) #<5>
   xMedias[j] = mean(Sim) #<5>
 } #<5>
-main=paste("Histograma de ",NSim," amostras com tamanho n=",n," \n retiradas de uma população X~Pois.(",lambda,")",sep="") #<6>
+main=paste("Histograma de ",NSim," médias calculadas de amostras n=",n," \n retiradas de uma população X~Pois.(",lambda,")",sep="") #<6>
 plt1 = hist(xMedias, prob=T,main=main) #<6>
 ```
 1. Verdadeiro valor do parâmetro $\lambda$.
@@ -316,6 +336,8 @@ O objetivo será obter $a<b$ tais que
 \end{align*}
 onde $\gamma$ é o nível de confiança do intervalo. 
 
+### Intervalo de confiança para a média populacional
+
 Seja $y = \{Y_1,Y_2,\dots,Y_n\}$ uma amostra aleatória retirada da população $Y$ cuja verdadeira média é desconhecida.
 
 Sabemos da discussão sobre a distribuição da média amostral que $E(\bar Y)=\mu$, e $Var(\bar Y)=\sigma^2/n$. O TLC nos garante que, conforme $n$ cresce,
@@ -350,9 +372,9 @@ Isolando o parâmetro $\mu$ entre as desigualdades, obtemos o intervalo de confi
   \begin{align*}
     \Pr\left(\bar x - \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right) \leq \mu \leq \bar x + \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right)\right) = \gamma
   \end{align*}
-`LimInf = xbar - (sigma/sqrt(n))*qnorm((1-gamma)/2)`
+`LimInf = mean(x) - (sigma/sqrt(n))*qnorm((1+gamma)/2)`
 
-`LimSup = xbar + (sigma/sqrt(n))*qnorm((1-gamma)/2)`
+`LimSup = mean(x) + (sigma/sqrt(n))*qnorm((1+gamma)/2)`
 :::
 
 ::: {.callout-note title="Exemplo intervalo de confiança" collapse=true}
@@ -428,8 +450,76 @@ abline(h=mu)
 ```
 :::
 
+::: {.callout-note title="Intervalo de confiança para a proporção populacional" collapse=true}
+TODO: IC proporcao
+:::
+
+### Intervalo de confiança para a média quando a verdadeira variância é desconhecida
+
+Na maior parte das aplicações práticas, não sabemos previamente a verdadeira variância populacional $\sigma^2$. A solução é usar uma estimativa amostral para a variância, como
+\begin{align*}
+  S^2 = \sum^n_{j=1}\frac{(X_j-\bar X)^2}{n-1}.
+\end{align*}
+
+Nesse caso, a média amostral $\bar X$, depois de padronizada, tem distribuição que se aproxima de uma t-Student com $n-1$ graus de liberdade conforme $n$ cresce, não uma Normal Padrão.
+
+\begin{align*}
+  T = \frac{\bar X - \mu}{S/\sqrt{n}} \sim t(n-1).
+\end{align*}
+
+Nesse caso os extremos do intervalo de confiança têm a forma
+\begin{align*}
+  \bar X \pm \frac{S}{\sqrt{n}}t^{-1}_{n-1}\left(\frac{1+\gamma}{2}\right)
+\end{align*}
+
+`LimInf = mean(x) - (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)` 
+      
+`LimSup = mean(x) + (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)`
+
+A distribuição t-Student se aproxima de uma Normal Padrão conforme seus graus de liberdade aumentam.
+
+Portanto a diferença entre os ICs só é relevante quando o tamanho amostral $n$ é pequeno. Para algo como $n>100$, podemos utilizar a estimativa $s^2$ no lugar da verdadeira variância $\sigma^2$ e consultar os quantis `qnorm((1-gamma)/2)` 
+
+```{r}
+#| echo: false
+
+par(mgp=c(2,1,0),mar=c(3, 3, 2, 1)+0.1)
+x = seq(from=-4,to=4,length=1000)
+m.grid=c(1,2,5,50)
+plot(x, dnorm(x), t='l', lwd=2, lty=2, main=TeX(r"( X\sim t(m) )"), ylab=TeX(r"( $f_X(x)$ )"))
+lgnd = vector(length=length(m.grid))
+lgnd[1] = "N(0,1)"
+for (j in 1:(length(m.grid))){
+  lgnd[j] = paste("t(",m.grid[j],")",sep='')
+  lines(x, dt(x, df=m.grid[j]), lwd=2, lty=1, col=j+1)
+}
+lgnd = c("N(0,1)", lgnd)
+lines(x, dnorm(x), lwd=2, col=1, lty=2)
+lty.grid = c(2, rep(1, length(m.grid)))
+col.grid = c(1,1:length(m.grid)+1)
+legend('topright', legend = lgnd, lwd=2, lty=lty.grid, col=col.grid, cex=.8)
+```
+
+
+
 ::: {.callout-note title="Intervalo de confiança para a média quando a verdadeira variância é desconhecida" collapse=true}
 
+
+
+:::
+
+### Comentários adicionais
+
+::: {.callout-note title="Intervalo de confiança subótimo" collapse=true}
+Os intervalos de confiança para a média cujos extremos são dados por
+\begin{align*}
+  \bar X \pm \frac{S}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right)
+\end{align*}
+são os menores intervalos (em termos da diferença entre limite superior e limite inferior) que contém a verdadeira média com probabilidade $\gamma$ (o nível de confiança do intervalo). 
+
+É possível escolher um valor particular para `LimInf` ou `LimSup` e daí construir um intervalo não centrado na estimativa da média amostral, que vai conter a verdadeira média populacional com a mesma probabilidade $\gamma$ (mesmo nível de confiança). Mas esse intervalo não centrado seria "menos eficiente" no sentido que sua amplitude sempre será maior do que o intervalo centrado em $\bar x$. 
+
+TODO: exemplo intervalo não ótimo.
 :::
 
 ::: {.callout-note title="Intervalo de confiança para a variância de uma população Normal" collapse=true}
@@ -438,9 +528,92 @@ abline(h=mu)
 
 ## Propriedades de Estimadores
 
+Um estimador $T$ do parâmetro $\theta$ é qualquer função das observações da amostra, ou seja, $T=g(X_1,\dots,X_n)$.
+
+Uma estimativa $\hat T$ é o valor assumido pelo estimador em uma amostra particular.
+
 ### Valor esperado e viés
+
+::: {.callout-tip title="Viés de um estimador"}
+
+Definimos o viés do estimador $T$ com relação ao parâmetro $\theta$ como
+\begin{align*}
+  \text{Viés}(T,\theta) = E(T-\theta) = E(T)-\theta
+\end{align*}
+
+O estimador $T$ é dito não-enviesado com relação ao parâmetro $\theta$ se $\text{Viés}(T,\theta)=0$, ou seja, se
+\begin{align*}
+    E(T)=\theta,
+\end{align*}
+para qualquer possível valor $\theta\in\Theta$.
+:::
+
+::: {.callout-note title="Dois estimadores para a variância: $\hat\sigma^2$ e $S^2$" collapse=true}
+Seja $X$ uma v.a. com média $\mu$ e variância $\sigma^2$. Tome uma amostra aleatória com tamanho $n$, $x = (x_1,\dots,x_n)$. Um possível estimador para a variância populacional $\sigma^2$, talvez o mais natural, é
+\begin{align*}
+  \hat \sigma^2 = \frac{1}{n}\sum^n_{j=1}(x_j - \bar x)^2.
+\end{align*}
+
+Qual o valor esperado do estimador $\hat \sigma^2$? Qual $E(\hat \sigma^2)$?
+
+Primeiro, lembre que conseguimos escrever
+\begin{align*}
+  \hat \sigma^2 = \frac{1}{n} \left[\sum^n_j x_j^2 - n\bar x^2\right] = \frac{\sum^n_j x^2_j}{n}-\bar x^2.
+\end{align*}   
+Agora tome $E(\hat \sigma^2)$.
+\begin{align*}
+  E(\hat \sigma^2) = \frac{\sum^n_iE(x^2_j)}{n}-E(\bar x^2).
+\end{align*}
+Aqui usamos o fato da amostra ser iid para escrever
+\begin{align*}
+  E(\hat \sigma^2) = E(X^2)-E(\bar X^2).
+\end{align*}
+Lembre que $Var(Y)=E(Y^2)-E(Y)^2$.
+\begin{align*}
+  Var(\bar X) &= E(\bar X^2) - E(\bar X)^2, \\
+  \sigma^2/n &= E(\bar X^2) - \mu^2, \\
+  E(\bar X^2) &= \mu^2 + \sigma^2/n.
+\end{align*}
+Similarmente, 
+\begin{align*}
+    Var(X) &= E(X^2)-E(X)^2, \\
+    \sigma^2&= E(X^2)-\mu^2, \\
+    E(X^2) &= \sigma^2+\mu^2.
+\end{align*}
+Portanto,
+\begin{align*}
+  E(\hat\sigma^2) = (\sigma^2+\mu^2) - \left(\frac{\sigma^2}{n}+\mu^2\right), \\
+  &= \frac{n-1}{n}\sigma^2
+\end{align*}
+E assim percebemos que o estimador $\hat\sigma^2$ é viesado porque $E(\hat\sigma^2)\neq \sigma^2$. Em particular, $(n-1)/n<1$ e vemos que $\hat\sigma^2$ subestima sistematicamente a variância populacional. Especificamente, 
+\begin{align*}
+  \text{Viés}(\hat\sigma^2) = E(\hat\sigma^2)-\sigma^2 =  -\frac{\sigma^2}{n}.
+\end{align*}
+O cálculo de $E(\hat\sigma^2)$ imediatamente nos sugere uma ``correção'' no estimador. Lembre que $aE(X)=E(aX)$, então
+\begin{align*}
+  \frac{n}{n-1}E(\hat{\sigma}^2) = \frac{n}{n-1}\frac{n-1}{n}\sigma^2=\sigma^2
+\end{align*}
+    Mas 
+\begin{align*}
+  \frac{n}{n-1}\hat \sigma^2 = \frac{1}{n-1}\sum^n_{j=1}(x_j-\bar x)^2 \equiv s^2
+\end{align*}
+Costumamos nos referir a essa versão não-enviesada do estimador da variância como $s^2$ ou $S^2$.
+:::
+
+O viés é uma propriedade do estimador $T_n$ em repetidas amostras de tamanho $n$. 
+
+::: {.callout-note title="Simulação de estimativas para a variância: $\hat\sigma^2$ e $S^2$" collapse=true}
+TODO
+:::
+
 ### Variância e erro quadrático médio
 ### Consistência
+
+É interessante termos um estimador não enviesado (...).
+
+Mas na maior parte das aplicações práticas, especialmente em economia, não temos acesso a repetidas amostras aleatórias retiradas da população subjacente. 
+
+Gostaríamos de pode afirmar algo sobre a precisão de nossas estimativas dada uma única amostra $x=\{X_1,\dots,X_n\}$ conforme o tamanho amostral $n$ cresce cada vez mais. 
 
 ## Lei dos Grandes Números
 
@@ -458,6 +631,25 @@ $$
   C = z^2 + z^2 + \cdots + z^2 \sim \chi^2(v) 
 $$
 É direto ver que $E(C)=v$ e $Var(C)=2v$ (use $E(Z^4)=3$).
+
+```{r}
+#| echo: false
+
+par(mgp=c(2,1,0),mar=c(3, 3, 2, 1)+0.1)
+x = seq(from=0.01, to=15, length=1000)
+m.grid = c(1,2,3,5,10)
+plot(x, dchisq(x,df=m.grid[1]), t='l', lwd=2, lty=1, col=1, ylim=c(0,0.7), main=TeX(r"( $X\sim\chi^2(m)$ )"), ylab=TeX(r"( $f_X(x)$ )"))
+for (j in 2:length(m.grid)){
+  lines(x, dchisq(x, df=m.grid[j]), t='l', lwd=2, lty=1, col=j)
+}
+lgnd = c(TeX(r"($m=1$)"),
+         TeX(r"($m=2$)"),
+         TeX(r"($m=3$)"),
+         TeX(r"($m=5$)"),
+         TeX(r"($m=10$)"))
+legend('topright', legend = lgnd, lwd=2, lty=1, col=1:length(m.grid), cex=.8)
+```
+
 
 Vamos simular amostras aleatórias de uma v.a. Qui-quadrado com diferentes tamanhos e observar o comportamento das estimativas da média e variância.
 
@@ -495,14 +687,14 @@ abline(h=2*v)
 
 De modo geral, a LGN vai garantir a consistência dos estimadores dos momentos $E(X^k)$ contanto que o momento em si seja bem definido. Isto é, $E(X^k)<\infty$.
 
-::: {.callout-note title="Exemplo: Violação da LGN" collapse=true}
+::: {.callout-note title="Exemplo de violação da LGN" collapse=true}
 Uma variável aleatória $T$ com distribuição t-Student e $m$ graus de liberdade tem função densidade de probabilidade 
 \begin{align}
         f_T(t;m) = \frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{m\pi}\Gamma\left(\frac{m}{2}\right)}\left(1+\frac{t^2}{m}\right)^{-\left(\frac{m+1}{2}\right)}, \quad -\infty<t<\infty.
     \end{align}
 A t-Student é muito relacionada com a distribuição da média amostral quando a verdadeira variância populacional é desconhecida. Conforme os graus de liberdade $m$ crescem, a distribuição t-Student se aproxima cada vez mais de uma Normal Padrão.    
 
-Usualmente, $E(T)=0$ e $Var(T)=m/(m-2)$. Mas o k-ésimo momento $E(T^k)$ só é bem definido se $k\leq m$.
+Usualmente, $E(T)=0$ e $Var(T)=m/(m-2)$. Mas o k-ésimo momento $E(T^k)$ só é bem definido se $k<m$.
 
 Neste exemplo estamos interessados no caso com $m=1$ grau de liberdade.
 \begin{align}
@@ -550,5 +742,10 @@ legend('topright', col=2:3, lty=1,lw=2, legend=c('t(1)', 't(1)'),cex=.8)
 
 :::
 
+## Métodos para obtenção de Estimadores
+
+### Método dos momentos
+
+### Máxima Verossimilhança
 
 ## Exercícios de fixação
