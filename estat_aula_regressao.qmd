@@ -3,56 +3,135 @@ title: "Aula Regressão Linear"
 format: html
 ---
 
+## Regressão Linear
+
+Turmas menores levam a melhor aprendizado dos alunos? Se sim, quanto? [Discussão]
+
 ```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE, collapse=TRUE}
-# install.packages("AER")
-library(AER)
-STR <- c(15, 17, 19, 20, 22, 23.5, 25)
-TestScore <- c(680, 640, 670, 660, 630, 660, 635) 
+
+STR <- c(15, 17, 19, 20, 22, 23.5, 25) #<1>
+TestScore <- c(680, 640, 670, 660, 630, 660, 635) #<1>
 plot(x=STR, y=TestScore, pch=20, col='blue', cex=2)
 ```
+1. Alguns dados inventados.
 
 Nosso modelo de regressão é
 \begin{align*}
         Y_i &= \beta_0 + \beta_1X_i + u_i, \quad u_i\sim \IID(0,\sigma^2_u)\\
   TestScore &= \beta_0 + \beta_1\times STR + u, \quad u\sim IID(0,\sigma_u) 
 \end{align*}
-No R escrevemos como um objeto do tipo `formula`
 
 ```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE}
-fmla = TestScore ~ 1 + STR
+fmla = TestScore ~ 1 + STR #<1>
 class(fmla)
 ```
+1. Escrevemoms como um objeto do tipo `formula`. O `1` representa que incluimos uma constante.^[Sempre inclua a constante.]
 
 ```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE}
-out = lm(fmla)
+out = lm(fmla) #<1>
 out$coefficients
 summary(out)
 ```
+1. Para a estimação utilizamos a função `lm()`, "linear model", sobre a `formula` da regressão.
+
 
 ```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE}
-library(AER)
-data(CASchools)
-class(CASchools)
+require(AER)
+data(CASchools) #<1>
+class(CASchools) #<2>
 ```
+1. Carregamos a base de dados.
+2. Objeto do tipo `data.frame`.
+
+
 ```{r}
-CASchools$STR = CASchools$students/CASchools$teachers 
-CASchools$score = (CASchools$read + CASchools$math)/2
+CASchools$STR = CASchools$students/CASchools$teachers #<1>
+CASchools$score = (CASchools$read + CASchools$math)/2 #<1>
 ```
+1. Construímos as variáveis.
+
 ```{r, message=FALSE, warning=FALSE, dev='png', echo=TRUE}
-plot(score ~ STR, 
-     data = CASchools,
-     main = "Gráfico de dispersão STR x score", 
-     xlab = "STR (X)",
-     ylab = "Test Score (Y)",
-     pch=1,
-     cex=.75)
+#| code-fold: true
 plot(x = CASchools$STR, y = CASchools$score, 
      t = 'p',
      main = "Gráfico de dispersão STR x score",
      xlab = "STR (X)",
      ylab = "Test Score (Y)")
+
+```
+```{r}
 fmla = score ~ 1 + STR 
 out = lm(score ~ 1 + STR, data = CASchools)
 out = lm(CASchools$score ~ 1 + CASchools$STR)
 summary(out)
 ```
+
+::: {.callout-tip title="Terminologia para o modelo de regressão linear com um regressor"}
+O modelo de regressão linear simples é
+
+$$ Y_j = \beta_0 + \beta_1X_j + u_j,\quad u_j\sim iid(0,\sigma^2_u), $$
+onde
+
+  - o subscrito $j$ percorre as observações, $j=1,\dots,n$;
+  - $Y_j$ é a *variável dependente*, o *regressando*, ou simplesmente a *variável do lado esquerdo*.
+  - $X_j$ é a *variável independente*, o *regressor*, ou simplesmente a *variável do lado direito*;
+  - $\beta_0 + \beta_1X$ é a *reta de regressão* ou a *função de regressão populacional*;
+  - $\beta_0$ é o *intercepto* da reta de regressão populacional; 
+  - $\beta_1$ é a *inclinação* da reta de gressão populacional;
+  - $u_j$ é o termo de *erro*.
+  
+O modelo de regressão linear é uma idealização para o processo que gera as realizações $Y_j$.
+:::
+
+## O Estimador de Mínimos Quadrados
+
+
+TODO: Gráfico dos resíduos com relação à reta de regressão. 
+
+::: {.callout-note title="Álgebra dos mínimos quadrados" collapse=true}
+Sejam $b_0$ e $b_1$ possíveis valores para o parâmetro $\beta$.
+\begin{align*}
+Y_j = b_0 + b_1 X_j + u_j
+\end{align*}
+\begin{align*}
+u_j &= Y_i - b_0 - b_1 X_i \\
+u_j^2 &= (Y_i - b_0 - b_1 X_i)^2
+\end{align*}
+A soma do quadrado dos resíduos é
+\begin{align*}
+SSR(b_0,b_1) = \sum^n_{i=1}(Y_i - b_0 - b_1 X_i)^2
+\end{align*}
+O problema de mínimos quadrados (dos resíduos) é
+\begin{align*}
+\min_{(b_0,b_1)\in\mathbb{R}^2} \sum^n_{i=1}(Y_i - b_0 - b_1 X_i)^2
+\end{align*}
+Nós dizemos que os estimadores de MQO, $\hat\beta_0$ e  $\hat\beta_1$, são os valores para $b_0$ e $b_1$ que minimizam os quadrados dos resíduos de regressão. Podemos escrever
+\begin{align*}
+(\hat\beta_0,\hat\beta_1) = \argmin_{(b_0,b_1)\in\mathbb{R}^2}SSR(b_0,b_1)
+\end{align*}
+Queremos escolher $(b_0,b_1)$ que minimizam
+    \begin{align*}
+        SSR(b_0,b_1) = \sum^n_{i=1}(Y_i - b_0 - b_1 X_i)^2
+    \end{align*}
+    As condições de primeira ordem são
+    \begin{align*}
+        \frac{\partial SSR}{\partial b_0} = 0 \qquad \frac{\partial SSR}{\partial b_1} = 0
+    \end{align*}
+    Então
+    \begin{align*}
+        \frac{\partial SSR}{\partial b_0} = -2\sum^n_{i=1}(Y_i-\hat\beta_0-\hat\beta_1X_i) = 0  \tag{CPO 1}\\
+        \frac{\partial SSR}{\partial b_1} = -2\sum^n_{i=1}X_i(Y_i-\hat\beta_0-\hat\beta_1) = 0 \tag{CPO 2}
+    \end{align*}
+:::
+
+## Inferência sobre Parâmetros
+
+## Uma medida de aderência: $R^2$
+
+## Aplicações de Regressão Linear
+
+### CAPM (*Capital Asset Pricing Model*)
+
+### Modelo de Solow
+
+### Modelagem de Volatilidade

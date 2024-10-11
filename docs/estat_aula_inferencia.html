@@ -194,6 +194,7 @@ window.Quarto = {
   <li><a href="#intervalos-de-confiança" id="toc-intervalos-de-confiança" class="nav-link" data-scroll-target="#intervalos-de-confiança">Intervalos de Confiança</a>
   <ul class="collapse">
   <li><a href="#intervalo-de-confiança-para-a-média-populacional" id="toc-intervalo-de-confiança-para-a-média-populacional" class="nav-link" data-scroll-target="#intervalo-de-confiança-para-a-média-populacional">Intervalo de confiança para a média populacional</a></li>
+  <li><a href="#intervalo-de-confiança-para-a-proporção-populacional" id="toc-intervalo-de-confiança-para-a-proporção-populacional" class="nav-link" data-scroll-target="#intervalo-de-confiança-para-a-proporção-populacional">Intervalo de confiança para a proporção populacional</a></li>
   <li><a href="#intervalo-de-confiança-para-a-média-quando-a-verdadeira-variância-é-desconhecida" id="toc-intervalo-de-confiança-para-a-média-quando-a-verdadeira-variância-é-desconhecida" class="nav-link" data-scroll-target="#intervalo-de-confiança-para-a-média-quando-a-verdadeira-variância-é-desconhecida">Intervalo de confiança para a média quando a verdadeira variância é desconhecida</a></li>
   <li><a href="#comentários-adicionais" id="toc-comentários-adicionais" class="nav-link" data-scroll-target="#comentários-adicionais">Comentários adicionais</a></li>
   </ul></li>
@@ -239,9 +240,10 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="população-e-amostra">População e Amostra</h2>
 <p>Até agora estávamos trabalhando um espaço de probabilidades <span class="math inline">\(\left(\Omega, \mathcal F, f(x;\theta)\right)\)</span> completamente definido que nos permite computar probabilidades sobre eventos definidos no universo de possíveis resultados <span class="math inline">\(\Omega\)</span>.</p>
 <p>Agora vamos nos concentrar no problema inverso. Vamos observar realizações de uma certa variável aleatória, uma amostra finita <span class="math display">\[\begin{align*}
-    x = \{x_1,x_2,\dots,x_n\}.
-\end{align*}\]</span> Essas realizações foram sorteadas de uma população <span class="math inline">\(X\)</span>, cuja distribuição de probabiliades é desconhecida.</p>
+    \mathbf x = \{x_1,x_2,\dots,x_n\}.
+\end{align*}\]</span> Essas realizações foram sorteadas de uma população <span class="math inline">\(X\)</span>, cuja distribuição de probabiliades <span class="math inline">\(f(x;\theta)\)</span> é desconhecida.</p>
 <p>Com base nas informações da amostra, tentaremos recuperar informações (por exemplo valor de parâmetros) sobre o modelo (o espaço de probabilidades) que gerou esses dados.</p>
+<p>Por inferência estatística entendemos uma coleção de práticas (e o sentido é mais amplo do que apenas métodos matemáticos) cujo objetivo é obter estimativas (palpites) e quantificar nossa incerteza acerca dessas estimativas sobre características de uma população idealizada.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Amostra aleatória">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -397,8 +399,10 @@ Amostra aleatória
 <span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  Sim <span class="ot">=</span> <span class="fu">rpois</span>(n, lambda)</span>
 <span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>  xMedias[j] <span class="ot">=</span> <span class="fu">mean</span>(Sim)</span>
 <span id="annotated-cell-3-8"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>main<span class="ot">=</span><span class="fu">paste</span>(<span class="st">"Histograma de "</span>,NSim,<span class="st">" médias calculadas de amostras n="</span>,n,<span class="st">" </span><span class="sc">\n</span><span class="st"> retiradas de uma população X~Pois.("</span>,lambda,<span class="st">")"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
-<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>plt1 <span class="ot">=</span> <span class="fu">hist</span>(xMedias, <span class="at">prob=</span>T,<span class="at">main=</span>main)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="6" onclick="event.preventDefault();">6</a><span id="annotated-cell-3-9" class="code-annotation-target"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">paste</span>(<span class="st">"Histograma de "</span>, NSim,</span>
+<span id="annotated-cell-3-10"><a href="#annotated-cell-3-10" aria-hidden="true" tabindex="-1"></a>           <span class="st">" médias calculadas de amostras n="</span>, n,</span>
+<span id="annotated-cell-3-11"><a href="#annotated-cell-3-11" aria-hidden="true" tabindex="-1"></a>           <span class="st">" </span><span class="sc">\n</span><span class="st"> retiradas de uma população X~Pois.("</span>,lambda,<span class="st">")"</span>,<span class="at">sep=</span><span class="st">""</span>)</span>
+<span id="annotated-cell-3-12"><a href="#annotated-cell-3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(xMedias, <span class="at">prob=</span>T,<span class="at">main=</span>main)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
@@ -423,7 +427,7 @@ Amostra aleatória
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="6">6</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="9,10" data-code-annotation="6">Construimos o histograma normalizado.</span>
+<span data-code-cell="annotated-cell-3" data-code-lines="9,10,11,12" data-code-annotation="6">Construimos o histograma normalizado.</span>
 </dd>
 </dl>
 </div>
@@ -528,11 +532,13 @@ Teorema do Limite Central (TLC)
 </div>
 </div>
 <ul>
+<li>Foi o que observamos na simulação anterior.</li>
 <li>O surpreendente é que começamos com suposições de independência e variância finita e acabamos com normalidade (estritamente, a convergência em distribuição para uma Normal).</li>
-<li>Não importando a distribuição da população, a distribuição das estimativas da média (em repetidas amostras) se aproxima de uma Normal conforme o tamanho amostral <span class="math inline">\(n\)</span> cresce.</li>
-<li>Esse resultado nos permite fazer inferência (intervalo de confiança, teste de hipótese) sobre a média de uma população cuja distribuição é desconhecida com base nos quantis de uma distribuição Normal.</li>
+<li>Não importando a distribuição da população (se ela for “bem comportada”), a distribuição das estimativas da média (em repetidas amostras) se aproxima de uma Normal conforme o tamanho amostral <span class="math inline">\(n\)</span> cresce.</li>
+<li>Esse resultado nos permite fazer inferência (intervalos de confiança, testes de hipótese) sobre a média de uma população cuja distribuição é desconhecida com base nos quantis de uma distribuição Normal.</li>
 </ul>
-<p>Sempre podemos padronizar uma variável aleatória para obter algo com média zero e variância 1. Dessa forma só precisamos consultar os quantis de uma distribuição Normal Padrão, <span class="math inline">\(N(0,1)\)</span>.</p>
+<p>Quanto maior o tamanho amostral <span class="math inline">\(n\)</span>, menor é a variância da distribuição de <span class="math inline">\(\bar X\)</span>. <span class="math display">\[ \bar X \sim N\left(\mu, \frac{\sigma^2}{n}\right)\]</span> Fica bem claro do box-plot <span class="citation" data-cites="colocar_referencia">[@colocar_referencia]</span> que a distribuição “colapsa” ao redor da média <span class="math inline">\(\mu\)</span>.</p>
+<p>Mas é possível normalizar uma variável aleatória de modo que a transformação tenha média <span class="math inline">\(0\)</span> e variância <span class="math inline">\(1\)</span>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Corolário">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -560,7 +566,7 @@ Exemplo
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Quando a variável aleatória em si tem distribuição Normal, o TLC vale exatamente para qualquer tamanho amostral <span class="math inline">\(n\)</span>. Isso vem do fato da soma de v.a.s Normais ter distribuição Normal.</p>
+<p>Quando a população em si tem distribuição Normal, o TLC vale exatamente (não é uma aproximação) para qualquer tamanho amostral <span class="math inline">\(n\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>Retiramos uma amostra aleatória de tamanho <span class="math inline">\(n=20\)</span> de uma variável aleatória Normal <span class="math inline">\(X\sim N(2,3^2)\)</span>. Qual é a probabilidade de que <span class="math inline">\(\bar x&gt;1.5\)</span>?</p>
 <p>Nesse caso <span class="math inline">\(\bar X \sim N(\mu,\sigma^2/n)\)</span>, ou seja <span class="math display">\[
   \bar X \sim N\left(2,\frac{3^2}{20}\right)
@@ -571,6 +577,15 @@ Exemplo
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">pnorm</span>(<span class="fl">1.5</span>,<span class="at">mean=</span><span class="dv">2</span>,<span class="at">sd=</span><span class="dv">3</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7719717</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Para trabalhar com a Normal Padrão devemos operar a desigualdade para padronizar <span class="math inline">\(X\)</span>. <span class="math display">\[\begin{align*}
@@ -584,7 +599,7 @@ Exemplo
 <pre><code>[1] 0.7718641</code></pre>
 </div>
 </div>
-<p>Ainda não conseguiriamos consultar na tabela da distribuição Normal Padrão. Da simetria da Normal, podemos escrever<br>
+<p>Ainda não conseguiriamos consultar na tabela da distribuição Normal Padrão (que só fornece <span class="math inline">\(\Pr(Z\leq z)\)</span> para <span class="math inline">\(z\geq0\)</span>. Da simetria da Normal, podemos escrever<br>
 <span class="math display">\[\begin{align*}
   \gamma &amp;= 1-\Pr(Z\leq-0.745)=1-\Pr(Z&gt;0.745) \\
   &amp;=1-(1-\Pr(Z\leq 0.745)) = \Pr(Z\leq 0.745)
@@ -596,28 +611,46 @@ Exemplo
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">2</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">20</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>Msim <span class="ot">=</span> <span class="dv">100</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>xMedias <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,Msim)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (jsim <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Msim){</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">=</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span>mu, <span class="at">sd=</span>sigma)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  xMedias[jsim] <span class="ot">=</span> <span class="fu">mean</span>(sim)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>xcrit <span class="ot">=</span> <span class="fl">1.5</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(xMedias<span class="sc">&gt;</span>xcrit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.79</code></pre>
-</div>
-</div>
-<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mgp=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>),<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>)<span class="sc">+</span><span class="fl">0.1</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">3</span><span class="sc">*</span>sigma<span class="sc">+</span>mu, <span class="at">to=</span>mu<span class="sc">+</span><span class="dv">3</span><span class="sc">*</span>sigma, <span class="at">length=</span><span class="dv">1000</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, <span class="fu">dnorm</span>(x, <span class="at">mean=</span>mu, <span class="at">sd=</span>sigma), <span class="at">t=</span><span class="st">'l'</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span>, <span class="at">main=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colorArea</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">4</span>,<span class="at">to=</span><span class="fl">0.745</span>, dnorm, <span class="at">mean=</span>mu, <span class="at">sd=</span>sigma, <span class="at">col=</span><span class="fu">alpha</span>(<span class="st">'black'</span>,<span class="fl">0.25</span>))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">'topleft'</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"Pr(Z&lt;0.745)"</span>),  </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="fu">c</span>(<span class="st">"gray"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+<p>Podemos simular a situação.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy"><code class="sourceCode r"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">20</span></span>
+<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4" aria-hidden="true" tabindex="-1"></a>Msim <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5" aria-hidden="true" tabindex="-1"></a>xMedias <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,Msim)</span>
+<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (jsim <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Msim){</span>
+<span id="annotated-cell-12-7"><a href="#annotated-cell-12-7" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">=</span> <span class="fu">rnorm</span>(n, <span class="at">mean=</span>mu, <span class="at">sd=</span>sigma)</span>
+<span id="annotated-cell-12-8"><a href="#annotated-cell-12-8" aria-hidden="true" tabindex="-1"></a>  xMedias[jsim] <span class="ot">=</span> <span class="fu">mean</span>(sim)</span>
+<span id="annotated-cell-12-9"><a href="#annotated-cell-12-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="annotated-cell-12-10"><a href="#annotated-cell-12-10" aria-hidden="true" tabindex="-1"></a>xcrit <span class="ot">=</span> <span class="fl">1.5</span></span>
+<span id="annotated-cell-12-11"><a href="#annotated-cell-12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(xMedias<span class="sc">&gt;</span>xcrit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.8</code></pre>
 </div>
 </div>
 </div>
@@ -628,8 +661,15 @@ Exemplo
 <h2 class="anchored" data-anchor-id="intervalos-de-confiança">Intervalos de Confiança</h2>
 <p>Ao saber a distribuição de amostragem de um determinado estimador <span class="math inline">\(T\)</span> (como a média amostral <span class="math inline">\(\bar X\)</span>), podemos construir um intervalo de confiança para o parâmetro populacional desconhecido <span class="math inline">\(\theta\)</span>.</p>
 <p>O objetivo será obter <span class="math inline">\(a&lt;b\)</span> tais que <span class="math display">\[\begin{align*}
-  \Pr(a\leq \theta \leq b) = \gamma,
-\end{align*}\]</span> onde <span class="math inline">\(\gamma\)</span> é o nível de confiança do intervalo.</p>
+  \Pr(a\leq \theta \leq b) = 1-\alpha,
+\end{align*}\]</span> onde <span class="math inline">\(\gamma=1-\alpha\)</span> é o nível de confiança do intervalo.</p>
+<ul>
+<li><span class="math inline">\(a\)</span> é o limite inferior</li>
+<li><span class="math inline">\(b\)</span> é o limite superior</li>
+<li>Essas são as quantidades aleatórias. Seus valores dependem da amostra particular observada <span class="math inline">\(\mathbf x\)</span>.</li>
+<li>A distância <span class="math inline">\(b-a\)</span>, a amplitude do intervalo, é tão maior quanto mais próximo de 1 for o nível de confiança <span class="math inline">\(\gamma=1-\alpha\)</span>.</li>
+<li>Chamamos <span class="math inline">\(\alpha\)</span> de nível de significância. O nível de confiança é <span class="math inline">\(\gamma = 1-\alpha\)</span>, a probabilidade de o intervalo <span class="math inline">\([a,b]\)</span> conter o verdadeiro parâmetro.</li>
+</ul>
 <section id="intervalo-de-confiança-para-a-média-populacional" class="level3">
 <h3 class="anchored" data-anchor-id="intervalo-de-confiança-para-a-média-populacional">Intervalo de confiança para a média populacional</h3>
 <p>Seja <span class="math inline">\(y = \{Y_1,Y_2,\dots,Y_n\}\)</span> uma amostra aleatória retirada da população <span class="math inline">\(Y\)</span> cuja verdadeira média é desconhecida.</p>
@@ -642,11 +682,11 @@ Exemplo
   Z \sim N(0,1).
 \end{align*}\]</span></p>
 <p>Escreva <span class="math display">\[\begin{align*}
-  \Pr(-c \leq Z \leq c) = \gamma
+  \Pr(-c \leq Z \leq c) = 1-\alpha
 \end{align*}\]</span></p>
-<p>Perceba que <span class="math inline">\(c=\Phi^{-1}\left(\frac{1+\gamma}{2}\right)\)</span> ou <code>qnorm((1-gamma)/2)</code>.</p>
+<p>Perceba que <span class="math inline">\(c=\Phi^{-1}\left(1-\alpha/2\right)\)</span> ou <code>qnorm(1-alpha/2)</code>.</p>
 <p><span class="math display">\[\begin{align*}
-  \Pr\left(-\Phi^{-1}\left(\frac{1+\gamma}{2}\right) \leq \frac{\bar X-\mu}{\sigma/\sqrt{n}}\leq\Phi^{-1}\left(\frac{1+\gamma}{2}\right)\right) = \gamma
+  \Pr\left(-\Phi^{-1}\left(1-\frac{\alpha}{2}\right) \leq \frac{\bar Y-\mu}{\sigma/\sqrt{n}}\leq\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right) = \gamma
 \end{align*}\]</span></p>
 <p>Isolando o parâmetro <span class="math inline">\(\mu\)</span> entre as desigualdades, obtemos o intervalo de confiança para a média populacional.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Intervalo de confiança para a média populacional">
@@ -659,10 +699,13 @@ Intervalo de confiança para a média populacional
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Se <span class="math inline">\(x=\{x_1,\dots,x_n\}\)</span> é uma amostra aleatória retirada de uma população <span class="math inline">\(X\)</span> com média <span class="math inline">\(\mu\)</span> desconhecida e variância <span class="math inline">\(\sigma^2\)</span> conhecida, então <span class="math display">\[\begin{align*}
-    \Pr\left(\bar x - \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right) \leq \mu \leq \bar x + \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right)\right) = \gamma
-  \end{align*}\]</span> <code>LimInf = mean(x) - (sigma/sqrt(n))*qnorm((1+gamma)/2)</code></p>
-<p><code>LimSup = mean(x) + (sigma/sqrt(n))*qnorm((1+gamma)/2)</code></p>
+<p>Se <span class="math inline">\(x=\{x_1,\dots,x_n\}\)</span> é uma amostra aleatória retirada de uma população <span class="math inline">\(X\)</span> com média <span class="math inline">\(\mu\)</span> desconhecida e variância <span class="math inline">\(\sigma^2\)</span> conhecida, então <span class="math display">\[  \begin{align*}
+    \Pr\left(\bar x - \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(1-\frac{\alpha}{2}\right) \leq \mu \leq \bar x + \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right) = \gamma
+  \end{align*}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>limite_inferior <span class="ot">=</span> <span class="fu">mean</span>(x) <span class="sc">-</span> (sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>limite_superior <span class="ot">=</span> <span class="fu">mean</span>(x) <span class="sc">+</span> (sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>(<span class="dv">1</span><span class="sc">-</span>alpha<span class="sc">/</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Exemplo intervalo de confiança">
@@ -680,13 +723,13 @@ Exemplo intervalo de confiança
 <p>Uma máquina enche pacotes de café com uma variância igual a 100 <span class="math inline">\(g^2\)</span>. Ela estava regulada para encher os pacotes com 500 g, em média. Agora, ela se desregulou, e queremos saber qual a nova média <span class="math inline">\(\mu\)</span>.</p>
 <p>Uma amostra de 25 pacotes apresentou uma média igual a 485 g. Vamos construir um intervalo de confiança, nível de confiança de <span class="math inline">\(\gamma=95\%\)</span> para <span class="math inline">\(\mu\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">=</span> <span class="fl">0.95</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">25</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">=</span> <span class="dv">485</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>sigma<span class="ot">=</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>IC <span class="ot">=</span> <span class="fu">c</span>(xbar<span class="sc">-</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>),</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       xbar<span class="sc">+</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>))</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>IC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">=</span> <span class="fl">0.95</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">25</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>xbar <span class="ot">=</span> <span class="dv">485</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>sigma<span class="ot">=</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>IC <span class="ot">=</span> <span class="fu">c</span>(xbar<span class="sc">-</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       xbar<span class="sc">+</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>IC</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 481.0801 488.9199</code></pre>
 </div>
@@ -707,45 +750,46 @@ Simulações de intervalos de confiança para a média populacional
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-17"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-17-1" class="code-annotation-target"><a href="#annotated-cell-17-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">2</span></span>
-<span id="annotated-cell-17-2"><a href="#annotated-cell-17-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">3</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-17-3" class="code-annotation-target"><a href="#annotated-cell-17-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">20</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-17" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-17-4" class="code-annotation-target"><a href="#annotated-cell-17-4" aria-hidden="true" tabindex="-1"></a>conf.level <span class="ot">=</span> <span class="fl">0.8</span></span>
-<span id="annotated-cell-17-5"><a href="#annotated-cell-17-5" aria-hidden="true" tabindex="-1"></a>MSim <span class="ot">=</span> <span class="dv">10</span></span>
-<span id="annotated-cell-17-6"><a href="#annotated-cell-17-6" aria-hidden="true" tabindex="-1"></a>xMedias <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,MSim)</span>
-<span id="annotated-cell-17-7"><a href="#annotated-cell-17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (jsample <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>MSim){</span>
-<span id="annotated-cell-17-8"><a href="#annotated-cell-17-8" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">=</span> <span class="fu">rnorm</span>(n,<span class="at">mean=</span>mu,<span class="at">sd=</span>sigma)</span>
-<span id="annotated-cell-17-9"><a href="#annotated-cell-17-9" aria-hidden="true" tabindex="-1"></a>  xMedias[jsample] <span class="ot">=</span> <span class="fu">mean</span>(sim)</span>
-<span id="annotated-cell-17-10"><a href="#annotated-cell-17-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="annotated-cell-17-11"><a href="#annotated-cell-17-11" aria-hidden="true" tabindex="-1"></a>IC <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">2</span>,<span class="at">nrow=</span>MSim)</span>
-<span id="annotated-cell-17-12"><a href="#annotated-cell-17-12" aria-hidden="true" tabindex="-1"></a>IC[,<span class="dv">1</span>] <span class="ot">=</span> xMedias<span class="sc">-</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>conf.level)<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="annotated-cell-17-13"><a href="#annotated-cell-17-13" aria-hidden="true" tabindex="-1"></a>IC[,<span class="dv">2</span>] <span class="ot">=</span> xMedias<span class="sc">+</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>conf.level)<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="annotated-cell-17-14"><a href="#annotated-cell-17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
-<span id="annotated-cell-17-15"><a href="#annotated-cell-17-15" aria-hidden="true" tabindex="-1"></a>non.viol <span class="ot">=</span> <span class="fu">sum</span>(dplyr<span class="sc">::</span><span class="fu">between</span>(<span class="fu">rep</span>(mu,MSim),IC[,<span class="dv">1</span>],IC[,<span class="dv">2</span>]))</span>
-<span id="annotated-cell-17-16"><a href="#annotated-cell-17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(plotrix)</span>
-<span id="annotated-cell-17-17"><a href="#annotated-cell-17-17" aria-hidden="true" tabindex="-1"></a>plotrix<span class="sc">::</span><span class="fu">plotCI</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(xMedias),xMedias,<span class="at">ui=</span>IC[,<span class="dv">2</span>], <span class="at">li=</span>IC[,<span class="dv">1</span>],</span>
-<span id="annotated-cell-17-18"><a href="#annotated-cell-17-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">main=</span><span class="fu">paste</span>(non.viol,<span class="st">"de"</span>,<span class="fu">length</span>(xMedias),<span class="st">"ICs contém a verdadeira média"</span>))</span>
-<span id="annotated-cell-17-19"><a href="#annotated-cell-17-19" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>mu)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-20"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-20-1" class="code-annotation-target"><a href="#annotated-cell-20-1" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="annotated-cell-20-2"><a href="#annotated-cell-20-2" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">3</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-20-3" class="code-annotation-target"><a href="#annotated-cell-20-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">20</span></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-20" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-20-4" class="code-annotation-target"><a href="#annotated-cell-20-4" aria-hidden="true" tabindex="-1"></a>conf.level <span class="ot">=</span> <span class="fl">0.8</span></span>
+<span id="annotated-cell-20-5"><a href="#annotated-cell-20-5" aria-hidden="true" tabindex="-1"></a>MSim <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="annotated-cell-20-6"><a href="#annotated-cell-20-6" aria-hidden="true" tabindex="-1"></a>xMedias <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,MSim)</span>
+<span id="annotated-cell-20-7"><a href="#annotated-cell-20-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (jsample <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>MSim){</span>
+<span id="annotated-cell-20-8"><a href="#annotated-cell-20-8" aria-hidden="true" tabindex="-1"></a>  sim <span class="ot">=</span> <span class="fu">rnorm</span>(n,<span class="at">mean=</span>mu,<span class="at">sd=</span>sigma)</span>
+<span id="annotated-cell-20-9"><a href="#annotated-cell-20-9" aria-hidden="true" tabindex="-1"></a>  xMedias[jsample] <span class="ot">=</span> <span class="fu">mean</span>(sim)</span>
+<span id="annotated-cell-20-10"><a href="#annotated-cell-20-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="annotated-cell-20-11"><a href="#annotated-cell-20-11" aria-hidden="true" tabindex="-1"></a>IC <span class="ot">=</span> <span class="fu">matrix</span>(<span class="at">ncol=</span><span class="dv">2</span>,<span class="at">nrow=</span>MSim)</span>
+<span id="annotated-cell-20-12"><a href="#annotated-cell-20-12" aria-hidden="true" tabindex="-1"></a>IC[,<span class="dv">1</span>] <span class="ot">=</span> xMedias<span class="sc">-</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>conf.level)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="annotated-cell-20-13"><a href="#annotated-cell-20-13" aria-hidden="true" tabindex="-1"></a>IC[,<span class="dv">2</span>] <span class="ot">=</span> xMedias<span class="sc">+</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qnorm</span>((<span class="dv">1</span><span class="sc">+</span>conf.level)<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="annotated-cell-20-14"><a href="#annotated-cell-20-14" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(dplyr)</span>
+<span id="annotated-cell-20-15"><a href="#annotated-cell-20-15" aria-hidden="true" tabindex="-1"></a>non.viol <span class="ot">=</span> <span class="fu">sum</span>(dplyr<span class="sc">::</span><span class="fu">between</span>(<span class="fu">rep</span>(mu,MSim),IC[,<span class="dv">1</span>],IC[,<span class="dv">2</span>]))</span>
+<span id="annotated-cell-20-16"><a href="#annotated-cell-20-16" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(plotrix)</span>
+<span id="annotated-cell-20-17"><a href="#annotated-cell-20-17" aria-hidden="true" tabindex="-1"></a>main <span class="ot">=</span> <span class="fu">paste</span>(non.viol,<span class="st">"de"</span>,<span class="fu">length</span>(xMedias),<span class="st">"ICs contém a verdadeira média"</span>)</span>
+<span id="annotated-cell-20-18"><a href="#annotated-cell-20-18" aria-hidden="true" tabindex="-1"></a>plotrix<span class="sc">::</span><span class="fu">plotCI</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(xMedias),xMedias,<span class="at">ui=</span>IC[,<span class="dv">2</span>], <span class="at">li=</span>IC[,<span class="dv">1</span>],</span>
+<span id="annotated-cell-20-19"><a href="#annotated-cell-20-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">main=</span>main)</span>
+<span id="annotated-cell-20-20"><a href="#annotated-cell-20-20" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>mu)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-17" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="1,2" data-code-annotation="1">Verdadeiros parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="1,2" data-code-annotation="1">Verdadeiros parâmetros <span class="math inline">\(\mu\)</span> e <span class="math inline">\(\sigma\)</span>.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="3" data-code-annotation="2">Tamanho amostral <span class="math inline">\(n\)</span> de cada simulação.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="3" data-code-annotation="2">Tamanho amostral <span class="math inline">\(n\)</span> de cada simulação.</span>
 </dd>
-<dt data-target-cell="annotated-cell-17" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-20" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-17" data-code-lines="4" data-code-annotation="3">Quantidade <span class="math inline">\(MSim\)</span> de simulações. Inicializamos um vetor para guardar as estimativas.</span>
+<span data-code-cell="annotated-cell-20" data-code-lines="4" data-code-annotation="3">Quantidade <span class="math inline">\(MSim\)</span> de simulações. Inicializamos um vetor para guardar as estimativas.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -754,7 +798,7 @@ Simulações de intervalos de confiança para a média populacional
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -762,19 +806,23 @@ Simulações de intervalos de confiança para a média populacional
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled" title="Intervalo de confiança para a proporção populacional">
+</section>
+<section id="intervalo-de-confiança-para-a-proporção-populacional" class="level3">
+<h3 class="anchored" data-anchor-id="intervalo-de-confiança-para-a-proporção-populacional">Intervalo de confiança para a proporção populacional</h3>
+<p>Um caso de extremo interesse é o caso da infe</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Por que as pesquisas de intenção de voto erram tanto?">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Intervalo de confiança para a proporção populacional
+Por que as pesquisas de intenção de voto erram tanto?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO: IC proporcao</p>
+<p>TODO. TL;DR: Não são baseadas em amostras aleatórias como na definição acima, por vários motivos. Especialmente os intervalos de confiança (“margem de erro”) são completa ficção.</p>
 </div>
 </div>
 </div>
@@ -789,17 +837,19 @@ Intervalo de confiança para a proporção populacional
   T = \frac{\bar X - \mu}{S/\sqrt{n}} \sim t(n-1).
 \end{align*}\]</span></p>
 <p>Nesse caso os extremos do intervalo de confiança têm a forma <span class="math display">\[\begin{align*}
-  \bar X \pm \frac{S}{\sqrt{n}}t^{-1}_{n-1}\left(\frac{1+\gamma}{2}\right)
-\end{align*}\]</span></p>
-<p><code>LimInf = mean(x) - (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)</code></p>
-<p><code>LimSup = mean(x) + (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)</code></p>
+  \bar X \pm \frac{S}{\sqrt{n}}F^{-1}_{n-1}\left(\frac{1+\gamma}{2}\right)
+\end{align*}\]</span> onde <span class="math inline">\(F^{-1}_m\)</span> é a função quantílica de uma distribuição t-Student com <span class="math inline">\(m\)</span> graus de liberdade.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>limite_inferior <span class="ot">=</span> <span class="fu">mean</span>(x) <span class="sc">-</span> (<span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qt</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-1</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>limite_superior <span class="ot">=</span> <span class="fu">mean</span>(x) <span class="sc">+</span> (<span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qt</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>A distribuição t-Student se aproxima de uma Normal Padrão conforme seus graus de liberdade aumentam.</p>
-<p>Portanto a diferença entre os ICs só é relevante quando o tamanho amostral <span class="math inline">\(n\)</span> é pequeno. Para algo como <span class="math inline">\(n&gt;100\)</span>, podemos utilizar a estimativa <span class="math inline">\(s^2\)</span> no lugar da verdadeira variância <span class="math inline">\(\sigma^2\)</span> e consultar os quantis <code>qnorm((1-gamma)/2)</code></p>
+<p>Portanto a diferença entre os ICs só é relevante quando o tamanho amostral <span class="math inline">\(n\)</span> é pequeno. Para algo como <span class="math inline">\(n&gt;100\)</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, podemos utilizar a estimativa <span class="math inline">\(s^2\)</span> no lugar da verdadeira variância <span class="math inline">\(\sigma^2\)</span> e consultar os quantis <code>qnorm((1-gamma)/2)</code></p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -929,6 +979,7 @@ Agora tome <span class="math inline">\(E(\hat \sigma^2)\)</span>. <span class="m
 </div>
 </div>
 </div>
+<p>O viés é uma propriedade do estimador <span class="math inline">\(T_n\)</span> em repetidas amostras de tamanho <span class="math inline">\(n\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Simulação de estimativas para a variância: $\hat\sigma^2$ e $S^2$">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -945,12 +996,108 @@ Simulação de estimativas para a variância: <span class="math inline">\(\hat\s
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-note callout-titled" title="$s$ não é estimador não enviesado do desvio padrão $\sigma$">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="math inline">\(s\)</span> não é estimador não enviesado do desvio padrão <span class="math inline">\(\sigma\)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Embora <span class="math inline">\(s^2\)</span> seja estimador não enviesado da variância <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(s=\sqrt{s^2}\)</span> não é estimador não enviesado do parâmetro de desvio-padrão <span class="math inline">\(\sigma=\sqrt{\sigma^2}\)</span>. Essa é uma decorrência direta da desigualdade de Jensen.</p>
+<p><span class="math display">\[ s^2 = \frac{\sum (x_j-\bar x)^2}{n-1} \]</span> <span class="math display">\[ s = \sqrt{\frac{\sum (x_j-\bar x)^2}{n-1}} \\ E(s^2) = \sigma^2\]</span> <span class="math display">\[ E\left(\sqrt{s^2}\right) \leq \sqrt{E(s^2)} \\
+E(\sqrt{s^2})\leq \sqrt{\sigma^2}\]</span></p>
+</div>
+</div>
+</div>
 </section>
 <section id="variância-e-erro-quadrático-médio" class="level3">
 <h3 class="anchored" data-anchor-id="variância-e-erro-quadrático-médio">Variância e erro quadrático médio</h3>
 </section>
 <section id="consistência" class="level3">
 <h3 class="anchored" data-anchor-id="consistência">Consistência</h3>
+<p>É interessante termos um estimador não enviesado (…).</p>
+<p>Mas na maior parte das aplicações práticas, especialmente em economia, não temos acesso a repetidas amostras aleatórias retiradas da população subjacente.</p>
+<p>Gostaríamos de pode afirmar algo sobre a precisão de nossas estimativas dada uma única amostra <span class="math inline">\(x=\{X_1,\dots,X_n\}\)</span> conforme o tamanho amostral <span class="math inline">\(n\)</span> cresce cada vez mais.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Consistência de um estimador">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consistência de um estimador
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Uma sequência <span class="math inline">\(\{T_n\}\)</span> de estimadores [calculados com base em amostras de tamanho <span class="math inline">\(n\)</span>] é consistente se, conforme <span class="math inline">\(n\rightarrow\infty\)</span>,</p>
+<p><span class="math display">\[\begin{align*}
+  \lim_{n\rightarrow\infty} \Pr\left(|T_n-\theta|&gt;\varepsilon\right)=0
+\end{align*}\]</span> Equivalentemente, podemos escrever <span class="math display">\[\begin{align*}
+  \lim_{n\rightarrow\infty} \Pr\left(|T_n-\theta|&lt;\varepsilon\right)=1
+\end{align*}\]</span></p>
+</div>
+</div>
+<p>Essa condição quer dizer que o estimador <span class="math inline">\(T_n\)</span> converge em probabilidade para o verdadeiro valor do parâmetro <span class="math inline">\(\theta\)</span> conforme <span class="math inline">\(n\)</span> cresce. Às vezes escrevemos <span class="math display">\[\begin{align*}
+    \text{\plim}(T_n)=\theta,
+\end{align*}\]</span> como uma notação mais curta.</p>
+<p>Uma sequência <span class="math inline">\(\{T_n\}\)</span> de estimadores de <span class="math inline">\(\theta\)</span> é consistente se, simultaneamente, <span class="math display">\[\begin{align*}
+  &amp;\lim_{n\rightarrow\infty} E(T_n)=\theta, \text{ e }\\
+  &amp;\lim_{n\rightarrow\infty} Var(T_n)=0.
+\end{align*}\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Consistência de $\bar X$">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consistência de <span class="math inline">\(\bar X\)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Seja <span class="math inline">\(X\)</span> uma v.a. com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span>. Tome uma sequência de amostras aleatórias <span class="math inline">\(x^{(n)}\)</span> com tamanho <span class="math inline">\(n\)</span> tal que <span class="math display">\[\begin{align*}
+  x^{(1)} &amp;= \{x_1\} \\
+  x^{(2)} &amp;= \{x_1, x_2\} \\
+&amp; \vdots\\
+  x^{(n)} &amp;= \{x_1,x_2\dots,x_n\}
+\end{align*}\]</span> O estimador <span class="math inline">\(\bar X\)</span> para a média amostral é definido como <span class="math display">\[\begin{align*}
+  \bar X(x^{(n)}) = \frac{\sum^n_{j=1}x_j}{n}
+\end{align*}\]</span> Agora vamos ver o que acontece com <span class="math inline">\(E(\bar X)\)</span> e <span class="math inline">\(Var(\bar X)\)</span> conforme o tamanho amostral <span class="math inline">\(n\)</span> cresce. A condição (C1) é sempre satisfeita, <span class="math inline">\(\E(\bar X)=\mu\)</span> para qualquer tamanho amostral <span class="math inline">\(n\)</span>, então <span class="math display">\[\begin{align*}
+  \lim_{n\rightarrow\infty}\E(\bar X) = \mu.
+\end{align*}\]</span> A variância de <span class="math inline">\(\bar X\)</span> é dada por <span class="math display">\[\begin{align*}
+  \Var(\bar X(\bm x^{(n)})) = \frac{\sigma^2}{n}
+\end{align*}\]</span> Aqui também é direto ver que <span class="math display">\[\begin{align*}
+  \lim_{n\rightarrow\infty} \Var(\bar X(\bm x^{(n)})) = \lim_{n\rightarrow\infty}\frac{\sigma^2}{n} = 0
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Consistência de $\hat\sigma^2$">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Consistência de <span class="math inline">\(\hat\sigma^2\)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Embora <span class="math inline">\(\hat \sigma^2\)</span> seja um estimador viesado, ele é consistente — no sentido que conforme <span class="math inline">\(n\)</span> cresce, ambos viés e variância diminuem, e nossa estimativa é cada vez mais. Nós calculamos o valor esperado de <span class="math inline">\(\hat\sigma^2\)</span> como <span class="math display">\[E(\hat\sigma^2)=\frac{n-1}{n}\sigma^2.\]</span> A variância de <span class="math inline">\(\hat\sigma^2\)</span> é (ver exercício [colocar-referencia])</p>
+<p><span class="math display">\[Var(\hat\sigma^2)=\frac{2\sigma^4}{n}.\]</span> Então é direto ver que</p>
+<p><span class="math display">\[\begin{align*}
+  &amp;\lim_{n\rightarrow\infty} E(\hat\sigma^2) = \lim_{n\rightarrow\infty} \frac{n-1}{n}\sigma^2=\sigma^2, \text{ e } \\
+   &amp;\lim_{n\rightarrow\infty} Var(\hat\sigma^2) = \lim_{n\rightarrow\infty}\frac{2\sigma^4}{n} = 0.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="lei-dos-grandes-números" class="level2">
@@ -978,30 +1125,30 @@ Lei Fraca dos Grandes Números
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Vamos simular amostras aleatórias de uma v.a. Qui-quadrado com diferentes tamanhos e observar o comportamento das estimativas da média e variância.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nmax <span class="ot">=</span> <span class="dv">10000</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nmin <span class="ot">=</span> <span class="dv">50</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ngrid <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span>nmin,<span class="at">to=</span>nmax,<span class="at">by=</span><span class="dv">50</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>Sim <span class="ot">=</span> <span class="fu">rchisq</span>(nmax,<span class="at">df=</span><span class="dv">3</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>cMeans <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="fu">length</span>(ngrid))</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (nobs <span class="cf">in</span> ngrid){</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  cMeans[j] <span class="ot">=</span> <span class="fu">mean</span>(Sim[<span class="dv">1</span><span class="sc">:</span>nobs])</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">=</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ngrid, cMeans, <span class="at">t=</span><span class="st">'l'</span>)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>nmax <span class="ot">=</span> <span class="dv">10000</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>nmin <span class="ot">=</span> <span class="dv">50</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ngrid <span class="ot">=</span> <span class="fu">seq</span>(<span class="at">from=</span>nmin,<span class="at">to=</span>nmax,<span class="at">by=</span><span class="dv">50</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>v <span class="ot">=</span> <span class="dv">3</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>Sim <span class="ot">=</span> <span class="fu">rchisq</span>(nmax,<span class="at">df=</span><span class="dv">3</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>cMeans <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="fu">length</span>(ngrid))</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (nobs <span class="cf">in</span> ngrid){</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  cMeans[j] <span class="ot">=</span> <span class="fu">mean</span>(Sim[<span class="dv">1</span><span class="sc">:</span>nobs])</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">=</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ngrid, cMeans, <span class="at">t=</span><span class="st">'l'</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1010,25 +1157,25 @@ Lei Fraca dos Grandes Números
   Var(X)=E[(X-E(X))^2].
 \]</span> Repare que se definirmos <span class="math inline">\(Y=(X-E(X))^2\)</span> então <span class="math inline">\(Var(X)=E(Y)\)</span>. Portanto a LGN também se aplica às estimativas da variância.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>cVars <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="fu">length</span>(ngrid))</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (nobs <span class="cf">in</span> ngrid){</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  cVars[j] <span class="ot">=</span> <span class="fu">var</span>(Sim[<span class="dv">1</span><span class="sc">:</span>nobs])</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">=</span> j<span class="sc">+</span><span class="dv">1</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ngrid, cVars, <span class="at">t=</span><span class="st">'l'</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">2</span><span class="sc">*</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>j <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cVars <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">0</span>,<span class="fu">length</span>(ngrid))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (nobs <span class="cf">in</span> ngrid){</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  cVars[j] <span class="ot">=</span> <span class="fu">var</span>(Sim[<span class="dv">1</span><span class="sc">:</span>nobs])</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  j <span class="ot">=</span> j<span class="sc">+</span><span class="dv">1</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ngrid, cVars, <span class="at">t=</span><span class="st">'l'</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">2</span><span class="sc">*</span>v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>De modo geral, a LGN vai garantir a consistência dos estimadores dos momentos <span class="math inline">\(E(X^k)\)</span> contanto que o momento em si seja bem definido. Isto é, <span class="math inline">\(E(X^k)&lt;\infty\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exemplo de violação da LGN">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1037,7 +1184,7 @@ Exemplo de violação da LGN
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Uma variável aleatória <span class="math inline">\(T\)</span> com distribuição t-Student e <span class="math inline">\(m\)</span> graus de liberdade tem função densidade de probabilidade <span class="math display">\[\begin{align}
         f_T(t;m) = \frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{m\pi}\Gamma\left(\frac{m}{2}\right)}\left(1+\frac{t^2}{m}\right)^{-\left(\frac{m+1}{2}\right)}, \quad -\infty&lt;t&lt;\infty.
@@ -1049,18 +1196,18 @@ Exemplo de violação da LGN
         f_T(t;1) = \frac{1}{\pi(1+t^2)}, \quad -\infty&lt;t&lt;\infty.
     \end{align}\]</span> Como <span class="math inline">\(\text{E}(T)\)</span> se <span class="math inline">\(T\sim t(1)\)</span> não é bem definido, o estimador da média amostral não converge para nenhum valor específico.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1729</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>NMax <span class="ot">=</span> <span class="dv">1000</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>Smpl1 <span class="ot">=</span> <span class="fu">rt</span>(NMax, <span class="at">df=</span><span class="dv">1</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>Smpl2 <span class="ot">=</span> <span class="fu">rt</span>(NMax, <span class="at">df=</span><span class="dv">1</span>)</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>XBar1 <span class="ot">=</span> <span class="fu">cumsum</span>(Smpl1)<span class="sc">/</span><span class="dv">1</span><span class="sc">:</span>NMax</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>XBar2 <span class="ot">=</span> <span class="fu">cumsum</span>(Smpl2)<span class="sc">/</span><span class="dv">1</span><span class="sc">:</span>NMax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1729</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>NMax <span class="ot">=</span> <span class="dv">1000</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>Smpl1 <span class="ot">=</span> <span class="fu">rt</span>(NMax, <span class="at">df=</span><span class="dv">1</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>Smpl2 <span class="ot">=</span> <span class="fu">rt</span>(NMax, <span class="at">df=</span><span class="dv">1</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>XBar1 <span class="ot">=</span> <span class="fu">cumsum</span>(Smpl1)<span class="sc">/</span><span class="dv">1</span><span class="sc">:</span>NMax</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>XBar2 <span class="ot">=</span> <span class="fu">cumsum</span>(Smpl2)<span class="sc">/</span><span class="dv">1</span><span class="sc">:</span>NMax</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1070,7 +1217,7 @@ Exemplo de violação da LGN
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1083,9 +1230,163 @@ Exemplo de violação da LGN
 <h2 class="anchored" data-anchor-id="métodos-para-obtenção-de-estimadores">Métodos para obtenção de Estimadores</h2>
 <section id="método-dos-momentos" class="level3">
 <h3 class="anchored" data-anchor-id="método-dos-momentos">Método dos momentos</h3>
+<div class="callout callout-style-default callout-note callout-titled" title="Dois estimadores de momentos para o mesmo parâmetro">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Dois estimadores de momentos para o mesmo parâmetro
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
 </section>
 <section id="máxima-verossimilhança" class="level3">
 <h3 class="anchored" data-anchor-id="máxima-verossimilhança">Máxima Verossimilhança</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Método da Máxima Verossimilhança">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Método da Máxima Verossimilhança
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Especificamos uma distribuição probabilidade para a variável aleatória original <span class="math inline">\(X\)</span>.</li>
+</ol>
+<p><span class="math display">\[ X \sim f(x;\theta) \]</span></p>
+<ol start="2" type="1">
+<li>Tomamos uma amostra aleatória de tamanho <span class="math inline">\(n\)</span></li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+  \mathbf x = \{x_1,x_2,\dots,x_n\}
+\end{align*}\]</span></p>
+<ol start="3" type="1">
+<li>Escrevemos a probabilidade de obter a amostra específica <span class="math inline">\(\mathbf x\)</span>. É a função de verossimilhança do parâmetro <span class="math inline">\(\theta\)</span>, tomando como dada a amostra observada <span class="math inline">\(\mathbf x\)</span>.</li>
+</ol>
+<p><span class="math display">\[ \mathcal L (\theta;\mathbf x) = \prod^n_{j=1} f(x_j;\theta)\]</span> Repare que agora escrevemos <span class="math inline">\(\mathcal L\)</span> como uma função de <span class="math inline">\(\theta\)</span>.</p>
+<ol start="4" type="1">
+<li>O estimador de máxima verossimilhança <span class="math inline">\(\tilde\theta\)</span> é o valor de <span class="math inline">\(\theta\)</span> que maximiza a função de verossimilhança <span class="math inline">\(\mathcal L(\theta)\)</span>.</li>
+</ol>
+<p><span class="math display">\[ \tilde\theta = \arg\max_{\theta\in\Theta} \mathcal L(\theta;\mathbf x) \]</span> A interpretação é que <span class="math inline">\(\tilde\theta\)</span> maximiza a probabilidade de sortearmos especificamente a amostra observada em <span class="math inline">\(n\)</span> sorteios da variável aleatória com distribuição <span class="math inline">\(f(x;\theta)\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Otimização de função de uma variável real">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Otimização de função de uma variável real
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Seja <span class="math inline">\(g:I\rightarrow \mathbb R\)</span> uma função duas vezes continuamente diferenciável.</p>
+<p>Se <span class="math inline">\(g^\prime(x_0)=0\)</span>, então <span class="math inline">\(x_0\)</span> é dito ponto crítico de <span class="math inline">\(g\)</span>.</p>
+<p>O ponto crítico <span class="math inline">\(x_0\in I\)</span> é ponto de</p>
+<ul>
+<li>máximo se <span class="math inline">\(f^{\prime\prime}(x_0)&lt;0\)</span>,</li>
+<li>mínimo se <span class="math inline">\(f^{\prime\prime}(x_0)&gt;0\)</span>, e</li>
+<li>inflexão se <span class="math inline">\(f^{\prime\prime}(x_0)=0\)</span>.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Estimador de MV na distribuição Exponencial">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Estimador de MV na distribuição Exponencial
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suponha <span class="math inline">\(X\sim \text{Exp.}(\beta)\)</span>. Nesse caso, <span class="math display">\[\begin{align*}
+  f(x;\beta)=\frac{1}{\beta}e^{-\frac{x}{\beta}}, \quad x&gt;0, \beta&gt;0.
+\end{align*}\]</span> A função de verossimilhança fica <span class="math display">\[\begin{align*}
+\mathcal L(\beta;\mathbf x) &amp;= \prod^n_{j=1} f(x;\beta) =\prod^n_{j=1}\frac{1}{\beta}e^{-x/\beta} \\
+&amp;= \frac{1}{\beta^n}\prod^n_{j=1}e^{-x_j/\beta} = \frac{1}{\beta^n} e^{-\frac{1}{\beta}\sum^n_{j=1}x_j}
+\end{align*}\]</span></p>
+<p>Alguma álgebra nos leva a <span class="math display">\[
+  \frac{d\mathcal L(\lambda;\mathbf x)}{d\lambda} = \lambda^{n-1}e^{-\lambda\sum x_j}(n-\lambda\sum x_j)
+\]</span> Então <span class="math inline">\(d\mathcal L(\lambda;\mathbf x)/d\lambda=0\)</span> quando</p>
+<p><span class="math display">\[\begin{align*}
+\hat\lambda = \left(\frac{\sum^n_{j=1}}{n}\right)
+\end{align*}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>tru.lambda <span class="ot">=</span> <span class="dv">5</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>smpl <span class="ot">=</span> <span class="fu">rexp</span>(<span class="at">n =</span> n,<span class="at">rate =</span> tru.lambda)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>lik.exp <span class="ot">=</span> <span class="cf">function</span>(X,lambda){</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">=</span> <span class="fu">length</span>(X)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  lik <span class="ot">=</span> (lambda<span class="sc">^</span>n)<span class="sc">*</span><span class="fu">exp</span>(<span class="sc">-</span>lambda<span class="sc">*</span><span class="fu">sum</span>(X)<span class="sc">-</span>n)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(lik)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>lambda.vals <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">15</span>,<span class="at">by=</span><span class="fl">0.05</span>)</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>lik.fun <span class="ot">=</span> <span class="fu">sapply</span>(lambda.vals, <span class="cf">function</span>(j) <span class="fu">lik.exp</span>(smpl,j))</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">1</span>))</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lambda.vals, lik.fun, <span class="at">t=</span><span class="st">"l"</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(smpl))</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lambda.vals, <span class="fu">log</span>(lik.fun), <span class="at">t=</span><span class="st">"l"</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(smpl))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="estat_aula_inferencia_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Diferença entre verossimilhança e probabilidade">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Diferença entre verossimilhança e probabilidade
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>TODO</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="MLE distribuição Poisson">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+MLE distribuição Poisson
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[ f(x;\lambda)=e^{-\lambda}\frac{\lambda^x}{x!} \]</span> <span class="math display">\[\mathcal L = \prod^n_{j=1}f(x;\lambda)\\
+=\prod e^{-\lambda}\frac{\lambda^{x_j}}{x_j!}\\
+=e^{-n\lambda}\prod\frac{\lambda^{x_j}}{x_j!}\]</span> <span class="math display">\[ \frac{d\mathcal L}{d\lambda} = Ae^{-\lambda n}\lambda^{\sum x_j - 1}\left(\sum x_j - n\lambda\right)\]</span></p>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="exercícios-de-fixação" class="level2">
@@ -1094,7 +1395,14 @@ Exemplo de violação da LGN
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Isso vem do fato da soma de v.a.s Normais ter também distribuição Normal. Ver função geradora de momentos.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Depende da distribuição da variável original, mas é uma recomendação conservadora na maioria dos casos.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

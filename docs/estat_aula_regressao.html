@@ -178,8 +178,23 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#regressão-linear" id="toc-regressão-linear" class="nav-link active" data-scroll-target="#regressão-linear">Regressão Linear</a></li>
+  <li><a href="#o-estimador-de-mínimos-quadrados" id="toc-o-estimador-de-mínimos-quadrados" class="nav-link" data-scroll-target="#o-estimador-de-mínimos-quadrados">O Estimador de Mínimos Quadrados</a></li>
+  <li><a href="#inferência-sobre-parâmetros" id="toc-inferência-sobre-parâmetros" class="nav-link" data-scroll-target="#inferência-sobre-parâmetros">Inferência sobre Parâmetros</a></li>
+  <li><a href="#uma-medida-de-aderência-r2" id="toc-uma-medida-de-aderência-r2" class="nav-link" data-scroll-target="#uma-medida-de-aderência-r2">Uma medida de aderência: <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#aplicações-de-regressão-linear" id="toc-aplicações-de-regressão-linear" class="nav-link" data-scroll-target="#aplicações-de-regressão-linear">Aplicações de Regressão Linear</a>
+  <ul class="collapse">
+  <li><a href="#capm-capital-asset-pricing-model" id="toc-capm-capital-asset-pricing-model" class="nav-link" data-scroll-target="#capm-capital-asset-pricing-model">CAPM (<em>Capital Asset Pricing Model</em>)</a></li>
+  <li><a href="#modelo-de-solow" id="toc-modelo-de-solow" class="nav-link" data-scroll-target="#modelo-de-solow">Modelo de Solow</a></li>
+  <li><a href="#modelagem-de-volatilidade" id="toc-modelagem-de-volatilidade" class="nav-link" data-scroll-target="#modelagem-de-volatilidade">Modelagem de Volatilidade</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -203,12 +218,22 @@ window.Quarto = {
 </header>
 
 
+<section id="regressão-linear" class="level2">
+<h2 class="anchored" data-anchor-id="regressão-linear">Regressão Linear</h2>
+<p>Turmas menores levam a melhor aprendizado dos alunos? Se sim, quanto? [Discussão]</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("AER")</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>STR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">22</span>, <span class="fl">23.5</span>, <span class="dv">25</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>TestScore <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">680</span>, <span class="dv">640</span>, <span class="dv">670</span>, <span class="dv">660</span>, <span class="dv">630</span>, <span class="dv">660</span>, <span class="dv">635</span>) </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>STR, <span class="at">y=</span>TestScore, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">'blue'</span>, <span class="at">cex=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a></span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-1-2" class="code-annotation-target"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>STR <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">20</span>, <span class="dv">22</span>, <span class="fl">23.5</span>, <span class="dv">25</span>)</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>TestScore <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">680</span>, <span class="dv">640</span>, <span class="dv">670</span>, <span class="dv">660</span>, <span class="dv">630</span>, <span class="dv">660</span>, <span class="dv">635</span>)</span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x=</span>STR, <span class="at">y=</span>TestScore, <span class="at">pch=</span><span class="dv">20</span>, <span class="at">col=</span><span class="st">'blue'</span>, <span class="at">cex=</span><span class="dv">2</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="2,3" data-code-annotation="1">Alguns dados inventados.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -220,24 +245,38 @@ window.Quarto = {
 <p>Nosso modelo de regressão é <span class="math display">\[\begin{align*}
         Y_i &amp;= \beta_0 + \beta_1X_i + u_i, \quad u_i\sim \IID(0,\sigma^2_u)\\
   TestScore &amp;= \beta_0 + \beta_1\times STR + u, \quad u\sim IID(0,\sigma_u)
-\end{align*}\]</span> No R escrevemos como um objeto do tipo <code>formula</code></p>
+\end{align*}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fmla <span class="ot">=</span> TestScore <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> STR</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fmla)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>fmla <span class="ot">=</span> TestScore <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> STR</span>
+<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(fmla)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-2" data-code-lines="1" data-code-annotation="1">Escrevemoms como um objeto do tipo <code>formula</code>. O <code>1</code> representa que incluimos uma constante.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "formula"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">=</span> <span class="fu">lm</span>(fmla)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-3-1" class="code-annotation-target"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">=</span> <span class="fu">lm</span>(fmla)</span>
+<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>out<span class="sc">$</span>coefficients</span>
+<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-3" data-code-lines="1" data-code-annotation="1">Para a estimação utilizamos a função <code>lm()</code>, “linear model”, sobre a <code>formula</code> da regressão.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(Intercept)         STR 
- 713.567733   -2.968015 </code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
+ 713.567733   -2.968015 
+
 Call:
 lm(formula = fmla)
 
@@ -258,25 +297,46 @@ F-statistic:  2.28 on 1 and 5 DF,  p-value: 0.1914</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(AER)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(CASchools)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(CASchools)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(AER)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-4-2" class="code-annotation-target"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(CASchools)</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(CASchools)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="2" data-code-annotation="1">Carregamos a base de dados.</span>
+</dd>
+<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">Objeto do tipo <code>data.frame</code>.</span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "data.frame"</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>CASchools<span class="sc">$</span>STR <span class="ot">=</span> CASchools<span class="sc">$</span>students<span class="sc">/</span>CASchools<span class="sc">$</span>teachers </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>CASchools<span class="sc">$</span>score <span class="ot">=</span> (CASchools<span class="sc">$</span>read <span class="sc">+</span> CASchools<span class="sc">$</span>math)<span class="sc">/</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-5"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-5" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-5-1" class="code-annotation-target"><a href="#annotated-cell-5-1" aria-hidden="true" tabindex="-1"></a>CASchools<span class="sc">$</span>STR <span class="ot">=</span> CASchools<span class="sc">$</span>students<span class="sc">/</span>CASchools<span class="sc">$</span>teachers</span>
+<span id="annotated-cell-5-2"><a href="#annotated-cell-5-2" aria-hidden="true" tabindex="-1"></a>CASchools<span class="sc">$</span>score <span class="ot">=</span> (CASchools<span class="sc">$</span>read <span class="sc">+</span> CASchools<span class="sc">$</span>math)<span class="sc">/</span><span class="dv">2</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-5" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-5" data-code-lines="1,2" data-code-annotation="1">Construímos as variáveis.</span>
+</dd>
+</dl>
+</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(score <span class="sc">~</span> STR, </span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">data =</span> CASchools,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Gráfico de dispersão STR x score"</span>, </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"STR (X)"</span>,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Test Score (Y)"</span>,</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch=</span><span class="dv">1</span>,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex=</span>.<span class="dv">75</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> CASchools<span class="sc">$</span>STR, <span class="at">y =</span> CASchools<span class="sc">$</span>score, </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">t =</span> <span class="st">'p'</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Gráfico de dispersão STR x score"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"STR (X)"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Test Score (Y)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -284,22 +344,12 @@ F-statistic:  2.28 on 1 and 5 DF,  p-value: 0.1914</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> CASchools<span class="sc">$</span>STR, <span class="at">y =</span> CASchools<span class="sc">$</span>score, </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">t =</span> <span class="st">'p'</span>,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Gráfico de dispersão STR x score"</span>,</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"STR (X)"</span>,</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Test Score (Y)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="estat_aula_regressao_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fmla <span class="ot">=</span> score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> STR </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">=</span> <span class="fu">lm</span>(score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> STR, <span class="at">data =</span> CASchools)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">=</span> <span class="fu">lm</span>(CASchools<span class="sc">$</span>score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> CASchools<span class="sc">$</span>STR)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fmla <span class="ot">=</span> score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> STR </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>out <span class="ot">=</span> <span class="fu">lm</span>(score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> STR, <span class="at">data =</span> CASchools)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>out <span class="ot">=</span> <span class="fu">lm</span>(CASchools<span class="sc">$</span>score <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> CASchools<span class="sc">$</span>STR)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -321,10 +371,97 @@ Multiple R-squared:  0.05124,   Adjusted R-squared:  0.04897
 F-statistic: 22.58 on 1 and 418 DF,  p-value: 2.783e-06</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Terminologia para o modelo de regressão linear com um regressor">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Terminologia para o modelo de regressão linear com um regressor
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O modelo de regressão linear simples é</p>
+<p><span class="math display">\[ Y_j = \beta_0 + \beta_1X_j + u_j,\quad u_j\sim iid(0,\sigma^2_u), \]</span> onde</p>
+<ul>
+<li>o subscrito <span class="math inline">\(j\)</span> percorre as observações, <span class="math inline">\(j=1,\dots,n\)</span>;</li>
+<li><span class="math inline">\(Y_j\)</span> é a <em>variável dependente</em>, o <em>regressando</em>, ou simplesmente a <em>variável do lado esquerdo</em>.</li>
+<li><span class="math inline">\(X_j\)</span> é a <em>variável independente</em>, o <em>regressor</em>, ou simplesmente a <em>variável do lado direito</em>;</li>
+<li><span class="math inline">\(\beta_0 + \beta_1X\)</span> é a <em>reta de regressão</em> ou a <em>função de regressão populacional</em>;</li>
+<li><span class="math inline">\(\beta_0\)</span> é o <em>intercepto</em> da reta de regressão populacional;</li>
+<li><span class="math inline">\(\beta_1\)</span> é a <em>inclinação</em> da reta de gressão populacional;</li>
+<li><span class="math inline">\(u_j\)</span> é o termo de <em>erro</em>.</li>
+</ul>
+<p>O modelo de regressão linear é uma idealização para o processo que gera as realizações <span class="math inline">\(Y_j\)</span>.</p>
+</div>
+</div>
+</section>
+<section id="o-estimador-de-mínimos-quadrados" class="level2">
+<h2 class="anchored" data-anchor-id="o-estimador-de-mínimos-quadrados">O Estimador de Mínimos Quadrados</h2>
+<p>TODO: Gráfico dos resíduos com relação à reta de regressão.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Álgebra dos mínimos quadrados">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Álgebra dos mínimos quadrados
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Sejam <span class="math inline">\(b_0\)</span> e <span class="math inline">\(b_1\)</span> possíveis valores para o parâmetro <span class="math inline">\(\beta\)</span>. <span class="math display">\[\begin{align*}
+Y_j = b_0 + b_1 X_j + u_j
+\end{align*}\]</span> <span class="math display">\[\begin{align*}
+u_j &amp;= Y_i - b_0 - b_1 X_i \\
+u_j^2 &amp;= (Y_i - b_0 - b_1 X_i)^2
+\end{align*}\]</span> A soma do quadrado dos resíduos é <span class="math display">\[\begin{align*}
+SSR(b_0,b_1) = \sum^n_{i=1}(Y_i - b_0 - b_1 X_i)^2
+\end{align*}\]</span> O problema de mínimos quadrados (dos resíduos) é <span class="math display">\[\begin{align*}
+\min_{(b_0,b_1)\in\mathbb{R}^2} \sum^n_{i=1}(Y_i - b_0 - b_1 X_i)^2
+\end{align*}\]</span> Nós dizemos que os estimadores de MQO, <span class="math inline">\(\hat\beta_0\)</span> e <span class="math inline">\(\hat\beta_1\)</span>, são os valores para <span class="math inline">\(b_0\)</span> e <span class="math inline">\(b_1\)</span> que minimizam os quadrados dos resíduos de regressão. Podemos escrever <span class="math display">\[\begin{align*}
+(\hat\beta_0,\hat\beta_1) = \argmin_{(b_0,b_1)\in\mathbb{R}^2}SSR(b_0,b_1)
+\end{align*}\]</span> Queremos escolher <span class="math inline">\((b_0,b_1)\)</span> que minimizam <span class="math display">\[\begin{align*}
+        SSR(b_0,b_1) = \sum^n_{i=1}(Y_i - b_0 - b_1 X_i)^2
+    \end{align*}\]</span> As condições de primeira ordem são <span class="math display">\[\begin{align*}
+        \frac{\partial SSR}{\partial b_0} = 0 \qquad \frac{\partial SSR}{\partial b_1} = 0
+    \end{align*}\]</span> Então <span class="math display">\[\begin{align*}
+        \frac{\partial SSR}{\partial b_0} = -2\sum^n_{i=1}(Y_i-\hat\beta_0-\hat\beta_1X_i) = 0  \tag{CPO 1}\\
+        \frac{\partial SSR}{\partial b_1} = -2\sum^n_{i=1}X_i(Y_i-\hat\beta_0-\hat\beta_1) = 0 \tag{CPO 2}
+    \end{align*}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="inferência-sobre-parâmetros" class="level2">
+<h2 class="anchored" data-anchor-id="inferência-sobre-parâmetros">Inferência sobre Parâmetros</h2>
+</section>
+<section id="uma-medida-de-aderência-r2" class="level2">
+<h2 class="anchored" data-anchor-id="uma-medida-de-aderência-r2">Uma medida de aderência: <span class="math inline">\(R^2\)</span></h2>
+</section>
+<section id="aplicações-de-regressão-linear" class="level2">
+<h2 class="anchored" data-anchor-id="aplicações-de-regressão-linear">Aplicações de Regressão Linear</h2>
+<section id="capm-capital-asset-pricing-model" class="level3">
+<h3 class="anchored" data-anchor-id="capm-capital-asset-pricing-model">CAPM (<em>Capital Asset Pricing Model</em>)</h3>
+</section>
+<section id="modelo-de-solow" class="level3">
+<h3 class="anchored" data-anchor-id="modelo-de-solow">Modelo de Solow</h3>
+</section>
+<section id="modelagem-de-volatilidade" class="level3">
+<h3 class="anchored" data-anchor-id="modelagem-de-volatilidade">Modelagem de Volatilidade</h3>
 
 
+</section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Sempre inclua a constante.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

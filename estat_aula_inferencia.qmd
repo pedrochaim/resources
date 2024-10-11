@@ -25,11 +25,13 @@ Até agora estávamos trabalhando um espaço de probabilidades $\left(\Omega, \m
 
 Agora vamos nos concentrar no problema inverso. Vamos observar realizações de uma certa variável aleatória, uma amostra finita 
 \begin{align*}
-    x = \{x_1,x_2,\dots,x_n\}.
+    \mathbf x = \{x_1,x_2,\dots,x_n\}.
 \end{align*}
-Essas realizações foram sorteadas de uma população $X$, cuja distribuição de probabiliades é desconhecida.
+Essas realizações foram sorteadas de uma população $X$, cuja distribuição de probabiliades $f(x;\theta)$ é desconhecida.
 
 Com base nas informações da amostra, tentaremos recuperar informações (por exemplo valor de parâmetros) sobre o modelo (o espaço de probabilidades) que gerou esses dados.
+
+Por inferência estatística entendemos uma coleção de práticas (e o sentido é mais amplo do que apenas métodos matemáticos) cujo objetivo é obter estimativas (palpites) e quantificar nossa incerteza acerca dessas estimativas sobre características de uma população idealizada.
 
 ::: {.callout-tip title="Amostra aleatória"}
 As variáveis aleatórias $X_1,\dots,X_n$ são chamadas de amostra aleatória de tamanho $n$ de uma população $f(x)$ se
@@ -145,6 +147,7 @@ Tome uma variável aleatória $X$ com distribuição Poisson e parâmetro $\lamb
 ```{r}
 #| echo: false
 #| dev: png
+
 lambda = 2
 x = 0:10
 par(mgp=c(2,1,0),mar=c(3, 3, 2, 1)+0.1)
@@ -179,6 +182,7 @@ hist(Sim, prob=T, main=main) #<4>
 Agora vamos simular 500 diferentes amostras com tamanho $n=5$, computar a média amostral para cada amostra, e construir o histograma dessas estimativas da média.
 
 ```{r}
+#| tidy: false
 lambda = 2 #<1>
 n = 5 #<2>
 NSim = 500 #<3>
@@ -187,8 +191,10 @@ for (j in 1:NSim){ #<5>
   Sim = rpois(n, lambda) #<5>
   xMedias[j] = mean(Sim) #<5>
 } #<5>
-main=paste("Histograma de ",NSim," médias calculadas de amostras n=",n," \n retiradas de uma população X~Pois.(",lambda,")",sep="") #<6>
-plt1 = hist(xMedias, prob=T,main=main) #<6>
+main = paste("Histograma de ", NSim, #<6>
+           " médias calculadas de amostras n=", n, #<6>
+           " \n retiradas de uma população X~Pois.(",lambda,")",sep="") #<6>
+hist(xMedias, prob=T,main=main) #<6>
 ```
 1. Verdadeiro valor do parâmetro $\lambda$.
 2. Número de observações $n$ em cada amostra individual.
@@ -247,11 +253,16 @@ Para amostras aleatórias simples [iid] $(X_1,\dots,X_n)$ retiradas de uma popul
 \end{align*}
 :::
 
-- O surpreendente é que começamos com suposições de independência e variância finita e acabamos com normalidade (estritamente, a convergência em distribuição para uma Normal).
-- Não importando a distribuição da população, a distribuição das estimativas da média (em repetidas amostras) se aproxima de uma Normal conforme o tamanho amostral $n$ cresce.
-- Esse resultado nos permite fazer inferência (intervalo de confiança, teste de hipótese) sobre a média de uma população cuja distribuição é desconhecida com base nos quantis de uma distribuição Normal.
+  - Foi o que observamos na simulação anterior.
+  - O surpreendente é que começamos com suposições de independência e variância finita e acabamos com normalidade (estritamente, a convergência em distribuição para uma Normal).
+  - Não importando a distribuição da população (se ela for "bem comportada"), a distribuição das estimativas da média (em repetidas amostras) se aproxima de uma Normal conforme o tamanho amostral $n$ cresce.
+  - Esse resultado nos permite fazer inferência (intervalos de confiança, testes de hipótese) sobre a média de uma população cuja distribuição é desconhecida com base nos quantis de uma distribuição Normal.
 
-Sempre podemos padronizar uma variável aleatória para obter algo com média zero e variância 1. Dessa forma só precisamos consultar os quantis de uma distribuição Normal Padrão, $N(0,1)$.
+Quanto maior o tamanho amostral $n$, menor é a variância da distribuição de $\bar X$.
+  $$ \bar X \sim N\left(\mu, \frac{\sigma^2}{n}\right)$$
+Fica bem claro do box-plot [@colocar_referencia] que a distribuição "colapsa" ao redor da média $\mu$.
+
+Mas é possível normalizar uma variável aleatória de modo que a transformação tenha média $0$ e variância $1$.
 
 ::: {.callout-tip title="Corolário"}
 Se $(X_1,\dots, X_n)$ for uma amostra aleatória simples da população $X$ com média $\mu$ e variância $\sigma^2$ finita, e $\bar X = (X_1+\cdots+X_n)/n$, então para valores grandes de $n$
@@ -261,7 +272,7 @@ Se $(X_1,\dots, X_n)$ for uma amostra aleatória simples da população $X$ com 
 :::
 
 ::: {.callout-note title="Exemplo" collapse=true}
-Quando a variável aleatória em si tem distribuição Normal, o TLC vale exatamente para qualquer tamanho amostral $n$. Isso vem do fato da soma de v.a.s Normais ter distribuição Normal.
+Quando a população em si tem distribuição Normal, o TLC vale exatamente (não é uma aproximação) para qualquer tamanho amostral $n$.^[Isso vem do fato da soma de v.a.s Normais ter também distribuição Normal. Ver função geradora de momentos.]
 
 Retiramos uma amostra aleatória de tamanho $n=20$ de uma variável aleatória Normal $X\sim N(2,3^2)$. Qual é a probabilidade de que $\bar x>1.5$? 
 
@@ -277,6 +288,20 @@ No R podemos calcular diretamente.
 ```{r}
 1-pnorm(1.5,mean=2,sd=3/sqrt(20))
 ```
+```{r}
+#| echo: false
+
+
+par(mgp=c(2,1,0),mar=c(3, 3, 2, 1)+0.1)
+sigma = sd=3/sqrt(20)
+mu = 2
+x = seq(from=-3*sigma+mu, to=mu+3*sigma, length=1000)
+plot(x, dnorm(x, mean=mu, sd=sigma), t='l', lwd=2, col=1, main="", ylab="")
+colorArea(from=1.5,to=10, dnorm, mean=mu, sd=sigma, col=alpha('black',0.25))
+legend('topleft', legend=c("Pr(Xbar>1.5)"),  
+       fill = c("gray"))
+```
+
 Para trabalhar com a Normal Padrão devemos operar a desigualdade para padronizar $X$.
 \begin{align*}
   \gamma &= 1-\Pr(\bar X \leq 1.5) \\
@@ -286,7 +311,8 @@ Para trabalhar com a Normal Padrão devemos operar a desigualdade para padroniza
 ```{r}
 1-pnorm(-0.745)
 ```
-Ainda não conseguiriamos consultar na tabela da distribuição Normal Padrão. Da simetria da Normal, podemos escrever  
+
+Ainda não conseguiriamos consultar na tabela da distribuição Normal Padrão (que só fornece $\Pr(Z\leq z)$ para $z\geq0$. Da simetria da Normal, podemos escrever  
 \begin{align*}
   \gamma &= 1-\Pr(Z\leq-0.745)=1-\Pr(Z>0.745) \\
   &=1-(1-\Pr(Z\leq 0.745)) = \Pr(Z\leq 0.745)
@@ -296,10 +322,23 @@ Ainda não conseguiriamos consultar na tabela da distribuição Normal Padrão. 
 pnorm(0.745)
 ```
 ```{r}
+par(mgp=c(2,1,0),mar=c(3, 3, 2, 1)+0.1)
+sigma = 1
+mu = 0
+x = seq(from=-3*sigma+mu, to=mu+3*sigma, length=1000)
+plot(x, dnorm(x, mean=mu, sd=sigma), t='l', lwd=2, col=1, main="", ylab="")
+colorArea(from=-4,to=0.745, dnorm, mean=mu, sd=sigma, col=alpha('black',0.25))
+legend('topleft', legend=c("Pr(Z<0.745)"),  
+       fill = c("gray"))
+```
+
+Podemos simular a situação. 
+
+```{r}
 mu = 2
 sigma = 3
 n = 20
-Msim = 100
+Msim = 1000 #<1>
 xMedias = rep(0,Msim)
 for (jsim in 1:Msim){
   sim = rnorm(n, mean=mu, sd=sigma)
@@ -308,20 +347,14 @@ for (jsim in 1:Msim){
 xcrit = 1.5
 mean(xMedias>xcrit)
 ```
-
-
-
 ```{r}
 #| echo: false
 
-z = seq(-3,3,length=1000)
-par(mgp=c(2,1,0),mar=c(3, 3, 2, 1)+0.1,mfrow=c(2,1))
-plt1 = plot(z, dnorm(z), t='l', lwd=2, main='Z~N(0,1)', ylab='')
-colorAreaShade(from=-3, to=2/5, density = dnorm, dens=1, col='gray')
-abline(v=0, lty=2)
-legend('topleft', legend=c("Pr(Z<2/5)"),  
-       fill = c("gray") 
-)
+
+x = seq(from=-3*sigma/sqrt(n)+mu, to=mu+3*sigma/sqrt(n), length=Msim)
+hist(xMedias, breaks = sqrt(Msim),prob=T)
+abline(v=xcrit,lw=2,lty=2)
+lines(x, dnorm(x, mean=mu, sd=sigma/sqrt(n)), t='l', lwd=2, col=1, main="", ylab="")
 ```
 
 :::
@@ -331,10 +364,16 @@ legend('topleft', legend=c("Pr(Z<2/5)"),
 Ao saber a distribuição de amostragem de um determinado estimador $T$ (como a média amostral $\bar X$), podemos construir um intervalo de confiança para o parâmetro populacional desconhecido $\theta$. 
 
 O objetivo será obter $a<b$ tais que
-\begin{align*}
-  \Pr(a\leq \theta \leq b) = \gamma,
-\end{align*}
-onde $\gamma$ é o nível de confiança do intervalo. 
+$$\begin{align*}
+  \Pr(a\leq \theta \leq b) = 1-\alpha,
+\end{align*}$$
+onde $\gamma=1-\alpha$ é o nível de confiança do intervalo.
+
+  * $a$ é o limite inferior
+  * $b$ é o limite superior
+  * Essas são as quantidades aleatórias. Seus valores dependem da amostra particular observada $\mathbf x$.
+  * A distância $b-a$, a amplitude do intervalo, é tão maior quanto mais próximo de 1 for o nível de confiança $\gamma=1-\alpha$. 
+  * Chamamos $\alpha$ de nível de significância. O nível de confiança é $\gamma = 1-\alpha$, a probabilidade de o intervalo $[a,b]$ conter o verdadeiro parâmetro.
 
 ### Intervalo de confiança para a média populacional
 
@@ -356,25 +395,30 @@ tem média zero e variância 1. Ou seja,
 
 Escreva
 \begin{align*}
-  \Pr(-c \leq Z \leq c) = \gamma
+  \Pr(-c \leq Z \leq c) = 1-\alpha
 \end{align*}
 
-Perceba que $c=\Phi^{-1}\left(\frac{1+\gamma}{2}\right)$ ou `qnorm((1-gamma)/2)`.
+Perceba que $c=\Phi^{-1}\left(1-\alpha/2\right)$ ou `qnorm(1-alpha/2)`.
 
-\begin{align*}
-  \Pr\left(-\Phi^{-1}\left(\frac{1+\gamma}{2}\right) \leq \frac{\bar X-\mu}{\sigma/\sqrt{n}}\leq\Phi^{-1}\left(\frac{1+\gamma}{2}\right)\right) = \gamma
-\end{align*}
+$$\begin{align*}
+  \Pr\left(-\Phi^{-1}\left(1-\frac{\alpha}{2}\right) \leq \frac{\bar Y-\mu}{\sigma/\sqrt{n}}\leq\Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right) = \gamma
+\end{align*}$$
 
 Isolando o parâmetro $\mu$ entre as desigualdades, obtemos o intervalo de confiança para a média populacional.
 
 ::: {.callout-tip title="Intervalo de confiança para a média populacional"}
   Se $x=\{x_1,\dots,x_n\}$ é uma amostra aleatória retirada de uma população $X$ com média $\mu$ desconhecida e variância $\sigma^2$ conhecida, então
-  \begin{align*}
-    \Pr\left(\bar x - \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right) \leq \mu \leq \bar x + \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(\frac{1+\gamma}{2}\right)\right) = \gamma
-  \end{align*}
-`LimInf = mean(x) - (sigma/sqrt(n))*qnorm((1+gamma)/2)`
+$$  \begin{align*}
+    \Pr\left(\bar x - \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(1-\frac{\alpha}{2}\right) \leq \mu \leq \bar x + \frac{\sigma}{\sqrt{n}} \Phi^{-1}\left(1-\frac{\alpha}{2}\right)\right) = \gamma
+  \end{align*}$$
+  
+```{r}
+#| eval: false
 
-`LimSup = mean(x) + (sigma/sqrt(n))*qnorm((1+gamma)/2)`
+limite_inferior = mean(x) - (sigma/sqrt(n))*qnorm(1-alpha/2)
+limite_superior = mean(x) + (sigma/sqrt(n))*qnorm(1-alpha/2)
+
+```
 :::
 
 ::: {.callout-note title="Exemplo intervalo de confiança" collapse=true}
@@ -400,6 +444,7 @@ IC
 ```{r}
 #| message: false
 #| warning: false
+#| tidy: false
 mu = 2 #<1>
 sigma = 3 #<1>
 n = 20 #<2>
@@ -416,8 +461,9 @@ IC[,2] = xMedias+(sigma/sqrt(n))*qnorm((1+conf.level)/2)
 require(dplyr)
 non.viol = sum(dplyr::between(rep(mu,MSim),IC[,1],IC[,2]))
 require(plotrix)
+main = paste(non.viol,"de",length(xMedias),"ICs contém a verdadeira média")
 plotrix::plotCI(1:length(xMedias),xMedias,ui=IC[,2], li=IC[,1],
-       main=paste(non.viol,"de",length(xMedias),"ICs contém a verdadeira média"))
+       main=main)
 abline(h=mu)
 ```
 1. Verdadeiros parâmetros $\mu$ e $\sigma$. 
@@ -444,14 +490,21 @@ IC[,2] = xMedias+(sigma/sqrt(n))*qnorm((1+conf.level)/2)
 require(dplyr)
 non.viol = sum(between(rep(mu,length(xMedias)),IC[,1],IC[,2]))
 require(plotrix)
+main = paste(non.viol,"de",length(xMedias),"ICs contém a verdadeira média")
 plotCI(1:length(xMedias),xMedias,ui=IC[,2], li=IC[,1],
-       main=paste(non.viol,"de",length(xMedias),"ICs contém a verdadeira média"))
+       main=main)
 abline(h=mu)
 ```
 :::
 
-::: {.callout-note title="Intervalo de confiança para a proporção populacional" collapse=true}
-TODO: IC proporcao
+### Intervalo de confiança para a proporção populacional
+
+Um caso de extremo interesse é o caso da infe
+
+::: {.callout-note title="Por que as pesquisas de intenção de voto erram tanto?" collapse=true}
+TODO.
+TL;DR:
+Não são baseadas em amostras aleatórias como na definição acima, por vários motivos. Especialmente os intervalos de confiança ("margem de erro") são completa ficção. 
 :::
 
 ### Intervalo de confiança para a média quando a verdadeira variância é desconhecida
@@ -469,16 +522,19 @@ Nesse caso, a média amostral $\bar X$, depois de padronizada, tem distribuiçã
 
 Nesse caso os extremos do intervalo de confiança têm a forma
 \begin{align*}
-  \bar X \pm \frac{S}{\sqrt{n}}t^{-1}_{n-1}\left(\frac{1+\gamma}{2}\right)
+  \bar X \pm \frac{S}{\sqrt{n}}F^{-1}_{n-1}\left(\frac{1+\gamma}{2}\right)
 \end{align*}
+onde $F^{-1}_m$ é a função quantílica de uma distribuição t-Student com $m$ graus de liberdade.
 
-`LimInf = mean(x) - (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)` 
-      
-`LimSup = mean(x) + (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)`
+```{r}
+#| eval: false
+limite_inferior = mean(x) - (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)
+limite_superior = mean(x) + (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)
+```
 
 A distribuição t-Student se aproxima de uma Normal Padrão conforme seus graus de liberdade aumentam.
 
-Portanto a diferença entre os ICs só é relevante quando o tamanho amostral $n$ é pequeno. Para algo como $n>100$, podemos utilizar a estimativa $s^2$ no lugar da verdadeira variância $\sigma^2$ e consultar os quantis `qnorm((1-gamma)/2)` 
+Portanto a diferença entre os ICs só é relevante quando o tamanho amostral $n$ é pequeno. Para algo como $n>100$^[Depende da distribuição da variável original, mas é uma recomendação conservadora na maioria dos casos.], podemos utilizar a estimativa $s^2$ no lugar da verdadeira variância $\sigma^2$ e consultar os quantis `qnorm((1-gamma)/2)` 
 
 ```{r}
 #| echo: false
@@ -606,6 +662,15 @@ O viés é uma propriedade do estimador $T_n$ em repetidas amostras de tamanho $
 TODO
 :::
 
+::: {.callout-note title="$s$ não é estimador não enviesado do desvio padrão $\sigma$" collapse=true}
+Embora $s^2$ seja estimador não enviesado da variância $\sigma^2$, $s=\sqrt{s^2}$ não é estimador não enviesado do parâmetro de desvio-padrão $\sigma=\sqrt{\sigma^2}$. Essa é uma decorrência direta da desigualdade de Jensen.
+
+$$ s^2 = \frac{\sum (x_j-\bar x)^2}{n-1} $$
+$$ s = \sqrt{\frac{\sum (x_j-\bar x)^2}{n-1}} \\ E(s^2) = \sigma^2$$
+$$ E\left(\sqrt{s^2}\right) \leq \sqrt{E(s^2)} \\
+E(\sqrt{s^2})\leq \sqrt{\sigma^2}$$
+:::
+
 ### Variância e erro quadrático médio
 ### Consistência
 
@@ -614,6 +679,75 @@ TODO
 Mas na maior parte das aplicações práticas, especialmente em economia, não temos acesso a repetidas amostras aleatórias retiradas da população subjacente. 
 
 Gostaríamos de pode afirmar algo sobre a precisão de nossas estimativas dada uma única amostra $x=\{X_1,\dots,X_n\}$ conforme o tamanho amostral $n$ cresce cada vez mais. 
+
+
+::: {.callout-tip title="Consistência de um estimador"}
+Uma sequência $\{T_n\}$ de estimadores [calculados com base em amostras de tamanho $n$] é consistente se, conforme $n\rightarrow\infty$,
+
+\begin{align*}
+  \lim_{n\rightarrow\infty} \Pr\left(|T_n-\theta|>\varepsilon\right)=0
+\end{align*}
+Equivalentemente, podemos escrever 
+\begin{align*}
+  \lim_{n\rightarrow\infty} \Pr\left(|T_n-\theta|<\varepsilon\right)=1
+\end{align*}
+:::
+Essa condição quer dizer que o estimador $T_n$ converge em probabilidade para o verdadeiro valor do parâmetro $\theta$ conforme $n$ cresce. Às vezes escrevemos
+\begin{align*}
+    \text{\plim}(T_n)=\theta,
+\end{align*}
+como uma notação mais curta.
+
+Uma sequência $\{T_n\}$ de estimadores de $\theta$ é consistente se, simultaneamente,
+\begin{align*}
+  &\lim_{n\rightarrow\infty} E(T_n)=\theta, \text{ e }\\
+  &\lim_{n\rightarrow\infty} Var(T_n)=0.
+\end{align*}
+
+::: {.callout-note title="Consistência de $\bar X$" collapse=true}
+Seja $X$ uma v.a. com média $\mu$ e variância $\sigma^2$. Tome uma sequência de amostras aleatórias $x^{(n)}$ com tamanho $n$ tal que
+\begin{align*}
+  x^{(1)} &= \{x_1\} \\
+  x^{(2)} &= \{x_1, x_2\} \\
+ & \vdots\\
+  x^{(n)} &= \{x_1,x_2\dots,x_n\}
+\end{align*}
+O estimador $\bar X$ para a média amostral é definido como
+\begin{align*}
+  \bar X(x^{(n)}) = \frac{\sum^n_{j=1}x_j}{n}
+\end{align*}
+Agora vamos ver o que acontece com $E(\bar X)$ e  $Var(\bar X)$ conforme o tamanho amostral $n$ cresce.
+A condição (C1) é sempre satisfeita,  $\E(\bar X)=\mu$ para qualquer tamanho amostral $n$, então
+\begin{align*}
+  \lim_{n\rightarrow\infty}\E(\bar X) = \mu.
+\end{align*}
+A variância de $\bar X$ é dada por
+\begin{align*}
+  \Var(\bar X(\bm x^{(n)})) = \frac{\sigma^2}{n}
+\end{align*}
+Aqui também é direto ver que
+\begin{align*}
+  \lim_{n\rightarrow\infty} \Var(\bar X(\bm x^{(n)})) = \lim_{n\rightarrow\infty}\frac{\sigma^2}{n} = 0
+\end{align*}
+:::
+
+::: {.callout-note title="Consistência de $\hat\sigma^2$" collapse=true}
+Embora $\hat \sigma^2$ seja um estimador viesado, ele é consistente --- no sentido que conforme $n$ cresce, ambos viés e variância diminuem, e nossa estimativa é cada vez mais. 
+Nós calculamos o valor esperado de $\hat\sigma^2$ como 
+$$E(\hat\sigma^2)=\frac{n-1}{n}\sigma^2.$$
+A variância de $\hat\sigma^2$ é (ver exercício [colocar-referencia])
+
+$$Var(\hat\sigma^2)=\frac{2\sigma^4}{n}.$$
+Então é direto ver que
+
+\begin{align*}
+  &\lim_{n\rightarrow\infty} E(\hat\sigma^2) = \lim_{n\rightarrow\infty} \frac{n-1}{n}\sigma^2=\sigma^2, \text{ e } \\
+   &\lim_{n\rightarrow\infty} Var(\hat\sigma^2) = \lim_{n\rightarrow\infty}\frac{2\sigma^4}{n} = 0.
+\end{align*}
+
+:::
+
+
 
 ## Lei dos Grandes Números
 
@@ -746,6 +880,106 @@ legend('topright', col=2:3, lty=1,lw=2, legend=c('t(1)', 't(1)'),cex=.8)
 
 ### Método dos momentos
 
+::: {.callout-note title="Dois estimadores de momentos para o mesmo parâmetro" collapse=true}
+
+:::
+
 ### Máxima Verossimilhança
+
+::: {.callout-tip title="Método da Máxima Verossimilhança"}
+
+  1. Especificamos uma distribuição  probabilidade para a variável aleatória original $X$.
+  
+  $$ X \sim f(x;\theta) $$
+  
+  2. Tomamos uma amostra aleatória de tamanho $n$ 
+  
+\begin{align*} 
+  \mathbf x = \{x_1,x_2,\dots,x_n\}
+\end{align*}
+
+  3. Escrevemos a probabilidade de obter a amostra específica $\mathbf x$. É a função de verossimilhança do parâmetro $\theta$, tomando como dada a amostra observada $\mathbf x$.
+  
+  $$ \mathcal L (\theta;\mathbf x) = \prod^n_{j=1} f(x_j;\theta)$$
+Repare que agora escrevemos $\mathcal L$ como uma função de $\theta$.
+
+  4. O estimador de máxima verossimilhança $\tilde\theta$ é o valor de $\theta$ que
+maximiza a função de verossimilhança $\mathcal L(\theta)$.
+
+$$ \tilde\theta = \arg\max_{\theta\in\Theta} \mathcal L(\theta;\mathbf x) $$
+A interpretação é que $\tilde\theta$ maximiza a probabilidade de sortearmos especificamente a amostra observada em $n$ sorteios da variável aleatória com distribuição $f(x;\theta)$.
+
+:::
+
+::: {.callout-note title="Otimização de função de uma variável real" collapse=true}
+Seja $g:I\rightarrow \mathbb R$ uma função duas vezes continuamente diferenciável.
+
+Se $g^\prime(x_0)=0$, então $x_0$ é dito ponto crítico de $g$.
+
+O ponto crítico $x_0\in I$ é ponto de
+
+  - máximo se $f^{\prime\prime}(x_0)<0$,
+  - mínimo se $f^{\prime\prime}(x_0)>0$, e
+  - inflexão se $f^{\prime\prime}(x_0)=0$.
+
+:::
+
+
+::: {.callout-note title="Estimador de MV na distribuição Exponencial" collapse=true}
+Suponha $X\sim \text{Exp.}(\beta)$. Nesse caso,
+\begin{align*}
+  f(x;\beta)=\frac{1}{\beta}e^{-\frac{x}{\beta}}, \quad x>0, \beta>0.
+\end{align*}
+A função de verossimilhança fica
+\begin{align*}
+\mathcal L(\beta;\mathbf x) &= \prod^n_{j=1} f(x;\beta) =\prod^n_{j=1}\frac{1}{\beta}e^{-x/\beta} \\
+&= \frac{1}{\beta^n}\prod^n_{j=1}e^{-x_j/\beta} = \frac{1}{\beta^n} e^{-\frac{1}{\beta}\sum^n_{j=1}x_j}
+\end{align*}
+
+Alguma álgebra nos leva a 
+$$
+  \frac{d\mathcal L(\lambda;\mathbf x)}{d\lambda} = \lambda^{n-1}e^{-\lambda\sum x_j}(n-\lambda\sum x_j)
+$$
+Então $d\mathcal L(\lambda;\mathbf x)/d\lambda=0$ quando
+
+
+$$\begin{align*}
+\hat\lambda = \left(\frac{\sum^n_{j=1}}{n}\right)
+\end{align*}$$
+
+
+```{r}
+n = 10
+tru.lambda = 5
+smpl = rexp(n = n,rate = tru.lambda)
+lik.exp = function(X,lambda){
+  n = length(X)
+  lik = (lambda^n)*exp(-lambda*sum(X)-n)
+  return(lik)
+} 
+lambda.vals = seq(1,15,by=0.05)
+lik.fun = sapply(lambda.vals, function(j) lik.exp(smpl,j))
+par(mfrow=c(2,1))
+plot(lambda.vals, lik.fun, t="l")
+abline(v=1/mean(smpl))
+plot(lambda.vals, log(lik.fun), t="l")
+abline(v=1/mean(smpl))
+```
+
+::: 
+
+::: {.callout-note title="Diferença entre verossimilhança e probabilidade" collapse=true}
+TODO
+:::
+
+::: {.callout-note title="MLE distribuição Poisson" collapse=true}
+
+$$ f(x;\lambda)=e^{-\lambda}\frac{\lambda^x}{x!} $$
+$$\mathcal L = \prod^n_{j=1}f(x;\lambda)\\
+=\prod e^{-\lambda}\frac{\lambda^{x_j}}{x_j!}\\
+=e^{-n\lambda}\prod\frac{\lambda^{x_j}}{x_j!}$$
+$$ \frac{d\mathcal L}{d\lambda} = Ae^{-\lambda n}\lambda^{\sum x_j - 1}\left(\sum x_j - n\lambda\right)$$
+:::
+
 
 ## Exercícios de fixação

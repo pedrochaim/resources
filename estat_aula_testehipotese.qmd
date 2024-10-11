@@ -1,0 +1,12 @@
+---
+title: "Aula Teste de Hipóteses"
+format: html
+---
+
+### Hipóteses Estatísticas
+
+### Probabilidades de erros
+
+### O conceito de p-valor
+
+### Poder de um Teste
