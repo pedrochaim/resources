@@ -1,0 +1,354 @@
+---
+title: "(Mat) Lista de Exercícios Unidade 2"
+bibliography: ref.bib
+format: html
+---
+
+## Sugestões de referências para estudo
+
+  - [@nicholson2017micro] cap 3, 4
+  - [@hoy2011mathematics] cap 11
+  - [@chiang2006matematica] cap 
+  - [@guidorizzi2] cap 8, 9, 10, 11
+  - [Mathematical methods for economic theory (Martin Osborne)](https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc)
+  
+## Funções reais de múltiplas variáveis reais
+
+::: {#exr-funcoes-multivariadas-1}
+  Seja $f(x,y)=3x+2y$. Calcule
+  
+  a. $f(1,-1)$
+  b. $f(a,x)$
+  c. $\lim_{h\rightarrow 0}\frac{f(x+h,y)-f(x,y)}{h}$
+  d. $\lim_{h\rightarrow 0}\frac{f(x,y+h)-f(x,y)}{h}$
+:::
+
+::: {#exr-funcoes-multivariadas-2}
+  
+  a. Seja $f(x,y)=xy$, obtenha 3 diferentes pares $(x_j,y_j)$ tais que $f(x,y)=2$.
+  b. Seja $g(x,y)=\exp(-x^2/2+y^2/2)$, obtenha 3 diferentes pares $(x_j,y_j)$ tais que $g(x,y)=1/2$.
+:::
+
+::: {#exr-funcoes-multivariadas-3}
+
+Represente graficamente o domínio da função $z=f(x,y)$ dada por
+
+  a. $x+y-1+z^2=0$, $z\geq0$
+  b. $f(x,y)=\frac{x-y}{\sqrt{1-x^2-y^2}}$
+  c. $z=\sqrt{y-x^2}+\sqrt{2x-y}$
+  d. $z=\log(2x^2+y^2-1)$
+  e. $z^2+4 = x^2+y^2$, $z\geq0$
+  f. $z = \sqrt{|x|+|y|}$
+  g. $4x^2+y^2+z^2=1$, $z\leq0$
+  h. $z = \frac{x-y}{\sin x - \sin y}$
+
+:::
+
+::: {#exr-curvas-de-nivel-1}
+#### Curvas de nível 1
+Desenhe as curvas de nível e esboce o gráfico.
+
+  a. $f(x,y)=1-x^2-y^2$
+
+::: {.callout-caution collapse=true title="Solução"}
+  Fazemos $f(x,y)=k$ e interpretamos a curva obtida.
+  $$ \begin{align*}k = 1-x^2-y^2 \\
+  y^2+x^2=1-k\end{align*}$$ 
+  As curvas de nível são círculos com centro em $(x,y)=0$ e raio $\sqrt{1-k}$.
+  Ver figura no [link](https://www.desmos.com/calculator/oigmwy6ayp).
+:::
+
+  b. $f(x,y)=\sqrt{xy}$
+
+::: {.callout-caution collapse=true title="Solução"}
+  $$\begin{align*}
+    k = \sqrt{xy}\\
+    k^2 = xy \\
+    y = \frac{k^2}{x} \\
+    y = (k^2)\frac{1}{x}
+  \end{align*}$$
+  As curvas de nível são múltiplos não negativos de uma hipérbole retangular.
+  Ver figura no [link](https://www.desmos.com/calculator/3t18sfliu9).
+:::
+  
+  c. $z(x,y)=\min(x,y)$
+  d. $g(x,y)=\max(x,y)$
+  e. $h(x,y)=x^2+y^2$
+  f. $f(x,y)=\exp(x^2+y^2)$
+
+:::
+
+
+::: {.callout-tip title="Funções homogêneas"}
+  Uma função $f:A\rightarrow\mathbb R, A\subseteq R^2$, denomina-se função homogênea de grau $k$ se
+    $$\begin{align*}
+        f(tx,ty)=t^k f(x,y),
+    \end{align*}$$
+    para todo $t>0$ e $(x,y)\in A$ tais que $(tx,ty)\in A$.
+:::
+
+::: {#exr-funcoes-homogeneas-1}
+#### Funções homogêneas 1
+
+Classifique as funções abaixo como homogêneas ou não homogêneas. Em caso positivo, determine o grau de homogeneidade. 
+
+  a. $f(x,y)=xy$
+  b. $f(x,y)=x(1+y)$
+  c. $f(x,y)=\sqrt{xy}$
+  d. $f(x,y)=x^\alpha y^\beta$
+  e. $f(x,y)=\frac{x^3-2xy^2}{x^3-y^3}$
+  f. $f(x,y)=\sqrt{x^4+y^4}$
+  g. $f(x,y)=5x^3y + x^4 + 3$
+  h. $f(x,y)=\frac{2}{x^2+y^2}$
+
+:::
+
+::: {#exr-funcoes-homogeneas-2}
+#### Funções homogêneas 2
+Suponha que $f:\mathbb R^2\rightarrow \mathbb R$ seja homogênea de grau 2 e $f(a,b)=a$ para todo $(a,b)$, com $a^2+b^2=1$. Calcule
+  
+  a. $f(4\sqrt{3},4)$
+  b. $f(0,3)$
+  c. $f(x,y)$, tal que $(x,y)\neq(0,0)$
+
+:::
+
+::: {.callout-tip title="Funções homotéticas"}
+  Seja $h:A\rightarrow\mathbb R$, com $A\subseteq \mathbb R^2$ uma função de duas variáveis reais a valores reais homogênea de grau $k$. 
+
+Tome $\phi: I\rightarrow \mathbb R$ com $Im(h)\subseteq I$ uma função monotônica de uma variável real.
+
+Dizemos que $g(x,y)$ é uma função homotética se pode ser escrita como
+$$ g(x,y) = \phi(h(x,y)). $$
+(Funções homotéticas são de interesse porque preservam várias propriedades desejáveis de funções homogêneas.)
+:::
+
+::: {#exr-funcoes-homoteticas-1}
+#### Funções homotéticas 1
+
+As funções abaixo são homotéticas e podem ser escritas como $g(x,y)=\phi(h(x,y))$. Identifique qual é a função homogênea $h(x,y)$ e a função monotônica $\phi(z)$.
+:::
+
+::: {#exr-curvas-de-nivel-funcoes-homoteticas-1}
+Uma função homotética é uma transformação monotônica de uma função homogênea. Uma propriedade importante de funções homotéticas é que suas curvas de nível têm a mesma forma das curvas de nível da função homogênea original.
+
+Obtenha as curvas de nível para os pares de funções abaixo. Mostre que têm a mesma forma.
+:::
+
+## Derivadas parciais
+
+::: {#exr-hoy-406}
+Hoy p406-407 exercícios 1-12
+:::
+
+::: {#exr-hoy-414}
+Hoy p414-415 exercícios 1-9
+:::
+
+::: {.callout-tip title="Taxa Marginal de Substituição (MRS)"}
+
+Dada uma função de utilidade $u(x,y)$, a taxa marginal de substituição MRS (*marginal rate of substitution*) do bem $y$ pelo bem $x$ é definida como: a quantidade do bem $x$ que seria trocada por uma unidade do bem $y$, mantendo o nível de utilidade constante. Ou seja,
+$$
+\begin{align*}
+  MRS(y,x) = -\frac{dy}{dx}\Big|_{u(x,y)=\bar u}
+\end{align*}
+$$
+:::
+
+O seguinte resultado será extremamente útil no cálculo da taxa marginal de substituição.
+
+::: {.callout-tip title="Derivada da função implícita"}
+Seja $z(x,y)$ uma função com duas variáveis continuamente diferenciável. 
+
+Tome a curva de nível $z(x,y)=\bar z$ como função implícita^[É uma função onde $x$ e $y$ estão do mesmo lado da equação. Por exemplo: $\sqrt{x+y}=1$.] de $x$ e $y$.
+
+Então 
+
+$$\begin{align*}
+  \frac{dy}{dx}\Big|_{z(x,y)=\bar z} = -\frac{\frac{\partial z(x,y)}{\partial x}}{\frac{\partial z(x,y)}{\partial y}}.
+\end{align*}$$
+:::
+
+::: {#exr-derivada-funcao-implicita-1}
+#### Derivada da função implícita
+Calcule $dy/dx$.
+
+  a. $z(x,y)=\sqrt{x+y}$
+  
+::: {.callout-caution title="Solução" collapse=true}
+$$\begin{align*}
+  z_x \equiv \frac{\partial z}{\partial x} = 1\times\frac{1}{2}(x+y)^{-1/2} \\
+  z_y \equiv \frac{\partial z}{\partial y} = 1\times\frac{1}{2}(x+y)^{-1/2}
+  \end{align*}$$
+  Portanto
+  $$\begin{align*}
+    \frac{dy}{dx}\Big|_{z=\bar z} = -\frac{z_x}{z_y} = \frac{\frac{1}{2}(x+y)^{-1/2}}{\frac{1}{2}(x+y)^{-1/2}} = -1
+  \end{align*}$$
+:::
+
+  b. $z(x,y)=\sqrt{xy}$
+  
+::: {.callout-caution title="Solução" collapse=true}
+$$\begin{align*} z_x = \frac{y}{2}(xy)^{-1/2}, \quad z_y =\frac{x}{2}(xy)^{-1/2}\end{align*}$$
+Então
+$$\begin{align*}
+   \frac{dy}{dx}\Big|_{z=\bar z} = -\frac{z_x}{z_y} = -\frac{y}{x}
+\end{align*}$$
+:::
+
+  c. $z(x,y)=\sqrt{x^2+y^2}$
+  d. $z(x,y)=a\exp\left(-\frac{1}{2}(x^2+y^2)\right), a>0$
+  e. $z(x,y)=ax+by$
+  f. $z(x,y)=\frac{x^a}{a}+\frac{y^a}{a}$
+  g. $u(x,y)=(x^\delta+y^\delta)^{1/\delta}$
+:::
+
+::: {#exr-mrs-funcoes-homogeneas-1}
+#### MRS de funções homogêneas
+
+Um apelo de funções homogêneas na modelagem de escolha econômica é o fato de sua taxa marginal de substituição entre duas variáveis $(x,y)$ permanecer constante quando multiplicamos ambas as entradas $x$ e $y$ por um escalar $t>0$.   
+
+Mostre que se $u(x,y)$ é função homogênea de grau $k$, então $MRS(tx,ty)=MRS(x,y)$.
+
+:::
+
+## Funções de utilidade e produção
+
+::: {#exr-utilidade-ces}
+#### Função de utilidade CES (*Constant Elasticity of Substitution*)
+
+:::
+
+## Convexidade e concavidade
+
+::: {.callout-tip title="Conjuntos convexos"}
+Um conjunto $S$ formado por vetores $n$-dimensionais é convexo se
+$$ (1-\lambda)x_0 + \lambda x_1 \in S$$
+para todo $x_0,x_1\in S$ e $\lambda \in [0,1]$.
+
+Então um conjunto é convexo se qualquer combinação convexa^[É a "média" que tomamos entre dois pontos ao ponderar por $\lambda$ e $1-\lambda$, com $\lambda\in[0,1]$, e somar.] entre elementos desse conjunto também é elemento do conjunto original.
+
+Se estivermos tratando de vetores bidimensionais, a seguinte imagem é útil.
+
+![Conjuntos convexos](convex_sets.png)
+
+Obs.: Não é comum falar em "conjuntos côncavos". Apenas dizemos que "não são convexos". 
+:::
+
+::: {#exr-conjuntos-convexos-1}
+#### Conjuntos convexos 1
+Determine se os seguintes conjuntos são convexos.
+
+  a.
+  b.
+  c.
+  
+:::
+
+::: {.callout-tip title="Matriz de Derivadas Segundas (Hessiana)"}
+  Seja $f:A\rightarrow \mathbb R, A\subseteq \mathbb R^2$ uma função duas vezes continuamente diferenciável. Definimos sua matriz de derivadas segundas (ou Hessiana) como
+$$
+  H = \begin{bmatrix} f_{xx} & f_{xy} \\ f_{xy} & f_{yy} \end{bmatrix}
+$$
+Repare que $H$ é simétrica^[É igual a sua transposta. $H=H^T$.] Isso acontece porque se $f$ for duas vezes continuamente diferenciável a ordem com que tomamos as derivadas não importa^[As pessoas usam vários nomes diferentes para se referir a esse resultado. No contexto de economia é comum chamar de "Teorema de Young" [link](https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives).]. 
+:::
+
+::: {.callout-tip title="Formas quadráticas e sinais de matrizes"}
+  Tome uma matriz simétrica $2\times 2$
+  $$ X = \begin{bmatrix}x_{11} & c\\ c & x_{22}\end{bmatrix} $$ 
+  e o vetor $2\times 1$
+  $$ \mathbf w = \begin{bmatrix} w_1 \\ w_2\end{bmatrix}$$.
+  Considere o produto
+  $$ \mathbf w^T X \mathbf w = \begin{bmatrix} w_1 & w_2\end{bmatrix}\begin{bmatrix}x_{11} & c\\ c & x_{22}\end{bmatrix}\begin{bmatrix} w_1 \\ w_2\end{bmatrix} $$
+Fazendo os cálculos temos
+$$ \mathbf w^T X \mathbf w = w_1^2x_{11}+w_2^2x_{22}+2w_1w_2c$$.
+Chamamos $\mathbf w^T X \mathbf w$ de forma quadrática (pense como uma função de $\mathbf w$, com coeficientes dados pela matriz $X$).
+
+Dizemos que uma matriz $X$ é
+
+  * positiva definida se $\mathbf w^T X \mathbf w>0$, para todo $\mathbf w\neq\mathbf 0$. Podemos escrever $X>0$.
+  * positiva semidefinida se $\mathbf w^T X \mathbf w\geq0$, para todo $\mathbf w\neq\mathbf 0$. Podemos escrever $X\geq0$.
+  * negativa definida se $\mathbf w^T X \mathbf w<0$, para todo $\mathbf w\neq\mathbf 0$. Podemos escrever $X<0$.
+  * negativa semidefinida se $\mathbf w^T X \mathbf w\leq0$, para todo $\mathbf w\neq\mathbf 0$. Podemos escrever $X\leq0$.
+
+:::
+
+::: {.callout-tip title="Teste de convexidade baseado em $H$"}
+  Seja $f$ uma função de várias variáveis definida em um conjunto convexo $A\subseteq \mathbb R^n$. Denote a Hessiana de $f$ avaliada no ponto $\mathbf x$ como $H(\mathbf x)$. Então
+  
+  * $f$ é côncava se e somente se $H$ é negativa semidefinida para todo $\mathbf x \in A$.
+  * Se $H$ é negativa definida para todo $\mathbf x \in A$ então $f$ é estritamente côncava.
+  * $f$ é convexa 
+  
+:::
+
+::: {.callout-tip title="Critério dos autovalores"}
+  Seja $X$ uma matriz real simétrica com dimensões $n\times n$, e $\lambda_1,\lambda_2,\dots,\lambda_n$ seus associados autovalores. Então
+  
+  * $X$ é positiva definida se $\lambda_j>0$, $j=1,\dots,n$.
+  * $X$ é positiva semidefinida se $\lambda_j\geq0$, $j=1,\dots,n$.
+  * $X$ é negativa definida se $\lambda_j<0$, $j=1,\dots,n$.
+  * $X$ é negativa semidefinida se $\lambda_j\leq0$, $j=1,\dots,n$.
+:::
+
+::: {.callout-tip title="Determinação dos autovalores de uma matriz $2\times2$"}
+  Os autovalores de uma matriz quadrada $X$ são as raízes da equação polinomial $\det(X-I\lambda)=0$.
+  Sempre é verdade que
+  
+  * A soma dos autovalores é igual ao traço^[Soma dos elementos da diagonal principal.] da matriz $X$. $\text{tr}(X)=\lambda_1+\dots+\lambda_n$.
+  * O produto dos autovalores é igual ao determinante da matriz $X$. $\det(X)=\lambda_1\times\lambda_1\times\cdots\lambda_n$.
+  
+  Quando estamos tratando de uma matriz $2\times 2$ é relativamente direto inferir os autovalores da "soma e produto", e a equação de segundo-grau que obtemos ao impor essas condições. 
+
+  Por exemplo
+$$ X = \begin{bmatrix} 2 & 3 \\ 3 & 5 \end{bmatrix}
+$$
+Aqui, $\text{tr}(X)=7$ e $\det(X)=1$
+$$\begin{align*} \lambda_1 + \lambda_2 &= 7 \\ \lambda_1\lambda_2 &= 1 \end{align*}$$
+Ao resolver o sistema obtemos a equação de segundo grau
+$$ -\lambda^2 + 7\lambda -1 = 0$$
+que tem raízes
+$$ \lambda = \frac{7\pm3\sqrt{5}}{2} $$
+Então $\lambda_1 = \frac{7+3\sqrt{5}}{2}$ e $\lambda_2 = \frac{7-3\sqrt{5}}{2}$. 
+
+Cheque que, de fato $\lambda_1+\lambda_2=7$ e $\lambda_1\lambda_2=1$.
+
+Obs.: Não é impossível que uma matriz cujas entradas são números reais tenha autovalores complexos. Quando a matriz em questão é simétrica, garantimos que seus autovalores são reais.
+:::
+
+
+## Otimização irrestrita
+
+::: {#exr-grafico-funcao-univariada-1}
+#### Gráfico de funções univariadas
+Esboce o gráfico das seguintes funções univariadas.
+
+  a. $f(x) = x^3 + x - 1$
+  b. $g(x) = \exp(-x^2/2)$
+  c. $h(x) = x\log(x^2)$
+  d. $z(x) = 3x^4-2x^3+2$
+  
+:::
+
+::: {#exr-otimizacao-lucro-1}
+#### Otimização de lucro 1
+Uma determinada firma produz dois bens e se depara com as seguintes funções demanda:
+$$ q_1=37-\frac{p_1}{2}, \text{ e }q_2=63-p_2, $$
+sendo $q_i$ a quantidade produzida pela firma do bem $i=1,2$ e $p_i$ o preço cobrado pela firma por cada unidade
+do bem $i=1,2$. Essa firma apresenta a seguinte função custo total:
+$$ C(q_1,q_2)=(1+q_1)(1+q_2). $$
+Dadas tais informações, determine: 
+
+  a. As quantidades produzidas ótimas.
+  b. As escolhas ótimas da firma são de fato maximizadoras de lucro? Justifique formalmente sua resposta.
+:::
+
+## Otimização restrita
+
+(O tema da Unidade 2 acaba em condições de primeira ordem para otimização restrita.)
+
+
+## Referências
+
+::: {#refs}
+:::

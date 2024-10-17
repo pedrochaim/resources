@@ -534,7 +534,7 @@ limite_superior = mean(x) + (sd(x)/sqrt(n))*qt((1+gamma)/2,n-1)
 
 A distribuição t-Student se aproxima de uma Normal Padrão conforme seus graus de liberdade aumentam.
 
-Portanto a diferença entre os ICs só é relevante quando o tamanho amostral $n$ é pequeno. Para algo como $n>100$^[Depende da distribuição da variável original, mas é uma recomendação conservadora na maioria dos casos.], podemos utilizar a estimativa $s^2$ no lugar da verdadeira variância $\sigma^2$ e consultar os quantis `qnorm((1-gamma)/2)` 
+Portanto a diferença entre os ICs só é relevante quando o tamanho amostral $n$ é pequeno. Para algo como $n>100$^[Depende da distribuição da variável original, mas é uma recomendação conservadora na maioria dos casos. Existe uma tradição do número $n=30$ como um "corte" para podermos aplicar o teste $t$ como o teste $z$. Ver [researchgate](https://www.researchgate.net/post/What_is_the_rationale_behind_the_magic_number_30_in_statistics#) para uma discussão informal sobre as origens da recomendação. ], podemos utilizar a estimativa $s^2$ no lugar da verdadeira variância $\sigma^2$ e consultar os quantis `qnorm((1+gamma)/2)` (ou `qnorm(1+alpha/2)`) sem muita preocupação. 
 
 ```{r}
 #| echo: false
@@ -591,7 +591,6 @@ Uma estimativa $\hat T$ é o valor assumido pelo estimador em uma amostra partic
 ### Valor esperado e viés
 
 ::: {.callout-tip title="Viés de um estimador"}
-
 Definimos o viés do estimador $T$ com relação ao parâmetro $\theta$ como
 \begin{align*}
   \text{Viés}(T,\theta) = E(T-\theta) = E(T)-\theta
@@ -603,6 +602,15 @@ O estimador $T$ é dito não-enviesado com relação ao parâmetro $\theta$ se $
 \end{align*}
 para qualquer possível valor $\theta\in\Theta$.
 :::
+
+A média amostral é estimador não enviesado da verdadeira média populacional. Como $E(\bar X)=\mu$, 
+$$Vies(\bar X, \mu)=E(\bar X)-\mu=\mu-\mu=0.$$
+Pode ser surpreendente à primeira vista, mas o estimador 
+$$\hat\sigma^2 = \frac{1}{n}\sum^n_{j=1}(\bar x-x_j)^2,$$
+não é um estimador não enviesado para a verdadeira variãncia $\sigma^2.
+
+O estimador não enviesado para a variância é
+$$ s^2 = \frac{1}{n-1}\sum^n_{j=1}(\bar x-x_j)^2 $$
 
 ::: {.callout-note title="Dois estimadores para a variância: $\hat\sigma^2$ e $S^2$" collapse=true}
 Seja $X$ uma v.a. com média $\mu$ e variância $\sigma^2$. Tome uma amostra aleatória com tamanho $n$, $x = (x_1,\dots,x_n)$. Um possível estimador para a variância populacional $\sigma^2$, talvez o mais natural, é
@@ -656,6 +664,39 @@ O cálculo de $E(\hat\sigma^2)$ imediatamente nos sugere uma ``correção'' no e
 Costumamos nos referir a essa versão não-enviesada do estimador da variância como $s^2$ ou $S^2$.
 :::
 
+Isso acontece porque nós "perdemos um grau de liberdade" ao estimar a média. Ver (@nte-grausdeliberdade) para discussão.   
+
+::: {#nte-grausdeliberdade .callout-note title="O que é um grau de liberdade?" collapse=true}
+
+Os parâmetros das distribuições Qui-quadrado e t-Student são chamados "graus de liberdade". Sua interpretação em termos práticos não é tão óbvia como no caso das outras distribuições de probabilidade mencionadas.
+
+Olhando () vemos que os graus de liberdade $m$ são a quantidade de normais padrão ao quadrado $z^2$ somadas para obter a distribuição Chi-quadrado $\chi_m$.
+
+Tome uma amostra de tamanho $n=4$. Fixe $\bar x=1$ 
+  $$ \bar x = \frac{1}{4}(x_1+x_2+x_3+x_4) $$
+Vamos escolher valores possíveis para $x_1,x_2,x_3,x_4$. Diga
+  - $x_1 = 0$, $x_2=1$, $x_3=2$
+  - Para termos $\bar x=1$, último valor da amostra, $x_4$ tem, necessáriamente que ser $x_4=1$.
+  
+Ao fixar a média amostral, determinamos um dos valores da amostra (depois de sorteados todos os demais). 
+
+Quando estimamos a variância amostral usando
+$$ \hat\sigma^2 = \frac{1}{n}\sum^n_{j=1}(x_j - \bar x)^2 \text{ ou }  s^2= \frac{n}{n-1}\hat\sigma^2,$$
+Para calcular a variância nós precisamos subtraír a média de cada observação, a transformação $u_j = X_j-\bar X$. Isso tem o efeito de fixar a média da nova amostra $\{u_j\}^n_{j=1}$ em $\bar u=0$. E $\hat\sigma^2$ é a média do quadrado da variável $u$, $\sum^n_{j=1}u^2/n$.
+
+Podemos interpretar os graus de liberdade como uma medida de quanto a dispersão dos dados efetivamente define o valor da variância amostral, contra quanto a estimativa da média amostral define esse valor.
+
+No nosso contexto atual nós perdemos apenas um grau de liberdade ao estimar a média e o efeito parece inócuo. 
+
+Mas em aplicações como regressão linear, onde usamos um conjunto de variáveis independentes para explicar uma variável depenente,
+
+$$ y_j = \beta_1x_{t,1} + \beta_2x_{t,2} + \dots + \beta_px_{t,p} + u_j $$
+Nós perdemos um grau de liberdade para cada coovariada $1,\dots,p$. Então se $p$ próximo de $n$, nossa estimativa para a variância do termo de erro $u_j$ vai ser baseada em poucas "observações efetivamente livres".  
+
+
+:::
+
+
 O viés é uma propriedade do estimador $T_n$ em repetidas amostras de tamanho $n$. 
 
 ::: {.callout-note title="Simulação de estimativas para a variância: $\hat\sigma^2$ e $S^2$" collapse=true}
@@ -671,7 +712,11 @@ $$ E\left(\sqrt{s^2}\right) \leq \sqrt{E(s^2)} \\
 E(\sqrt{s^2})\leq \sqrt{\sigma^2}$$
 :::
 
-### Variância e erro quadrático médio
+### Variância, eficiência relativa, e erro quadrático médio
+
+A variância de um estimador é simplesmente $Var(T)=E(T^2)-E(T)^2$.
+
+
 ### Consistência
 
 É interessante termos um estimador não enviesado (...).
@@ -753,11 +798,19 @@ Então é direto ver que
 
 A Lei Fraca dos Grandes Números (LFGN) garante que a estimativa da média amostral $\bar x$, calculada a partir de amostras amostras aleatórias de tamanho $n$ da população original, vai se aproximar cada vez mais da verdadeira média populacional $\mu$ conforme $n$ cresce.
 
+
+
+See @thm-LFGN
+
 ::: {.callout-tip title="Lei Fraca dos Grandes Números"}
+::: {#thm-LFGN title="Lei Fraca dos Grandes Números"}
+#### Lei Fraca dos Grandes Números 
+
 Seja $X_1,X_2,\dots$ uma sequência de variáveis aleatórias iid com $E(X_i)=\mu$ e $Var(X_i)=\sigma^2<\infty$. Defina $\bar X_n=(1/n)\sum^n_{i=1}X_i$. Então, para todo $\epsilon>0$,
 \begin{align*}
   \lim_{n\rightarrow\infty} \Pr(|\bar X_n - \mu| < \epsilon) = 1.
 \end{align*}
+:::
 :::
 
 Uma variável aleatória $C$ com distribuição Chi-quadrado $\chi^2(v)$ e $v$ "graus de liberdade" é definida como a soma de $v$ Normais Padrão independentes. (Obs.: É relacionada com a distribuição da variância amostral.)
@@ -968,6 +1021,11 @@ abline(v=1/mean(smpl))
 
 ::: 
 
+::: {.callout-tip title="Função de log-verossimilhança"}
+
+:::
+
+
 ::: {.callout-note title="Diferença entre verossimilhança e probabilidade" collapse=true}
 TODO
 :::
@@ -983,3 +1041,12 @@ $$ \frac{d\mathcal L}{d\lambda} = Ae^{-\lambda n}\lambda^{\sum x_j - 1}\left(\su
 
 
 ## Exercícios de fixação
+
+::: {#exr-transformacao-monotonica-extremos collapse=true}
+(Transformações monotônica preservam a localização de extremos) Sejam $f:I_1\rightarrow \mathbb R$ e $g:I_2 \rightarrow\mathbb R$, com $f[I_1]\subset I_2$, funções duas vezes continuamente diferenciáveis. Mostre que, se $x_0$ é ponto de máximo ou mínimo local de $f(x)$, então também é máximo ou mínimo local de $g(f(x))$.
+
+::: {.callout-caution collapse=true title="Solução"}
+
+:::
+
+:::

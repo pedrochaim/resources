@@ -11,6 +11,7 @@ website:
       - estat_lista_unidade2.qmd
       - estat_aula_inferencia.qmd
       - estat_aula_regressao.qmd
+      - mat_lista_unidade2.qmd
 
 format:
   html:

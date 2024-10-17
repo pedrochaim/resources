@@ -167,6 +167,10 @@ window.Quarto = {
     <a class="nav-link" href="./estat_aula_regressao.html"> 
 <span class="menu-text">Aula Regressão Linear</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./mat_lista_unidade2.html"> 
+<span class="menu-text">(Mat) Lista de Exercícios Unidade 2</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -201,7 +205,7 @@ window.Quarto = {
   <li><a href="#propriedades-de-estimadores" id="toc-propriedades-de-estimadores" class="nav-link" data-scroll-target="#propriedades-de-estimadores">Propriedades de Estimadores</a>
   <ul class="collapse">
   <li><a href="#valor-esperado-e-viés" id="toc-valor-esperado-e-viés" class="nav-link" data-scroll-target="#valor-esperado-e-viés">Valor esperado e viés</a></li>
-  <li><a href="#variância-e-erro-quadrático-médio" id="toc-variância-e-erro-quadrático-médio" class="nav-link" data-scroll-target="#variância-e-erro-quadrático-médio">Variância e erro quadrático médio</a></li>
+  <li><a href="#variância-eficiência-relativa-e-erro-quadrático-médio" id="toc-variância-eficiência-relativa-e-erro-quadrático-médio" class="nav-link" data-scroll-target="#variância-eficiência-relativa-e-erro-quadrático-médio">Variância, eficiência relativa, e erro quadrático médio</a></li>
   <li><a href="#consistência" id="toc-consistência" class="nav-link" data-scroll-target="#consistência">Consistência</a></li>
   </ul></li>
   <li><a href="#lei-dos-grandes-números" id="toc-lei-dos-grandes-números" class="nav-link" data-scroll-target="#lei-dos-grandes-números">Lei dos Grandes Números</a></li>
@@ -650,7 +654,7 @@ Exemplo
 <span id="annotated-cell-12-10"><a href="#annotated-cell-12-10" aria-hidden="true" tabindex="-1"></a>xcrit <span class="ot">=</span> <span class="fl">1.5</span></span>
 <span id="annotated-cell-12-11"><a href="#annotated-cell-12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(xMedias<span class="sc">&gt;</span>xcrit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8</code></pre>
+<pre><code>[1] 0.783</code></pre>
 </div>
 </div>
 </div>
@@ -844,7 +848,7 @@ Por que as pesquisas de intenção de voto erram tanto?
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>limite_superior <span class="ot">=</span> <span class="fu">mean</span>(x) <span class="sc">+</span> (<span class="fu">sd</span>(x)<span class="sc">/</span><span class="fu">sqrt</span>(n))<span class="sc">*</span><span class="fu">qt</span>((<span class="dv">1</span><span class="sc">+</span>gamma)<span class="sc">/</span><span class="dv">2</span>,n<span class="dv">-1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A distribuição t-Student se aproxima de uma Normal Padrão conforme seus graus de liberdade aumentam.</p>
-<p>Portanto a diferença entre os ICs só é relevante quando o tamanho amostral <span class="math inline">\(n\)</span> é pequeno. Para algo como <span class="math inline">\(n&gt;100\)</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, podemos utilizar a estimativa <span class="math inline">\(s^2\)</span> no lugar da verdadeira variância <span class="math inline">\(\sigma^2\)</span> e consultar os quantis <code>qnorm((1-gamma)/2)</code></p>
+<p>Portanto a diferença entre os ICs só é relevante quando o tamanho amostral <span class="math inline">\(n\)</span> é pequeno. Para algo como <span class="math inline">\(n&gt;100\)</span><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, podemos utilizar a estimativa <span class="math inline">\(s^2\)</span> no lugar da verdadeira variância <span class="math inline">\(\sigma^2\)</span> e consultar os quantis <code>qnorm((1+gamma)/2)</code> (ou <code>qnorm(1+alpha/2)</code>) sem muita preocupação.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -935,6 +939,8 @@ Viés de um estimador
 \end{align*}\]</span> para qualquer possível valor <span class="math inline">\(\theta\in\Theta\)</span>.</p>
 </div>
 </div>
+<p>A média amostral é estimador não enviesado da verdadeira média populacional. Como <span class="math inline">\(E(\bar X)=\mu\)</span>, <span class="math display">\[Vies(\bar X, \mu)=E(\bar X)-\mu=\mu-\mu=0.\]</span> Pode ser surpreendente à primeira vista, mas o estimador <span class="math display">\[\hat\sigma^2 = \frac{1}{n}\sum^n_{j=1}(\bar x-x_j)^2,\]</span> não é um estimador não enviesado para a verdadeira variãncia $^2.</p>
+<p>O estimador não enviesado para a variância é <span class="math display">\[ s^2 = \frac{1}{n-1}\sum^n_{j=1}(\bar x-x_j)^2 \]</span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Dois estimadores para a variância: $\hat\sigma^2$ e $S^2$">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -979,9 +985,34 @@ Agora tome <span class="math inline">\(E(\hat \sigma^2)\)</span>. <span class="m
 </div>
 </div>
 </div>
+<p>Isso acontece porque nós “perdemos um grau de liberdade” ao estimar a média. Ver (<a href="#nte-grausdeliberdade" class="quarto-xref">Note&nbsp;1</a>) para discussão.</p>
+<div id="nte-grausdeliberdade" class="callout callout-style-default callout-note callout-titled" title="O que é um grau de liberdade?">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note&nbsp;1: O que é um grau de liberdade?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Os parâmetros das distribuições Qui-quadrado e t-Student são chamados “graus de liberdade”. Sua interpretação em termos práticos não é tão óbvia como no caso das outras distribuições de probabilidade mencionadas.</p>
+<p>Olhando () vemos que os graus de liberdade <span class="math inline">\(m\)</span> são a quantidade de normais padrão ao quadrado <span class="math inline">\(z^2\)</span> somadas para obter a distribuição Chi-quadrado <span class="math inline">\(\chi_m\)</span>.</p>
+<p>Tome uma amostra de tamanho <span class="math inline">\(n=4\)</span>. Fixe <span class="math inline">\(\bar x=1\)</span> <span class="math display">\[ \bar x = \frac{1}{4}(x_1+x_2+x_3+x_4) \]</span> Vamos escolher valores possíveis para <span class="math inline">\(x_1,x_2,x_3,x_4\)</span>. Diga - <span class="math inline">\(x_1 = 0\)</span>, <span class="math inline">\(x_2=1\)</span>, <span class="math inline">\(x_3=2\)</span> - Para termos <span class="math inline">\(\bar x=1\)</span>, último valor da amostra, <span class="math inline">\(x_4\)</span> tem, necessáriamente que ser <span class="math inline">\(x_4=1\)</span>.</p>
+<p>Ao fixar a média amostral, determinamos um dos valores da amostra (depois de sorteados todos os demais).</p>
+<p>Quando estimamos a variância amostral usando <span class="math display">\[ \hat\sigma^2 = \frac{1}{n}\sum^n_{j=1}(x_j - \bar x)^2 \text{ ou }  s^2= \frac{n}{n-1}\hat\sigma^2,\]</span> Para calcular a variância nós precisamos subtraír a média de cada observação, a transformação <span class="math inline">\(u_j = X_j-\bar X\)</span>. Isso tem o efeito de fixar a média da nova amostra <span class="math inline">\(\{u_j\}^n_{j=1}\)</span> em <span class="math inline">\(\bar u=0\)</span>. E <span class="math inline">\(\hat\sigma^2\)</span> é a média do quadrado da variável <span class="math inline">\(u\)</span>, <span class="math inline">\(\sum^n_{j=1}u^2/n\)</span>.</p>
+<p>Podemos interpretar os graus de liberdade como uma medida de quanto a dispersão dos dados efetivamente define o valor da variância amostral, contra quanto a estimativa da média amostral define esse valor.</p>
+<p>No nosso contexto atual nós perdemos apenas um grau de liberdade ao estimar a média e o efeito parece inócuo.</p>
+<p>Mas em aplicações como regressão linear, onde usamos um conjunto de variáveis independentes para explicar uma variável depenente,</p>
+<p><span class="math display">\[ y_j = \beta_1x_{t,1} + \beta_2x_{t,2} + \dots + \beta_px_{t,p} + u_j \]</span> Nós perdemos um grau de liberdade para cada coovariada <span class="math inline">\(1,\dots,p\)</span>. Então se <span class="math inline">\(p\)</span> próximo de <span class="math inline">\(n\)</span>, nossa estimativa para a variância do termo de erro <span class="math inline">\(u_j\)</span> vai ser baseada em poucas “observações efetivamente livres”.</p>
+</div>
+</div>
+</div>
 <p>O viés é uma propriedade do estimador <span class="math inline">\(T_n\)</span> em repetidas amostras de tamanho <span class="math inline">\(n\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Simulação de estimativas para a variância: $\hat\sigma^2$ e $S^2$">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -990,14 +1021,14 @@ Simulação de estimativas para a variância: <span class="math inline">\(\hat\s
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>TODO</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="$s$ não é estimador não enviesado do desvio padrão $\sigma$">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1006,7 +1037,7 @@ Simulação de estimativas para a variância: <span class="math inline">\(\hat\s
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Embora <span class="math inline">\(s^2\)</span> seja estimador não enviesado da variância <span class="math inline">\(\sigma^2\)</span>, <span class="math inline">\(s=\sqrt{s^2}\)</span> não é estimador não enviesado do parâmetro de desvio-padrão <span class="math inline">\(\sigma=\sqrt{\sigma^2}\)</span>. Essa é uma decorrência direta da desigualdade de Jensen.</p>
 <p><span class="math display">\[ s^2 = \frac{\sum (x_j-\bar x)^2}{n-1} \]</span> <span class="math display">\[ s = \sqrt{\frac{\sum (x_j-\bar x)^2}{n-1}} \\ E(s^2) = \sigma^2\]</span> <span class="math display">\[ E\left(\sqrt{s^2}\right) \leq \sqrt{E(s^2)} \\
@@ -1015,8 +1046,9 @@ E(\sqrt{s^2})\leq \sqrt{\sigma^2}\]</span></p>
 </div>
 </div>
 </section>
-<section id="variância-e-erro-quadrático-médio" class="level3">
-<h3 class="anchored" data-anchor-id="variância-e-erro-quadrático-médio">Variância e erro quadrático médio</h3>
+<section id="variância-eficiência-relativa-e-erro-quadrático-médio" class="level3">
+<h3 class="anchored" data-anchor-id="variância-eficiência-relativa-e-erro-quadrático-médio">Variância, eficiência relativa, e erro quadrático médio</h3>
+<p>A variância de um estimador é simplesmente <span class="math inline">\(Var(T)=E(T^2)-E(T)^2\)</span>.</p>
 </section>
 <section id="consistência" class="level3">
 <h3 class="anchored" data-anchor-id="consistência">Consistência</h3>
@@ -1049,7 +1081,7 @@ Consistência de um estimador
   &amp;\lim_{n\rightarrow\infty} Var(T_n)=0.
 \end{align*}\]</span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Consistência de $\bar X$">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1058,7 +1090,7 @@ Consistência de <span class="math inline">\(\bar X\)</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Seja <span class="math inline">\(X\)</span> uma v.a. com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span>. Tome uma sequência de amostras aleatórias <span class="math inline">\(x^{(n)}\)</span> com tamanho <span class="math inline">\(n\)</span> tal que <span class="math display">\[\begin{align*}
   x^{(1)} &amp;= \{x_1\} \\
@@ -1078,7 +1110,7 @@ Consistência de <span class="math inline">\(\bar X\)</span>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Consistência de $\hat\sigma^2$">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1087,7 +1119,7 @@ Consistência de <span class="math inline">\(\hat\sigma^2\)</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Embora <span class="math inline">\(\hat \sigma^2\)</span> seja um estimador viesado, ele é consistente — no sentido que conforme <span class="math inline">\(n\)</span> cresce, ambos viés e variância diminuem, e nossa estimativa é cada vez mais. Nós calculamos o valor esperado de <span class="math inline">\(\hat\sigma^2\)</span> como <span class="math display">\[E(\hat\sigma^2)=\frac{n-1}{n}\sigma^2.\]</span> A variância de <span class="math inline">\(\hat\sigma^2\)</span> é (ver exercício [colocar-referencia])</p>
 <p><span class="math display">\[Var(\hat\sigma^2)=\frac{2\sigma^4}{n}.\]</span> Então é direto ver que</p>
@@ -1103,6 +1135,7 @@ Consistência de <span class="math inline">\(\hat\sigma^2\)</span>
 <section id="lei-dos-grandes-números" class="level2">
 <h2 class="anchored" data-anchor-id="lei-dos-grandes-números">Lei dos Grandes Números</h2>
 <p>A Lei Fraca dos Grandes Números (LFGN) garante que a estimativa da média amostral <span class="math inline">\(\bar x\)</span>, calculada a partir de amostras amostras aleatórias de tamanho <span class="math inline">\(n\)</span> da população original, vai se aproximar cada vez mais da verdadeira média populacional <span class="math inline">\(\mu\)</span> conforme <span class="math inline">\(n\)</span> cresce.</p>
+<p>See <a href="#thm-LFGN" class="quarto-xref">Theorem&nbsp;1</a></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Lei Fraca dos Grandes Números">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1113,9 +1146,11 @@ Lei Fraca dos Grandes Números
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Seja <span class="math inline">\(X_1,X_2,\dots\)</span> uma sequência de variáveis aleatórias iid com <span class="math inline">\(E(X_i)=\mu\)</span> e <span class="math inline">\(Var(X_i)=\sigma^2&lt;\infty\)</span>. Defina <span class="math inline">\(\bar X_n=(1/n)\sum^n_{i=1}X_i\)</span>. Então, para todo <span class="math inline">\(\epsilon&gt;0\)</span>, <span class="math display">\[\begin{align*}
+<div id="thm-LFGN" class="theorem" title="Lei Fraca dos Grandes Números">
+<p><span class="theorem-title"><strong>Theorem 1 (Lei Fraca dos Grandes Números)</strong></span> Seja <span class="math inline">\(X_1,X_2,\dots\)</span> uma sequência de variáveis aleatórias iid com <span class="math inline">\(E(X_i)=\mu\)</span> e <span class="math inline">\(Var(X_i)=\sigma^2&lt;\infty\)</span>. Defina <span class="math inline">\(\bar X_n=(1/n)\sum^n_{i=1}X_i\)</span>. Então, para todo <span class="math inline">\(\epsilon&gt;0\)</span>, <span class="math display">\[\begin{align*}
   \lim_{n\rightarrow\infty} \Pr(|\bar X_n - \mu| &lt; \epsilon) = 1.
 \end{align*}\]</span></p>
+</div>
 </div>
 </div>
 <p>Uma variável aleatória <span class="math inline">\(C\)</span> com distribuição Chi-quadrado <span class="math inline">\(\chi^2(v)\)</span> e <span class="math inline">\(v\)</span> “graus de liberdade” é definida como a soma de <span class="math inline">\(v\)</span> Normais Padrão independentes. (Obs.: É relacionada com a distribuição da variância amostral.) <span class="math display">\[
@@ -1175,7 +1210,7 @@ Lei Fraca dos Grandes Números
 </div>
 <p>De modo geral, a LGN vai garantir a consistência dos estimadores dos momentos <span class="math inline">\(E(X^k)\)</span> contanto que o momento em si seja bem definido. Isto é, <span class="math inline">\(E(X^k)&lt;\infty\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exemplo de violação da LGN">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1184,7 +1219,7 @@ Exemplo de violação da LGN
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Uma variável aleatória <span class="math inline">\(T\)</span> com distribuição t-Student e <span class="math inline">\(m\)</span> graus de liberdade tem função densidade de probabilidade <span class="math display">\[\begin{align}
         f_T(t;m) = \frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{m\pi}\Gamma\left(\frac{m}{2}\right)}\left(1+\frac{t^2}{m}\right)^{-\left(\frac{m+1}{2}\right)}, \quad -\infty&lt;t&lt;\infty.
@@ -1231,7 +1266,7 @@ Exemplo de violação da LGN
 <section id="método-dos-momentos" class="level3">
 <h3 class="anchored" data-anchor-id="método-dos-momentos">Método dos momentos</h3>
 <div class="callout callout-style-default callout-note callout-titled" title="Dois estimadores de momentos para o mesmo parâmetro">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1240,7 +1275,7 @@ Dois estimadores de momentos para o mesmo parâmetro
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 
 </div>
@@ -1280,7 +1315,7 @@ Método da Máxima Verossimilhança
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Otimização de função de uma variável real">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1289,7 +1324,7 @@ Otimização de função de uma variável real
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-24" class="callout-24-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Seja <span class="math inline">\(g:I\rightarrow \mathbb R\)</span> uma função duas vezes continuamente diferenciável.</p>
 <p>Se <span class="math inline">\(g^\prime(x_0)=0\)</span>, então <span class="math inline">\(x_0\)</span> é dito ponto crítico de <span class="math inline">\(g\)</span>.</p>
@@ -1303,7 +1338,7 @@ Otimização de função de uma variável real
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Estimador de MV na distribuição Exponencial">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1312,7 +1347,7 @@ Estimador de MV na distribuição Exponencial
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suponha <span class="math inline">\(X\sim \text{Exp.}(\beta)\)</span>. Nesse caso, <span class="math display">\[\begin{align*}
   f(x;\beta)=\frac{1}{\beta}e^{-\frac{x}{\beta}}, \quad x&gt;0, \beta&gt;0.
@@ -1353,8 +1388,21 @@ Estimador de MV na distribuição Exponencial
 </div>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Função de log-verossimilhança">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Função de log-verossimilhança
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
 <div class="callout callout-style-default callout-note callout-titled" title="Diferença entre verossimilhança e probabilidade">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1363,14 +1411,14 @@ Diferença entre verossimilhança e probabilidade
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>TODO</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="MLE distribuição Poisson">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1379,7 +1427,7 @@ MLE distribuição Poisson
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[ f(x;\lambda)=e^{-\lambda}\frac{\lambda^x}{x!} \]</span> <span class="math display">\[\mathcal L = \prod^n_{j=1}f(x;\lambda)\\
 =\prod e^{-\lambda}\frac{\lambda^{x_j}}{x_j!}\\
@@ -1391,6 +1439,25 @@ MLE distribuição Poisson
 </section>
 <section id="exercícios-de-fixação" class="level2">
 <h2 class="anchored" data-anchor-id="exercícios-de-fixação">Exercícios de fixação</h2>
+<div id="exr-transformacao-monotonica-extremos" class="theorem exercise" data-collapse="true">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> (Transformações monotônica preservam a localização de extremos) Sejam <span class="math inline">\(f:I_1\rightarrow \mathbb R\)</span> e <span class="math inline">\(g:I_2 \rightarrow\mathbb R\)</span>, com <span class="math inline">\(f[I_1]\subset I_2\)</span>, funções duas vezes continuamente diferenciáveis. Mostre que, se <span class="math inline">\(x_0\)</span> é ponto de máximo ou mínimo local de <span class="math inline">\(f(x)\)</span>, então também é máximo ou mínimo local de <span class="math inline">\(g(f(x))\)</span>.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solução">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -1400,7 +1467,7 @@ MLE distribuição Poisson
 
 <ol>
 <li id="fn1"><p>Isso vem do fato da soma de v.a.s Normais ter também distribuição Normal. Ver função geradora de momentos.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Depende da distribuição da variável original, mas é uma recomendação conservadora na maioria dos casos.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Depende da distribuição da variável original, mas é uma recomendação conservadora na maioria dos casos. Existe uma tradição do número <span class="math inline">\(n=30\)</span> como um “corte” para podermos aplicar o teste <span class="math inline">\(t\)</span> como o teste <span class="math inline">\(z\)</span>. Ver <a href="https://www.researchgate.net/post/What_is_the_rationale_behind_the_magic_number_30_in_statistics#">researchgate</a> para uma discussão informal sobre as origens da recomendação. <a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
