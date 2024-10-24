@@ -654,7 +654,7 @@ Exemplo
 <span id="annotated-cell-12-10"><a href="#annotated-cell-12-10" aria-hidden="true" tabindex="-1"></a>xcrit <span class="ot">=</span> <span class="fl">1.5</span></span>
 <span id="annotated-cell-12-11"><a href="#annotated-cell-12-11" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(xMedias<span class="sc">&gt;</span>xcrit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.783</code></pre>
+<pre><code>[1] 0.775</code></pre>
 </div>
 </div>
 </div>
@@ -1048,7 +1048,37 @@ E(\sqrt{s^2})\leq \sqrt{\sigma^2}\]</span></p>
 </section>
 <section id="variância-eficiência-relativa-e-erro-quadrático-médio" class="level3">
 <h3 class="anchored" data-anchor-id="variância-eficiência-relativa-e-erro-quadrático-médio">Variância, eficiência relativa, e erro quadrático médio</h3>
+<div class="callout callout-style-default callout-tip callout-titled" title="Eficiência relativa entre estimadores não enviesados">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Eficiência relativa entre estimadores não enviesados
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>A variância de um estimador é simplesmente <span class="math inline">\(Var(T)=E(T^2)-E(T)^2\)</span>.</p>
+<p>Seja <span class="math inline">\(T\)</span> e <span class="math inline">\(\tilde T\)</span> estimadores não enviesados do parâmetro <span class="math inline">\(\theta\)</span>. Dizemos que <span class="math inline">\(T\)</span> é relativamente mais eficiente do que <span class="math inline">\(\tilde T\)</span> se <span class="math display">\[\begin{align*}Var(T)&lt;Var(\tilde T),\end{align*}\]</span> para todo <span class="math inline">\(\theta\in\Theta\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Estimador não eficiente de $\mu$">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Estimador não eficiente de <span class="math inline">\(\mu\)</span>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+<p>Nós não podemos comparar diretamente a variância de estimadores enviesados. Nesse caso nós calculamos o <em>erro quadrático médio</em> (EQM), definido como variância mais viés ao quadrado. <span class="math display">\[ EQM(T,\theta) = Var(T) + E(T-\theta)^2 \]</span></p>
 </section>
 <section id="consistência" class="level3">
 <h3 class="anchored" data-anchor-id="consistência">Consistência</h3>
@@ -1081,7 +1111,7 @@ Consistência de um estimador
   &amp;\lim_{n\rightarrow\infty} Var(T_n)=0.
 \end{align*}\]</span></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Consistência de $\bar X$">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1090,7 +1120,7 @@ Consistência de <span class="math inline">\(\bar X\)</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Seja <span class="math inline">\(X\)</span> uma v.a. com média <span class="math inline">\(\mu\)</span> e variância <span class="math inline">\(\sigma^2\)</span>. Tome uma sequência de amostras aleatórias <span class="math inline">\(x^{(n)}\)</span> com tamanho <span class="math inline">\(n\)</span> tal que <span class="math display">\[\begin{align*}
   x^{(1)} &amp;= \{x_1\} \\
@@ -1110,7 +1140,7 @@ Consistência de <span class="math inline">\(\bar X\)</span>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Consistência de $\hat\sigma^2$">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1119,7 +1149,7 @@ Consistência de <span class="math inline">\(\hat\sigma^2\)</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Embora <span class="math inline">\(\hat \sigma^2\)</span> seja um estimador viesado, ele é consistente — no sentido que conforme <span class="math inline">\(n\)</span> cresce, ambos viés e variância diminuem, e nossa estimativa é cada vez mais. Nós calculamos o valor esperado de <span class="math inline">\(\hat\sigma^2\)</span> como <span class="math display">\[E(\hat\sigma^2)=\frac{n-1}{n}\sigma^2.\]</span> A variância de <span class="math inline">\(\hat\sigma^2\)</span> é (ver exercício [colocar-referencia])</p>
 <p><span class="math display">\[Var(\hat\sigma^2)=\frac{2\sigma^4}{n}.\]</span> Então é direto ver que</p>
@@ -1210,7 +1240,7 @@ Lei Fraca dos Grandes Números
 </div>
 <p>De modo geral, a LGN vai garantir a consistência dos estimadores dos momentos <span class="math inline">\(E(X^k)\)</span> contanto que o momento em si seja bem definido. Isto é, <span class="math inline">\(E(X^k)&lt;\infty\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exemplo de violação da LGN">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1219,7 +1249,7 @@ Exemplo de violação da LGN
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Uma variável aleatória <span class="math inline">\(T\)</span> com distribuição t-Student e <span class="math inline">\(m\)</span> graus de liberdade tem função densidade de probabilidade <span class="math display">\[\begin{align}
         f_T(t;m) = \frac{\Gamma\left(\frac{m+1}{2}\right)}{\sqrt{m\pi}\Gamma\left(\frac{m}{2}\right)}\left(1+\frac{t^2}{m}\right)^{-\left(\frac{m+1}{2}\right)}, \quad -\infty&lt;t&lt;\infty.
@@ -1266,7 +1296,7 @@ Exemplo de violação da LGN
 <section id="método-dos-momentos" class="level3">
 <h3 class="anchored" data-anchor-id="método-dos-momentos">Método dos momentos</h3>
 <div class="callout callout-style-default callout-note callout-titled" title="Dois estimadores de momentos para o mesmo parâmetro">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1275,7 +1305,7 @@ Dois estimadores de momentos para o mesmo parâmetro
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 
 </div>
@@ -1315,7 +1345,7 @@ Método da Máxima Verossimilhança
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Otimização de função de uma variável real">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1324,7 +1354,7 @@ Otimização de função de uma variável real
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Seja <span class="math inline">\(g:I\rightarrow \mathbb R\)</span> uma função duas vezes continuamente diferenciável.</p>
 <p>Se <span class="math inline">\(g^\prime(x_0)=0\)</span>, então <span class="math inline">\(x_0\)</span> é dito ponto crítico de <span class="math inline">\(g\)</span>.</p>
@@ -1338,7 +1368,7 @@ Otimização de função de uma variável real
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Estimador de MV na distribuição Exponencial">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1347,7 +1377,7 @@ Estimador de MV na distribuição Exponencial
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-28" class="callout-28-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suponha <span class="math inline">\(X\sim \text{Exp.}(\beta)\)</span>. Nesse caso, <span class="math display">\[\begin{align*}
   f(x;\beta)=\frac{1}{\beta}e^{-\frac{x}{\beta}}, \quad x&gt;0, \beta&gt;0.
@@ -1402,7 +1432,7 @@ Função de log-verossimilhança
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="Diferença entre verossimilhança e probabilidade">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-28-contents" aria-controls="callout-28" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1411,14 +1441,14 @@ Diferença entre verossimilhança e probabilidade
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-28" class="callout-28-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>TODO</p>
 </div>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled" title="MLE distribuição Poisson">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1427,7 +1457,7 @@ MLE distribuição Poisson
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[ f(x;\lambda)=e^{-\lambda}\frac{\lambda^x}{x!} \]</span> <span class="math display">\[\mathcal L = \prod^n_{j=1}f(x;\lambda)\\
 =\prod e^{-\lambda}\frac{\lambda^{x_j}}{x_j!}\\
@@ -1439,10 +1469,19 @@ MLE distribuição Poisson
 </section>
 <section id="exercícios-de-fixação" class="level2">
 <h2 class="anchored" data-anchor-id="exercícios-de-fixação">Exercícios de fixação</h2>
-<div id="exr-transformacao-monotonica-extremos" class="theorem exercise" data-collapse="true">
-<p><span class="theorem-title"><strong>Exercise 1</strong></span> (Transformações monotônica preservam a localização de extremos) Sejam <span class="math inline">\(f:I_1\rightarrow \mathbb R\)</span> e <span class="math inline">\(g:I_2 \rightarrow\mathbb R\)</span>, com <span class="math inline">\(f[I_1]\subset I_2\)</span>, funções duas vezes continuamente diferenciáveis. Mostre que, se <span class="math inline">\(x_0\)</span> é ponto de máximo ou mínimo local de <span class="math inline">\(f(x)\)</span>, então também é máximo ou mínimo local de <span class="math inline">\(g(f(x))\)</span>.</p>
+<div id="exr-intervalo-confianca-media-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 1</strong></span> &nbsp;</p>
+</div>
+<div id="exr-intervalo-confianca-media-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2</strong></span> &nbsp;</p>
+</div>
+<div id="exr-intervalo-confianca-variancia-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 3</strong></span> &nbsp;</p>
+</div>
+<div id="exr-transformacao-monotonica-extremos" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 4</strong></span> (Transformações monotônica preservam a localização de extremos) Sejam <span class="math inline">\(f:I_1\rightarrow \mathbb R\)</span> e <span class="math inline">\(g:I_2 \rightarrow\mathbb R\)</span>, com <span class="math inline">\(f[I_1]\subset I_2\)</span>, funções duas vezes continuamente diferenciáveis. Mostre que, se <span class="math inline">\(x_0\)</span> é ponto de máximo ou mínimo local de <span class="math inline">\(f(x)\)</span>, então também é máximo ou mínimo local de <span class="math inline">\(g(f(x))\)</span>.</p>
 <div class="callout callout-style-default callout-caution callout-titled" title="Solução">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1451,7 +1490,7 @@ Solução
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 
 </div>

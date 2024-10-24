@@ -6,16 +6,25 @@ format: html
 
 ## Sugestões de referências para estudo
 
-  - [@nicholson2017micro] cap 3, 4
+  - [@nicholson2017micro] cap 3, 4, 9
   - [@hoy2011mathematics] cap 11
-  - [@chiang2006matematica] cap 
-  - [@guidorizzi2] cap 8, 9, 10, 11
+  - [@chiang2006matematica] cap 8, 9, 11, 12
+  - [@guidorizzi2] cap 8, 10, 11
   - [Mathematical methods for economic theory (Martin Osborne)](https://mjo.osborne.economics.utoronto.ca/index.php/tutorial/index/1/toc)
+  
+  Questões marcadas com 
+  
+  - (*): São aplicações diretas de técnicas matemáticas. 
+  - (**): Envolvem a interação de conceitos econômicos e métodos matemáticos. Podem ser aplicações matemáticas diretas mais trabalhosas.
+  - (***): Exercícios mais elaborados com o objetivo de introduzir conceitos mais avançados.
+  
+Os trechos ao longo deste texto são lembretes (...) e não substituem, de forma alguma, a leitura das referências indicadas.
+  
   
 ## Funções reais de múltiplas variáveis reais
 
 ::: {#exr-funcoes-multivariadas-1}
-  Seja $f(x,y)=3x+2y$. Calcule
+  (*) Seja $f(x,y)=3x+2y$. Calcule
   
   a. $f(1,-1)$
   b. $f(a,x)$
@@ -24,6 +33,8 @@ format: html
 :::
 
 ::: {#exr-funcoes-multivariadas-2}
+
+(*) Responda ao que se pede.  
   
   a. Seja $f(x,y)=xy$, obtenha 3 diferentes pares $(x_j,y_j)$ tais que $f(x,y)=2$.
   b. Seja $g(x,y)=\exp(-x^2/2+y^2/2)$, obtenha 3 diferentes pares $(x_j,y_j)$ tais que $g(x,y)=1/2$.
@@ -31,7 +42,7 @@ format: html
 
 ::: {#exr-funcoes-multivariadas-3}
 
-Represente graficamente o domínio da função $z=f(x,y)$ dada por
+(*) Represente graficamente o domínio da função $z=f(x,y)$ dada por
 
   a. $x+y-1+z^2=0$, $z\geq0$
   b. $f(x,y)=\frac{x-y}{\sqrt{1-x^2-y^2}}$
@@ -44,9 +55,11 @@ Represente graficamente o domínio da função $z=f(x,y)$ dada por
 
 :::
 
+## Curvas de nível
+
 ::: {#exr-curvas-de-nivel-1}
 #### Curvas de nível 1
-Desenhe as curvas de nível e esboce o gráfico.
+(*) Desenhe as curvas de nível e esboce o gráfico.
 
   a. $f(x,y)=1-x^2-y^2$
 
@@ -77,7 +90,7 @@ Desenhe as curvas de nível e esboce o gráfico.
   f. $f(x,y)=\exp(x^2+y^2)$
 
 :::
-
+## Funções Homogêneas
 
 ::: {.callout-tip title="Funções homogêneas"}
   Uma função $f:A\rightarrow\mathbb R, A\subseteq R^2$, denomina-se função homogênea de grau $k$ se
@@ -86,6 +99,8 @@ Desenhe as curvas de nível e esboce o gráfico.
     \end{align*}$$
     para todo $t>0$ e $(x,y)\in A$ tais que $(tx,ty)\in A$.
 :::
+
+
 
 ::: {#exr-funcoes-homogeneas-1}
 #### Funções homogêneas 1
@@ -100,16 +115,6 @@ Classifique as funções abaixo como homogêneas ou não homogêneas. Em caso po
   f. $f(x,y)=\sqrt{x^4+y^4}$
   g. $f(x,y)=5x^3y + x^4 + 3$
   h. $f(x,y)=\frac{2}{x^2+y^2}$
-
-:::
-
-::: {#exr-funcoes-homogeneas-2}
-#### Funções homogêneas 2
-Suponha que $f:\mathbb R^2\rightarrow \mathbb R$ seja homogênea de grau 2 e $f(a,b)=a$ para todo $(a,b)$, com $a^2+b^2=1$. Calcule
-  
-  a. $f(4\sqrt{3},4)$
-  b. $f(0,3)$
-  c. $f(x,y)$, tal que $(x,y)\neq(0,0)$
 
 :::
 
@@ -137,6 +142,40 @@ Obtenha as curvas de nível para os pares de funções abaixo. Mostre que têm a
 
 ## Derivadas parciais
 
+::: {.callout-tip title="Derivadas parciais"}
+$$ \frac{\partial f(x,y)}{\partial x} = \lim_{h\rightarrow 0}\frac{f(x+h,y)-f(x,y)}{h}
+$$
+Escreveremos $f_x \equiv \frac{\partial f(x,y)}{\partial x}$ como uma notação mais compacta para a derivada parcial de $f$ com relação a $x$.
+:::
+
+::: {#exr-derivadas-parciais-1}
+#### Derivadas parciais 1
+
+(*) Definimos o vetor gradiente de uma função multivariada $f:A\rightarrow \mathbb R, A\subseteq \mathbb R^n$ como
+$$ \nabla f(x_1,\dots,x_n) = \begin{bmatrix} \frac{\partial f}{\partial x_1} \\ \frac{\partial f}{\partial x_2} \\ \vdots \\ \frac{\partial f}{\partial x_n} \end{bmatrix}.$$
+Obtenha o vetor gradiente das funções abaixo
+
+  a. $f(x,y) = \sqrt{x}+y$
+  b. $f(x,y,z) = e^{2xyz}$
+  c. $F(K,L) = (AK)^\alpha L^{1-\alpha}$    
+  d. $f(x,y)=\exp(x^3+y^2)$
+  e. $u(x_1,x_2)=\left(x_1^\delta + x_2^\delta\right)^{1/\delta}$
+  f. $f(x,y) = (a\log(x)+b\log(y))^2$
+  g. $SSR(\beta_0,\beta_1) = \sum^n_{j=1}(y_j-\beta_0-\beta_1x_j)^2$
+  h. (***) $SSR(b_1,b_2,\dots,b_p) = (\mathbf y -X\mathbf b)^T(\mathbf y-X\mathbf b)$, onde $\mathbf y$ é um vetor $n\times 1$ e $X$ é uma matriz $n\times p$.
+  
+:::
+
+::: {.callout-tip title="Diferença entre $df/dx$ e $\partial f/\partial x$ [@guidorizzi2] c.10"}
+
+A notação $\frac{\partial  f(x,y)}{\partial x}$, como vimos, indica a derivada de relação a $x$, onde $y$ é olhado como *constante*, ou seja, como *independente* de $x$. Por outro lado, a notação $\frac{d}{dx}[f(x,y)]$ indica a derivada de $f(x,y)$, onde $y$ *deve ser olhado* (quando nada for dito em contrário) *como função* de $x$.
+
+**Exemplo 4.** $\frac{\partial}{\partial x}(x^2+y^2)=2x$, enquanto
+$$ \frac{d}{dx}(x^2+y^2)=2x+\frac{d}{dx}(y^2)=2x+2y\frac{dy}{dx}$$
+pois,
+$$ \frac{d}{dx}(y^2)=\frac{d}{dy}(y^2)\frac{dy}{dx}. $$
+:::
+
 ::: {#exr-hoy-406}
 Hoy p406-407 exercícios 1-12
 :::
@@ -145,7 +184,9 @@ Hoy p406-407 exercícios 1-12
 Hoy p414-415 exercícios 1-9
 :::
 
-::: {.callout-tip title="Taxa Marginal de Substituição (MRS)"}
+## Taxa marginal de substituição (MRS)
+
+::: {.callout-tip title="Taxa marginal de substituição (MRS)"}
 
 Dada uma função de utilidade $u(x,y)$, a taxa marginal de substituição MRS (*marginal rate of substitution*) do bem $y$ pelo bem $x$ é definida como: a quantidade do bem $x$ que seria trocada por uma unidade do bem $y$, mantendo o nível de utilidade constante. Ou seja,
 $$
@@ -155,10 +196,42 @@ $$
 $$
 :::
 
-O seguinte resultado será extremamente útil no cálculo da taxa marginal de substituição.
+Os seguintes resultados serão úteis no cálculo da taxa marginal de substituição.
+
+::: {.callout-tip title="Diferencial total"}
+Seja $z=f(x,y)$ contínua definida em um conjunto aberto $S\subseteq \mathbb R^2$. Defina $dx$ e $dy$ como mudanças nas variáveis $x$ e $y$. Se as derivadas parciais $f_x$ e $f_y$ existirem, então o diferencial total de $z$ com relação a $x$ e $y$ é definido como
+$$ dz = f_x(x,y)dx + f_y(x,y)dy $$
+Sugestão de referência [@chiang2006matematica] cap 8. 
+:::
+
+::: {#exr-diferencial-total-1}
+#### Diferencial total 1
+
+(*) Calcule o diferencial total de primeira ordem.
+
+  a. $f(x_1,x_2) = 30\log(x_1x_2)$
+  b. $z = 3x^2+xy-2y^3$
+
+::: {.callout-caution title="Solução" collapse=true}
+  $$dz = \frac{\partial z}{\partial x}dx + \frac{\partial z}{\partial y}dy$$
+  $$\frac{\partial z}{\partial x}=6x+y, \quad \frac{\partial z}{\partial y}=x-6y^2$$
+  $$ dz = (6x+y)dx+(x-6y^2)dy $$
+:::
+  
+  c. $U = 2x_1+9x_1x_2+x_2^2$
+  d. $y=\frac{x_1}{x_1+x_2}$
+  e. $y=\frac{2x_1x_2}{x_1+x_2}$
+  f. $U=-5x^3-12xy-6y^5$
+  g. $U=7x^2y^3$
+  h. $U=3x^3(8x-7y)$
+  i. $U=(5x^2+7y)(2x-4y^3)$
+  j. $U=\frac{9y^3}{x-y}$
+  k. $U=(x-3y)^3$
+  
+:::
 
 ::: {.callout-tip title="Derivada da função implícita"}
-Seja $z(x,y)$ uma função com duas variáveis continuamente diferenciável. 
+Seja $z=z(x,y)$ uma função com duas variáveis continuamente diferenciável. 
 
 Tome a curva de nível $z(x,y)=\bar z$ como função implícita^[É uma função onde $x$ e $y$ estão do mesmo lado da equação. Por exemplo: $\sqrt{x+y}=1$.] de $x$ e $y$.
 
@@ -167,10 +240,15 @@ Então
 $$\begin{align*}
   \frac{dy}{dx}\Big|_{z(x,y)=\bar z} = -\frac{\frac{\partial z(x,y)}{\partial x}}{\frac{\partial z(x,y)}{\partial y}}.
 \end{align*}$$
+ou, equivalentemente,
+$$ \frac{dy}{dx}\Big|_{z(x,y)=\bar z} = -\frac{z_x(x,y)}{z_y(x,y)}.$$
+Perceba que obtemos esse resultado imediatamente ao escrever o diferencial total de $z$, impor $dz=0$ e isolar $dy/dx$.
+
+Sugestão de referência [@chiang2006matematica] cap 8.5.
 :::
 
 ::: {#exr-derivada-funcao-implicita-1}
-#### Derivada da função implícita
+#### Derivada da função implícita 1
 Calcule $dy/dx$.
 
   a. $z(x,y)=\sqrt{x+y}$
@@ -197,31 +275,168 @@ $$\begin{align*}
 :::
 
   c. $z(x,y)=\sqrt{x^2+y^2}$
-  d. $z(x,y)=a\exp\left(-\frac{1}{2}(x^2+y^2)\right), a>0$
-  e. $z(x,y)=ax+by$
-  f. $z(x,y)=\frac{x^a}{a}+\frac{y^a}{a}$
-  g. $u(x,y)=(x^\delta+y^\delta)^{1/\delta}$
+  c. $z(x,y)=a\exp\left(-\frac{1}{2}(x^2+y^2)\right), a>0$
+  c. $z(x,y)=ax+by$
+  c. $z(x,y)=\frac{x^a}{a}+\frac{y^a}{a}$
+  c. $u(x,y)=(x^\delta+y^\delta)^{1/\delta}$
+:::
+
+::: {#exr-derivada-funcao-implicita-2}
+#### Derivada da função implícita 2
+  
+(*) Para cada $F(x,y)=0$, use a regra da função implícita para obter $dy/dx$.
+  
+  a. $F(x,y)=2x^2+2xy+4y^3=0$
+  a. $F(x,y)=12x^5-2y=0$
+  a. $F(x,y)=7x^2+2xy^2+9y^4=0$
+  a. $F(x,y)=6x^3-2y=0$
+  
+:::
+
+::: {#exr-derivada-funcao-implicita-3}
+#### Derivada da função implícita 3
+  (*) Para cada $F(x,y,z)=0$ use a regra da função implícita para calcular $\partial y/\partial x$ e $\partial y/\partial z$:
+  
+  a. $F(x,y,z)=x^2y^3+z^2+xyz=0$
+  
+::: {.callout-caution title="Solução" collapse=true}
+
+  $$\frac{\partial y}{\partial x} = -\frac{F_x}{F_y}$$
+$$ F_x = 2xy^3+yz, \quad F_y=3x^2y^3+xz$$
+$$ \frac{\partial y}{\partial x} = -\frac{2xy^3+yz}{3x^2y^3+xz}$$
+
+:::
+  
+  b. $F(x,y,z)=x^3z^2+y^3+4xyz=0$
+  b. $F(x,y,z)=3x^2y^3+xz^2y^2+y^3zx^4+y^2z$
 :::
 
 ::: {#exr-mrs-funcoes-homogeneas-1}
 #### MRS de funções homogêneas
 
-Um apelo de funções homogêneas na modelagem de escolha econômica é o fato de sua taxa marginal de substituição entre duas variáveis $(x,y)$ permanecer constante quando multiplicamos ambas as entradas $x$ e $y$ por um escalar $t>0$.   
+(**) Um apelo de funções homogêneas na modelagem de escolha econômica é o fato de sua taxa marginal de substituição entre duas variáveis $(x,y)$ permanecer constante quando multiplicamos ambas as entradas $x$ e $y$ por um escalar $t>0$.   
 
-Mostre que se $u(x,y)$ é função homogênea de grau $k$, então $MRS(tx,ty)=MRS(x,y)$.
+Mostre que se $u(x,y)$ é função homogênea de grau $k$, então $MRS(tx,ty)=MRS(x,y)$. Interprete economicamente esse resultado.
+:::
+
+## Funções de utilidade
+
+::: {#exr-funcoes-utilidade-1}
+(**) Considere as seguintes funções de utilidade
+
+  a. $U(x,y)=xy$.
+  b. $U(x,y)=x^2y^2$.
+  c. $U(x,y)=\log(x)+\log(y)$.
+
+Mostre que cada uma dessas apresenta MRS decrescente, mas exibem utilidade marginal constante, crescente, e decresecente, respectivamente. Discuta o significado econômico.
 
 :::
 
-## Funções de utilidade e produção
+::: {#exr-utilidade-cobb-douglas-1}
+#### Utilidade Cobb-Douglas
 
-::: {#exr-utilidade-ces}
+(**) Dizemos que um consumidor tem utilidade Cobb-Douglas se suas preferências entre bens $(x,y)$ forem descritas pela relação
+
+$$ U(x,y)=x^\alpha y^\beta. $$
+
+a. Mostre que 
+$$ MRS(y,x) = \frac{\alpha}{\beta}\left(\frac{y}{x}\right).$$
+b. Esse resultado depende de se $\alpha+\beta=1$? Essa restrição tem algum significado na teoria da escolha do consumidor? 
+c. Para cestas de consumo onde $x=y$, como a MRS depende dos valores $\alpha$ e $\beta$?
+d. Suponha que o indivíduo aufere utilidade apenas de quantidades $x$ e $y$ que excedem um certo valor mínimo de subsistência, dados por $x_0$ e $y_0$, respectivamente. Nesse caso,
+$$ U(x,y) = (x-x_0)^\alpha (y-y_0)^\beta.$$
+Obtenha a MRS. Essa função de utilidade é homotética? 
+
+:::
+
+::: {#exr-utilidade-ces-1}
 #### Função de utilidade CES (*Constant Elasticity of Substitution*)
+(***) A função de utilidade
+$$ u(x,y) = \left(x^\delta+y^\delta\right)^{1/\delta} $$
+Mostre que
+
+a. Se $\delta=1$ então $u(x,y)$ representa substitutos perfeitos.
+b. Se $\delta\rightarrow 0$, $u(x,y)$ toma a forma de uma utilidade Cobb-Douglas.
+c. Se $\delta\rightarrow\infty$ então $u(x,y)$ se aproxima de função de utilidade representando complementos perfeitos ($u=\min(x,y)$).
+:::
+
+
+## Funções de produção
+
+Sugestão de referência: [@nicholson2017micro] c. 9
+
+::: {.callout-tip title="Função de produção"}
+A função de produção de uma firma para um bem particular $q$ é representada pela função
+$$ q = f(k,l), $$
+e denota o nível máximo de produção possivelmente obtido com a combinação de insumos $(k,l)$. Chamamos $k$ de "capital" e $l$ de "trabalho" por conveniência.
+:::
+
+::: {.callout-tip title="Produtividade marginal"}
+A produtividade marginal de um dado insumo é a produção adicional proporcionada ao aumentar a quantidade desse insumo particular em uma unidade, mantendo a quantidade de todos os outros insumos constantes.
+$$ \begin{align*}\text{Produtividade marginal do capital} = MP_k = \frac{\partial q}{\partial k}=f_k\\
+\text{Produtividade marginal do trabalho} = MP_l = \frac{\partial q}{\partial l}=f_l\end{align*}$$
+
+Ou seja, a produtividade marginal é a derivada parcial da função de produção com relação ao insumo de interesse.
+
+:::
+
+::: {.callout-tip title="Produtividade marginal decrescente"}
+
+É de se esperar que a produtividade marginal de um determinado insumo dependa de quanto tão insumo é usado na produção. Esse é um dos "fatos estilizados" mais estabelecidos em teoria econômica. 
+
+Por exemplo, tome uma plantação. Mais trabalho não pode ser adicionado indefinidamente (mantendo constante a quantidade de equipamentos, adubos, tamanho do terrno, etc.) sem eventualmente demonstrar algum deterioramento no incremento de produção.
+
+Essa é uma afirmação sobre as derivadas segundas da função de produção. Eventualmente, se continuarmos aumentando a quantidade de um único insumo de produção, o incremento na produção deve começar a decrescer.
+
+$$
+\begin{align*}
+  \frac{\partial MP_k}{\partial k} &= \frac{\partial^2f}{\partial k^2} = f_{kk} < 0, \quad \text{para k grande o suficiente;} \\
+  \frac{\partial MP_l}{\partial l} &= \frac{\partial^2f}{\partial l^2} = f_{ll} < 0, \quad \text{para l grande o suficiente.}
+\end{align*}
+$$
+
+:::
+
+
+
+
+
+::: {.callout-tip title="Retornos de escala"}
+Se a função de produção é dada por $q=f(k,l)$ e todos os insumos forem multiplicados pela mesma constante positiva $t$ (onde $t>1$), então nós classificamos os *retornos de escala* dessa função de produção como
+
+| Efeito sobre a Produção | Retornos de Escala | Grau de Homogeneidade |
+|-------------------------|--------------------|-----------------------|
+| $f(tk,tl)=tf(k,l)=tq$   | Constantes         | $=1$                 |
+| $f(tk,tl)<tf(k,l)=tq$   | Decrescentes       | $<1$                 |
+| $f(tk,tl)>tf(k,l)=tq$   | Crescentes         | $>1$                 |
+
+Obs.: O conceito de retornos de escala se interessa com o incremento de produção quando aumentamos a quantidade de todos os insumos ao mesmo tempo. Nada impede que uma mesma função de produção apresente produtividades marginais decrescentes mas retornos de escala constantes (ou até crescentes).
+:::
+
+::: {#exr-produtividade-marginal-1}
+(*) Dadas as funções de produção abaixo, calcule as produtividades marginais. Cheque se são crescentes ou decrescentes. Determine o nível de retornos de escala.
+
+  a. $f(k,l)=k+l+2\sqrt{kl}$
+  a. $F(K,L)=K^{\alpha}(AL)^{1-\alpha}, \quad A>0$
+  a.
+  a.
+  a.
+  a.
+
+:::
+
+::: {#exr-funcoes-producao-vf-1}
+(*) Uma firma uniproduto produz sujeita a uma tecnologia descrita pela função de produção $f(x_1,x_2)=\min(x_1,3x_2)$, sendo $x_1\geq0$ a quantidade utilizada do insumo 1 e $x_2\geq0$ a quantidade utilizada do insumo 2. Identifique se são verdadeiras ( <input type="checkbox" checked value="1" disabled="disabled">) ou falsas ( <input type="checkbox" unchecked value="0" disabled="disabled">) as afirmativas abaixo a respeito dessa função.
+
+  a. ( <input type="checkbox" unchecked>) A produtividade marginal do insumo 1 é nula para qualquer combinação de insumos $x_1,x_2>0$ na qual $x_1/3<x_2$.
+  a. ( <input type="checkbox" unchecked>) A taxa técnica de substituição em combinações de insumos $x_1,x_2>0$ nas quais $x_1=3x_2$ é igual a 1.
+  a. ( <input type="checkbox" unchecked>) A produtividade marginal do insumo 2 em qualquer combinação de insumos $x_1,x_2>0$ na qual $0<3x_2<x_2$ é dada por $\frac{\partial f(x_1,x_2)}{\partial x_2}=3$.
 
 :::
 
 ## Convexidade e concavidade
 
-::: {.callout-tip title="Conjuntos convexos"}
+::: {.callout-tip title="Conjuntos convexos" collapse=true}
 Um conjunto $S$ formado por vetores $n$-dimensionais é convexo se
 $$ (1-\lambda)x_0 + \lambda x_1 \in S$$
 para todo $x_0,x_1\in S$ e $\lambda \in [0,1]$.
@@ -232,7 +447,7 @@ Se estivermos tratando de vetores bidimensionais, a seguinte imagem é útil.
 
 ![Conjuntos convexos](convex_sets.png)
 
-Obs.: Não é comum falar em "conjuntos côncavos". Apenas dizemos que "não são convexos". 
+É extremamente desejável que o domínio de uma função multivariada seja um conjunto convexo
 :::
 
 ::: {#exr-conjuntos-convexos-1}
@@ -245,7 +460,7 @@ Determine se os seguintes conjuntos são convexos.
   
 :::
 
-::: {.callout-tip title="Matriz de Derivadas Segundas (Hessiana)"}
+::: {.callout-tip title="Matriz de Derivadas Segundas (Hessiana)" collapse=true}
   Seja $f:A\rightarrow \mathbb R, A\subseteq \mathbb R^2$ uma função duas vezes continuamente diferenciável. Definimos sua matriz de derivadas segundas (ou Hessiana) como
 $$
   H = \begin{bmatrix} f_{xx} & f_{xy} \\ f_{xy} & f_{yy} \end{bmatrix}
@@ -253,7 +468,7 @@ $$
 Repare que $H$ é simétrica^[É igual a sua transposta. $H=H^T$.] Isso acontece porque se $f$ for duas vezes continuamente diferenciável a ordem com que tomamos as derivadas não importa^[As pessoas usam vários nomes diferentes para se referir a esse resultado. No contexto de economia é comum chamar de "Teorema de Young" [link](https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives).]. 
 :::
 
-::: {.callout-tip title="Formas quadráticas e sinais de matrizes"}
+::: {.callout-tip title="Formas quadráticas e sinais de matrizes" collapse=true}
   Tome uma matriz simétrica $2\times 2$
   $$ X = \begin{bmatrix}x_{11} & c\\ c & x_{22}\end{bmatrix} $$ 
   e o vetor $2\times 1$
@@ -273,7 +488,7 @@ Dizemos que uma matriz $X$ é
 
 :::
 
-::: {.callout-tip title="Teste de convexidade baseado em $H$"}
+::: {.callout-tip title="Teste de convexidade baseado em $H$" collapse=true}
   Seja $f$ uma função de várias variáveis definida em um conjunto convexo $A\subseteq \mathbb R^n$. Denote a Hessiana de $f$ avaliada no ponto $\mathbf x$ como $H(\mathbf x)$. Então
   
   * $f$ é côncava se e somente se $H$ é negativa semidefinida para todo $\mathbf x \in A$.
@@ -282,7 +497,7 @@ Dizemos que uma matriz $X$ é
   
 :::
 
-::: {.callout-tip title="Critério dos autovalores"}
+::: {.callout-tip title="Critério dos autovalores" collapse=true}
   Seja $X$ uma matriz real simétrica com dimensões $n\times n$, e $\lambda_1,\lambda_2,\dots,\lambda_n$ seus associados autovalores. Então
   
   * $X$ é positiva definida se $\lambda_j>0$, $j=1,\dots,n$.
@@ -291,7 +506,7 @@ Dizemos que uma matriz $X$ é
   * $X$ é negativa semidefinida se $\lambda_j\leq0$, $j=1,\dots,n$.
 :::
 
-::: {.callout-tip title="Determinação dos autovalores de uma matriz $2\times2$"}
+::: {.callout-tip title="Determinação dos autovalores de uma matriz $2\times2$" collapse=true}
   Os autovalores de uma matriz quadrada $X$ são as raízes da equação polinomial $\det(X-I\lambda)=0$.
   Sempre é verdade que
   
@@ -321,12 +536,12 @@ Obs.: Não é impossível que uma matriz cujas entradas são números reais tenh
 
 ::: {#exr-grafico-funcao-univariada-1}
 #### Gráfico de funções univariadas
-Esboce o gráfico das seguintes funções univariadas.
+Esboce o gráfico (encontre e classifique pontos críticos, raízes, e limites laterais) das seguintes funções univariadas.
 
-  a. $f(x) = x^3 + x - 1$
+  a. $f(x) = x^2 - x - 1$
   b. $g(x) = \exp(-x^2/2)$
-  c. $h(x) = x\log(x^2)$
-  d. $z(x) = 3x^4-2x^3+2$
+  c. $h(x) = x\log(x)$
+  d. $z(x) = x\log(x^2)$
   
 :::
 
@@ -345,8 +560,66 @@ Dadas tais informações, determine:
 
 ## Otimização restrita
 
-(O tema da Unidade 2 acaba em condições de primeira ordem para otimização restrita.)
+::: {.callout-tip title="Condições de primeira ordem para otimização restrita: método dos múltiplicadores de $\mathcal{L}$agrange"}
+Se nosso problema é maximizar (ou minimizar) uma função $f(x,y;\mathbf\theta)$, sujeita a uma restrição $g(x,y;\mathbf\omega)=C$^[$\mathbf\theta$ e $\mathbf\omega$ são vetores de parâmetros fixos]:
+$$
+\max_{(x,y)\in A} f(x,y) \\
+\text{s.a. } g(x,y)=C
+$$
 
+Podemos obter condições de primeira ordem (necessárias) ao otimizar (de forma "irrestrita") o "Lagrangeano"
+$$ \mathcal{L}(x,y,\lambda;\mathbf\theta,\mathbf{\omega})=f(x,y;\mathbf{\theta})+\lambda[g(x,y;\mathbf{\omega})-C]$$
+As condições de primeira ordem são
+
+  * $\mathcal L_x = 0$
+  * $\mathcal L_y = 0$
+  * $\mathcal L_\lambda = 0$
+
+
+:::
+
+
+
+
+::: {#exr-maximizacao-lucro-1}
+(**) Uma firma maximizadora de lucro e tomadora de preços no mercado de bens produz uma única mercadoria, cuja quantidade é denotada por $Q$, utilizando os fatores de produção capital e trabalho cujas quantidades são denotadas por $K$ e $L$, respectivamente. Esta firma produz com base na seguinte função de produção $Q=3\sqrt[3]{K}+2\sqrt{L}$. A firma vende cada unidade de sua mercadoria por $p>0$ unidades monetárias, pagando por unidade de trabalho utilizada um salário de $w>0$ unidades monetárias e incorrendo em custo de oportunidade por unidade de capital igual a $r>0$ unidades monetárias. Estes preços são constantes e exogenamente determinados. Dados tais pressuposto, pede-se:
+
+  a. A representação formal do problema de maximização de lucro da firma tendo como variáveis de escolha os fatores de produção;
+  b. as demandas de fatores de produção da firma; 
+  c. as demandas de fatores de produção da firma são de fato maximizadoras de lucro? Justifique formalmente sua resposta.
+:::
+
+::: {#exr-maximizacao-utilidade-1}
+(**) Um consumidor escolhe as quantidades a serem consumidas de cois bens, $x_1>0$ e $x_2>0$, num dado intervalo de tempo. A relação de preferência deste consumidor no consumo é representada pela seguinte função de utilidade:
+$$ u(x_1,x_2)=x_1+\log(1+x_2).$$
+Os preços unitários, exogenamente determiados, dos bens 1 e 2 são $p_1>0$ e $p_2>0$ , respectivamente. 
+
+O consumidor aufere, no intervalo de tempo em anális, uma renda exógena $m>0$. Supondo $m>p_1>p_2$, determine:
+
+  a. As quantidades ótimas usando o método de Lagrange.
+
+::: {.callout-caution title="Solução" collapse=true}
+  $$\mathcal L(x_1,x_2,\lambda)=x_1+\log(1+x_2)+\lambda(p_1x_1+p_2x_2-m) $$
+Condições de primeira ordem:
+$$\begin{align*}\mathcal L_{x_1}=1+\lambda p_1=0\\
+\mathcal L_{x_2}=\frac{1}{1+x_2}+\lambda p_2=0\\
+\mathcal L_\lambda = x_1p_1+x_2p_2-m=0\end{align*}$$
+Resolvendo para $x_1$ e $x_2$ o sistema definido pelas CPOs, temos
+$$ x_1 = \frac{m-p_1+p_2}{p_1}, \quad x_2 = \frac{p_1}{p_2}-1.$$
+:::
+  b. As quantidades obtidas no item anterior são de fato ótimas? Justifique formalmente sua resposta.
+:::
+
+::: {#exr-maximizacao-utilidade-2}
+  (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, $x_1>0$ e $x_2>0$, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade:
+  $$ u(x_1,x_2)=x_1(x_2+4). $$
+  Os preços unitários, exogenamente determinados, dos bens 1 e 2 são $p_1=\$3$ e $p_2=\$5$, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de $\$100$. Determine:
+  
+  a. As quantidades consumidas ótimas usando o método de Lagrange;
+  a. As quantidades obtidas no item anterior são de fato ótimas? Justifique formalmente sua resposta.
+:::
+
+- <input type="checkbox" unchecked> Venus</input>
 
 ## Referências
 

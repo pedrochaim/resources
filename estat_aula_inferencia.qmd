@@ -714,7 +714,21 @@ E(\sqrt{s^2})\leq \sqrt{\sigma^2}$$
 
 ### Variância, eficiência relativa, e erro quadrático médio
 
-A variância de um estimador é simplesmente $Var(T)=E(T^2)-E(T)^2$.
+::: {.callout-tip title="Eficiência relativa entre estimadores não enviesados" }
+A variância de um estimador é simplesmente $Var(T)=E(T^2)-E(T)^2$. 
+
+Seja $T$ e $\tilde T$ estimadores não enviesados do parâmetro $\theta$. Dizemos que $T$ é relativamente mais eficiente do que $\tilde T$ se
+$$\begin{align*}Var(T)<Var(\tilde T),\end{align*}$$
+para todo $\theta\in\Theta$.
+:::
+
+::: {.callout-note title="Estimador não eficiente de $\mu$" collapse=true}
+
+:::
+
+Nós não podemos comparar diretamente a variância de estimadores enviesados. Nesse caso nós calculamos o *erro quadrático médio* (EQM), definido como variância mais viés ao quadrado.
+$$ EQM(T,\theta) = Var(T) + E(T-\theta)^2 $$
+
 
 
 ### Consistência
@@ -1042,7 +1056,19 @@ $$ \frac{d\mathcal L}{d\lambda} = Ae^{-\lambda n}\lambda^{\sum x_j - 1}\left(\su
 
 ## Exercícios de fixação
 
-::: {#exr-transformacao-monotonica-extremos collapse=true}
+::: {#exr-intervalo-confianca-media-1}
+
+:::
+
+::: {#exr-intervalo-confianca-media-2}
+
+:::
+
+::: {#exr-intervalo-confianca-variancia-1}
+
+:::
+
+::: {#exr-transformacao-monotonica-extremos}
 (Transformações monotônica preservam a localização de extremos) Sejam $f:I_1\rightarrow \mathbb R$ e $g:I_2 \rightarrow\mathbb R$, com $f[I_1]\subset I_2$, funções duas vezes continuamente diferenciáveis. Mostre que, se $x_0$ é ponto de máximo ou mínimo local de $f(x)$, então também é máximo ou mínimo local de $g(f(x))$.
 
 ::: {.callout-caution collapse=true title="Solução"}

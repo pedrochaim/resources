@@ -4,4 +4,6 @@ title: "Recursos"
 
 Listas de exercícios e notas de aula.
 
+O material apresentado aqui é para uso didático apenas. 
+
 ```
