@@ -325,7 +325,40 @@ Mostre que se $u(x,y)$ é função homogênea de grau $k$, então $MRS(tx,ty)=MR
 (**) Considere as seguintes funções de utilidade
 
   a. $U(x,y)=xy$.
+  
+::: {.callout-caution title="Solução" collapse=true}
+  $$ MRS(y,x) = -\frac{dy}{dx}\Big|_{U=\bar U} =\frac{U_x}{U_y} = \frac{y}{x}$$
+Mas podemos escrever 
+$$ \bar U = xy \Longleftrightarrow y = \bar U/x $$
+e
+$$ MRS(y,x) = \frac{\bar U/x}{x} = \frac{\bar U}{x^2} $$
+Então repare que conforme $x$ aumenta, a $MRS(y,x)$ decresce. Especificamente,
+$$ \frac{\partial MRS}{\partial x} = -2\frac{\bar U}{x^3} < 0 $$
+Portanto a função de utilidade $U(x,y)=xy$ de fato apresenta MRS decrescente.
+
+Agora vamos olhar para as utilidades marginais (as derivadas parciais da função de utilidade com relação a cada um dos bens).
+
+$$ \begin{align*}MU_x = \frac{\partial U(x,y)}{\partial x} = y \\
+MU_y = \frac{\partial U(x,y)}{\partial y} = x \end{align*}$$
+
+Veja que $U_{xx}=U_{yy}=0$. Portanto a utilidade incremental obtida do consumo de uma unidade a mais do bem $x$ não depende da quantidade desse bem já presente na cesta. Ou seja, a utilidade marginal é constante.
+
+:::
+  
   b. $U(x,y)=x^2y^2$.
+  
+::: {.callout-caution title="Solução" collapse=true}
+  Primeiro faça os cálculos e repare que a MRS é a mesma do item (a). Isso é surpreendente? 
+  
+  Agora vamos olhar para as utilidades marginais.
+$$ \begin{align*} U_x = 2xy^2, \quad U_y = 2x^2y \end{align*} $$
+  Tomando as derivadas segundas temos
+
+$$ U_{xx} = 2y^2>0, \quad U_{yy} = 2x^2>0 $$
+Então a utilidade adicional obtida com mais uma unidade do bem $x$ cresce conforme a quantidade $x$ aumenta, em proporção do dobro do quadrado da quantidade do bem $y$. Nesse contexto olhamos $y$ como fixo, então é como se $U_{xx} = 2a^2, a>0$. (O argumento para $y$ é simétrico.)
+
+:::
+  
   c. $U(x,y)=\log(x)+\log(y)$.
 
 Mostre que cada uma dessas apresenta MRS decrescente, mas exibem utilidade marginal constante, crescente, e decresecente, respectivamente. Discuta o significado econômico.
@@ -414,12 +447,24 @@ Obs.: O conceito de retornos de escala se interessa com o incremento de produç�
 :::
 
 ::: {#exr-produtividade-marginal-1}
-(*) Dadas as funções de produção abaixo, calcule as produtividades marginais. Cheque se são crescentes ou decrescentes. Determine o nível de retornos de escala.
+(*) Dadas as funções de produção abaixo, calcule as produtividades marginais. Cheque se são crescentes ou decrescentes. Determine o nível de retornos de escala. Responda em função do valor de parâmetros fixos, quando pertinente.
 
   a. $f(k,l)=k+l+2\sqrt{kl}$
+::: {.callout-caution title="Solução" collapse=true}
+Produtividades marginais
+$$ \begin{align*} \frac{\partial f(k,l)}{\partial k} = 1 + (kl)^{-1/2} \\
+\frac{\partial f(k,l)}{\partial l} = 1 + (kl)^{-1/2}\end{align*}$$
+Os retornos de escala são associados ao grau de homogeneidade da função de produção. Portanto,
+$$ \begin{align*} f(tk, tl) &= (tk) + (tl) + 2\sqrt{tktl} \\
+&=tk+tl+2t\sqrt{kl}\\
+&=t^1f(k,l).\end{align*}$$
+Então essa função de produção apresenta retornos constantes de escala. 
+
+:::
+  
   a. $F(K,L)=K^{\alpha}(AL)^{1-\alpha}, \quad A>0$
-  a.
-  a.
+  a. $F(K,L)=\left(K^\delta+L^\delta\right)^{1/\delta}$
+  a. $f(x_1,x_2)=(x_1+3x_2)^2$
   a.
   a.
 
@@ -431,7 +476,23 @@ Obs.: O conceito de retornos de escala se interessa com o incremento de produç�
   a. ( <input type="checkbox" unchecked>) A produtividade marginal do insumo 1 é nula para qualquer combinação de insumos $x_1,x_2>0$ na qual $x_1/3<x_2$.
   a. ( <input type="checkbox" unchecked>) A taxa técnica de substituição em combinações de insumos $x_1,x_2>0$ nas quais $x_1=3x_2$ é igual a 1.
   a. ( <input type="checkbox" unchecked>) A produtividade marginal do insumo 2 em qualquer combinação de insumos $x_1,x_2>0$ na qual $0<3x_2<x_2$ é dada por $\frac{\partial f(x_1,x_2)}{\partial x_2}=3$.
+:::
 
+::: {#exr-funcoes-producao-vf-2}
+(*) Uma firma uniproduto produz sujeita a uma tecnologia descrita pela função de produção $f(x_1,x_2)=\log(x_1,x_2)$, sendo $x_1>0$ a quantidade utilizada do insumo 1, com $x_1>1$, e $x_2>0$ a quantidade utilizada do insumo 2, com $x_2>1$. Com base no conceito de diferencial total de primeira ordem, identifique se são verdadeiras ( <input type="checkbox" checked value="1" disabled="disabled">) ou falsas ( <input type="checkbox" unchecked value="0" disabled="disabled">) as afirmativas abaixo a respeito dessa função de produção.
+
+  a. ( <input type="checkbox" unchecked>) O diferencial total de primeira ordem é dado por $df = \frac{30}{x_1x_2}dx_1+\frac{30}{x_1x_2}dx_2$ para qualquer combinação de insumo $(x_1,x_2)$.
+  a. ( <input type="checkbox" unchecked>) O diferencial total de primeira ordem na combinação de insumos $(6,3)$ é dado por $df = 4dx_1+10dx_2$.
+  a. ( <input type="checkbox" unchecked>) Se a firma estiver usando inicialmente a combinação de insumos $(5,2)$ e a quantidade do insumo 1 for diminuida em 0.2 e a quantidade do insumo 2 for aumentada em 0.4, então a estimativa da variação da produção será $df=4.8$.
+::: 
+
+::: {#exr-funcoes-utilidade-vf-1}
+(*) Considere um consumidor cujas preferências sobre o conjunto consumo $\mathbb R^2_+$ são representadas pela função de utilidade $u(x_1,x_2)=e^{3x_1x_2}$, sendo $x_1$ a quantidade consumida do bem 1 e $x_2$ a quantidade consumida do bem 2 em um dado intervalo de tempo. identifique se são verdadeiras ( <input type="checkbox" checked value="1" disabled="disabled">) ou falsas ( <input type="checkbox" unchecked value="0" disabled="disabled">) as afirmativas abaixo a respeito dessa função de utilidade.
+
+  a. ( <input type="checkbox" unchecked>) O bem 1 é um bem neutro em qualquer cesta de consumo $(x_1, x_2)\in\mathbb R^2_+$ com $x_2=0$.
+  a. ( <input type="checkbox" unchecked>) Vale o princípio da utilidade marginal decrescente em qualquer cesta de consumo com $x_1,x_2>0$.
+  a. ( <input type="checkbox" unchecked>) A taxa marginal de substituição em qualquer cesta de consumo com $x_1,x_2>0$ é dada por $MRS(x_1,x_2)=x_2/x_2$.
+  
 :::
 
 ## Convexidade e concavidade
@@ -532,11 +593,11 @@ Obs.: Não é impossível que uma matriz cujas entradas são números reais tenh
 :::
 
 
-## Otimização irrestrita
+## Otimização de funções univariadas
 
 ::: {#exr-grafico-funcao-univariada-1}
 #### Gráfico de funções univariadas
-Esboce o gráfico (encontre e classifique pontos críticos, raízes, e limites laterais) das seguintes funções univariadas.
+Esboce o gráfico (encontre e classifique pontos críticos, e limites laterais) das seguintes funções univariadas.
 
   a. $f(x) = x^2 - x - 1$
   b. $g(x) = \exp(-x^2/2)$
@@ -544,6 +605,93 @@ Esboce o gráfico (encontre e classifique pontos críticos, raízes, e limites l
   d. $z(x) = x\log(x^2)$
   
 :::
+
+::: {#exr-otimizacao-univariada-1}
+  Obtenha os valores estacionários e determine se são máximos, mínimos, ou pontos de inflexão.
+  
+  a. $y=0.5x^3-3x^2+6x+10$
+  a. $y=x^3-3x^2+5$
+  a. $y=x^4-4x^3+16x$
+  a. $y=x+1/x$
+  a. $y=x^3-3x-1$
+  a. $y=3x^4-10x^3+6x^2+5$
+  a. $y=(1-x^2)/(1+x^2)$
+  a. $y=(3-x^3)^{1/2}$
+  a. $y=(2-x)/(x^2+x-2)$
+  a. $y=x^{0.5}e^{-0.1x}$
+  
+:::
+
+::: {#exr-otimizacao-univariada-2}
+
+(*) Uma firma tem função de custo total
+$$ C = 0.5x^3-3x^2+6x+50 $$
+a vende em um mercado competitivo com preço igual a $\$1$. Qual a quantidade ótima produzida? Qual seria a quantidade ótima se o preço fosse $\$2$.
+
+:::
+
+## Otimização irrestrita
+
+::: {#exr-otimizacao-irrestrita-1}
+  Estude com relação a máximos e mínimos locais. Compute as condições de segunda ordem.
+  
+  a. $f(x,y)=x^2+3xy+4y^2-6x+2y$
+  
+::: {.callout-caution title="Solucão" collapse=true}
+Condições de primeira ordem: $\nabla f(x,y) = \begin{bmatrix} 0 & 0 \end{bmatrix}^T$.
+$$\begin{align*} \nabla f(x,y) = \begin{bmatrix} \frac{\partial f(x,y)}{\partial x} \\ \frac{\partial f(x,y)}{\partial y} \end{bmatrix}= \begin{bmatrix} 2x+3y-6 \\ 3x+8y+2 \end{bmatrix}\end{align*}$$
+
+Portanto as condições de primeira ordem são dadas pelo sistema
+$$ \begin{align*} \begin{cases} 2x+3y-6&=0 \\
+3x+8y+2&=0\end{cases} \end{align*} $$
+Resolvendo o sistema obtemos $(x^*,y^*)=(54/7,-24/7)$.
+
+A matriz Hessiana é dada por
+
+$$ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\partial x} & \frac{\partial^2 f(x,y)}{\partial y\partial x} \\ \frac{\partial^2 f(x,y)}{\partial x \partial y} & \frac{\partial^2 f(x,y)}{\partial y \partial y} \end{bmatrix} = \begin{bmatrix} 2 & 3 \\ 3 & 8 \end{bmatrix} \end{align*} $$
+Devemos julgar o sinal de $H(x^*,y^*)$. Sabemos que
+$$ \begin{align*} \lambda_1+\lambda_2 &= \text{tr}(H)=10 \\
+\lambda_1\lambda_2 &= \det(H)=1\end{align*}$$
+Como a soma dos autovalores é positiva e seu produto também é positivo, garamtimos que $\lambda_1>0$ e $\lambda_2>0$. Portanto $H(x^*,y^*)$ é negativa-definida e $(x^*,y^*)=(57/7,-24/7)$ é ponto de mínimo.
+
+Veja o gráfico da função no [link](https://www.desmos.com/3d/fc9od0cles).
+
+:::
+  
+  b. $f(x,y)=x^2y+2y^3$
+  
+::: {.callout-caution title="Solucão" collapse=true}
+Condições de primeira ordem: $\nabla f(x,y) = \begin{bmatrix} 0 & 0 \end{bmatrix}^T$.
+$$\begin{align*} \nabla f(x,y) = \begin{bmatrix} \frac{\partial f(x,y)}{\partial x} \\ \frac{\partial f(x,y)}{\partial y} \end{bmatrix}= \begin{bmatrix} 2xy \\ x^2+6y^2 \end{bmatrix}\end{align*}$$
+Portanto as condições de primeira ordem são
+$$ \begin{align*} \begin{cases} 2xy&=0 \\
+x^2+6y^2&=0\end{cases} \end{align*} $$
+Repare que o sistema acima só é satisfeito quando $(x^*,y^*)=(0,0)$.
+
+A matriz Hessiana é dada por
+
+$$ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\partial x} & \frac{\partial^2 f(x,y)}{\partial y\partial x} \\ \frac{\partial^2 f(x,y)}{\partial x \partial y} & \frac{\partial^2 f(x,y)}{\partial y \partial y} \end{bmatrix} = \begin{bmatrix} 2y & 2x \\ 2x & 12y \end{bmatrix} \end{align*} $$
+Então avaliando $H(x^*,y^*)$
+$$ \begin{align*} H(x^*,y^*) = H(0,0) = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix} \end{align*} $$
+Aqui vemos que $\lambda_1=\lambda_2=0$ então $H(0,0)$ não é nem positiva-definida, nem negativa-definida. Portanto $(x^*,y^*)=(0,0)$ não é extremo local.
+
+Veja o gráfico da função no [link](https://www.desmos.com/3d/ohbynhuufp).
+:::
+
+  b. $f(x,y)=x^3-3x^2y+27y$
+  b. $f(x,y)=\sqrt[3]{x^2+2xy+4y^2-6x-12y}$
+  
+:::
+
+::: {#exr-minimos-quadrados-1}
+
+Obtenha os valores $b_0, b_1$ que maximizam o quadrado dos resíduos. Garanta que $(b_0^*, b_1^*)$ é ponto de máximo.
+
+a. $f(b_0,b_1) = (y - b_0 - b_1x)^2$
+a. $SSR(b_0,b_1) = \sum^n_{j=1}(y_j-b_0-b_1x_j)^2$
+
+:::
+
 
 ::: {#exr-otimizacao-lucro-1}
 #### Otimização de lucro 1
@@ -619,7 +767,33 @@ $$ x_1 = \frac{m-p_1+p_2}{p_1}, \quad x_2 = \frac{p_1}{p_2}-1.$$
   a. As quantidades obtidas no item anterior são de fato ótimas? Justifique formalmente sua resposta.
 :::
 
-- <input type="checkbox" unchecked> Venus</input>
+::: {#exr-maximizacao-utilidade-3}
+  (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, $x_1>0$ e $x_2>0$, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade:
+  $$ u(x_1,x_2)=5(1+x_1)x_2. $$
+  Os preços unitários, exogenamente determinados dos bens 1 e 2 são $p_1=\$10$ e $p_2=\$20$, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de $\$390$. Determine:
+  
+  a. As quantidades ótimas usando o método de Lagrange;
+
+::: {.callout-caution title="Solução" collapse=true}
+
+Lagrangeano
+
+$$\mathcal L = 5(1+x_1)x_2 + \lambda(p_1x_1+p_2x_2-m)$$
+Condições de primeira ordem
+
+$$\begin{align*} \mathcal L_{x_1} &= 5x_2 + \lambda p_1=0 \tag{CPO 1} \\ \mathcal L_{x_2} &= 5(1+x_1) + \lambda p_2=0 \tag{CPO 2}\\
+\mathcal L_{\lambda} &= p_1x_1+p_2x_2-m=0 \tag{CPO 3}
+\end{align*}$$
+
+De (CPO 1)
+$$ \lambda = -\frac{5x_2}{p_1} $$
+Substituindo em (CPO 2)
+$$ 5(1+x_1) + \left(-\frac{5x_2}{p_1}\right) p_2=0 $$
+
+:::
+  
+  b. As quantidades obtidas no item anterior de fato ótimas? Justifique formalmente sua resposta.
+:::
 
 ## Referências
 

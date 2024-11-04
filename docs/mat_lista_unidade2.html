@@ -182,6 +182,7 @@ window.Quarto = {
   <li><a href="#funções-de-utilidade" id="toc-funções-de-utilidade" class="nav-link" data-scroll-target="#funções-de-utilidade">Funções de utilidade</a></li>
   <li><a href="#funções-de-produção" id="toc-funções-de-produção" class="nav-link" data-scroll-target="#funções-de-produção">Funções de produção</a></li>
   <li><a href="#convexidade-e-concavidade" id="toc-convexidade-e-concavidade" class="nav-link" data-scroll-target="#convexidade-e-concavidade">Convexidade e concavidade</a></li>
+  <li><a href="#otimização-de-funções-univariadas" id="toc-otimização-de-funções-univariadas" class="nav-link" data-scroll-target="#otimização-de-funções-univariadas">Otimização de funções univariadas</a></li>
   <li><a href="#otimização-irrestrita" id="toc-otimização-irrestrita" class="nav-link" data-scroll-target="#otimização-irrestrita">Otimização irrestrita</a></li>
   <li><a href="#otimização-restrita" id="toc-otimização-restrita" class="nav-link" data-scroll-target="#otimização-restrita">Otimização restrita</a></li>
   <li><a href="#referências" id="toc-referências" class="nav-link" data-scroll-target="#referências">Referências</a></li>
@@ -606,7 +607,49 @@ Solução
 <p><span class="theorem-title"><strong>Exercise 16</strong></span> (**) Considere as seguintes funções de utilidade</p>
 <ol type="a">
 <li><span class="math inline">\(U(x,y)=xy\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solução">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[ MRS(y,x) = -\frac{dy}{dx}\Big|_{U=\bar U} =\frac{U_x}{U_y} = \frac{y}{x}\]</span> Mas podemos escrever <span class="math display">\[ \bar U = xy \Longleftrightarrow y = \bar U/x \]</span> e <span class="math display">\[ MRS(y,x) = \frac{\bar U/x}{x} = \frac{\bar U}{x^2} \]</span> Então repare que conforme <span class="math inline">\(x\)</span> aumenta, a <span class="math inline">\(MRS(y,x)\)</span> decresce. Especificamente, <span class="math display">\[ \frac{\partial MRS}{\partial x} = -2\frac{\bar U}{x^3} &lt; 0 \]</span> Portanto a função de utilidade <span class="math inline">\(U(x,y)=xy\)</span> de fato apresenta MRS decrescente.</p>
+<p>Agora vamos olhar para as utilidades marginais (as derivadas parciais da função de utilidade com relação a cada um dos bens).</p>
+<p><span class="math display">\[ \begin{align*}MU_x = \frac{\partial U(x,y)}{\partial x} = y \\
+MU_y = \frac{\partial U(x,y)}{\partial y} = x \end{align*}\]</span></p>
+<p>Veja que <span class="math inline">\(U_{xx}=U_{yy}=0\)</span>. Portanto a utilidade incremental obtida do consumo de uma unidade a mais do bem <span class="math inline">\(x\)</span> não depende da quantidade desse bem já presente na cesta. Ou seja, a utilidade marginal é constante.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
 <li><span class="math inline">\(U(x,y)=x^2y^2\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solução">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Primeiro faça os cálculos e repare que a MRS é a mesma do item (a). Isso é surpreendente?</p>
+<p>Agora vamos olhar para as utilidades marginais. <span class="math display">\[ \begin{align*} U_x = 2xy^2, \quad U_y = 2x^2y \end{align*} \]</span> Tomando as derivadas segundas temos</p>
+<p><span class="math display">\[ U_{xx} = 2y^2&gt;0, \quad U_{yy} = 2x^2&gt;0 \]</span> Então a utilidade adicional obtida com mais uma unidade do bem <span class="math inline">\(x\)</span> cresce conforme a quantidade <span class="math inline">\(x\)</span> aumenta, em proporção do dobro do quadrado da quantidade do bem <span class="math inline">\(y\)</span>. Nesse contexto olhamos <span class="math inline">\(y\)</span> como fixo, então é como se <span class="math inline">\(U_{xx} = 2a^2, a&gt;0\)</span>. (O argumento para <span class="math inline">\(y\)</span> é simétrico.)</p>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
 <li><span class="math inline">\(U(x,y)=\log(x)+\log(y)\)</span>.</li>
 </ol>
 <p>Mostre que cada uma dessas apresenta MRS decrescente, mas exibem utilidade marginal constante, crescente, e decresecente, respectivamente. Discuta o significado econômico.</p>
@@ -723,16 +766,22 @@ Retornos de escala
 </div>
 </div>
 <div id="exr-produtividade-marginal-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 19</strong></span> (*) Dadas as funções de produção abaixo, calcule as produtividades marginais. Cheque se são crescentes ou decrescentes. Determine o nível de retornos de escala.</p>
+<p><span class="theorem-title"><strong>Exercise 19</strong></span> (*) Dadas as funções de produção abaixo, calcule as produtividades marginais. Cheque se são crescentes ou decrescentes. Determine o nível de retornos de escala. Responda em função do valor de parâmetros fixos, quando pertinente.</p>
 <ol type="a">
-<li><span class="math inline">\(f(k,l)=k+l+2\sqrt{kl}\)</span></li>
+<li><span class="math inline">\(f(k,l)=k+l+2\sqrt{kl}\)</span> ::: {.callout-caution title=“Solução” collapse=true} Produtividades marginais <span class="math display">\[ \begin{align*} \frac{\partial f(k,l)}{\partial k} = 1 + (kl)^{-1/2} \\
+\frac{\partial f(k,l)}{\partial l} = 1 + (kl)^{-1/2}\end{align*}\]</span> Os retornos de escala são associados ao grau de homogeneidade da função de produção. Portanto, <span class="math display">\[ \begin{align*} f(tk, tl) &amp;= (tk) + (tl) + 2\sqrt{tktl} \\
+&amp;=tk+tl+2t\sqrt{kl}\\
+&amp;=t^1f(k,l).\end{align*}\]</span> Então essa função de produção apresenta retornos constantes de escala.</li>
+</ol>
+</div>
+<ol type="a">
 <li><span class="math inline">\(F(K,L)=K^{\alpha}(AL)^{1-\alpha}, \quad A&gt;0\)</span></li>
-<li></li>
-<li></li>
+<li><span class="math inline">\(F(K,L)=\left(K^\delta+L^\delta\right)^{1/\delta}\)</span></li>
+<li><span class="math inline">\(f(x_1,x_2)=(x_1+3x_2)^2\)</span></li>
 <li></li>
 <li></li>
 </ol>
-</div>
+<p>:::</p>
 <div id="exr-funcoes-producao-vf-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 20</strong></span> (*) Uma firma uniproduto produz sujeita a uma tecnologia descrita pela função de produção <span class="math inline">\(f(x_1,x_2)=\min(x_1,3x_2)\)</span>, sendo <span class="math inline">\(x_1\geq0\)</span> a quantidade utilizada do insumo 1 e <span class="math inline">\(x_2\geq0\)</span> a quantidade utilizada do insumo 2. Identifique se são verdadeiras ( <input type="checkbox" checked="" value="1" disabled="disabled">) ou falsas ( <input type="checkbox" unchecked="" value="0" disabled="disabled">) as afirmativas abaixo a respeito dessa função.</p>
 <ol type="a">
@@ -741,11 +790,27 @@ Retornos de escala
 <li>( <input type="checkbox" unchecked="">) A produtividade marginal do insumo 2 em qualquer combinação de insumos <span class="math inline">\(x_1,x_2&gt;0\)</span> na qual <span class="math inline">\(0&lt;3x_2&lt;x_2\)</span> é dada por <span class="math inline">\(\frac{\partial f(x_1,x_2)}{\partial x_2}=3\)</span>.</li>
 </ol>
 </div>
+<div id="exr-funcoes-producao-vf-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 21</strong></span> (*) Uma firma uniproduto produz sujeita a uma tecnologia descrita pela função de produção <span class="math inline">\(f(x_1,x_2)=\log(x_1,x_2)\)</span>, sendo <span class="math inline">\(x_1&gt;0\)</span> a quantidade utilizada do insumo 1, com <span class="math inline">\(x_1&gt;1\)</span>, e <span class="math inline">\(x_2&gt;0\)</span> a quantidade utilizada do insumo 2, com <span class="math inline">\(x_2&gt;1\)</span>. Com base no conceito de diferencial total de primeira ordem, identifique se são verdadeiras ( <input type="checkbox" checked="" value="1" disabled="disabled">) ou falsas ( <input type="checkbox" unchecked="" value="0" disabled="disabled">) as afirmativas abaixo a respeito dessa função de produção.</p>
+<ol type="a">
+<li>( <input type="checkbox" unchecked="">) O diferencial total de primeira ordem é dado por <span class="math inline">\(df = \frac{30}{x_1x_2}dx_1+\frac{30}{x_1x_2}dx_2\)</span> para qualquer combinação de insumo <span class="math inline">\((x_1,x_2)\)</span>.</li>
+<li>( <input type="checkbox" unchecked="">) O diferencial total de primeira ordem na combinação de insumos <span class="math inline">\((6,3)\)</span> é dado por <span class="math inline">\(df = 4dx_1+10dx_2\)</span>.</li>
+<li>( <input type="checkbox" unchecked="">) Se a firma estiver usando inicialmente a combinação de insumos <span class="math inline">\((5,2)\)</span> e a quantidade do insumo 1 for diminuida em 0.2 e a quantidade do insumo 2 for aumentada em 0.4, então a estimativa da variação da produção será <span class="math inline">\(df=4.8\)</span>.</li>
+</ol>
+</div>
+<div id="exr-funcoes-utilidade-vf-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 22</strong></span> (*) Considere um consumidor cujas preferências sobre o conjunto consumo <span class="math inline">\(\mathbb R^2_+\)</span> são representadas pela função de utilidade <span class="math inline">\(u(x_1,x_2)=e^{3x_1x_2}\)</span>, sendo <span class="math inline">\(x_1\)</span> a quantidade consumida do bem 1 e <span class="math inline">\(x_2\)</span> a quantidade consumida do bem 2 em um dado intervalo de tempo. identifique se são verdadeiras ( <input type="checkbox" checked="" value="1" disabled="disabled">) ou falsas ( <input type="checkbox" unchecked="" value="0" disabled="disabled">) as afirmativas abaixo a respeito dessa função de utilidade.</p>
+<ol type="a">
+<li>( <input type="checkbox" unchecked="">) O bem 1 é um bem neutro em qualquer cesta de consumo <span class="math inline">\((x_1, x_2)\in\mathbb R^2_+\)</span> com <span class="math inline">\(x_2=0\)</span>.</li>
+<li>( <input type="checkbox" unchecked="">) Vale o princípio da utilidade marginal decrescente em qualquer cesta de consumo com <span class="math inline">\(x_1,x_2&gt;0\)</span>.</li>
+<li>( <input type="checkbox" unchecked="">) A taxa marginal de substituição em qualquer cesta de consumo com <span class="math inline">\(x_1,x_2&gt;0\)</span> é dada por <span class="math inline">\(MRS(x_1,x_2)=x_2/x_2\)</span>.</li>
+</ol>
+</div>
 </section>
 <section id="convexidade-e-concavidade" class="level2">
 <h2 class="anchored" data-anchor-id="convexidade-e-concavidade">Convexidade e concavidade</h2>
 <div class="callout callout-style-default callout-tip callout-titled" title="Conjuntos convexos">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -754,7 +819,7 @@ Conjuntos convexos
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Um conjunto <span class="math inline">\(S\)</span> formado por vetores <span class="math inline">\(n\)</span>-dimensionais é convexo se <span class="math display">\[ (1-\lambda)x_0 + \lambda x_1 \in S\]</span> para todo <span class="math inline">\(x_0,x_1\in S\)</span> e <span class="math inline">\(\lambda \in [0,1]\)</span>.</p>
 <p>Então um conjunto é convexo se qualquer combinação convexa<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> entre elementos desse conjunto também é elemento do conjunto original.</p>
@@ -770,7 +835,7 @@ Conjuntos convexos
 </div>
 </div>
 <div id="exr-conjuntos-convexos-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 21 (Conjuntos convexos 1)</strong></span> Determine se os seguintes conjuntos são convexos.</p>
+<p><span class="theorem-title"><strong>Exercise 23 (Conjuntos convexos 1)</strong></span> Determine se os seguintes conjuntos são convexos.</p>
 <ol type="a">
 <li></li>
 <li></li>
@@ -778,7 +843,7 @@ Conjuntos convexos
 </ol>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Matriz de Derivadas Segundas (Hessiana)">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -787,7 +852,7 @@ Matriz de Derivadas Segundas (Hessiana)
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div id="callout-21" class="callout-21-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Seja <span class="math inline">\(f:A\rightarrow \mathbb R, A\subseteq \mathbb R^2\)</span> uma função duas vezes continuamente diferenciável. Definimos sua matriz de derivadas segundas (ou Hessiana) como <span class="math display">\[
   H = \begin{bmatrix} f_{xx} &amp; f_{xy} \\ f_{xy} &amp; f_{yy} \end{bmatrix}
@@ -796,7 +861,7 @@ Matriz de Derivadas Segundas (Hessiana)
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Formas quadráticas e sinais de matrizes">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -805,7 +870,7 @@ Formas quadráticas e sinais de matrizes
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div id="callout-22" class="callout-22-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Tome uma matriz simétrica <span class="math inline">\(2\times 2\)</span> <span class="math display">\[ X = \begin{bmatrix}x_{11} &amp; c\\ c &amp; x_{22}\end{bmatrix} \]</span> e o vetor <span class="math inline">\(2\times 1\)</span> <span class="math display">\[ \mathbf w = \begin{bmatrix} w_1 \\ w_2\end{bmatrix}\]</span>. Considere o produto <span class="math display">\[ \mathbf w^T X \mathbf w = \begin{bmatrix} w_1 &amp; w_2\end{bmatrix}\begin{bmatrix}x_{11} &amp; c\\ c &amp; x_{22}\end{bmatrix}\begin{bmatrix} w_1 \\ w_2\end{bmatrix} \]</span> Fazendo os cálculos temos <span class="math display">\[ \mathbf w^T X \mathbf w = w_1^2x_{11}+w_2^2x_{22}+2w_1w_2c\]</span>. Chamamos <span class="math inline">\(\mathbf w^T X \mathbf w\)</span> de forma quadrática (pense como uma função de <span class="math inline">\(\mathbf w\)</span>, com coeficientes dados pela matriz <span class="math inline">\(X\)</span>).</p>
 <p>Dizemos que uma matriz <span class="math inline">\(X\)</span> é</p>
@@ -819,7 +884,7 @@ Formas quadráticas e sinais de matrizes
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Teste de convexidade baseado em $H$">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-21-contents" aria-controls="callout-21" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -828,7 +893,7 @@ Teste de convexidade baseado em <span class="math inline">\(H\)</span>
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-21" class="callout-21-contents callout-collapse collapse">
+<div id="callout-23" class="callout-23-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Seja <span class="math inline">\(f\)</span> uma função de várias variáveis definida em um conjunto convexo <span class="math inline">\(A\subseteq \mathbb R^n\)</span>. Denote a Hessiana de <span class="math inline">\(f\)</span> avaliada no ponto <span class="math inline">\(\mathbf x\)</span> como <span class="math inline">\(H(\mathbf x)\)</span>. Então</p>
 <ul>
@@ -840,7 +905,7 @@ Teste de convexidade baseado em <span class="math inline">\(H\)</span>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Critério dos autovalores">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-22-contents" aria-controls="callout-22" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-24-contents" aria-controls="callout-24" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -849,7 +914,7 @@ Critério dos autovalores
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-22" class="callout-22-contents callout-collapse collapse">
+<div id="callout-24" class="callout-24-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Seja <span class="math inline">\(X\)</span> uma matriz real simétrica com dimensões <span class="math inline">\(n\times n\)</span>, e <span class="math inline">\(\lambda_1,\lambda_2,\dots,\lambda_n\)</span> seus associados autovalores. Então</p>
 <ul>
@@ -862,7 +927,7 @@ Critério dos autovalores
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled" title="Determinação dos autovalores de uma matriz $2\times2$">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-23-contents" aria-controls="callout-23" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -871,7 +936,7 @@ Determinação dos autovalores de uma matriz <span class="math inline">\(2\times
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-23" class="callout-23-contents callout-collapse collapse">
+<div id="callout-25" class="callout-25-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Os autovalores de uma matriz quadrada <span class="math inline">\(X\)</span> são as raízes da equação polinomial <span class="math inline">\(\det(X-I\lambda)=0\)</span>. Sempre é verdade que</p>
 <ul>
@@ -887,10 +952,10 @@ Determinação dos autovalores de uma matriz <span class="math inline">\(2\times
 </div>
 </div>
 </section>
-<section id="otimização-irrestrita" class="level2">
-<h2 class="anchored" data-anchor-id="otimização-irrestrita">Otimização irrestrita</h2>
+<section id="otimização-de-funções-univariadas" class="level2">
+<h2 class="anchored" data-anchor-id="otimização-de-funções-univariadas">Otimização de funções univariadas</h2>
 <div id="exr-grafico-funcao-univariada-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 22 (Gráfico de funções univariadas)</strong></span> Esboce o gráfico (encontre e classifique pontos críticos, raízes, e limites laterais) das seguintes funções univariadas.</p>
+<p><span class="theorem-title"><strong>Exercise 24 (Gráfico de funções univariadas)</strong></span> Esboce o gráfico (encontre e classifique pontos críticos, e limites laterais) das seguintes funções univariadas.</p>
 <ol type="a">
 <li><span class="math inline">\(f(x) = x^2 - x - 1\)</span></li>
 <li><span class="math inline">\(g(x) = \exp(-x^2/2)\)</span></li>
@@ -898,8 +963,91 @@ Determinação dos autovalores de uma matriz <span class="math inline">\(2\times
 <li><span class="math inline">\(z(x) = x\log(x^2)\)</span></li>
 </ol>
 </div>
+<div id="exr-otimizacao-univariada-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 25</strong></span> Obtenha os valores estacionários e determine se são máximos, mínimos, ou pontos de inflexão.</p>
+<ol type="a">
+<li><span class="math inline">\(y=0.5x^3-3x^2+6x+10\)</span></li>
+<li><span class="math inline">\(y=x^3-3x^2+5\)</span></li>
+<li><span class="math inline">\(y=x^4-4x^3+16x\)</span></li>
+<li><span class="math inline">\(y=x+1/x\)</span></li>
+<li><span class="math inline">\(y=x^3-3x-1\)</span></li>
+<li><span class="math inline">\(y=3x^4-10x^3+6x^2+5\)</span></li>
+<li><span class="math inline">\(y=(1-x^2)/(1+x^2)\)</span></li>
+<li><span class="math inline">\(y=(3-x^3)^{1/2}\)</span></li>
+<li><span class="math inline">\(y=(2-x)/(x^2+x-2)\)</span></li>
+<li><span class="math inline">\(y=x^{0.5}e^{-0.1x}\)</span></li>
+</ol>
+</div>
+<div id="exr-otimizacao-univariada-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 26</strong></span> (*) Uma firma tem função de custo total <span class="math display">\[ C = 0.5x^3-3x^2+6x+50 \]</span> a vende em um mercado competitivo com preço igual a <span class="math inline">\(\$1\)</span>. Qual a quantidade ótima produzida? Qual seria a quantidade ótima se o preço fosse <span class="math inline">\(\$2\)</span>.</p>
+</div>
+</section>
+<section id="otimização-irrestrita" class="level2">
+<h2 class="anchored" data-anchor-id="otimização-irrestrita">Otimização irrestrita</h2>
+<div id="exr-otimizacao-irrestrita-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 27</strong></span> Estude com relação a máximos e mínimos locais. Compute as condições de segunda ordem.</p>
+<ol type="a">
+<li><span class="math inline">\(f(x,y)=x^2+3xy+4y^2-6x+2y\)</span></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solucão
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Condições de primeira ordem: <span class="math inline">\(\nabla f(x,y) = \begin{bmatrix} 0 &amp; 0 \end{bmatrix}^T\)</span>. <span class="math display">\[\begin{align*} \nabla f(x,y) = \begin{bmatrix} \frac{\partial f(x,y)}{\partial x} \\ \frac{\partial f(x,y)}{\partial y} \end{bmatrix}= \begin{bmatrix} 2x+3y-6 \\ 3x+8y+2 \end{bmatrix}\end{align*}\]</span></p>
+<p>Portanto as condições de primeira ordem são dadas pelo sistema <span class="math display">\[ \begin{align*} \begin{cases} 2x+3y-6&amp;=0 \\
+3x+8y+2&amp;=0\end{cases} \end{align*} \]</span> Resolvendo o sistema obtemos <span class="math inline">\((x^*,y^*)=(54/7,-24/7)\)</span>.</p>
+<p>A matriz Hessiana é dada por</p>
+<p><span class="math display">\[ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\partial x} &amp; \frac{\partial^2 f(x,y)}{\partial y\partial x} \\ \frac{\partial^2 f(x,y)}{\partial x \partial y} &amp; \frac{\partial^2 f(x,y)}{\partial y \partial y} \end{bmatrix} = \begin{bmatrix} 2 &amp; 3 \\ 3 &amp; 8 \end{bmatrix} \end{align*} \]</span> Devemos julgar o sinal de <span class="math inline">\(H(x^*,y^*)\)</span>. Sabemos que <span class="math display">\[ \begin{align*} \lambda_1+\lambda_2 &amp;= \text{tr}(H)=10 \\
+\lambda_1\lambda_2 &amp;= \det(H)=1\end{align*}\]</span> Como a soma dos autovalores é positiva e seu produto também é positivo, garamtimos que <span class="math inline">\(\lambda_1&gt;0\)</span> e <span class="math inline">\(\lambda_2&gt;0\)</span>. Portanto <span class="math inline">\(H(x^*,y^*)\)</span> é negativa-definida e <span class="math inline">\((x^*,y^*)=(57/7,-24/7)\)</span> é ponto de mínimo.</p>
+<p>Veja o gráfico da função no <a href="https://www.desmos.com/3d/fc9od0cles">link</a>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(f(x,y)=x^2y+2y^3\)</span></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solucão
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Condições de primeira ordem: <span class="math inline">\(\nabla f(x,y) = \begin{bmatrix} 0 &amp; 0 \end{bmatrix}^T\)</span>. <span class="math display">\[\begin{align*} \nabla f(x,y) = \begin{bmatrix} \frac{\partial f(x,y)}{\partial x} \\ \frac{\partial f(x,y)}{\partial y} \end{bmatrix}= \begin{bmatrix} 2xy \\ x^2+6y^2 \end{bmatrix}\end{align*}\]</span> Portanto as condições de primeira ordem são <span class="math display">\[ \begin{align*} \begin{cases} 2xy&amp;=0 \\
+x^2+6y^2&amp;=0\end{cases} \end{align*} \]</span> Repare que o sistema acima só é satisfeito quando <span class="math inline">\((x^*,y^*)=(0,0)\)</span>.</p>
+<p>A matriz Hessiana é dada por</p>
+<p><span class="math display">\[ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\partial x} &amp; \frac{\partial^2 f(x,y)}{\partial y\partial x} \\ \frac{\partial^2 f(x,y)}{\partial x \partial y} &amp; \frac{\partial^2 f(x,y)}{\partial y \partial y} \end{bmatrix} = \begin{bmatrix} 2y &amp; 2x \\ 2x &amp; 12y \end{bmatrix} \end{align*} \]</span> Então avaliando <span class="math inline">\(H(x^*,y^*)\)</span> <span class="math display">\[ \begin{align*} H(x^*,y^*) = H(0,0) = \begin{bmatrix} 0 &amp; 0 \\ 0 &amp; 0 \end{bmatrix} \end{align*} \]</span> Aqui vemos que <span class="math inline">\(\lambda_1=\lambda_2=0\)</span> então <span class="math inline">\(H(0,0)\)</span> não é nem positiva-definida, nem negativa-definida. Portanto <span class="math inline">\((x^*,y^*)=(0,0)\)</span> não é extremo local.</p>
+<p>Veja o gráfico da função no <a href="https://www.desmos.com/3d/ohbynhuufp">link</a>.</p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li><span class="math inline">\(f(x,y)=x^3-3x^2y+27y\)</span></li>
+<li><span class="math inline">\(f(x,y)=\sqrt[3]{x^2+2xy+4y^2-6x-12y}\)</span></li>
+</ol>
+</div>
+<div id="exr-minimos-quadrados-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 28</strong></span> Obtenha os valores <span class="math inline">\(b_0, b_1\)</span> que maximizam o quadrado dos resíduos. Garanta que <span class="math inline">\((b_0^*, b_1^*)\)</span> é ponto de máximo.</p>
+<ol type="a">
+<li><span class="math inline">\(f(b_0,b_1) = (y - b_0 - b_1x)^2\)</span></li>
+<li><span class="math inline">\(SSR(b_0,b_1) = \sum^n_{j=1}(y_j-b_0-b_1x_j)^2\)</span></li>
+</ol>
+</div>
 <div id="exr-otimizacao-lucro-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 23 (Otimização de lucro 1)</strong></span> Uma determinada firma produz dois bens e se depara com as seguintes funções demanda: <span class="math display">\[ q_1=37-\frac{p_1}{2}, \text{ e }q_2=63-p_2, \]</span> sendo <span class="math inline">\(q_i\)</span> a quantidade produzida pela firma do bem <span class="math inline">\(i=1,2\)</span> e <span class="math inline">\(p_i\)</span> o preço cobrado pela firma por cada unidade do bem <span class="math inline">\(i=1,2\)</span>. Essa firma apresenta a seguinte função custo total: <span class="math display">\[ C(q_1,q_2)=(1+q_1)(1+q_2). \]</span> Dadas tais informações, determine:</p>
+<p><span class="theorem-title"><strong>Exercise 29 (Otimização de lucro 1)</strong></span> Uma determinada firma produz dois bens e se depara com as seguintes funções demanda: <span class="math display">\[ q_1=37-\frac{p_1}{2}, \text{ e }q_2=63-p_2, \]</span> sendo <span class="math inline">\(q_i\)</span> a quantidade produzida pela firma do bem <span class="math inline">\(i=1,2\)</span> e <span class="math inline">\(p_i\)</span> o preço cobrado pela firma por cada unidade do bem <span class="math inline">\(i=1,2\)</span>. Essa firma apresenta a seguinte função custo total: <span class="math display">\[ C(q_1,q_2)=(1+q_1)(1+q_2). \]</span> Dadas tais informações, determine:</p>
 <ol type="a">
 <li>As quantidades produzidas ótimas.</li>
 <li>As escolhas ótimas da firma são de fato maximizadoras de lucro? Justifique formalmente sua resposta.</li>
@@ -931,7 +1079,7 @@ Condições de primeira ordem para otimização restrita: método dos múltiplic
 </div>
 </div>
 <div id="exr-maximizacao-lucro-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 24</strong></span> (**) Uma firma maximizadora de lucro e tomadora de preços no mercado de bens produz uma única mercadoria, cuja quantidade é denotada por <span class="math inline">\(Q\)</span>, utilizando os fatores de produção capital e trabalho cujas quantidades são denotadas por <span class="math inline">\(K\)</span> e <span class="math inline">\(L\)</span>, respectivamente. Esta firma produz com base na seguinte função de produção <span class="math inline">\(Q=3\sqrt[3]{K}+2\sqrt{L}\)</span>. A firma vende cada unidade de sua mercadoria por <span class="math inline">\(p&gt;0\)</span> unidades monetárias, pagando por unidade de trabalho utilizada um salário de <span class="math inline">\(w&gt;0\)</span> unidades monetárias e incorrendo em custo de oportunidade por unidade de capital igual a <span class="math inline">\(r&gt;0\)</span> unidades monetárias. Estes preços são constantes e exogenamente determinados. Dados tais pressuposto, pede-se:</p>
+<p><span class="theorem-title"><strong>Exercise 30</strong></span> (**) Uma firma maximizadora de lucro e tomadora de preços no mercado de bens produz uma única mercadoria, cuja quantidade é denotada por <span class="math inline">\(Q\)</span>, utilizando os fatores de produção capital e trabalho cujas quantidades são denotadas por <span class="math inline">\(K\)</span> e <span class="math inline">\(L\)</span>, respectivamente. Esta firma produz com base na seguinte função de produção <span class="math inline">\(Q=3\sqrt[3]{K}+2\sqrt{L}\)</span>. A firma vende cada unidade de sua mercadoria por <span class="math inline">\(p&gt;0\)</span> unidades monetárias, pagando por unidade de trabalho utilizada um salário de <span class="math inline">\(w&gt;0\)</span> unidades monetárias e incorrendo em custo de oportunidade por unidade de capital igual a <span class="math inline">\(r&gt;0\)</span> unidades monetárias. Estes preços são constantes e exogenamente determinados. Dados tais pressuposto, pede-se:</p>
 <ol type="a">
 <li>A representação formal do problema de maximização de lucro da firma tendo como variáveis de escolha os fatores de produção;</li>
 <li>as demandas de fatores de produção da firma;</li>
@@ -939,13 +1087,13 @@ Condições de primeira ordem para otimização restrita: método dos múltiplic
 </ol>
 </div>
 <div id="exr-maximizacao-utilidade-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 25</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de cois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=x_1+\log(1+x_2).\]</span> Os preços unitários, exogenamente determiados, dos bens 1 e 2 são <span class="math inline">\(p_1&gt;0\)</span> e <span class="math inline">\(p_2&gt;0\)</span> , respectivamente.</p>
+<p><span class="theorem-title"><strong>Exercise 31</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de cois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=x_1+\log(1+x_2).\]</span> Os preços unitários, exogenamente determiados, dos bens 1 e 2 são <span class="math inline">\(p_1&gt;0\)</span> e <span class="math inline">\(p_2&gt;0\)</span> , respectivamente.</p>
 <p>O consumidor aufere, no intervalo de tempo em anális, uma renda exógena <span class="math inline">\(m&gt;0\)</span>. Supondo <span class="math inline">\(m&gt;p_1&gt;p_2\)</span>, determine:</p>
 <ol type="a">
 <li>As quantidades ótimas usando o método de Lagrange.</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Solução">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-25-contents" aria-controls="callout-25" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -954,7 +1102,7 @@ Solução
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-25" class="callout-25-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p><span class="math display">\[\mathcal L(x_1,x_2,\lambda)=x_1+\log(1+x_2)+\lambda(p_1x_1+p_2x_2-m) \]</span> Condições de primeira ordem: <span class="math display">\[\begin{align*}\mathcal L_{x_1}=1+\lambda p_1=0\\
 \mathcal L_{x_2}=\frac{1}{1+x_2}+\lambda p_2=0\\
@@ -967,15 +1115,42 @@ Solução
 </ol>
 </div>
 <div id="exr-maximizacao-utilidade-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 26</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=x_1(x_2+4). \]</span> Os preços unitários, exogenamente determinados, dos bens 1 e 2 são <span class="math inline">\(p_1=\$3\)</span> e <span class="math inline">\(p_2=\$5\)</span>, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de <span class="math inline">\(\$100\)</span>. Determine:</p>
+<p><span class="theorem-title"><strong>Exercise 32</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=x_1(x_2+4). \]</span> Os preços unitários, exogenamente determinados, dos bens 1 e 2 são <span class="math inline">\(p_1=\$3\)</span> e <span class="math inline">\(p_2=\$5\)</span>, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de <span class="math inline">\(\$100\)</span>. Determine:</p>
 <ol type="a">
 <li>As quantidades consumidas ótimas usando o método de Lagrange;</li>
 <li>As quantidades obtidas no item anterior são de fato ótimas? Justifique formalmente sua resposta.</li>
 </ol>
 </div>
-<ul>
-<li><input type="checkbox" unchecked=""> Venus</li>
-</ul>
+<div id="exr-maximizacao-utilidade-3" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 33</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=5(1+x_1)x_2. \]</span> Os preços unitários, exogenamente determinados dos bens 1 e 2 são <span class="math inline">\(p_1=\$10\)</span> e <span class="math inline">\(p_2=\$20\)</span>, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de <span class="math inline">\(\$390\)</span>. Determine:</p>
+<ol type="a">
+<li>As quantidades ótimas usando o método de Lagrange;</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solução">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solução
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Lagrangeano</p>
+<p><span class="math display">\[\mathcal L = 5(1+x_1)x_2 + \lambda(p_1x_1+p_2x_2-m)\]</span> Condições de primeira ordem</p>
+<p><span class="math display">\[\begin{align*} \mathcal L_{x_1} &amp;= 5x_2 + \lambda p_1=0 \tag{CPO 1} \\ \mathcal L_{x_2} &amp;= 5(1+x_1) + \lambda p_2=0 \tag{CPO 2}\\
+\mathcal L_{\lambda} &amp;= p_1x_1+p_2x_2-m=0 \tag{CPO 3}
+\end{align*}\]</span></p>
+<p>De (CPO 1) <span class="math display">\[ \lambda = -\frac{5x_2}{p_1} \]</span> Substituindo em (CPO 2) <span class="math display">\[ 5(1+x_1) + \left(-\frac{5x_2}{p_1}\right) p_2=0 \]</span></p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>As quantidades obtidas no item anterior de fato ótimas? Justifique formalmente sua resposta.</li>
+</ol>
+</div>
 </section>
 <section id="referências" class="level2">
 <h2 class="anchored" data-anchor-id="referências">Referências</h2>
