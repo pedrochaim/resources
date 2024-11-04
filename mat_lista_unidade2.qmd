@@ -652,7 +652,7 @@ $$ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\par
 Devemos julgar o sinal de $H(x^*,y^*)$. Sabemos que
 $$ \begin{align*} \lambda_1+\lambda_2 &= \text{tr}(H)=10 \\
 \lambda_1\lambda_2 &= \det(H)=1\end{align*}$$
-Como a soma dos autovalores é positiva e seu produto também é positivo, garamtimos que $\lambda_1>0$ e $\lambda_2>0$. Portanto $H(x^*,y^*)$ é negativa-definida e $(x^*,y^*)=(57/7,-24/7)$ é ponto de mínimo.
+Como a soma dos autovalores é positiva e seu produto também é positivo, garamtimos que $\lambda_1>0$ e $\lambda_2>0$. Portanto $H(x^*,y^*)$ é positiva-definida e $(x^*,y^*)=(57/7,-24/7)$ é ponto de mínimo.
 
 Veja o gráfico da função no [link](https://www.desmos.com/3d/fc9od0cles).
 
