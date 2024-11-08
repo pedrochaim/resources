@@ -595,6 +595,24 @@ Obs.: Não é impossível que uma matriz cujas entradas são números reais tenh
 
 ## Otimização de funções univariadas
 
+::: {.callout-tip title="Condições necessárias e suficientes para maximização irrestrita de funções univariada"}
+
+Seja $f:I\rightarrow\mathbb R$, com $I\subseteq \mathbb R$ intervalo aberto, duas vezes continuamente diferenciável em seu domínio $I$. 
+
+Uma condição necessária para que o ponto $x^*$ seja máximo ou mínimo local é
+$$ \frac{df(x^*)}{dx}=0 \tag{CPO}$$
+Chamamos de *Condição de Primeira Ordem*. Aos pontos $x_0$ nos quais $f^\prime(x_0)=0$ damos o nome de *valores estacionários*, porque a variação da função é nula nesse ponto.
+
+Se a CPO for respeitada, então as seguintes condições, baseadas no sinal da derivada segunda, são suficientes para que $x^*$ seja extremo local.
+
+  * Se $f^\prime(x^*)=0$ e $f^{\prime\prime}(x^*)>0$, $x^*$ é ponto de mínimo local. (CSO)
+  * Se $f^\prime(x^*)=0$ e $f^{\prime\prime}(x^*)<0$, $x^*$ é ponto de máximo local. (CSO)
+  * Se $f^\prime(x^*)=0$ e $f^{\prime\prime}(x^*)=0$, $x^*$ é ponto de inflexão. (CSO)
+
+Chamamos de *Condição de Segunda Ordem*.
+
+:::
+
 ::: {#exr-grafico-funcao-univariada-1}
 #### Gráfico de funções univariadas
 Esboce o gráfico (encontre e classifique pontos críticos, e limites laterais) das seguintes funções univariadas.
@@ -632,6 +650,37 @@ a vende em um mercado competitivo com preço igual a $\$1$. Qual a quantidade ó
 
 ## Otimização irrestrita
 
+::: {.callout-tip title="Condições de primeira ordem (necessárias) para maximização irrestrita"}
+
+Tome $f:A\rightarrow \mathbb R$, com $A\subseteq \mathbb R^2$ duas vezes continuamente diferenciável em $A$. 
+
+Uma condição necessária para que $(x^*,y^*)$ seja ponto de máximo/mínimo local de $f$ é que suas derivadas parciais sejam ambas iguais a zero nesse ponto.
+
+$$\begin{align*}
+  \nabla f(x^*,y^*) = \begin{bmatrix} \frac{\partial f(x^*,y^*)}{\partial x} \\ \frac{\partial f(x^*,y^*)}{\partial y} \end{bmatrix} = \begin{bmatrix}0 \\ 0 \end{bmatrix} \tag{CPO}
+\end{align*}.$$
+
+  * Aula sobre condições de primeira ordem em otimização irrestrita prof. Jaylson [link](https://youtu.be/4wnvxq2Fjcs?si=5yDo2R3an17AD5G5).
+  
+:::
+
+::: {.callout-tip title="Condição de segunda ordem (suficiente) para maximização irrestrita"}
+
+Se a CPO for satisfeita para $(x^*,y^*)$ então a condição de segunda ordem (CSO) garante que o ponto é de máximo/mínimo. Ou seja, CPO+CSO são, juntas, condições suficientes^[$P\rightarrow Q$.] para que $(x^*,y^*)$ seja extremo local.
+
+Seja $H(x,y)$ a matriz de derivadas segundas (Hessiana) de $f$
+
+$$ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\partial x} & \frac{\partial^2 f(x,y)}{\partial y\partial x} \\ \frac{\partial^2 f(x,y)}{\partial x \partial y} & \frac{\partial^2 f(x,y)}{\partial y \partial y} \end{bmatrix}\end{align*} $$
+  
+  * Se $H(x^*,y^*)$ for positiva definida, $(x^*,y^*)$ é ponto de mínimo local. (CSO)
+  * Se $H(x^*,y^*)$ for negativa definida, $(x^*,y^*)$ é ponto de máximo local. (CSO)
+  
+  Ver determinação do sinal de uma matriz com base em seus autovalores.
+  
+  * Aula sobre condições de segunda ordem em otimização irrestrita prof. Jaylson [link](https://youtu.be/14sSU-OFGxY?si=CpcbdgudS5g1yotu).
+  
+:::
+
 ::: {#exr-otimizacao-irrestrita-1}
   Estude com relação a máximos e mínimos locais. Compute as condições de segunda ordem.
   
@@ -651,7 +700,7 @@ A matriz Hessiana é dada por
 $$ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\partial x} & \frac{\partial^2 f(x,y)}{\partial y\partial x} \\ \frac{\partial^2 f(x,y)}{\partial x \partial y} & \frac{\partial^2 f(x,y)}{\partial y \partial y} \end{bmatrix} = \begin{bmatrix} 2 & 3 \\ 3 & 8 \end{bmatrix} \end{align*} $$
 Devemos julgar o sinal de $H(x^*,y^*)$. Sabemos que
 $$ \begin{align*} \lambda_1+\lambda_2 &= \text{tr}(H)=10 \\
-\lambda_1\lambda_2 &= \det(H)=1\end{align*}$$
+\lambda_1\lambda_2 &= \det(H)=7\end{align*}$$
 Como a soma dos autovalores é positiva e seu produto também é positivo, garamtimos que $\lambda_1>0$ e $\lambda_2>0$. Portanto $H(x^*,y^*)$ é positiva-definida e $(x^*,y^*)=(57/7,-24/7)$ é ponto de mínimo.
 
 Veja o gráfico da função no [link](https://www.desmos.com/3d/fc9od0cles).
@@ -680,14 +729,92 @@ Veja o gráfico da função no [link](https://www.desmos.com/3d/ohbynhuufp).
 
   b. $f(x,y)=x^3-3x^2y+27y$
   b. $f(x,y)=\sqrt[3]{x^2+2xy+4y^2-6x-12y}$
+  b. $f(x,y)=x^4+y^4+4x+4y$
   
+::: {.callout-caution title="Solucão" collapse=true}
+Condições de primeira ordem: $\nabla f(x^*,y^*)=\mathbf 0$.
+
+$$\begin{align*}
+  \nabla f(x,y) = \begin{bmatrix}4(x^3+1)\\4(y^3+10)\end{bmatrix}\overset{CPO}{=}\begin{bmatrix}0\\0\end{bmatrix}
+\end{align*}$$
+Então nosso candidato a extremo local é $(x^*,y^*)=(0,0)$
+
+Condição de segunda ordem. 
+
+$$\begin{align*}
+H(x,y) = \begin{bmatrix} 12x^2 & 0 \\ 0 & 12y^2 \end{bmatrix}
+\end{align*}$$
+$$\begin{align*}
+H(x^*,y^2) = \begin{bmatrix} 12(-1)^2& 0 \\ 0 & 12(-1)^2 \end{bmatrix} = 12\begin{bmatrix} 1& 0 \\ 0 & 1 \end{bmatrix}
+\end{align*}$$
+
+Então
+
+  * $\text{tr}H(x^*,y^2)=12\cdot2=\lambda_1+\lambda_2>0$
+  * $\det H(x^*,y^*) = 12^2\cdot 1 = \lambda_1\lambda_2>0$
+
+Portanto $\lambda_1>0$ e $\lambda_2>0$, $H$ é positiva definida no ponto $(x^*,y^*)=(-1,-1)$ e esse é um ponto de mínimo local (no caso, também global).
+
+
+:::  
+
 :::
 
 ::: {#exr-minimos-quadrados-1}
 
-Obtenha os valores $b_0, b_1$ que maximizam o quadrado dos resíduos. Garanta que $(b_0^*, b_1^*)$ é ponto de máximo.
+Obtenha os valores $b_0, b_1$ que minimizam o quadrado dos resíduos. Garanta que $(b_0^*, b_1^*)$ é ponto de máximo^[Dica: use o fato de que $\sum^n_{j=1}x_j^2/n > (\sum^n_{j=1}x_j/n)^2$.]. 
 
-a. $f(b_0,b_1) = (y - b_0 - b_1x)^2$
+a. $SR(b_0,b_1) = (y_1 - b_0 - b_1x_1)^2+(y_2 - b_0 - b_1x_2)^2$
+
+::: {.callout-caution title="Solucão" collapse=true}
+
+Condições de primeira ordem: $\nabla SR(b_0,b_1)=\mathbf{0}$.
+
+$$\begin{align*}
+\frac{\partial SR}{\partial b_0}  &= -2(y_1 - b_0 - b_1x_1)-2(y_2 - b_0 - b_1x_2)\\
+&=-2\left[(y_1 - b_0 - b_1x_1)+(y_2 - b_0 - b_1x_2)\right]\\
+&=-2\left[(y_1+y_2)-(b_0+b_0)-b_1(x_1+x_2)\right]
+\end{align*}$$
+$$\begin{align*}
+\frac{\partial SR}{\partial b_0}  &= -2x_1(y_1 - b_0 - b_1x_1)-2x_2(y_2 - b_0 - b_1x_2)\\
+&=-2\left[x_1(y_1 - b_0 - b_1x_1)+x_2(y_2 - b_0 - b_1x_2)\right]\\
+&=-2\left[(x_1y_1+x_2y_2)-b_0(x_1+x_2)-b_1(x_1^2+x_2^2)\right]
+\end{align*}$$
+
+Então as condições de primeira ordem são dadas pelo sistema 
+
+$$\begin{align*}
+&-2\left[(y_1+y_2)-2b_0-b_1(x_1+x_2)\right]=0 \tag{CPO 1} \\&-2\left[(x_1y_1+x_2y_2)-b_0(x_1+x_2)-b_1(x_1^2+x_2^2)\right]=0 \tag{CPO 2}
+\end{align*}$$
+
+Resolvendo (CPO 1) para $b_0$ temos
+
+$$\begin{align*} b_0^*&=\frac{y_1+y_2}{2}+b_1\frac{x_1+x_2}{2}\\&=\bar y + b_1 \bar x\end{align*}$$
+Ainda precisamos encontrar $b_1$ em função de $y$ e $x$. Substituindo $b^*_0$ em (CPO 2) e resolvendo para $b_1$, temos
+
+$$\begin{align*} 
+-2\left[(x_1y_1+x_2y_2)-(\bar y - b_1\bar x)(x_1+x_2)-b_1(x_1^2+x_2^2)\right]=0 \\
+(x_1y_1+x_2y_2)-(\bar y - b_1\bar x)(x_1+x_2)-b_1(x_1^2+x_2^2)=0\tag{/(-2)}\\
+\frac{(x_1y_1+x_2y_2)}{2}-(\bar y - b_1\bar x)\bar x-b_1\frac{(x_1^2+x_2^2)}{2}=0\tag{/2}
+\end{align*}$$
+
+$$b_1^*= \frac{\frac{(x_1y_1+x_2y_2)}{2}-\bar x\bar y}{\frac{(x_1^2+x_2^2)}{2}-\bar x^2}$$
+
+Então nosso candidato a ponto de mínimo é
+$$ (b_0^*,b_1^*) = \left(\bar y-b_1^*\bar x, \frac{\frac{(x_1y_1+x_2y_2)}{2}-\bar x\bar y}{\frac{(x_1^2+x_2^2)}{2}-\bar x^2}\right)$$ 
+Condições de segunda-ordem: $H(b_0^*,b_1^*)>0$
+
+Para garantir que de fato $(b_0^*,b_1^*)$ é ponto de mínimo precisamos garantir que $H(b_0^*,b_1^*)$ é positiva-definida. Uma condição suficiente é que seus autovalores sejam estritamente positivos.
+
+As derivadas segundas e cruzadas são
+$$ SR_{b_0b_0} = $$ 
+
+
+
+
+
+:::
+
 a. $SSR(b_0,b_1) = \sum^n_{j=1}(y_j-b_0-b_1x_j)^2$
 
 :::
@@ -703,31 +830,205 @@ $$ C(q_1,q_2)=(1+q_1)(1+q_2). $$
 Dadas tais informações, determine: 
 
   a. As quantidades produzidas ótimas.
+  
+::: {.callout-caution title="Solucão" collapse=true}
+$$q_1=12 \text{ e } q_2=25.$$  
+:::
+
   b. As escolhas ótimas da firma são de fato maximizadoras de lucro? Justifique formalmente sua resposta.
+:::
+
+::: {#exr-otimizacao-lucro-2}
+#### Otimização de lucro 2
+Uma determinada firma produz dois bens e se depara com as seguintes funções demanda inversa:
+$$ p_1=\alpha_1+\beta_1q_1, \text{ e }p_2=\alpha_2+\beta_2q_2, $$
+sendo $q_i$ a quantidade produzida pela firma do bem $i=1,2$ e $p_i$ o preço cobrado pela firma por cada unidade
+do bem $i=1,2$. Essa firma apresenta a seguinte função custo total:
+$$ C(q_1,q_2)=(1+q_1)(1+q_2). $$
+Dadas tais informações, determine: 
+
+  a. As quantidades produzidas ótimas.
+
+::: {.callout-caution title="Solucão" collapse=true}
+
+A função lucro é dada por
+$$
+\begin{align*}
+\Pi(q_1,q_2) = q_1p_1(q_1) + q_2p_2(q_2) - C(q_1,q_2)
+\end{align*}
+$$
+Essa é a formulação geral quando as funções demanda (inversa) do bem $i$ só depende da quantidade do próprio bem $i$. As condições de primeira ordem são $\Pi_{q_1}=0$ e $\Pi_{q_2}=0$
+
+$$
+\begin{align*}
+\frac{\partial \Pi}{\partial q_1} = p_1(q_1)+q_1\frac{dp_1(q_1)}{dq_1} - \frac{\partial C(q_1,q_2)}{\partial q_1} = 0 \\
+\frac{\partial \Pi}{\partial q_2} = p_2(q_2)+q_2\frac{dp_2(q_2)}{dq_2} - \frac{\partial C(q_1,q_2)}{\partial q_2} = 0
+\end{align*}
+$$
+Substituindo a forma funcional do enunciado nós temos
+$$\begin{align*} \Pi(q_1,q_2) = q_1(\alpha_1+\beta_1q_1)+q_2(\alpha_2+\beta_2q_2)-(1+q_1+q_2+q_1q_2)\end{align*}$$
+
+$$
+\begin{align*}
+\frac{\partial \Pi}{\partial q_1} = (\alpha_1+\beta_1q_1)+q_1\beta_1 - (1+q_2) = 0 \tag{CPO 1}\\
+\frac{\partial \Pi}{\partial q_2} = (\alpha_2+\beta_2q_2)+q_2\beta_2-(1+q_1) = 0 \tag{CPO 2}
+\end{align*}
+$$
+Isolando $q_1$ em (CPO 2) temos
+$$ q_1 = \alpha_2 + 2\beta_2q_2 - 1 $$
+Substituindo em (CPO 1) e resolvendo para $q_2$ temos
+$$ q_2 = \frac{\alpha_1 + 2\beta_1(\alpha_2-1)-1}{1-4\beta_1\beta_2}$$
+Resolvendo para $q_1$ ficamos com
+$$ q_1 = \frac{\alpha_2+2\beta_2(\alpha_1-1)-1}{1-4\beta_1\beta_2} $$
+
+Se substituirmos of valores do exercício anterior
+$$p_1 = 74-2q_1 \text{ e } p_2=63-q_2$$
+então
+
+$$\begin{align*} 
+  q_1 = \frac{63+2\cdot(-1)\cdot(74-1)-1}{1-4\cdot(-2)\cdot(-1)} = \frac{-84}{-7}=12 \\
+  q_2 = \frac{74+2\cdot(-2)\cdot(63-1)-1}{1-4\cdot(-2)\cdot(-1)} = \frac{-175}{-7}=25
+\end{align*}$$
+
+:::
+  
+  b. As escolhas ótimas da firma são de fato maximizadoras de lucro? Justifique formalmente sua resposta.
+
+::: {.callout-caution title="Solucão" collapse=true}
+As quantidades $(q_1^*, q_2^*)$ são maximizadoras de lucro se $H(q_1^*, q_2^*)$ for negativa definida.
+
+As derivadas segundas e cruzadas são
+
+$$\begin{align*}
+  \frac{\partial^2 \Pi}{\partial q_1\partial q_1} &= \frac{dp_1(q_1)}{dq_1}+\left(\frac{dp_1(q_1)}{dq_1}+q_1\frac{d^2p_1(q_1)}{dq_1^2}\right)-\frac{\partial^2 C(q_1,q_2)}{\partial q_1\partial q_1} \\
+  \frac{\partial^2 \Pi}{\partial q_2\partial q_2} &= \frac{dp_2(q_2)}{dq_2}+\left(\frac{dp_2(q_2)}{dq_2}+q_2\frac{d^2p_2(q_2)}{dq_2^2}\right)-\frac{\partial^2 C(q_1,q_2)}{\partial q_2\partial q_2} \\
+  \frac{\partial^2 \Pi}{\partial q_1\partial q_2} &= -\frac{\partial^2 C(q_1,q_2)}{\partial q_1\partial q_2}
+\end{align*}$$
+
+Que, no caso da nossa forma funcional, fica
+
+$$\begin{align*} H(q_1^*,q_2^*)=\begin{bmatrix}2\beta_1 & -1\\-1 & 2\beta_2\end{bmatrix}\end{align*}$$
+
+Repare que nesse caso a Hessiana não depende dos valores $(q_1,q_2)$. Vem do fato das demandas serem lineares e a função custo ter forma quadrática.
+
+$$\begin{align*}
+\text{tr}(H(q_1^*,q_2^*))&=4(\beta_1+\beta_2)=\lambda_1+\lambda_2\\
+\det (H(q_1^*,q_2^*))&=4\beta_1\beta_2+1=\lambda_1\lambda_2
+\end{align*}$$
+
+Para garantir que $H<0$ precisamos de $\lambda_1<0$ e $\lambda_2<0$ simultaneamente. Para isso o traço da matriz deve ser negativo e o determinante positivo. Isso é garantido se $\beta_1<0$ e $\beta_2<0$, condição que tem respaldo econômico na inclinação negativa da curva de demanda.
+
+:::
+
+:::
+
+
+::: {#exr-otimizacao-irrestrita-2}
+(**) Estude a seguinte função quanto a máximos ou mínimos locais
+$$f(x,y)=x\log(x^2)+y\log(y^2).$$
+:::
+
+::: {#exr-portfolio-variancia-minima}
+#### Portfólio de variância mínima
+Considere um investidor que pode investir nos ativos arriscados $X$ e $Y$. Seu portfólio (ou carteira) $P$ é definido pelos pesos relativos $w_1, w_2$ com $w_1+w_2=1$ da alocação de sua riqueza $W$ entre os ativos $X$ e $Y$.
+
+$$ P = w_1 X + w_2 Y = w_1X + (1-w_1)Y$$
+A variância dos retornos do ativo $X$ é dada por $Var(X)=\sigma^2_x$, a variância dos retornos do ativo $Y$ é dada por $Var(Y)=\sigma^2_y$, e o coeficiente de correlação entre os retornos dos ativos $X$ e $Y$ é $Cov(X,Y)=\rho$.
+
+Sabendo que
+$$ Var(P)=w_1^2\sigma_x^2+(1-w_1)^2\sigma_y^2+2w_1(1-w_1)\sigma_x\sigma_y\rho$$
+ 
+  a. Quais pesos relativos $w_1,w_2$ minimizam a variância dessa carteira. 
+  b. Esses valores são, de fato, um ponto de mínimo?
+  c. Dependendo dos valores dos parâmetros $\sigma_x,\sigma_y,\rho$ pode haver uma alocação ótima com algum peso $w$ negativo. O que essa situação significa em termos econômicos? Quais os requerimentos sobre os parâmetros para termos $w_1>0$ e $w_2>0$?
+
 :::
 
 ## Otimização restrita
 
-::: {.callout-tip title="Condições de primeira ordem para otimização restrita: método dos múltiplicadores de $\mathcal{L}$agrange"}
-Se nosso problema é maximizar (ou minimizar) uma função $f(x,y;\mathbf\theta)$, sujeita a uma restrição $g(x,y;\mathbf\omega)=C$^[$\mathbf\theta$ e $\mathbf\omega$ são vetores de parâmetros fixos]:
-$$
+::: {.callout-tip title="Condições de primeira ordem para otimização restrita: método dos múltiplicadores de Lagrange"}
+
+Se nosso problema é maximizar (ou minimizar) uma função $f(x,y)$, sujeita a uma restrição $g(x,y)=C$:
+$$\begin{align*}
 \max_{(x,y)\in A} f(x,y) \\
 \text{s.a. } g(x,y)=C
-$$
+\end{align*}$$
 
 Podemos obter condições de primeira ordem (necessárias) ao otimizar (de forma "irrestrita") o "Lagrangeano"
-$$ \mathcal{L}(x,y,\lambda;\mathbf\theta,\mathbf{\omega})=f(x,y;\mathbf{\theta})+\lambda[g(x,y;\mathbf{\omega})-C]$$
-As condições de primeira ordem são
 
-  * $\mathcal L_x = 0$
-  * $\mathcal L_y = 0$
-  * $\mathcal L_\lambda = 0$
+$$ \mathcal{L}(x,y,\lambda)=f(x,y)+\lambda[g(x,y)-C]$$
+Temos uma variável adicional $\lambda$, que chamamos de "múltiplicador de Lagrange"^[Tanto faz se escrevemos $+\lambda$ ou $-\lambda$ na definição do Lagrangeano.].  
 
+As condições de primeira ordem são $\nabla \mathcal L(x^*,y^*,\lambda^*) = \mathbf 0$. Ou seja,
+
+$$\begin{align*}
+  \begin{cases} \mathcal L_x = 0 \\ \mathcal L_y = 0 \\ \mathcal L_\lambda = 0 \end{cases} \tag{CPOs}
+\end{align*}$$
+
+
+  * Aula sobre multiplicadores de Lagrange prof. Jaylson [link](https://youtu.be/bswiN7JsDyI?si=17arpG4r_4jXkhTw).
+  * Vídeo com a intuição geométrica do método [link](https://www.youtube.com/watch?v=8mjcnxGMwFo). 
+  * Aula sobre multiplicadores de Lagrange (em português) [link](https://www.youtube.com/watch?v=0LLb0Tn38uk).
 
 :::
 
+::: {.callout-tip title="Condição de segunda ordem para otimização restrita: a Hessiana Orleada"}
 
+A condição de segunda ordem para que $(x^*,y^*)$ seja extremo local em um problema de otimização restrita com duas variáveis de escolhe e uma única restrição de igualdade é relacionada ao sinal do determinante da matriz de derivadas segundas do Lagrangeano.
 
+Então se 
+$$\mathcal L(x,y,\lambda) = f(x,y)+\lambda(g(x,y)-C)$$
+A matriz de derivadas segundas $\bar H$ é 
+
+$$\begin{align*}
+\bar H(x,y,\lambda) = \begin{bmatrix}\mathcal L_{xx} & \mathcal L_{xy} & \mathcal L_{x\lambda} \\ \mathcal L_{xy} & \mathcal L_{yy} & \mathcal L_{y\lambda} \\ \mathcal L_{x\lambda} & \mathcal L_{y\lambda} & \mathcal L_{\lambda\lambda} \end{bmatrix}
+\end{align*}$$
+
+Calculando as derivadas veja que ficamos com
+
+$$\begin{align*}
+\bar H(x,y,\lambda) = \begin{bmatrix}\mathcal f_{xx}-\lambda g_{xx} & f_{xy}-\lambda g_{xy} & g_x \\
+f_{xy}-\lambda g_{xy} & f_{yy}-\lambda g_{yy} & g_y \\
+g_x & g_y & 0\end{bmatrix}
+\end{align*}$$
+
+Então *para o caso de duas variáveis de escolha e apenas uma restrição de igualdade*,
+
+  * se $\det(\bar H(x^*,y^*,\lambda^*))>0$, $(x^*,y^*)$ é ponto de máximo local do problema de otimização restrita;
+  * se $\det(\bar H(x^*,y^*,\lambda^*))<0$, $(x^*,y^*)$ é ponto de mínimo local do problema de otimização restrita.
+  
+Ver cálculo do determinante de uma matriz $3\times 3$ via [regra de Sarrus](https://en.wikipedia.org/wiki/Rule_of_Sarrus).
+
+Ver cálculo do determinante de uma matriz $n\times n$ via [expansão de Laplace](https://en.wikipedia.org/wiki/Laplace_expansion).
+
+::: {.callout-caution title="Comentários importantes" collapse=true}
+
+  * Chamamos de Hessiana "orleada" porque ela é a Hessiana do problema de otimização irrestrita de $f$, aumentada nas bordas pelo vetor $\begin{bmatrix}g_x & g_y & 0\end{bmatrix}$.
+  * Porque $\mathcal L_{\lambda\lambda}=0$, a Hessiana orleada $\bar H$ nunca será positiva definida ou negativa definida. Repare que se $\mathbf w = \begin{bmatrix} 0 & 0 & a\end{bmatrix}^T$, então $\mathbf w^T\bar H \mathbf w=0$.
+  
+$$\begin{align*}
+  \mathbf w^T\bar H \mathbf w &= \begin{bmatrix} 0 & 0 & a\end{bmatrix} \begin{bmatrix}\mathcal f_{xx}-\lambda g_{xx} & f_{xy}-\lambda g_{xy} & g_x \\
+f_{xy}-\lambda g_{xy} & f_{yy}-\lambda g_{yy} & g_y \\
+g_x & g_y & 0\end{bmatrix}\begin{bmatrix} 0 \\ 0 \\ a\end{bmatrix}\\
+&=\begin{bmatrix} 0 & 0 & a\end{bmatrix} \begin{bmatrix}ag_x \\ ag_y \\ 0 \end{bmatrix} = 0
+\end{align*}$$
+  
+  * A condição acima baseada no determinante $|\bar H^*|$ só vale no caso de duas variáveis de escolha e uma restrição de igualdade.
+  * A condição de segunda ordem geral para um problema com $n$ variáveis de escolha e $m$ restrições de desigualdade é mais complicada e depende do sinal dos *minors*^[Determinantes de submatrizes quadradas [link](https://en.wikipedia.org/wiki/Minor_(linear_algebra)).] de $\bar H^*$.
+  * Ver [@hoy2011mathematics] 13.2 para mais detalhes.
+
+:::
+
+:::
+
+::: {#exr-otimizacao-restrita-1}
+Resolva os problemas de maximização e minimização restrita abaixo. Ilustre sua resposta com um diagrama gráfico. Compute a condição de segunda ordem.
+
+a. $\min f(x,y) = x^2+3y^2$ sujeito a  
+
+a. $\max z = 2x_1+3x_2$ sujeito a $2x_1^2+5x^2_2=10$
+
+:::
 
 ::: {#exr-maximizacao-lucro-1}
 (**) Uma firma maximizadora de lucro e tomadora de preços no mercado de bens produz uma única mercadoria, cuja quantidade é denotada por $Q$, utilizando os fatores de produção capital e trabalho cujas quantidades são denotadas por $K$ e $L$, respectivamente. Esta firma produz com base na seguinte função de produção $Q=3\sqrt[3]{K}+2\sqrt{L}$. A firma vende cada unidade de sua mercadoria por $p>0$ unidades monetárias, pagando por unidade de trabalho utilizada um salário de $w>0$ unidades monetárias e incorrendo em custo de oportunidade por unidade de capital igual a $r>0$ unidades monetárias. Estes preços são constantes e exogenamente determinados. Dados tais pressuposto, pede-se:
@@ -738,7 +1039,7 @@ As condições de primeira ordem são
 :::
 
 ::: {#exr-maximizacao-utilidade-1}
-(**) Um consumidor escolhe as quantidades a serem consumidas de cois bens, $x_1>0$ e $x_2>0$, num dado intervalo de tempo. A relação de preferência deste consumidor no consumo é representada pela seguinte função de utilidade:
+(**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, $x_1>0$ e $x_2>0$, num dado intervalo de tempo. A relação de preferência deste consumidor no consumo é representada pela seguinte função de utilidade:
 $$ u(x_1,x_2)=x_1+\log(1+x_2).$$
 Os preços unitários, exogenamente determiados, dos bens 1 e 2 são $p_1>0$ e $p_2>0$ , respectivamente. 
 
@@ -749,9 +1050,9 @@ O consumidor aufere, no intervalo de tempo em anális, uma renda exógena $m>0$.
 ::: {.callout-caution title="Solução" collapse=true}
   $$\mathcal L(x_1,x_2,\lambda)=x_1+\log(1+x_2)+\lambda(p_1x_1+p_2x_2-m) $$
 Condições de primeira ordem:
-$$\begin{align*}\mathcal L_{x_1}=1+\lambda p_1=0\\
-\mathcal L_{x_2}=\frac{1}{1+x_2}+\lambda p_2=0\\
-\mathcal L_\lambda = x_1p_1+x_2p_2-m=0\end{align*}$$
+$$\begin{align*}\mathcal L_{x_1}&=1+\lambda p_1=0\\
+\mathcal L_{x_2}&=\frac{1}{1+x_2}+\lambda p_2=0\\
+\mathcal L_\lambda &= x_1p_1+x_2p_2-m=0\end{align*}$$
 Resolvendo para $x_1$ e $x_2$ o sistema definido pelas CPOs, temos
 $$ x_1 = \frac{m-p_1+p_2}{p_1}, \quad x_2 = \frac{p_1}{p_2}-1.$$
 :::
@@ -794,6 +1095,7 @@ $$ 5(1+x_1) + \left(-\frac{5x_2}{p_1}\right) p_2=0 $$
   
   b. As quantidades obtidas no item anterior de fato ótimas? Justifique formalmente sua resposta.
 :::
+
 
 ## Referências
 

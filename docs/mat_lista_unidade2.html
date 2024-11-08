@@ -954,6 +954,27 @@ Determinação dos autovalores de uma matriz <span class="math inline">\(2\times
 </section>
 <section id="otimização-de-funções-univariadas" class="level2">
 <h2 class="anchored" data-anchor-id="otimização-de-funções-univariadas">Otimização de funções univariadas</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Condições necessárias e suficientes para maximização irrestrita de funções univariada">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Condições necessárias e suficientes para maximização irrestrita de funções univariada
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Seja <span class="math inline">\(f:I\rightarrow\mathbb R\)</span>, com <span class="math inline">\(I\subseteq \mathbb R\)</span> intervalo aberto, duas vezes continuamente diferenciável em seu domínio <span class="math inline">\(I\)</span>.</p>
+<p>Uma condição necessária para que o ponto <span class="math inline">\(x^*\)</span> seja máximo ou mínimo local é <span class="math display">\[ \frac{df(x^*)}{dx}=0 \tag{CPO}\]</span> Chamamos de <em>Condição de Primeira Ordem</em>. Aos pontos <span class="math inline">\(x_0\)</span> nos quais <span class="math inline">\(f^\prime(x_0)=0\)</span> damos o nome de <em>valores estacionários</em>, porque a variação da função é nula nesse ponto.</p>
+<p>Se a CPO for respeitada, então as seguintes condições, baseadas no sinal da derivada segunda, são suficientes para que <span class="math inline">\(x^*\)</span> seja extremo local.</p>
+<ul>
+<li>Se <span class="math inline">\(f^\prime(x^*)=0\)</span> e <span class="math inline">\(f^{\prime\prime}(x^*)&gt;0\)</span>, <span class="math inline">\(x^*\)</span> é ponto de mínimo local. (CSO)</li>
+<li>Se <span class="math inline">\(f^\prime(x^*)=0\)</span> e <span class="math inline">\(f^{\prime\prime}(x^*)&lt;0\)</span>, <span class="math inline">\(x^*\)</span> é ponto de máximo local. (CSO)</li>
+<li>Se <span class="math inline">\(f^\prime(x^*)=0\)</span> e <span class="math inline">\(f^{\prime\prime}(x^*)=0\)</span>, <span class="math inline">\(x^*\)</span> é ponto de inflexão. (CSO)</li>
+</ul>
+<p>Chamamos de <em>Condição de Segunda Ordem</em>.</p>
+</div>
+</div>
 <div id="exr-grafico-funcao-univariada-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 24 (Gráfico de funções univariadas)</strong></span> Esboce o gráfico (encontre e classifique pontos críticos, e limites laterais) das seguintes funções univariadas.</p>
 <ol type="a">
@@ -984,13 +1005,56 @@ Determinação dos autovalores de uma matriz <span class="math inline">\(2\times
 </section>
 <section id="otimização-irrestrita" class="level2">
 <h2 class="anchored" data-anchor-id="otimização-irrestrita">Otimização irrestrita</h2>
+<div class="callout callout-style-default callout-tip callout-titled" title="Condições de primeira ordem (necessárias) para maximização irrestrita">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Condições de primeira ordem (necessárias) para maximização irrestrita
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Tome <span class="math inline">\(f:A\rightarrow \mathbb R\)</span>, com <span class="math inline">\(A\subseteq \mathbb R^2\)</span> duas vezes continuamente diferenciável em <span class="math inline">\(A\)</span>.</p>
+<p>Uma condição necessária para que <span class="math inline">\((x^*,y^*)\)</span> seja ponto de máximo/mínimo local de <span class="math inline">\(f\)</span> é que suas derivadas parciais sejam ambas iguais a zero nesse ponto.</p>
+<p><span class="math display">\[\begin{align*}
+  \nabla f(x^*,y^*) = \begin{bmatrix} \frac{\partial f(x^*,y^*)}{\partial x} \\ \frac{\partial f(x^*,y^*)}{\partial y} \end{bmatrix} = \begin{bmatrix}0 \\ 0 \end{bmatrix} \tag{CPO}
+\end{align*}.\]</span></p>
+<ul>
+<li>Aula sobre condições de primeira ordem em otimização irrestrita prof. Jaylson <a href="https://youtu.be/4wnvxq2Fjcs?si=5yDo2R3an17AD5G5">link</a>.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Condição de segunda ordem (suficiente) para maximização irrestrita">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Condição de segunda ordem (suficiente) para maximização irrestrita
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Se a CPO for satisfeita para <span class="math inline">\((x^*,y^*)\)</span> então a condição de segunda ordem (CSO) garante que o ponto é de máximo/mínimo. Ou seja, CPO+CSO são, juntas, condições suficientes<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> para que <span class="math inline">\((x^*,y^*)\)</span> seja extremo local.</p>
+<p>Seja <span class="math inline">\(H(x,y)\)</span> a matriz de derivadas segundas (Hessiana) de <span class="math inline">\(f\)</span></p>
+<p><span class="math display">\[ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\partial x} &amp; \frac{\partial^2 f(x,y)}{\partial y\partial x} \\ \frac{\partial^2 f(x,y)}{\partial x \partial y} &amp; \frac{\partial^2 f(x,y)}{\partial y \partial y} \end{bmatrix}\end{align*} \]</span></p>
+<ul>
+<li>Se <span class="math inline">\(H(x^*,y^*)\)</span> for positiva definida, <span class="math inline">\((x^*,y^*)\)</span> é ponto de mínimo local. (CSO)</li>
+<li>Se <span class="math inline">\(H(x^*,y^*)\)</span> for negativa definida, <span class="math inline">\((x^*,y^*)\)</span> é ponto de máximo local. (CSO)</li>
+</ul>
+<p>Ver determinação do sinal de uma matriz com base em seus autovalores.</p>
+<ul>
+<li>Aula sobre condições de segunda ordem em otimização irrestrita prof. Jaylson <a href="https://youtu.be/14sSU-OFGxY?si=CpcbdgudS5g1yotu">link</a>.</li>
+</ul>
+</div>
+</div>
 <div id="exr-otimizacao-irrestrita-1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 27</strong></span> Estude com relação a máximos e mínimos locais. Compute as condições de segunda ordem.</p>
 <ol type="a">
 <li><span class="math inline">\(f(x,y)=x^2+3xy+4y^2-6x+2y\)</span></li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -999,14 +1063,14 @@ Solucão
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Condições de primeira ordem: <span class="math inline">\(\nabla f(x,y) = \begin{bmatrix} 0 &amp; 0 \end{bmatrix}^T\)</span>. <span class="math display">\[\begin{align*} \nabla f(x,y) = \begin{bmatrix} \frac{\partial f(x,y)}{\partial x} \\ \frac{\partial f(x,y)}{\partial y} \end{bmatrix}= \begin{bmatrix} 2x+3y-6 \\ 3x+8y+2 \end{bmatrix}\end{align*}\]</span></p>
 <p>Portanto as condições de primeira ordem são dadas pelo sistema <span class="math display">\[ \begin{align*} \begin{cases} 2x+3y-6&amp;=0 \\
 3x+8y+2&amp;=0\end{cases} \end{align*} \]</span> Resolvendo o sistema obtemos <span class="math inline">\((x^*,y^*)=(54/7,-24/7)\)</span>.</p>
 <p>A matriz Hessiana é dada por</p>
 <p><span class="math display">\[ \begin{align*}H(x,y) = \begin{bmatrix}\frac{\partial^2 f(x,y)}{\partial x\partial x} &amp; \frac{\partial^2 f(x,y)}{\partial y\partial x} \\ \frac{\partial^2 f(x,y)}{\partial x \partial y} &amp; \frac{\partial^2 f(x,y)}{\partial y \partial y} \end{bmatrix} = \begin{bmatrix} 2 &amp; 3 \\ 3 &amp; 8 \end{bmatrix} \end{align*} \]</span> Devemos julgar o sinal de <span class="math inline">\(H(x^*,y^*)\)</span>. Sabemos que <span class="math display">\[ \begin{align*} \lambda_1+\lambda_2 &amp;= \text{tr}(H)=10 \\
-\lambda_1\lambda_2 &amp;= \det(H)=1\end{align*}\]</span> Como a soma dos autovalores é positiva e seu produto também é positivo, garamtimos que <span class="math inline">\(\lambda_1&gt;0\)</span> e <span class="math inline">\(\lambda_2&gt;0\)</span>. Portanto <span class="math inline">\(H(x^*,y^*)\)</span> é positiva-definida e <span class="math inline">\((x^*,y^*)=(57/7,-24/7)\)</span> é ponto de mínimo.</p>
+\lambda_1\lambda_2 &amp;= \det(H)=7\end{align*}\]</span> Como a soma dos autovalores é positiva e seu produto também é positivo, garamtimos que <span class="math inline">\(\lambda_1&gt;0\)</span> e <span class="math inline">\(\lambda_2&gt;0\)</span>. Portanto <span class="math inline">\(H(x^*,y^*)\)</span> é positiva-definida e <span class="math inline">\((x^*,y^*)=(57/7,-24/7)\)</span> é ponto de mínimo.</p>
 <p>Veja o gráfico da função no <a href="https://www.desmos.com/3d/fc9od0cles">link</a>.</p>
 </div>
 </div>
@@ -1015,7 +1079,7 @@ Solucão
 <li><span class="math inline">\(f(x,y)=x^2y+2y^3\)</span></li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-27-contents" aria-controls="callout-27" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1024,7 +1088,7 @@ Solucão
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-27" class="callout-27-contents callout-collapse collapse">
+<div id="callout-30" class="callout-30-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Condições de primeira ordem: <span class="math inline">\(\nabla f(x,y) = \begin{bmatrix} 0 &amp; 0 \end{bmatrix}^T\)</span>. <span class="math display">\[\begin{align*} \nabla f(x,y) = \begin{bmatrix} \frac{\partial f(x,y)}{\partial x} \\ \frac{\partial f(x,y)}{\partial y} \end{bmatrix}= \begin{bmatrix} 2xy \\ x^2+6y^2 \end{bmatrix}\end{align*}\]</span> Portanto as condições de primeira ordem são <span class="math display">\[ \begin{align*} \begin{cases} 2xy&amp;=0 \\
 x^2+6y^2&amp;=0\end{cases} \end{align*} \]</span> Repare que o sistema acima só é satisfeito quando <span class="math inline">\((x^*,y^*)=(0,0)\)</span>.</p>
@@ -1037,12 +1101,86 @@ x^2+6y^2&amp;=0\end{cases} \end{align*} \]</span> Repare que o sistema acima só
 <ol start="2" type="a">
 <li><span class="math inline">\(f(x,y)=x^3-3x^2y+27y\)</span></li>
 <li><span class="math inline">\(f(x,y)=\sqrt[3]{x^2+2xy+4y^2-6x-12y}\)</span></li>
+<li><span class="math inline">\(f(x,y)=x^4+y^4+4x+4y\)</span></li>
 </ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-31-contents" aria-controls="callout-31" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solucão
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-31" class="callout-31-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Condições de primeira ordem: <span class="math inline">\(\nabla f(x^*,y^*)=\mathbf 0\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+  \nabla f(x,y) = \begin{bmatrix}4(x^3+1)\\4(y^3+10)\end{bmatrix}\overset{CPO}{=}\begin{bmatrix}0\\0\end{bmatrix}
+\end{align*}\]</span> Então nosso candidato a extremo local é <span class="math inline">\((x^*,y^*)=(0,0)\)</span></p>
+<p>Condição de segunda ordem.</p>
+<p><span class="math display">\[\begin{align*}
+H(x,y) = \begin{bmatrix} 12x^2 &amp; 0 \\ 0 &amp; 12y^2 \end{bmatrix}
+\end{align*}\]</span> <span class="math display">\[\begin{align*}
+H(x^*,y^2) = \begin{bmatrix} 12(-1)^2&amp; 0 \\ 0 &amp; 12(-1)^2 \end{bmatrix} = 12\begin{bmatrix} 1&amp; 0 \\ 0 &amp; 1 \end{bmatrix}
+\end{align*}\]</span></p>
+<p>Então</p>
+<ul>
+<li><span class="math inline">\(\text{tr}H(x^*,y^2)=12\cdot2=\lambda_1+\lambda_2&gt;0\)</span></li>
+<li><span class="math inline">\(\det H(x^*,y^*) = 12^2\cdot 1 = \lambda_1\lambda_2&gt;0\)</span></li>
+</ul>
+<p>Portanto <span class="math inline">\(\lambda_1&gt;0\)</span> e <span class="math inline">\(\lambda_2&gt;0\)</span>, <span class="math inline">\(H\)</span> é positiva definida no ponto <span class="math inline">\((x^*,y^*)=(-1,-1)\)</span> e esse é um ponto de mínimo local (no caso, também global).</p>
+</div>
+</div>
+</div>
 </div>
 <div id="exr-minimos-quadrados-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 28</strong></span> Obtenha os valores <span class="math inline">\(b_0, b_1\)</span> que maximizam o quadrado dos resíduos. Garanta que <span class="math inline">\((b_0^*, b_1^*)\)</span> é ponto de máximo.</p>
+<p><span class="theorem-title"><strong>Exercise 28</strong></span> Obtenha os valores <span class="math inline">\(b_0, b_1\)</span> que minimizam o quadrado dos resíduos. Garanta que <span class="math inline">\((b_0^*, b_1^*)\)</span> é ponto de máximo<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</p>
 <ol type="a">
-<li><span class="math inline">\(f(b_0,b_1) = (y - b_0 - b_1x)^2\)</span></li>
+<li><span class="math inline">\(SR(b_0,b_1) = (y_1 - b_0 - b_1x_1)^2+(y_2 - b_0 - b_1x_2)^2\)</span></li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solucão
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Condições de primeira ordem: <span class="math inline">\(\nabla SR(b_0,b_1)=\mathbf{0}\)</span>.</p>
+<p><span class="math display">\[\begin{align*}
+\frac{\partial SR}{\partial b_0}  &amp;= -2(y_1 - b_0 - b_1x_1)-2(y_2 - b_0 - b_1x_2)\\
+&amp;=-2\left[(y_1 - b_0 - b_1x_1)+(y_2 - b_0 - b_1x_2)\right]\\
+&amp;=-2\left[(y_1+y_2)-(b_0+b_0)-b_1(x_1+x_2)\right]
+\end{align*}\]</span> <span class="math display">\[\begin{align*}
+\frac{\partial SR}{\partial b_0}  &amp;= -2x_1(y_1 - b_0 - b_1x_1)-2x_2(y_2 - b_0 - b_1x_2)\\
+&amp;=-2\left[x_1(y_1 - b_0 - b_1x_1)+x_2(y_2 - b_0 - b_1x_2)\right]\\
+&amp;=-2\left[(x_1y_1+x_2y_2)-b_0(x_1+x_2)-b_1(x_1^2+x_2^2)\right]
+\end{align*}\]</span></p>
+<p>Então as condições de primeira ordem são dadas pelo sistema</p>
+<p><span class="math display">\[\begin{align*}
+&amp;-2\left[(y_1+y_2)-2b_0-b_1(x_1+x_2)\right]=0 \tag{CPO 1} \\&amp;-2\left[(x_1y_1+x_2y_2)-b_0(x_1+x_2)-b_1(x_1^2+x_2^2)\right]=0 \tag{CPO 2}
+\end{align*}\]</span></p>
+<p>Resolvendo (CPO 1) para <span class="math inline">\(b_0\)</span> temos</p>
+<p><span class="math display">\[\begin{align*} b_0^*&amp;=\frac{y_1+y_2}{2}+b_1\frac{x_1+x_2}{2}\\&amp;=\bar y + b_1 \bar x\end{align*}\]</span> Ainda precisamos encontrar <span class="math inline">\(b_1\)</span> em função de <span class="math inline">\(y\)</span> e <span class="math inline">\(x\)</span>. Substituindo <span class="math inline">\(b^*_0\)</span> em (CPO 2) e resolvendo para <span class="math inline">\(b_1\)</span>, temos</p>
+<p><span class="math display">\[\begin{align*}
+-2\left[(x_1y_1+x_2y_2)-(\bar y - b_1\bar x)(x_1+x_2)-b_1(x_1^2+x_2^2)\right]=0 \\
+(x_1y_1+x_2y_2)-(\bar y - b_1\bar x)(x_1+x_2)-b_1(x_1^2+x_2^2)=0\tag{/(-2)}\\
+\frac{(x_1y_1+x_2y_2)}{2}-(\bar y - b_1\bar x)\bar x-b_1\frac{(x_1^2+x_2^2)}{2}=0\tag{/2}
+\end{align*}\]</span></p>
+<p><span class="math display">\[b_1^*= \frac{\frac{(x_1y_1+x_2y_2)}{2}-\bar x\bar y}{\frac{(x_1^2+x_2^2)}{2}-\bar x^2}\]</span></p>
+<p>Então nosso candidato a ponto de mínimo é <span class="math display">\[ (b_0^*,b_1^*) = \left(\bar y-b_1^*\bar x, \frac{\frac{(x_1y_1+x_2y_2)}{2}-\bar x\bar y}{\frac{(x_1^2+x_2^2)}{2}-\bar x^2}\right)\]</span> Condições de segunda-ordem: <span class="math inline">\(H(b_0^*,b_1^*)&gt;0\)</span></p>
+<p>Para garantir que de fato <span class="math inline">\((b_0^*,b_1^*)\)</span> é ponto de mínimo precisamos garantir que <span class="math inline">\(H(b_0^*,b_1^*)\)</span> é positiva-definida. Uma condição suficiente é que seus autovalores sejam estritamente positivos.</p>
+<p>As derivadas segundas e cruzadas são <span class="math display">\[ SR_{b_0b_0} = \]</span></p>
+</div>
+</div>
+</div>
+<ol type="a">
 <li><span class="math inline">\(SSR(b_0,b_1) = \sum^n_{j=1}(y_j-b_0-b_1x_j)^2\)</span></li>
 </ol>
 </div>
@@ -1050,36 +1188,215 @@ x^2+6y^2&amp;=0\end{cases} \end{align*} \]</span> Repare que o sistema acima só
 <p><span class="theorem-title"><strong>Exercise 29 (Otimização de lucro 1)</strong></span> Uma determinada firma produz dois bens e se depara com as seguintes funções demanda: <span class="math display">\[ q_1=37-\frac{p_1}{2}, \text{ e }q_2=63-p_2, \]</span> sendo <span class="math inline">\(q_i\)</span> a quantidade produzida pela firma do bem <span class="math inline">\(i=1,2\)</span> e <span class="math inline">\(p_i\)</span> o preço cobrado pela firma por cada unidade do bem <span class="math inline">\(i=1,2\)</span>. Essa firma apresenta a seguinte função custo total: <span class="math display">\[ C(q_1,q_2)=(1+q_1)(1+q_2). \]</span> Dadas tais informações, determine:</p>
 <ol type="a">
 <li>As quantidades produzidas ótimas.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solucão
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><span class="math display">\[q_1=12 \text{ e } q_2=25.\]</span></p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
 <li>As escolhas ótimas da firma são de fato maximizadoras de lucro? Justifique formalmente sua resposta.</li>
+</ol>
+</div>
+<div id="exr-otimizacao-lucro-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 30 (Otimização de lucro 2)</strong></span> Uma determinada firma produz dois bens e se depara com as seguintes funções demanda inversa: <span class="math display">\[ p_1=\alpha_1+\beta_1q_1, \text{ e }p_2=\alpha_2+\beta_2q_2, \]</span> sendo <span class="math inline">\(q_i\)</span> a quantidade produzida pela firma do bem <span class="math inline">\(i=1,2\)</span> e <span class="math inline">\(p_i\)</span> o preço cobrado pela firma por cada unidade do bem <span class="math inline">\(i=1,2\)</span>. Essa firma apresenta a seguinte função custo total: <span class="math display">\[ C(q_1,q_2)=(1+q_1)(1+q_2). \]</span> Dadas tais informações, determine:</p>
+<ol type="a">
+<li>As quantidades produzidas ótimas.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solucão
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A função lucro é dada por <span class="math display">\[
+\begin{align*}
+\Pi(q_1,q_2) = q_1p_1(q_1) + q_2p_2(q_2) - C(q_1,q_2)
+\end{align*}
+\]</span> Essa é a formulação geral quando as funções demanda (inversa) do bem <span class="math inline">\(i\)</span> só depende da quantidade do próprio bem <span class="math inline">\(i\)</span>. As condições de primeira ordem são <span class="math inline">\(\Pi_{q_1}=0\)</span> e <span class="math inline">\(\Pi_{q_2}=0\)</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\frac{\partial \Pi}{\partial q_1} = p_1(q_1)+q_1\frac{dp_1(q_1)}{dq_1} - \frac{\partial C(q_1,q_2)}{\partial q_1} = 0 \\
+\frac{\partial \Pi}{\partial q_2} = p_2(q_2)+q_2\frac{dp_2(q_2)}{dq_2} - \frac{\partial C(q_1,q_2)}{\partial q_2} = 0
+\end{align*}
+\]</span> Substituindo a forma funcional do enunciado nós temos <span class="math display">\[\begin{align*} \Pi(q_1,q_2) = q_1(\alpha_1+\beta_1q_1)+q_2(\alpha_2+\beta_2q_2)-(1+q_1+q_2+q_1q_2)\end{align*}\]</span></p>
+<p><span class="math display">\[
+\begin{align*}
+\frac{\partial \Pi}{\partial q_1} = (\alpha_1+\beta_1q_1)+q_1\beta_1 - (1+q_2) = 0 \tag{CPO 1}\\
+\frac{\partial \Pi}{\partial q_2} = (\alpha_2+\beta_2q_2)+q_2\beta_2-(1+q_1) = 0 \tag{CPO 2}
+\end{align*}
+\]</span> Isolando <span class="math inline">\(q_1\)</span> em (CPO 2) temos <span class="math display">\[ q_1 = \alpha_2 + 2\beta_2q_2 - 1 \]</span> Substituindo em (CPO 1) e resolvendo para <span class="math inline">\(q_2\)</span> temos <span class="math display">\[ q_2 = \frac{\alpha_1 + 2\beta_1(\alpha_2-1)-1}{1-4\beta_1\beta_2}\]</span> Resolvendo para <span class="math inline">\(q_1\)</span> ficamos com <span class="math display">\[ q_1 = \frac{\alpha_2+2\beta_2(\alpha_1-1)-1}{1-4\beta_1\beta_2} \]</span></p>
+<p>Se substituirmos of valores do exercício anterior <span class="math display">\[p_1 = 74-2q_1 \text{ e } p_2=63-q_2\]</span> então</p>
+<p><span class="math display">\[\begin{align*}
+  q_1 = \frac{63+2\cdot(-1)\cdot(74-1)-1}{1-4\cdot(-2)\cdot(-1)} = \frac{-84}{-7}=12 \\
+  q_2 = \frac{74+2\cdot(-2)\cdot(63-1)-1}{1-4\cdot(-2)\cdot(-1)} = \frac{-175}{-7}=25
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+<ol start="2" type="a">
+<li>As escolhas ótimas da firma são de fato maximizadoras de lucro? Justifique formalmente sua resposta.</li>
+</ol>
+<div class="callout callout-style-default callout-caution callout-titled" title="Solucão">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solucão
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As quantidades <span class="math inline">\((q_1^*, q_2^*)\)</span> são maximizadoras de lucro se <span class="math inline">\(H(q_1^*, q_2^*)\)</span> for negativa definida.</p>
+<p>As derivadas segundas e cruzadas são</p>
+<p><span class="math display">\[\begin{align*}
+  \frac{\partial^2 \Pi}{\partial q_1\partial q_1} &amp;= \frac{dp_1(q_1)}{dq_1}+\left(\frac{dp_1(q_1)}{dq_1}+q_1\frac{d^2p_1(q_1)}{dq_1^2}\right)-\frac{\partial^2 C(q_1,q_2)}{\partial q_1\partial q_1} \\
+  \frac{\partial^2 \Pi}{\partial q_2\partial q_2} &amp;= \frac{dp_2(q_2)}{dq_2}+\left(\frac{dp_2(q_2)}{dq_2}+q_2\frac{d^2p_2(q_2)}{dq_2^2}\right)-\frac{\partial^2 C(q_1,q_2)}{\partial q_2\partial q_2} \\
+  \frac{\partial^2 \Pi}{\partial q_1\partial q_2} &amp;= -\frac{\partial^2 C(q_1,q_2)}{\partial q_1\partial q_2}
+\end{align*}\]</span></p>
+<p>Que, no caso da nossa forma funcional, fica</p>
+<p><span class="math display">\[\begin{align*} H(q_1^*,q_2^*)=\begin{bmatrix}2\beta_1 &amp; -1\\-1 &amp; 2\beta_2\end{bmatrix}\end{align*}\]</span></p>
+<p>Repare que nesse caso a Hessiana não depende dos valores <span class="math inline">\((q_1,q_2)\)</span>. Vem do fato das demandas serem lineares e a função custo ter forma quadrática.</p>
+<p><span class="math display">\[\begin{align*}
+\text{tr}(H(q_1^*,q_2^*))&amp;=4(\beta_1+\beta_2)=\lambda_1+\lambda_2\\
+\det (H(q_1^*,q_2^*))&amp;=4\beta_1\beta_2+1=\lambda_1\lambda_2
+\end{align*}\]</span></p>
+<p>Para garantir que <span class="math inline">\(H&lt;0\)</span> precisamos de <span class="math inline">\(\lambda_1&lt;0\)</span> e <span class="math inline">\(\lambda_2&lt;0\)</span> simultaneamente. Para isso o traço da matriz deve ser negativo e o determinante positivo. Isso é garantido se <span class="math inline">\(\beta_1&lt;0\)</span> e <span class="math inline">\(\beta_2&lt;0\)</span>, condição que tem respaldo econômico na inclinação negativa da curva de demanda.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-otimizacao-irrestrita-2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 31</strong></span> (**) Estude a seguinte função quanto a máximos ou mínimos locais <span class="math display">\[f(x,y)=x\log(x^2)+y\log(y^2).\]</span></p>
+</div>
+<div id="exr-portfolio-variancia-minima" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 32 (Portfólio de variância mínima)</strong></span> Considere um investidor que pode investir nos ativos arriscados <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>. Seu portfólio (ou carteira) <span class="math inline">\(P\)</span> é definido pelos pesos relativos <span class="math inline">\(w_1, w_2\)</span> com <span class="math inline">\(w_1+w_2=1\)</span> da alocação de sua riqueza <span class="math inline">\(W\)</span> entre os ativos <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span>.</p>
+<p><span class="math display">\[ P = w_1 X + w_2 Y = w_1X + (1-w_1)Y\]</span> A variância dos retornos do ativo <span class="math inline">\(X\)</span> é dada por <span class="math inline">\(Var(X)=\sigma^2_x\)</span>, a variância dos retornos do ativo <span class="math inline">\(Y\)</span> é dada por <span class="math inline">\(Var(Y)=\sigma^2_y\)</span>, e o coeficiente de correlação entre os retornos dos ativos <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> é <span class="math inline">\(Cov(X,Y)=\rho\)</span>.</p>
+<p>Sabendo que <span class="math display">\[ Var(P)=w_1^2\sigma_x^2+(1-w_1)^2\sigma_y^2+2w_1(1-w_1)\sigma_x\sigma_y\rho\]</span></p>
+<ol type="a">
+<li>Quais pesos relativos <span class="math inline">\(w_1,w_2\)</span> minimizam a variância dessa carteira.</li>
+<li>Esses valores são, de fato, um ponto de mínimo?</li>
+<li>Dependendo dos valores dos parâmetros <span class="math inline">\(\sigma_x,\sigma_y,\rho\)</span> pode haver uma alocação ótima com algum peso <span class="math inline">\(w\)</span> negativo. O que essa situação significa em termos econômicos? Quais os requerimentos sobre os parâmetros para termos <span class="math inline">\(w_1&gt;0\)</span> e <span class="math inline">\(w_2&gt;0\)</span>?</li>
 </ol>
 </div>
 </section>
 <section id="otimização-restrita" class="level2">
 <h2 class="anchored" data-anchor-id="otimização-restrita">Otimização restrita</h2>
-<div class="callout callout-style-default callout-tip callout-titled" title="Condições de primeira ordem para otimização restrita: método dos múltiplicadores de $\mathcal{L}$agrange">
+<div class="callout callout-style-default callout-tip callout-titled" title="Condições de primeira ordem para otimização restrita: método dos múltiplicadores de Lagrange">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Condições de primeira ordem para otimização restrita: método dos múltiplicadores de <span class="math inline">\(\mathcal{L}\)</span>agrange
+Condições de primeira ordem para otimização restrita: método dos múltiplicadores de Lagrange
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Se nosso problema é maximizar (ou minimizar) uma função <span class="math inline">\(f(x,y;\mathbf\theta)\)</span>, sujeita a uma restrição <span class="math inline">\(g(x,y;\mathbf\omega)=C\)</span><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>: <span class="math display">\[
+<p>Se nosso problema é maximizar (ou minimizar) uma função <span class="math inline">\(f(x,y)\)</span>, sujeita a uma restrição <span class="math inline">\(g(x,y)=C\)</span>: <span class="math display">\[\begin{align*}
 \max_{(x,y)\in A} f(x,y) \\
 \text{s.a. } g(x,y)=C
-\]</span></p>
-<p>Podemos obter condições de primeira ordem (necessárias) ao otimizar (de forma “irrestrita”) o “Lagrangeano” <span class="math display">\[ \mathcal{L}(x,y,\lambda;\mathbf\theta,\mathbf{\omega})=f(x,y;\mathbf{\theta})+\lambda[g(x,y;\mathbf{\omega})-C]\]</span> As condições de primeira ordem são</p>
+\end{align*}\]</span></p>
+<p>Podemos obter condições de primeira ordem (necessárias) ao otimizar (de forma “irrestrita”) o “Lagrangeano”</p>
+<p><span class="math display">\[ \mathcal{L}(x,y,\lambda)=f(x,y)+\lambda[g(x,y)-C]\]</span> Temos uma variável adicional <span class="math inline">\(\lambda\)</span>, que chamamos de “múltiplicador de Lagrange”<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>.</p>
+<p>As condições de primeira ordem são <span class="math inline">\(\nabla \mathcal L(x^*,y^*,\lambda^*) = \mathbf 0\)</span>. Ou seja,</p>
+<p><span class="math display">\[\begin{align*}
+  \begin{cases} \mathcal L_x = 0 \\ \mathcal L_y = 0 \\ \mathcal L_\lambda = 0 \end{cases} \tag{CPOs}
+\end{align*}\]</span></p>
 <ul>
-<li><span class="math inline">\(\mathcal L_x = 0\)</span></li>
-<li><span class="math inline">\(\mathcal L_y = 0\)</span></li>
-<li><span class="math inline">\(\mathcal L_\lambda = 0\)</span></li>
+<li>Aula sobre multiplicadores de Lagrange prof. Jaylson <a href="https://youtu.be/bswiN7JsDyI?si=17arpG4r_4jXkhTw">link</a>.</li>
+<li>Vídeo com a intuição geométrica do método <a href="https://www.youtube.com/watch?v=8mjcnxGMwFo">link</a>.</li>
+<li>Aula sobre multiplicadores de Lagrange (em português) <a href="https://www.youtube.com/watch?v=0LLb0Tn38uk">link</a>.</li>
 </ul>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Condição de segunda ordem para otimização restrita: a Hessiana Orleada">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Condição de segunda ordem para otimização restrita: a Hessiana Orleada
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A condição de segunda ordem para que <span class="math inline">\((x^*,y^*)\)</span> seja extremo local em um problema de otimização restrita com duas variáveis de escolhe e uma única restrição de igualdade é relacionada ao sinal do determinante da matriz de derivadas segundas do Lagrangeano.</p>
+<p>Então se <span class="math display">\[\mathcal L(x,y,\lambda) = f(x,y)+\lambda(g(x,y)-C)\]</span> A matriz de derivadas segundas <span class="math inline">\(\bar H\)</span> é</p>
+<p><span class="math display">\[\begin{align*}
+\bar H(x,y,\lambda) = \begin{bmatrix}\mathcal L_{xx} &amp; \mathcal L_{xy} &amp; \mathcal L_{x\lambda} \\ \mathcal L_{xy} &amp; \mathcal L_{yy} &amp; \mathcal L_{y\lambda} \\ \mathcal L_{x\lambda} &amp; \mathcal L_{y\lambda} &amp; \mathcal L_{\lambda\lambda} \end{bmatrix}
+\end{align*}\]</span></p>
+<p>Calculando as derivadas veja que ficamos com</p>
+<p><span class="math display">\[\begin{align*}
+\bar H(x,y,\lambda) = \begin{bmatrix}\mathcal f_{xx}-\lambda g_{xx} &amp; f_{xy}-\lambda g_{xy} &amp; g_x \\
+f_{xy}-\lambda g_{xy} &amp; f_{yy}-\lambda g_{yy} &amp; g_y \\
+g_x &amp; g_y &amp; 0\end{bmatrix}
+\end{align*}\]</span></p>
+<p>Então <em>para o caso de duas variáveis de escolha e apenas uma restrição de igualdade</em>,</p>
+<ul>
+<li>se <span class="math inline">\(\det(\bar H(x^*,y^*,\lambda^*))&gt;0\)</span>, <span class="math inline">\((x^*,y^*)\)</span> é ponto de máximo local do problema de otimização restrita;</li>
+<li>se <span class="math inline">\(\det(\bar H(x^*,y^*,\lambda^*))&lt;0\)</span>, <span class="math inline">\((x^*,y^*)\)</span> é ponto de mínimo local do problema de otimização restrita.</li>
+</ul>
+<p>Ver cálculo do determinante de uma matriz <span class="math inline">\(3\times 3\)</span> via <a href="https://en.wikipedia.org/wiki/Rule_of_Sarrus">regra de Sarrus</a>.</p>
+<p>Ver cálculo do determinante de uma matriz <span class="math inline">\(n\times n\)</span> via <a href="https://en.wikipedia.org/wiki/Laplace_expansion">expansão de Laplace</a>.</p>
+<div class="callout callout-style-default callout-caution callout-titled" title="Comentários importantes">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Comentários importantes
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Chamamos de Hessiana “orleada” porque ela é a Hessiana do problema de otimização irrestrita de <span class="math inline">\(f\)</span>, aumentada nas bordas pelo vetor <span class="math inline">\(\begin{bmatrix}g_x &amp; g_y &amp; 0\end{bmatrix}\)</span>.</li>
+<li>Porque <span class="math inline">\(\mathcal L_{\lambda\lambda}=0\)</span>, a Hessiana orleada <span class="math inline">\(\bar H\)</span> nunca será positiva definida ou negativa definida. Repare que se <span class="math inline">\(\mathbf w = \begin{bmatrix} 0 &amp; 0 &amp; a\end{bmatrix}^T\)</span>, então <span class="math inline">\(\mathbf w^T\bar H \mathbf w=0\)</span>.</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+  \mathbf w^T\bar H \mathbf w &amp;= \begin{bmatrix} 0 &amp; 0 &amp; a\end{bmatrix} \begin{bmatrix}\mathcal f_{xx}-\lambda g_{xx} &amp; f_{xy}-\lambda g_{xy} &amp; g_x \\
+f_{xy}-\lambda g_{xy} &amp; f_{yy}-\lambda g_{yy} &amp; g_y \\
+g_x &amp; g_y &amp; 0\end{bmatrix}\begin{bmatrix} 0 \\ 0 \\ a\end{bmatrix}\\
+&amp;=\begin{bmatrix} 0 &amp; 0 &amp; a\end{bmatrix} \begin{bmatrix}ag_x \\ ag_y \\ 0 \end{bmatrix} = 0
+\end{align*}\]</span></p>
+<ul>
+<li>A condição acima baseada no determinante <span class="math inline">\(|\bar H^*|\)</span> só vale no caso de duas variáveis de escolha e uma restrição de igualdade.</li>
+<li>A condição de segunda ordem geral para um problema com <span class="math inline">\(n\)</span> variáveis de escolha e <span class="math inline">\(m\)</span> restrições de desigualdade é mais complicada e depende do sinal dos <em>minors</em><a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> de <span class="math inline">\(\bar H^*\)</span>.</li>
+<li>Ver <span class="citation" data-cites="hoy2011mathematics">(<a href="#ref-hoy2011mathematics" role="doc-biblioref">Hoy et al. 2011</a>)</span> 13.2 para mais detalhes.</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="exr-otimizacao-restrita-1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 33</strong></span> Resolva os problemas de maximização e minimização restrita abaixo. Ilustre sua resposta com um diagrama gráfico. Compute a condição de segunda ordem.</p>
+<ol type="a">
+<li><p><span class="math inline">\(\min f(x,y) = x^2+3y^2\)</span> sujeito a</p></li>
+<li><p><span class="math inline">\(\max z = 2x_1+3x_2\)</span> sujeito a <span class="math inline">\(2x_1^2+5x^2_2=10\)</span></p></li>
+</ol>
+</div>
 <div id="exr-maximizacao-lucro-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 30</strong></span> (**) Uma firma maximizadora de lucro e tomadora de preços no mercado de bens produz uma única mercadoria, cuja quantidade é denotada por <span class="math inline">\(Q\)</span>, utilizando os fatores de produção capital e trabalho cujas quantidades são denotadas por <span class="math inline">\(K\)</span> e <span class="math inline">\(L\)</span>, respectivamente. Esta firma produz com base na seguinte função de produção <span class="math inline">\(Q=3\sqrt[3]{K}+2\sqrt{L}\)</span>. A firma vende cada unidade de sua mercadoria por <span class="math inline">\(p&gt;0\)</span> unidades monetárias, pagando por unidade de trabalho utilizada um salário de <span class="math inline">\(w&gt;0\)</span> unidades monetárias e incorrendo em custo de oportunidade por unidade de capital igual a <span class="math inline">\(r&gt;0\)</span> unidades monetárias. Estes preços são constantes e exogenamente determinados. Dados tais pressuposto, pede-se:</p>
+<p><span class="theorem-title"><strong>Exercise 34</strong></span> (**) Uma firma maximizadora de lucro e tomadora de preços no mercado de bens produz uma única mercadoria, cuja quantidade é denotada por <span class="math inline">\(Q\)</span>, utilizando os fatores de produção capital e trabalho cujas quantidades são denotadas por <span class="math inline">\(K\)</span> e <span class="math inline">\(L\)</span>, respectivamente. Esta firma produz com base na seguinte função de produção <span class="math inline">\(Q=3\sqrt[3]{K}+2\sqrt{L}\)</span>. A firma vende cada unidade de sua mercadoria por <span class="math inline">\(p&gt;0\)</span> unidades monetárias, pagando por unidade de trabalho utilizada um salário de <span class="math inline">\(w&gt;0\)</span> unidades monetárias e incorrendo em custo de oportunidade por unidade de capital igual a <span class="math inline">\(r&gt;0\)</span> unidades monetárias. Estes preços são constantes e exogenamente determinados. Dados tais pressuposto, pede-se:</p>
 <ol type="a">
 <li>A representação formal do problema de maximização de lucro da firma tendo como variáveis de escolha os fatores de produção;</li>
 <li>as demandas de fatores de produção da firma;</li>
@@ -1087,13 +1404,13 @@ Condições de primeira ordem para otimização restrita: método dos múltiplic
 </ol>
 </div>
 <div id="exr-maximizacao-utilidade-1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 31</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de cois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=x_1+\log(1+x_2).\]</span> Os preços unitários, exogenamente determiados, dos bens 1 e 2 são <span class="math inline">\(p_1&gt;0\)</span> e <span class="math inline">\(p_2&gt;0\)</span> , respectivamente.</p>
+<p><span class="theorem-title"><strong>Exercise 35</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=x_1+\log(1+x_2).\]</span> Os preços unitários, exogenamente determiados, dos bens 1 e 2 são <span class="math inline">\(p_1&gt;0\)</span> e <span class="math inline">\(p_2&gt;0\)</span> , respectivamente.</p>
 <p>O consumidor aufere, no intervalo de tempo em anális, uma renda exógena <span class="math inline">\(m&gt;0\)</span>. Supondo <span class="math inline">\(m&gt;p_1&gt;p_2\)</span>, determine:</p>
 <ol type="a">
 <li>As quantidades ótimas usando o método de Lagrange.</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Solução">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-39-contents" aria-controls="callout-39" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1102,11 +1419,11 @@ Solução
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div id="callout-39" class="callout-39-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p><span class="math display">\[\mathcal L(x_1,x_2,\lambda)=x_1+\log(1+x_2)+\lambda(p_1x_1+p_2x_2-m) \]</span> Condições de primeira ordem: <span class="math display">\[\begin{align*}\mathcal L_{x_1}=1+\lambda p_1=0\\
-\mathcal L_{x_2}=\frac{1}{1+x_2}+\lambda p_2=0\\
-\mathcal L_\lambda = x_1p_1+x_2p_2-m=0\end{align*}\]</span> Resolvendo para <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> o sistema definido pelas CPOs, temos <span class="math display">\[ x_1 = \frac{m-p_1+p_2}{p_1}, \quad x_2 = \frac{p_1}{p_2}-1.\]</span></p>
+<p><span class="math display">\[\mathcal L(x_1,x_2,\lambda)=x_1+\log(1+x_2)+\lambda(p_1x_1+p_2x_2-m) \]</span> Condições de primeira ordem: <span class="math display">\[\begin{align*}\mathcal L_{x_1}&amp;=1+\lambda p_1=0\\
+\mathcal L_{x_2}&amp;=\frac{1}{1+x_2}+\lambda p_2=0\\
+\mathcal L_\lambda &amp;= x_1p_1+x_2p_2-m=0\end{align*}\]</span> Resolvendo para <span class="math inline">\(x_1\)</span> e <span class="math inline">\(x_2\)</span> o sistema definido pelas CPOs, temos <span class="math display">\[ x_1 = \frac{m-p_1+p_2}{p_1}, \quad x_2 = \frac{p_1}{p_2}-1.\]</span></p>
 </div>
 </div>
 </div>
@@ -1115,19 +1432,19 @@ Solução
 </ol>
 </div>
 <div id="exr-maximizacao-utilidade-2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 32</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=x_1(x_2+4). \]</span> Os preços unitários, exogenamente determinados, dos bens 1 e 2 são <span class="math inline">\(p_1=\$3\)</span> e <span class="math inline">\(p_2=\$5\)</span>, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de <span class="math inline">\(\$100\)</span>. Determine:</p>
+<p><span class="theorem-title"><strong>Exercise 36</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=x_1(x_2+4). \]</span> Os preços unitários, exogenamente determinados, dos bens 1 e 2 são <span class="math inline">\(p_1=\$3\)</span> e <span class="math inline">\(p_2=\$5\)</span>, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de <span class="math inline">\(\$100\)</span>. Determine:</p>
 <ol type="a">
 <li>As quantidades consumidas ótimas usando o método de Lagrange;</li>
 <li>As quantidades obtidas no item anterior são de fato ótimas? Justifique formalmente sua resposta.</li>
 </ol>
 </div>
 <div id="exr-maximizacao-utilidade-3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 33</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=5(1+x_1)x_2. \]</span> Os preços unitários, exogenamente determinados dos bens 1 e 2 são <span class="math inline">\(p_1=\$10\)</span> e <span class="math inline">\(p_2=\$20\)</span>, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de <span class="math inline">\(\$390\)</span>. Determine:</p>
+<p><span class="theorem-title"><strong>Exercise 37</strong></span> (**) Um consumidor escolhe as quantidades a serem consumidas de dois bens, <span class="math inline">\(x_1&gt;0\)</span> e <span class="math inline">\(x_2&gt;0\)</span>, num dado intervalo de tempo. A relação de preferência deste consumidor no conjunto consumo é representada pela seguinte função de utilidade: <span class="math display">\[ u(x_1,x_2)=5(1+x_1)x_2. \]</span> Os preços unitários, exogenamente determinados dos bens 1 e 2 são <span class="math inline">\(p_1=\$10\)</span> e <span class="math inline">\(p_2=\$20\)</span>, respectivamente. O consumidor aufere, no intervalo de tempo em análise, uma renda exógena de <span class="math inline">\(\$390\)</span>. Determine:</p>
 <ol type="a">
 <li>As quantidades ótimas usando o método de Lagrange;</li>
 </ol>
 <div class="callout callout-style-default callout-caution callout-titled" title="Solução">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-30-contents" aria-controls="callout-30" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-40-contents" aria-controls="callout-40" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1136,7 +1453,7 @@ Solução
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-30" class="callout-30-contents callout-collapse collapse">
+<div id="callout-40" class="callout-40-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Lagrangeano</p>
 <p><span class="math display">\[\mathcal L = 5(1+x_1)x_2 + \lambda(p_1x_1+p_2x_2-m)\]</span> Condições de primeira ordem</p>
@@ -1181,7 +1498,10 @@ Nicholson, Walter, and Chistopher Snyder. 2017. <em>Microeconomic Theory: Basic 
 <li id="fn3"><p>É igual a sua transposta. <span class="math inline">\(H=H^T\)</span>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>As pessoas usam vários nomes diferentes para se referir a esse resultado. No contexto de economia é comum chamar de “Teorema de Young” <a href="https://en.wikipedia.org/wiki/Symmetry_of_second_derivatives">link</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Soma dos elementos da diagonal principal.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p><span class="math inline">\(\mathbf\theta\)</span> e <span class="math inline">\(\mathbf\omega\)</span> são vetores de parâmetros fixos<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><span class="math inline">\(P\rightarrow Q\)</span>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Dica: use o fato de que <span class="math inline">\(\sum^n_{j=1}x_j^2/n &gt; (\sum^n_{j=1}x_j/n)^2\)</span>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>Tanto faz se escrevemos <span class="math inline">\(+\lambda\)</span> ou <span class="math inline">\(-\lambda\)</span> na definição do Lagrangeano.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Determinantes de submatrizes quadradas <a href="https://en.wikipedia.org/wiki/Minor_(linear_algebra)">link</a>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
